@@ -373,7 +373,7 @@ public class SimulationView extends ViewPart implements ISelectionListener {
 	
 	private void updateView() {
 		// Update the label:
-		text.setText(connector==null ? "none" : connector.getName());
+		text.setText(connector==null || connector.getName()==null ? "none" : connector.getName());
 	}
 	
 	
