@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="costs"
+    nsURI="http://www.cwi.nl/ea/costs" nsPrefix="org.ect.ea.costs">
+  <eClassifiers xsi:type="ecore:EClass" name="CostsObject" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CostsAlgebra" abstract="true">
+    <eOperations name="choose" eType="#//CostsObject">
+      <eParameters name="c1" eType="#//CostsObject"/>
+      <eParameters name="c2" eType="#//CostsObject"/>
+    </eOperations>
+    <eOperations name="combineSequentially" eType="#//CostsObject">
+      <eParameters name="c1" eType="#//CostsObject"/>
+      <eParameters name="c2" eType="#//CostsObject"/>
+    </eOperations>
+    <eOperations name="combineParallel" eType="#//CostsObject">
+      <eParameters name="c1" eType="#//CostsObject"/>
+      <eParameters name="c2" eType="#//CostsObject"/>
+    </eOperations>
+  </eClassifiers>
+  <eSubpackages name="types" nsURI="http://www.cwi.nl/ea/costs/types" nsPrefix="org.ect.ea.costs.types">
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerCosts" eSuperTypes="#//CostsObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="integerValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StringCosts" eSuperTypes="#//CostsObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FloatCosts" eSuperTypes="#//CostsObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="floatValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="algebras" nsURI="http://www.cwi.nl/ea/costs/algebras" nsPrefix="org.ect.ea.costs.algebras">
+    <eClassifiers xsi:type="ecore:EClass" name="MemoryAlgebra" eSuperTypes="#//CostsAlgebra"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CPUAlgebra" eSuperTypes="#//CostsAlgebra"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BandwidthAlgebra" eSuperTypes="#//CostsAlgebra"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DelayAlgebra" eSuperTypes="#//CostsAlgebra"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ReliabilityAlgebra" eSuperTypes="#//CostsAlgebra"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SecurityAlgebra" eSuperTypes="#//CostsAlgebra"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ExponentialDelayAlgebra" eSuperTypes="#//CostsAlgebra"/>
+  </eSubpackages>
+</ecore:EPackage>

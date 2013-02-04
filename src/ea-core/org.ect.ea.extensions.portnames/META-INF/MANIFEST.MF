@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Extendible Automata - Port Names Extension
+Bundle-SymbolicName: org.ect.ea.extensions.portnames;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: CWI
+Require-Bundle: org.eclipse.gef,
+ org.eclipse.core.runtime,
+ org.eclipse.gmf.runtime.diagram.ui.actions,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.ect.ea;bundle-version="3.2.0",
+ org.ect.ea.diagram;bundle-version="3.2.0",
+ org.ect.ea.diagram.contributions;bundle-version="3.2.0",
+ org.ect.ea.extensions.startstates;bundle-version="3.2.0"
+Export-Package: org.ect.ea.extensions.portnames,
+ org.ect.ea.extensions.portnames.actions,
+ org.ect.ea.extensions.portnames.providers
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

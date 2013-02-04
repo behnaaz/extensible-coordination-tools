@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <contributionItemProvider
+            checkPluginLoaded="false"
+            class="org.ect.ea.diagram.contributions.providers.ExtensionContributionProvider">
+         <Priority name="Low"/>
+		<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+		
+  <popupStructuredContributionCriteria objectClass="org.ect.ea.diagram.edit.parts.AutomatonEditPart"/>
+		<popupMenu path="/viewGroup" id="extensionMenu"></popupMenu>
+  <popupMenu
+        id="typeMenu"
+        path="/viewGroup">
+  </popupMenu>
+  <popupMenu
+        id="productMenu"
+        path="/viewGroup">
+  </popupMenu>
+  <popupAction
+        id="addSilentTransitions"
+        path="/viewGroup">
+  </popupAction>
+  <popupAction
+        id="removeSilentTransitions"
+        path="/viewGroup">
+  </popupAction>
+		
+		</popupContribution>
+  <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+     <popupActionGroup
+           id="extensionGroup"
+           path="/viewGroup">
+     </popupActionGroup>
+  </popupContribution>
+
+      </contributionItemProvider>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider
+            class="org.ect.ea.diagram.contributions.providers.ProxyEditPartProvider">
+         <Priority
+               name="High">
+         </Priority>
+      </editpartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.parserProviders">
+      <ParserProvider
+            class="org.ect.ea.diagram.contributions.providers.ExtensionParserProvider">
+         <Priority
+               name="High">
+         </Priority>
+      </ParserProvider>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider
+            class="org.ect.ea.diagram.contributions.providers.ExtensionViewProvider">
+         <Priority
+               name="High">
+         </Priority>
+      </viewProvider>
+   </extension>
+
+</plugin>

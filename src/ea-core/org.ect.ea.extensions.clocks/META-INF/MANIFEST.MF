@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Clocks Extension Plug-in
+Bundle-SymbolicName: org.ect.ea.extensions.clocks;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: CWI
+Require-Bundle: org.eclipse.gef,
+ org.ect.ea;bundle-version="3.2.0",
+ org.ect.ea.extensions.constraints;bundle-version="3.2.0",
+ org.ect.ea.extensions.portnames;bundle-version="3.2.0",
+ org.ect.ea.extensions.startstates;bundle-version="3.2.0",
+ org.ect.ea.extensions.statememory;bundle-version="3.2.5",
+ org.ect.ea.diagram;bundle-version="3.2.0",
+ org.ect.antlr;bundle-version="3.2.2",
+ org.ect.ea.extensions.statememory;bundle-version="3.2.5"
+Bundle-ClassPath: .
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

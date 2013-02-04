@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.ect.ea.extensions">
+      <extensionDefinition
+            enabledFor="automata"
+            icon="icons/portNames.gif"
+            id="cwi.ea.extensions.automatonPortNames"
+            name="Port Names (Automata)"
+            providerClass="org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider"
+            type="textual">
+      </extensionDefinition>
+      <extensionDefinition
+            enabledFor="transitions"
+            icon="icons/portNames.gif"
+            id="cwi.ea.extensions.transitionPortNames"
+            name="Port Names (Transitions)"
+            providerClass="org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider"
+            type="textual">
+         <dependency
+               id="cwi.ea.extensions.automatonPortNames">
+         </dependency>
+      </extensionDefinition>
+      <extensionDefinition
+            editParts="org.ect.ea.extensions.portnames.providers.IntensionalPortNamesMenuProvider"
+            enabledFor="transitions"
+            icon="icons/portNames.gif"
+            id="cwi.ea.extensions.intensionalPortNames"
+            name="Intensional Port Names"
+            providerClass="org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider"
+            type="textual">
+         <dependency
+               id="cwi.ea.extensions.automatonPortNames">
+         </dependency>
+         <mutualExclusion
+               global="true"
+               id="cwi.ea.extensions.transitionPortNames">
+         </mutualExclusion>
+      </extensionDefinition>
+      <extensionDefinition
+            enabledFor="transitions"
+            id="cwi.ea.extensions.portNames.delayInformation"
+            name="Delay Information"
+            providerClass="org.ect.ea.extensions.portnames.providers.DelayInfoProvider"
+            type="textual">
+      </extensionDefinition>
+      <automatonType
+            name="Port Automaton">
+         <extensionReference
+               id="cwi.ea.extensions.automatonPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.transitionPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.startStates">
+         </extensionReference>
+      </automatonType>
+      <automatonType
+            name="Intensional Automaton">
+         <extensionReference
+               id="cwi.ea.extensions.automatonPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.intensionalPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.startStates">
+         </extensionReference>
+      </automatonType>
+      <automatonType
+            name="Quantitative Intensional Automaton">
+         <extensionReference
+               id="cwi.ea.extensions.automatonPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.intensionalPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.portNames.delayInformation">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.startStates">
+         </extensionReference>
+      </automatonType>
+   </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/ea/portNames" 
+       class = "org.ect.ea.extensions.portnames.PortNamesPackage"
+       genModel = "model/portNames.genmodel" /> 
+  </extension>
+  <extension
+        point="org.ect.ea.products">
+     <productDefinition
+           id="org.ect.ea.extensions.portNames.intensionalProduct"
+           name="Intensional (IEA)"
+           providerClass="org.ect.ea.extensions.portnames.providers.IEAProduct">
+     </productDefinition>
+  </extension>
+
+</plugin>

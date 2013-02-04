@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Extendible Automata - State Memory Extension
+Bundle-SymbolicName: org.ect.ea.extensions.statememory;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: CWI
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.gef,
+ org.eclipse.core.runtime,
+ org.ect.ea;bundle-version="3.2.0"
+Export-Package: org.ect.ea.extensions.statememory
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
