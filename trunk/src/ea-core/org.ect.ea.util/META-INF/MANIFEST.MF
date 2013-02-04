@@ -8,7 +8,7 @@ Require-Bundle: org.ect.ea;bundle-version="3.2.0",
  org.ect.ea.extensions.portnames;bundle-version="3.2.0",
  org.ect.ea.extensions.startstates;bundle-version="3.2.0",
  org.ect.ea.extensions.statememory;bundle-version="3.2.0",
- org.ect.antlr;bundle-version="3.2.0"
+ org.ect.ea.antlr;bundle-version="3.2.0"
 Export-Package: org.ect.ea.util.ca,
  org.ect.ea.util.text.parse,
  org.ect.ea.util.text.serialize

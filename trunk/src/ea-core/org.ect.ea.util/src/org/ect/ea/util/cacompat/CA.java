@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.util.cacompat;
 
 import java.util.HashMap;
@@ -18,7 +28,6 @@ import org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider;
 import org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 import org.ect.ea.extensions.statememory.StateMemoryExtensionProvider;
-
 
 @SuppressWarnings("unchecked")
 public class CA extends org.ect.ea.automata.Automaton {

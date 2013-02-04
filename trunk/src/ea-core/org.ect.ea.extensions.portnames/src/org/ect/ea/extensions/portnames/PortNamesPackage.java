@@ -1,9 +1,13 @@
-/**
+/*******************************************************************************
  * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
- *
- * $Id$
- */
+ *******************************************************************************/
 package org.ect.ea.extensions.portnames;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -13,8 +17,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.ect.ea.automata.AutomataPackage;
 import org.ect.ea.extensions.ExtensionsPackage;
-
-
 
 /**
  * <!-- begin-user-doc -->
