@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.util.ca;
 
 import java.util.Collection;
@@ -23,7 +33,6 @@ import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 import org.ect.ea.extensions.statememory.StateMemory;
 import org.ect.ea.extensions.statememory.StateMemoryExtensionProvider;
 import org.ect.ea.util.text.serialize.CatPrinter;
-
 
 public final class CaHelper {
 	static final String 	// Extension IDs used for constraint automata (with memory)
