@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CWI Antlr Plug-in
-Bundle-SymbolicName: org.ect.antlr;singleton:=true
+Bundle-SymbolicName: org.ect.ea.antlr;singleton:=true
 Bundle-Version: 3.2.5
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: lib/antlr-3.1.1.jar,
