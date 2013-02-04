@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.ect.reo.edit; singleton:=true
+Bundle-Version: 3.4.12
+Bundle-ClassPath: .
+Bundle-Activator: org.ect.reo.provider.ReoEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.ect.reo.animation.provider,
+ org.ect.reo.channels.provider,
+ org.ect.reo.colouring.provider,
+ org.ect.reo.components.provider,
+ org.ect.reo.provider,
+ org.ect.reo.provider.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.edit;bundle-version="2.4.0",
+ org.ect.reo;bundle-version="3.2.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.emf.ecore.provider

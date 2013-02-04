@@ -1,0 +1,22 @@
+%%lossy + FIFO1
+
+act
+  x1, y1, 
+  x2, y2,
+  a;
+
+proc 
+  % lossy synch
+  C1 = x1.C1 + x1|y1.C1;     
+  % FIFO1
+  C2(b:Bool) = !b -> x2.C2(!b) + b -> y2.C2(!b);
+
+init
+   block({y1, x2},
+   hide({a},
+   comm({
+       y1|x2 -> a},
+       C1 || C2(false) 
+   )));
+
+

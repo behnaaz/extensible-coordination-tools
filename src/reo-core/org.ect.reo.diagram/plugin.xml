@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+<extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="reo"/>
+   </extension>
+<extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="reo"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+<extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="org.ect.reo.diagram.part.ReoDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/ReoDiagramFile.gif"
+         extensions="reo"
+         default="true"
+         class="org.ect.reo.diagram.part.ReoDiagramEditor"
+         matchingStrategy="org.ect.reo.diagram.part.ReoMatchingStrategy"
+         contributorClass="org.ect.reo.diagram.part.ReoDiagramActionBarContributor">
+      </editor>
+   </extension>
+<extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="org.ect.reo.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+<extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/ReoDiagramFile.gif"
+  	     category="org.ect.reo"
+  	     class="org.ect.reo.diagram.part.ReoCreationWizard"
+  	     id="org.ect.reo.diagram.part.ReoCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+<extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="org.ect.reo.diagram.InitDiagram"
+            nameFilter="*.reo"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="org.ect.reo.diagram.part.ReoInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.ect.reo.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="ReoPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="org.ect.reo.diagram.part.ReoDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="ReoPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="org.ect.reo.diagram.part.ReoDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="ReoRender">
+         <Priority name="Lowest"/>
+         <ViewId id="org.ect.reo.diagram.part.ReoDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+<extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="org.ect.reo.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="org.ect.reo.diagram"
+            labelProvider="org.ect.reo.diagram.sheet.ReoSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="org.ect.reo.diagram.sheet.ReoPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="org.ect.reo.diagram.navigator.ReoAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="org.ect.reo.diagram.providers.ReoViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Reo"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="1001,1002,1003,1004,2001,2005,2008,2004,2006,2007,2009,2010"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="3001,3002,3003,3005,3006,3007,3008,3011,3012,3015,3013,3014,3016,3017,3018,3019,3020"/>
+      </viewProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="org.ect.reo.diagram.providers.ReoEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="Reo"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="1001,1002,1003,1004,2001,2005,2008,2004,2006,2007,2009,2010"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="3001,3002,3003,3005,3006,3007,3008,3011,3012,3015,3013,3014,3016,3017,3018,3019,3020"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="4004,4005,4006,4007,4001,4012,4016,4010,4011,4017,4018"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="5001,5005,5006,5007,5008,5002,5003,5004"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="org.ect.reo.diagram.providers.ReoModelingAssistantProvider">
+         <Priority name="Lowest"/>
+         <object class="org.ect.reo.diagram.edit.parts.ModuleEditPart" id="Module_1000"/>
+         <object class="org.ect.reo.diagram.edit.parts.ConnectorEditPart" id="Connector_1001"/>
+         <object class="org.ect.reo.diagram.edit.parts.ReaderEditPart" id="Reader_1002"/>
+         <object class="org.ect.reo.diagram.edit.parts.WriterEditPart" id="Writer_1003"/>
+         <object class="org.ect.reo.diagram.edit.parts.ComponentEditPart" id="Component_1004"/>
+         <context elements="Module_1000,Connector_1001,Reader_1002,Writer_1003,Component_1004"/>
+      </modelingAssistantProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="org.ect.reo.diagram.providers.ReoIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="org.ect.reo.diagram.providers.ReoParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <metamodelType
+               id="org.ect.reo.diagram.Module_1000"
+               name="%metatype.name.Module_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Module"
+               edithelper="org.ect.reo.diagram.edit.helpers.ModuleEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <metamodelType
+               id="org.ect.reo.diagram.Connector_1001"
+               name="%metatype.name.Connector_1001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Connector"
+               edithelper="org.ect.reo.diagram.edit.helpers.ConnectorEditHelper">
+            <param name="semanticHint" value="1001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/components">
+         <specializationType
+               id="org.ect.reo.diagram.Reader_1002"
+               name="%metatype.name.Reader_1002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.ect.reo.diagram.Reader_2008"/>
+            <param name="semanticHint" value="1002"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/components">
+         <specializationType
+               id="org.ect.reo.diagram.Writer_1003"
+               name="%metatype.name.Writer_1003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.ect.reo.diagram.Writer_2009"/>
+            <param name="semanticHint" value="1003"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <specializationType
+               id="org.ect.reo.diagram.Component_1004"
+               name="%metatype.name.Component_1004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.ect.reo.diagram.Component_2010"/>
+            <param name="semanticHint" value="1004"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <metamodelType
+               id="org.ect.reo.diagram.Node_2001"
+               name="%metatype.name.Node_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Node"
+               edithelper="org.ect.reo.diagram.edit.helpers.NodeEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <specializationType
+               id="org.ect.reo.diagram.Connector_2005"
+               name="%metatype.name.Connector_2005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.ect.reo.diagram.Connector_1001"/>
+            <param name="semanticHint" value="2005"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/components">
+         <metamodelType
+               id="org.ect.reo.diagram.Reader_2008"
+               name="%metatype.name.Reader_2008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Reader"
+               edithelper="org.ect.reo.diagram.edit.helpers.ReaderEditHelper">
+            <param name="semanticHint" value="2008"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <metamodelType
+               id="org.ect.reo.diagram.Property_2004"
+               name="%metatype.name.Property_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Property"
+               edithelper="org.ect.reo.diagram.edit.helpers.PropertyEditHelper">
+            <param name="semanticHint" value="2004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <metamodelType
+               id="org.ect.reo.diagram.SourceEnd_2006"
+               name="%metatype.name.SourceEnd_2006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SourceEnd"
+               edithelper="org.ect.reo.diagram.edit.helpers.SourceEndEditHelper">
+            <param name="semanticHint" value="2006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <metamodelType
+               id="org.ect.reo.diagram.SinkEnd_2007"
+               name="%metatype.name.SinkEnd_2007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SinkEnd"
+               edithelper="org.ect.reo.diagram.edit.helpers.SinkEndEditHelper">
+            <param name="semanticHint" value="2007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/components">
+         <metamodelType
+               id="org.ect.reo.diagram.Writer_2009"
+               name="%metatype.name.Writer_2009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Writer"
+               edithelper="org.ect.reo.diagram.edit.helpers.WriterEditHelper">
+            <param name="semanticHint" value="2009"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <metamodelType
+               id="org.ect.reo.diagram.Component_2010"
+               name="%metatype.name.Component_2010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Component"
+               edithelper="org.ect.reo.diagram.edit.helpers.ComponentEditHelper">
+            <param name="semanticHint" value="2010"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.Sync_3001"
+               name="%metatype.name.Sync_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Sync"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.LossySync_3002"
+               name="%metatype.name.LossySync_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LossySync"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.FIFO_3003"
+               name="%metatype.name.FIFO_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FIFO"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.SyncDrain_3005"
+               name="%metatype.name.SyncDrain_3005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SyncDrain"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.SyncSpout_3006"
+               name="%metatype.name.SyncSpout_3006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SyncSpout"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.AsyncDrain_3007"
+               name="%metatype.name.AsyncDrain_3007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AsyncDrain"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.AsyncSpout_3008"
+               name="%metatype.name.AsyncSpout_3008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AsyncSpout"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3008"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.Filter_3011"
+               name="%metatype.name.Filter_3011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Filter"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3011"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.Transform_3012"
+               name="%metatype.name.Transform_3012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Transform"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3012"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.Timer_3015"
+               name="%metatype.name.Timer_3015"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Timer"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3015"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <specializationType
+               id="org.ect.reo.diagram.NodeSourceEnds_3013"
+               name="%metatype.name.NodeSourceEnds_3013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="3013"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo">
+         <specializationType
+               id="org.ect.reo.diagram.SinkEndNode_3014"
+               name="%metatype.name.SinkEndNode_3014"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="3014"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.CustomDirectedChannel_3016"
+               name="%metatype.name.CustomDirectedChannel_3016"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="CustomDirectedChannel"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3016"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.CustomDrainChannel_3017"
+               name="%metatype.name.CustomDrainChannel_3017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="CustomDrainChannel"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3017"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.CustomSpoutChannel_3018"
+               name="%metatype.name.CustomSpoutChannel_3018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="CustomSpoutChannel"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3018"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.PrioritySync_3019"
+               name="%metatype.name.PrioritySync_3019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="PrioritySync"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3019"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.BlockingSync_3020"
+               name="%metatype.name.BlockingSync_3020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="BlockingSync"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3020"/>
+         </metamodelType>
+      </metamodel>
+            <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.BlockingSinkSync_3021"
+               name="%metatype.name.BlockingSinkSync_3021"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="BlockingSinkSync"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3021"/>
+         </metamodelType>
+      </metamodel>
+            <metamodel nsURI="http://www.cwi.nl/reo/channels">
+         <metamodelType
+               id="org.ect.reo.diagram.BlockingSourceSync_3022"
+               name="%metatype.name.BlockingSourceSync_3022"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="BlockingSourceSync"
+               edithelper="org.ect.reo.diagram.edit.helpers.ChannelEditHelper">
+            <param name="semanticHint" value="3022"/>
+         </metamodelType>
+      </metamodel>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="org.ect.reo.diagram.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="org.ect.reo.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="org.ect.reo.diagram.TypeContext">
+         <elementType ref="org.ect.reo.diagram.Module_1000"/>
+         <elementType ref="org.ect.reo.diagram.Connector_1001"/>
+         <elementType ref="org.ect.reo.diagram.Reader_1002"/>
+         <elementType ref="org.ect.reo.diagram.Writer_1003"/>
+         <elementType ref="org.ect.reo.diagram.Component_1004"/>
+         <elementType ref="org.ect.reo.diagram.Node_2001"/>
+         <elementType ref="org.ect.reo.diagram.Connector_2005"/>
+         <elementType ref="org.ect.reo.diagram.Reader_2008"/>
+         <elementType ref="org.ect.reo.diagram.Property_2004"/>
+         <elementType ref="org.ect.reo.diagram.SourceEnd_2006"/>
+         <elementType ref="org.ect.reo.diagram.SinkEnd_2007"/>
+         <elementType ref="org.ect.reo.diagram.Writer_2009"/>
+         <elementType ref="org.ect.reo.diagram.Component_2010"/>
+         <elementType ref="org.ect.reo.diagram.Sync_3001"/>
+         <elementType ref="org.ect.reo.diagram.LossySync_3002"/>
+         <elementType ref="org.ect.reo.diagram.FIFO_3003"/>
+         <elementType ref="org.ect.reo.diagram.SyncDrain_3005"/>
+         <elementType ref="org.ect.reo.diagram.SyncSpout_3006"/>
+         <elementType ref="org.ect.reo.diagram.AsyncDrain_3007"/>
+         <elementType ref="org.ect.reo.diagram.AsyncSpout_3008"/>
+         <elementType ref="org.ect.reo.diagram.Filter_3011"/>
+         <elementType ref="org.ect.reo.diagram.Transform_3012"/>
+         <elementType ref="org.ect.reo.diagram.Timer_3015"/>
+         <elementType ref="org.ect.reo.diagram.NodeSourceEnds_3013"/>
+         <elementType ref="org.ect.reo.diagram.SinkEndNode_3014"/>
+         <elementType ref="org.ect.reo.diagram.CustomDirectedChannel_3016"/>
+         <elementType ref="org.ect.reo.diagram.CustomDrainChannel_3017"/>
+         <elementType ref="org.ect.reo.diagram.CustomSpoutChannel_3018"/>
+         <elementType ref="org.ect.reo.diagram.PrioritySync_3019"/>
+         <elementType ref="org.ect.reo.diagram.BlockingSync_3020"/>
+         <elementType ref="org.ect.reo.diagram.BlockingSinkSync_3021"/>
+         <elementType ref="org.ect.reo.diagram.BlockingSourcekSync_3022"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+<extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="org.ect.reo.diagram.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="org.ect.reo.diagram"
+           properties="isURIEditorInput"
+           class="org.ect.reo.diagram.part.ReoUriEditorInputTester">
+       </propertyTester>
+   </extension>
+<extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="org.ect.reo.diagram.resourceContent"/>
+			<contentExtension pattern="org.ect.reo.diagram.domainResourceContent"/>
+            <contentExtension pattern="org.ect.reo.diagram.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="org.ect.reo.diagram.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+<extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="org.ect.reo.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="org.ect.reo.diagram.navigator.ReoNavigatorContentProvider" 
+            labelProvider="org.ect.reo.diagram.navigator.ReoNavigatorLabelProvider"
+            icon="icons/obj16/ReoDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="reo"/>
+               </and>
+               <instanceof value="org.ect.reo.diagram.navigator.ReoAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="org.ect.reo.diagram.navigator.ReoAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="org.ect.reo.diagram.navigatorSorter" 
+               class="org.ect.reo.diagram.navigator.ReoNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="reo"/>
+                  </and>
+                  <instanceof value="org.ect.reo.diagram.navigator.ReoAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="org.ect.reo.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="org.ect.reo.diagram.navigator.ReoDomainNavigatorContentProvider" 
+            labelProvider="org.ect.reo.diagram.navigator.ReoDomainNavigatorLabelProvider"
+            icon="icons/obj16/ReoDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="reo"/>
+               </and>
+               <instanceof value="org.ect.reo.diagram.navigator.ReoDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="org.ect.reo.diagram.navigator.ReoDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="org.ect.reo.diagram.navigatorActionProvider"
+            class="org.ect.reo.diagram.navigator.ReoNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="org.ect.reo.diagram.navigator.ReoAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+<extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="org.ect.reo.diagram.navigatorLinkHelper"
+            class="org.ect.reo.diagram.navigator.ReoNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="org.ect.reo.diagram.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="org.ect.reo.diagram.navigator.ReoAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+<extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="org.ect.reo.diagram.part.ReoDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="org.ect.reo.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+<extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="org.ect.reo.diagram.updateDiagram"
+         contextId="org.ect.reo.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+<extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="org.ect.reo.diagram.general"
+            name="%prefpage.org.ect.reo.diagram.general"
+            class="org.ect.reo.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="org.ect.reo.diagram.appearance"
+            name="%prefpage.org.ect.reo.diagram.appearance"
+            category="org.ect.reo.diagram.general"
+            class="org.ect.reo.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="org.ect.reo.diagram.connections"
+            name="%prefpage.org.ect.reo.diagram.connections"
+            category="org.ect.reo.diagram.general"
+            class="org.ect.reo.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="org.ect.reo.diagram.printing"
+            name="%prefpage.org.ect.reo.diagram.printing"
+            category="org.ect.reo.diagram.general"
+            class="org.ect.reo.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="org.ect.reo.diagram.rulersAndGrid"
+            name="%prefpage.org.ect.reo.diagram.rulersAndGrid"
+            category="org.ect.reo.diagram.general"
+            class="org.ect.reo.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+<extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="org.ect.reo.diagram.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="org.ect.reo.diagram.part.ReoDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="org.ect.reo.diagram.edit.parts.ModuleEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+<extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="org.ect.reo.diagram.part.ReoDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="org.ect.reo.diagram.LoadResourceAction"
+         name="Load Resource"
+         categoryId="org.ect.reo.diagram.part.ReoDiagramEditorID"
+         defaultHandler="org.ect.reo.diagram.part.LoadResourceAction"/>
+   </extension>
+
+<extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+
+
+
+</plugin>

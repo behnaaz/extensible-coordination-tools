@@ -1,0 +1,17 @@
+<%@ jet package="org.ect.reo.animation.templates" 
+		imports="org.ect.reo.animation.folders.*" 
+		class="TitleFrameTemplate"%><%
+
+	BasicAnimationFolder folder = (BasicAnimationFolder) argument;
+
+%><html>
+
+<head>
+	<title><%= folder.getName() %></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" type="text/css" href="<%= folder.getStyleSheet() %>">
+</head>
+
+<h2 align="center"><a href="<%= folder.getMovieDescription(0).getHTML() %>" target="animation"><%= folder.getName() %></a></h2>
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Simulation"
+            icon="icons/ReoDiagramFile.gif"
+            category="org.ect.reo"
+            class="org.ect.reo.simulation.views.SimulationView"
+            id="org.ect.reo.stochastic.views.SimulationView">
+      </view>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+               afterTab="property.tab.domain"
+               category="domain"
+               id="org.ect.reo.diagram.delaysTab"
+               label="Delays"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection
+               class="org.ect.reo.simulation.properties.PrimitivesPropertySection"
+               enablesFor="1"
+               filter="org.ect.reo.ui.properties.helpers.PrimitiveFilter"
+               id="org.ect.reo.diagram.delaysTab.PrimitivesPropertySection"
+               tab="org.ect.reo.diagram.delaysTab">
+         </propertySection>
+      </propertySections>
+   </extension>
+      <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+               afterTab="property.tab.domain"
+               category="domain"
+               id="org.ect.reo.diagram.arrivalTab"
+               label="Arrivals"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection
+               class="org.ect.reo.simulation.properties.NodesPropertySection"
+               enablesFor="1"
+               filter="org.ect.reo.ui.properties.helpers.NodeFilter"
+               id="org.ect.reo.diagram.arrivalTab.NodesPropertySection"
+               tab="org.ect.reo.diagram.arrivalTab">
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>

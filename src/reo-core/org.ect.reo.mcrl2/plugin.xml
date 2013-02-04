@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+               afterTab="property.tab.domain"
+               category="domain"
+               id="org.ect.reo.diagram.mCRL2Tab"
+               label="mCRL2"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection
+               class="org.ect.reo.mcrl2.properties.MCRL2PropertySection"
+               enablesFor="1"
+               filter="org.ect.reo.mcrl2.properties.MCRL2PropertySection"
+               id="org.ect.reo.diagram.mCRL2Tab.MCRL2PropertySection"
+               tab="org.ect.reo.diagram.mCRL2Tab">
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension
+         point="org.ect.reo.textualSemantics">
+      <provider
+            class="org.ect.reo.mcrl2.conversion.Reo2MCRL2"
+            id="org.ect.reo.mcrl2.Reo2mCRL2"
+            name="mCRL2 Specifications">
+      </provider>
+   </extension>
+   <extension
+         id="FIFOBenchmark"
+         name="FIFOBenchmark"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.ect.reo.mcrl2.benchmarks.FIFOBenchmark">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="CounterBenchmark"
+         name="CounterBenchmark"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.ect.reo.mcrl2.benchmarks.CounterBenchmark">
+         </run>
+      </application>
+   </extension>
+</plugin>

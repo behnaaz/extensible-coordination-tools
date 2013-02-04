@@ -1,0 +1,44 @@
+%IA for lossy sync, sync, merge node, sync
+act
+  iA, iB, oA, oB, 
+  iC, iD, oC, oD,
+  iE, iF, oE, oF; 
+  iX, iY, iZ, oX, oY, oZ;
+
+proc 
+ 
+  %context-dependent lossy sync
+  C1(a: Bool, b: Bool) = !a -> iA.C1(!a, b) + 
+                         !b -> iB.C1(a, !b) +
+                          a -> (b -> oA|oB.C1(!a, !b) + !b-> oA.C1(!a, b));
+
+  %sync
+  C2(a: Bool, b: Bool) = !a -> iC.C2(!a, b) + 
+                         !b -> iD.C2(a, !b) +
+                          a -> (b -> oC|oD.C2(!a, !b));
+
+  %sync
+  C3(a: Bool, b: Bool) = !a -> iE.C3(!a, b) + 
+                         !b -> iF.C3(a, !b) +
+                          a -> (b -> oE|oF.C3(!a, !b));
+
+  N1(x: Bool, y: Bool, z: Bool) = !x -> iX.N1(!x, y, z) +
+                                  !y -> iY.N1(x, !y, z) +
+                                  !z -> iZ.N1(x, y, !z) +
+                                  x -> (z -> oX|oZ.N1(!x, y, !z)) +
+                                  y -> (z -> oY|oZ.N1(x, !y, !z));     
+                                             
+  P1 = block({iB, iD, iE, oB, oD, oE, iX, iY, iZ, oX, oY, oZ},
+   comm({
+       iB|iX -> tau,
+       iD|iY -> tau,
+       iE|iZ -> tau,
+       oB|oX -> tau,
+       oD|oY -> tau,
+       oE|oZ -> tau
+       },
+     C1(false, false) || C2(false, false) || C3(false, false) || N1(false, false, false)
+   ));
+ 
+init
+  P1;

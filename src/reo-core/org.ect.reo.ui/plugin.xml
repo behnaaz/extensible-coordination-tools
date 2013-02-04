@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.ect.reo.ui.ReoPerspectiveFactory"
+            icon="icons/reo-perspective.gif"
+            id="org.ect.reo.perspective"
+            name="Reo">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Reo"
+            class="org.ect.reo.prefs.ui.ReoPreferencePage"
+            id="org.ect.reo.preferences">
+      </page>
+      <page
+            category="org.ect.reo.preferences"
+            class="org.ect.reo.prefs.ui.AnimationPreferencePage"
+            id="org.ect.reo.preferences.animation"
+            name="Animation">
+      </page>
+      <page
+            category="org.ect.reo.preferences"
+            class="org.ect.reo.prefs.ui.ExternalProgramsPage"
+            id="org.ect.reo.preferences.performance"
+            name="External Programs">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.ect.reo.prefs.ui.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.ect.reo.ui.connectorContribution"
+            objectClass="org.ect.reo.diagram.edit.parts.ConnectorEditPart">
+         <action
+               class="org.ect.reo.ui.actions.DuplicateNetworkAction"
+               enablesFor="1"
+               id="org.ect.reo.ui.DuplicateNetworkAction1"
+               label="Duplicate Network"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.ect.reo.ui.actions.ConvertToComponentAction"
+               enablesFor="1"
+               id="org.ect.reo.ui.ConvertToComponentAction"
+               label="Convert to Component"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.ect.reo.ui.componentContribution"
+            objectClass="org.ect.reo.diagram.edit.parts.ComponentEditPart">
+         <action
+               class="org.ect.reo.ui.actions.DuplicateNetworkAction"
+               enablesFor="1"
+               id="org.ect.reo.ui.DuplicateNetworkAction2"
+               label="Duplicate Network"
+               menubarPath="additions">
+         </action>
+         <menu
+              id="org.ect.reo.diagram.ui.specify"
+              label="Specify as..."
+              path="additions">
+            <separator
+                  name="specifygroup">
+            </separator>
+         </menu>
+      </objectContribution>
+      <objectContribution
+            id="org.ect.reo.ui.nodeContribution"
+            objectClass="org.ect.reo.diagram.edit.parts.NodeEditPart">
+         <action
+               class="org.ect.reo.ui.actions.JoinNodesAction"
+               enablesFor="2+"
+               id="org.ect.reo.ui.JoinNodesAction"
+               label="Join Nodes"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.ect.reo.ui.actions.SplitNodeAction"
+               enablesFor="1"
+               id="org.ect.reo.ui.SplitNodeAction"
+               label="Split Node"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+               afterTab="property.tab.domain"
+               category="domain"
+               id="org.ect.reo.diagram.reconfTab"
+               label="Reconfiguration"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection
+               class="org.ect.reo.ui.properties.reconf.ElementReconfSection"
+               enablesFor="1"
+               filter="org.ect.reo.ui.properties.reconf.ElementReconfSection"
+               id="org.ect.reo.diagram.reconfTab.ElementReconfSection"
+               tab="org.ect.reo.diagram.reconfTab">
+         </propertySection>
+         <propertySection
+               class="org.ect.reo.ui.properties.reconf.ModuleReconfSection"
+               enablesFor="1"
+               filter="org.ect.reo.ui.properties.reconf.ModuleReconfSection"
+               id="org.ect.reo.diagram.reconfTab.ModuleReconfSection"
+               tab="org.ect.reo.diagram.reconfTab">
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>
