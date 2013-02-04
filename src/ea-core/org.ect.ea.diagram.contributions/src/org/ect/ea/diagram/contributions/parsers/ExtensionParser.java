@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.diagram.contributions.parsers;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -21,8 +31,6 @@ import org.ect.ea.diagram.contributions.commands.ParseExtensionsCommand;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.IExtension;
 
-
-
 public class ExtensionParser implements IParser {
 	
 	private IExtensionRegistry registry;
@@ -33,7 +41,6 @@ public class ExtensionParser implements IParser {
 	public ExtensionParser() {
 		this.registry = EA.getExtensionRegistry();
 	}
-	
 
 	/**
 	 * Compute a string representation of given extension.

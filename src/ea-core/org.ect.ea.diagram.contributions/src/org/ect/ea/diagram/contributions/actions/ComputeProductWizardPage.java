@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.diagram.contributions.actions;
 
 import java.util.List;
@@ -15,8 +25,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.ect.ea.automata.Automaton;
-
-
 
 public class ComputeProductWizardPage extends WizardPage implements SelectionListener {
 
