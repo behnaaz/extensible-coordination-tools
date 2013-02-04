@@ -48,19 +48,7 @@
       </wizard>
    </extension>
 <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
-      <?gmfgen generated="true"?>
-      <objectContribution
-            id="org.ect.reo.diagram.InitDiagram"
-            nameFilter="*.reo"
-            objectClass="org.eclipse.core.resources.IFile">
-         <action
-               label="%initDiagramActionLabel"
-               class="org.ect.reo.diagram.part.ReoInitDiagramFileAction"
-               menubarPath="additions"
-               enablesFor="1"
-               id="org.ect.reo.diagram.InitDiagramAction">
-         </action>
-      </objectContribution>
+      <?gmfgen generated="false"?>
    </extension>
 <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
       <?gmfgen generated="true"?>
@@ -712,9 +700,10 @@
 <extension point="org.eclipse.ui.preferencePages" id="prefpages">
       <?gmfgen generated="true"?>
       <page
+            category="org.ect.reo.preferences"
+            class="org.ect.reo.diagram.preferences.DiagramGeneralPreferencePage"
             id="org.ect.reo.diagram.general"
-            name="%prefpage.org.ect.reo.diagram.general"
-            class="org.ect.reo.diagram.preferences.DiagramGeneralPreferencePage">
+            name="%prefpage.org.ect.reo.diagram.general">
       </page>
       <page
             id="org.ect.reo.diagram.appearance"
