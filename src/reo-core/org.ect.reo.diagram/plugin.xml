@@ -41,11 +41,15 @@
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/ReoDiagramFile.gif"
-  	     category="org.ect.reo"
+  	     category="org.ect"
   	     class="org.ect.reo.diagram.part.ReoCreationWizard"
   	     id="org.ect.reo.diagram.part.ReoCreationWizardID">
   	  	 <description>%newWizardDesc</description>  
       </wizard>
+     <category
+           id="org.ect"
+           name="Extensible Coordination Tools">
+     </category>
    </extension>
 <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
       <?gmfgen generated="false"?>
