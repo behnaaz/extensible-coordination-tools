@@ -1,8 +1,13 @@
-/**
- * Copyright (C) SEN3 group at CWI, Amsterdam. Published under the terms of the GPL2.
- *
- * $Id$
- */
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.configuration;
 
 import java.util.HashMap;
@@ -15,7 +20,6 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.ect.ea.EA;
 import org.ect.ea.IExtensionDefinition;
 import org.ect.ea.IExtensionRegistry;
-
 
 /**
  * Default implementation of {@link IExtensionRegistry}.
@@ -38,7 +42,6 @@ public class ExtensionRegistry implements IExtensionRegistry {
 	
 	// Flags indicating whether the dependencies and exclusions must be recomputed.
 	private boolean dependenciesChanged, exclusionsChanged;
-	
 	
 	/**
 	 * Default constructor. 

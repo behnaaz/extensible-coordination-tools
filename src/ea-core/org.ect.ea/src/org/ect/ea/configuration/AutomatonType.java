@@ -1,8 +1,13 @@
-/**
- * Copyright (C) SEN3 group at CWI, Amsterdam. Published under the terms of the GPL2.
- *
- * $Id$
- */
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.configuration;
 
 import java.util.HashSet;
@@ -16,7 +21,6 @@ import org.ect.ea.EA;
 import org.ect.ea.IAutomatonType;
 import org.ect.ea.IExtensionDefinition;
 import org.ect.ea.IExtensionRegistry;
-
 
 /**
  * @generated NOT
@@ -35,7 +39,6 @@ public class AutomatonType implements IAutomatonType {
 	
 	// Icon to be used.
 	private ImageDescriptor icon;
-	
 	
 	/**
 	 * Default constructor.
