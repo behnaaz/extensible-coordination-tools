@@ -1,9 +1,13 @@
-/**
+/*******************************************************************************
  * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
- *
- * $Id$
- */
+ *******************************************************************************/
 package org.ect.ea.automata.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -17,13 +21,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
  * @generated
  */
 public final class AutomataEditPlugin extends EMFPlugin {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (C) SEN3 group at CWI, Amsterdam. Published under the terms of the GPL2.\n";
-
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
