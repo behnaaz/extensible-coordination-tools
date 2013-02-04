@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.diagram.contributions.providers;
 
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider;
@@ -20,8 +30,6 @@ import org.ect.ea.diagram.contributions.actions.AddSilentTransitionsAction;
 import org.ect.ea.diagram.contributions.actions.ComputeProductAction;
 import org.ect.ea.diagram.contributions.actions.DefaultMenuManager;
 import org.ect.ea.diagram.contributions.actions.ExtensionProviderActionGroup;
-
-
 
 /**
  * This class contributes a menu with all registered automata extension. 

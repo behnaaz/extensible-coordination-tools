@@ -1,22 +1,13 @@
-/**
- * Copyright (C) 2006  Christian Koehler, 
- * Centrum voor Wiskunde en Informatica (CWI)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
-
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
-
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- *
- */
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.diagram.contributions.actions;
 
 import java.lang.reflect.InvocationTargetException;
@@ -44,8 +35,6 @@ import org.ect.ea.diagram.contributions.commands.ComputeProductCommand;
 import org.ect.ea.diagram.contributions.commands.LayoutNewAutomatonCommand;
 import org.ect.ea.diagram.edit.parts.AutomatonEditPart;
 import org.ect.ea.diagram.edit.parts.ModuleEditPart;
-
-
 
 public class ComputeProductWizard extends Wizard {
 	
