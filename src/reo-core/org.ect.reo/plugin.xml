@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+   <extension-point id="textualSemantics" name="Textual Semantics" schema="schema/textualSemantics.exsd"/>
+   <extension-point id="libraryProviders" name="Library Providers" schema="schema/libraryProviders.exsd"/>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/reo" 
+       class = "org.ect.reo.ReoPackage"
+       genModel = "model/reo.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/reo/channels" 
+       class = "org.ect.reo.channels.ChannelsPackage"
+       genModel = "model/reo.genmodel" /> 
+  </extension>
+
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/reo/colouring" 
+       class = "org.ect.reo.colouring.ColouringPackage"
+       genModel = "model/reo.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/reo/animation" 
+       class = "org.ect.reo.animation.AnimationPackage"
+       genModel = "model/reo.genmodel" /> 
+  </extension>
+  <extension
+        point="org.eclipse.emf.ecore.generated_package">
+     <package
+           class="org.ect.reo.components.ComponentsPackage"
+           genModel="model/reo.genmodel"
+           uri="http://www.cwi.nl/reo/components">
+     </package>
+  </extension>
+
+
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <category
+           id="org.ect.reo"
+           name="Reo"/>
+  </extension>
+  <extension
+        point="org.ect.reo.textualSemantics">
+     <provider
+           class="org.ect.reo.animation.AnimationSemanticsProvider"
+           id="org.ect.reo.animation.AnimationSemanticsProvider"
+           name="Animation Semantics">
+     </provider>
+  </extension>
+  <extension
+        point="org.ect.reo.libraryProviders">
+     <provider
+           class="org.ect.reo.libraries.ReoLibraryProvider"
+           id="org.ect.reo.libraries.ReoLibraryProvider"
+           name="Reo Libraries">
+     </provider>
+     <provider
+           class="org.ect.reo.libraries.JavaLibraryProvider"
+           id="org.ect.reo.libraries.JavaLibraryProvider"
+           name="Java Libraries">
+     </provider>
+  </extension>
+</plugin>
+

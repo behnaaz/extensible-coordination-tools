@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/org.ect.reo/src" modelPluginID="org.ect.reo"
+    modelName="Reo" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl"
+    suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" publicConstructors="true" runtimeVersion="2.6" language="">
+  <foreignModel>reo.ecore</foreignModel>
+  <genPackages prefix="Reo" basePackage="org.ect" disposableProviderFactory="true"
+      utilityPackageSuffix="" ecorePackage="reo.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="reo.ecore#//NodeType">
+      <genEnumLiterals ecoreEnumLiteral="reo.ecore#//NodeType/REPLICATE"/>
+      <genEnumLiterals ecoreEnumLiteral="reo.ecore#//NodeType/ROUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="reo.ecore#//NodeType/JOIN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="reo.ecore#//ReconfType">
+      <genEnumLiterals ecoreEnumLiteral="reo.ecore#//ReconfType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="reo.ecore#//ReconfType/CREATE"/>
+      <genEnumLiterals ecoreEnumLiteral="reo.ecore#//ReconfType/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="reo.ecore#//ReconfType/FORBID"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="reo.ecore#//URI"/>
+    <genClasses image="false" ecoreClass="reo.ecore#//Composite">
+      <genOperations ecoreOperation="reo.ecore#//Composite/getConnectors"/>
+      <genOperations ecoreOperation="reo.ecore#//Composite/getComponents"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//Module">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Module/connectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Module/components"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Module/reconfRules"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reo.ecore#//Module/activeReconfRule"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//Network">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reo.ecore#//Network/components"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reo.ecore#//Network/connectors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Network/colouringEngine"/>
+      <genOperations ecoreOperation="reo.ecore#//Network/update"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//Connector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Connector/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Connector/primitives"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Connector/subConnectors"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//Connector/module"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//Connector/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Connector/colouringEngine"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//Component">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//Component/module"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//Node">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//Node/connector"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//Node/sourceEnds"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//Node/sinkEnds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Node/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Node/hide"/>
+      <genOperations ecoreOperation="reo.ecore#//Node/isSourceNode"/>
+      <genOperations ecoreOperation="reo.ecore#//Node/isSinkNode"/>
+      <genOperations ecoreOperation="reo.ecore#//Node/isMixedNode"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//Primitive">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Primitive/sourceEnds"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Primitive/sinkEnds"/>
+      <genOperations ecoreOperation="reo.ecore#//Primitive/initializeEnds"/>
+      <genOperations ecoreOperation="reo.ecore#//Primitive/disconnectEnds"/>
+      <genOperations ecoreOperation="reo.ecore#//Primitive/isConnected"/>
+      <genOperations ecoreOperation="reo.ecore#//Primitive/getName"/>
+      <genOperations ecoreOperation="reo.ecore#//Primitive/isSynchronous"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//PrimitiveEnd">
+      <genOperations ecoreOperation="reo.ecore#//PrimitiveEnd/getNode"/>
+      <genOperations ecoreOperation="reo.ecore#//PrimitiveEnd/setNode">
+        <genParameters ecoreParameter="reo.ecore#//PrimitiveEnd/setNode/node"/>
+      </genOperations>
+      <genOperations ecoreOperation="reo.ecore#//PrimitiveEnd/getPrimitive"/>
+      <genOperations ecoreOperation="reo.ecore#//PrimitiveEnd/setPrimitive">
+        <genParameters ecoreParameter="reo.ecore#//PrimitiveEnd/setPrimitive/primitive"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//SourceEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reo.ecore#//SourceEnd/node"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//SourceEnd/primitive"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//SinkEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reo.ecore#//SinkEnd/node"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//SinkEnd/primitive"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Property/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Property/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Property/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Property/hidden"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//Connectable">
+      <genOperations ecoreOperation="reo.ecore#//Connectable/getSourceEnds"/>
+      <genOperations ecoreOperation="reo.ecore#//Connectable/getSinkEnds"/>
+      <genOperations ecoreOperation="reo.ecore#//Connectable/getAllEnds"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//Delayable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Delayable/arrivalRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Delayable/processingDelay"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//Nameable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//Nameable/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//DataAware">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//DataAware/expression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//PropertyHolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//PropertyHolder/properties"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//CustomPrimitive">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//CustomPrimitive/typeURI"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//CustomPrimitive/resolved"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//CustomPrimitive/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//CustomPrimitive/synchronous"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reo.ecore#//Reconfigurable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//Reconfigurable/reconfActions"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//ReconfRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//ReconfRule/exported"/>
+    </genClasses>
+    <genClasses ecoreClass="reo.ecore#//ReconfAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reo.ecore#//ReconfAction/rule"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//ReconfAction/type"/>
+    </genClasses>
+    <nestedGenPackages prefix="Channels" basePackage="org.ect.reo" disposableProviderFactory="true"
+        utilityPackageSuffix="" ecorePackage="reo.ecore#//channels">
+      <genClasses image="false" ecoreClass="reo.ecore#//channels/Channel">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//channels/Channel/channelEndOne"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//channels/Channel/channelEndTwo"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/Channel/nodeOne"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/Channel/nodeTwo"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/Channel/channelEndNameOne"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/Channel/channelEndNameTwo"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="reo.ecore#//channels/DirectedChannel">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/DirectedChannel/sourceEnd"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/DirectedChannel/sinkEnd"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="reo.ecore#//channels/DrainChannel">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/DrainChannel/sourceEndOne"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/DrainChannel/sourceEndTwo"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="reo.ecore#//channels/SpoutChannel">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/SpoutChannel/sinkEndOne"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//channels/SpoutChannel/sinkEndTwo"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//channels/Sync"/>
+      <genClasses ecoreClass="reo.ecore#//channels/LossySync"/>
+      <genClasses ecoreClass="reo.ecore#//channels/FIFO">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/FIFO/full"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/FIFO/cellName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/FIFO/initialValue"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//channels/LossyFIFO">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/LossyFIFO/shift"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/LossyFIFO/full"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/LossyFIFO/cellName"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//channels/SyncDrain"/>
+      <genClasses ecoreClass="reo.ecore#//channels/AsyncDrain"/>
+      <genClasses ecoreClass="reo.ecore#//channels/SyncSpout"/>
+      <genClasses ecoreClass="reo.ecore#//channels/AsyncSpout"/>
+      <genClasses ecoreClass="reo.ecore#//channels/Filter"/>
+      <genClasses ecoreClass="reo.ecore#//channels/Transform"/>
+      <genClasses ecoreClass="reo.ecore#//channels/Timer">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//channels/Timer/timeout"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//channels/CustomDirectedChannel"/>
+      <genClasses ecoreClass="reo.ecore#//channels/CustomDrainChannel"/>
+      <genClasses ecoreClass="reo.ecore#//channels/CustomSpoutChannel"/>
+      <genClasses ecoreClass="reo.ecore#//channels/PrioritySync"/>
+      <genClasses ecoreClass="reo.ecore#//channels/BlockingSourceSync"/>
+      <genClasses ecoreClass="reo.ecore#//channels/BlockingSinkSync"/>
+      <genClasses ecoreClass="reo.ecore#//channels/BlockingSync"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Colouring" basePackage="org.ect.reo" disposableProviderFactory="true"
+        utilityPackageSuffix="" ecorePackage="reo.ecore#//colouring">
+      <genEnums ecoreEnum="reo.ecore#//colouring/FlowColour">
+        <genEnumLiterals ecoreEnumLiteral="reo.ecore#//colouring/FlowColour/FLOW"/>
+        <genEnumLiterals ecoreEnumLiteral="reo.ecore#//colouring/FlowColour/NO_FLOW"/>
+        <genEnumLiterals ecoreEnumLiteral="reo.ecore#//colouring/FlowColour/NO_FLOW_GIVE_REASON"/>
+        <genEnumLiterals ecoreEnumLiteral="reo.ecore#//colouring/FlowColour/NO_FLOW_REQUIRE_REASON"/>
+      </genEnums>
+      <genDataTypes ecoreDataType="reo.ecore#//colouring/ColouringEngine"/>
+      <genClasses ecoreClass="reo.ecore#//colouring/Colouring">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//colouring/Colouring/colours"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//colouring/Colouring/nextColouringTable"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//colouring/Colouring/parts"/>
+        <genOperations ecoreOperation="reo.ecore#//colouring/Colouring/join">
+          <genParameters ecoreParameter="reo.ecore#//colouring/Colouring/join/function"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//colouring/ColouringTable">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//colouring/ColouringTable/colourings"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//colouring/ColouringTable/colours"/>
+        <genOperations ecoreOperation="reo.ecore#//colouring/ColouringTable/join">
+          <genParameters ecoreParameter="reo.ecore#//colouring/ColouringTable/join/table"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//colouring/Colourable">
+        <genOperations ecoreOperation="reo.ecore#//colouring/Colourable/getColouringTable"/>
+        <genOperations ecoreOperation="reo.ecore#//colouring/Colourable/usesFlipRule"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//colouring/ColouringEntry">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//colouring/ColouringEntry/key"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//colouring/ColouringEntry/value"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Animation" basePackage="org.ect.reo" disposableProviderFactory="true"
+        utilityPackageSuffix="" ecorePackage="reo.ecore#//animation">
+      <genClasses ecoreClass="reo.ecore#//animation/Animatable">
+        <genOperations ecoreOperation="reo.ecore#//animation/Animatable/getAnimationTable"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//animation/Animation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reo.ecore#//animation/Animation/steps"/>
+        <genOperations ecoreOperation="reo.ecore#//animation/Animation/merge">
+          <genParameters ecoreParameter="reo.ecore#//animation/Animation/merge/animation"/>
+        </genOperations>
+        <genOperations ecoreOperation="reo.ecore#//animation/Animation/append">
+          <genParameters ecoreParameter="reo.ecore#//animation/Animation/append/animation"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//animation/AnimationTable"/>
+      <genClasses image="false" ecoreClass="reo.ecore#//animation/AnimationStep">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//animation/AnimationStep/activeEnds"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reo.ecore#//animation/AnimationStep/animation"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//animation/CreateStep"/>
+      <genClasses ecoreClass="reo.ecore#//animation/SendStep"/>
+      <genClasses ecoreClass="reo.ecore#//animation/ReceiveStep"/>
+      <genClasses ecoreClass="reo.ecore#//animation/ReplicateStep"/>
+      <genClasses ecoreClass="reo.ecore#//animation/DestroyStep"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Components" basePackage="org.ect.reo" disposableProviderFactory="true"
+        utilityPackageSuffix="" ecorePackage="reo.ecore#//components">
+      <genClasses ecoreClass="reo.ecore#//components/Reader">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//components/Reader/sourceEnd"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//components/Writer">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//components/Writer/sinkEnd"/>
+      </genClasses>
+      <genClasses ecoreClass="reo.ecore#//components/SingleEndComponent">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference reo.ecore#//components/SingleEndComponent/end"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reo.ecore#//components/SingleEndComponent/requests"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

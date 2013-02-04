@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:components="http://www.cwi.nl/reo/components" xmlns:org.ect.reo="http://www.cwi.nl/reo" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xsi:schemaLocation="http://www.cwi.nl/reo/components http://www.cwi.nl/reo#//components">
+  <org.ect.reo:Module xmi:id="_aYBXIIfmEd6z6Lc8ZheF0g" activeReconfRule="_pSS-EIfmEd6z6Lc8ZheF0g">
+    <connectors xmi:type="org.ect.reo:Connector" xmi:id="_bhmOUIfmEd6z6Lc8ZheF0g">
+      <reconfActions xmi:type="org.ect.reo:ReconfAction" xmi:id="_KmHSsIfoEd62HNAcXjSpng" rule="_pSS-EIfmEd6z6Lc8ZheF0g"/>
+      <nodes xmi:type="org.ect.reo:Node" xmi:id="_cdjgQIfmEd6z6Lc8ZheF0g" name="A" sourceEnds="_mtCMAofmEd6z6Lc8ZheF0g">
+        <reconfActions xmi:type="org.ect.reo:ReconfAction" xmi:id="_KmH5wIfoEd62HNAcXjSpng" rule="_pSS-EIfmEd6z6Lc8ZheF0g"/>
+        <reconfActions xmi:type="org.ect.reo:ReconfAction" xmi:id="_yxBlgIfqEd62HNAcXjSpng" rule="_xnE64IfqEd62HNAcXjSpng"/>
+      </nodes>
+    </connectors>
+    <components xmi:type="components:Reader" xmi:id="_mtA94IfmEd6z6Lc8ZheF0g">
+      <reconfActions xmi:type="org.ect.reo:ReconfAction" xmi:id="_cInDoIfpEd62HNAcXjSpng" rule="_pSS-EIfmEd6z6Lc8ZheF0g" type="create"/>
+      <reconfActions xmi:type="org.ect.reo:ReconfAction" xmi:id="_yxA-cIfqEd62HNAcXjSpng" rule="_xnE64IfqEd62HNAcXjSpng" type="delete"/>
+      <properties xmi:type="org.ect.reo:Property" xmi:id="_mtCMAIfmEd6z6Lc8ZheF0g" key="requests" value="1"/>
+      <sourceEnds xmi:type="org.ect.reo:SourceEnd" xmi:id="_mtCMAofmEd6z6Lc8ZheF0g" name="in" node="_cdjgQIfmEd6z6Lc8ZheF0g"/>
+    </components>
+    <reconfRules xmi:type="org.ect.reo:ReconfRule" xmi:id="_pSS-EIfmEd6z6Lc8ZheF0g" name="AddReader" exported="true"/>
+    <reconfRules xmi:type="org.ect.reo:ReconfRule" xmi:id="_xnE64IfqEd62HNAcXjSpng" name="RemoveReader" exported="true"/>
+  </org.ect.reo:Module>
+  <notation:Diagram xmi:id="_aYDzYIfmEd6z6Lc8ZheF0g" type="Reo" element="_aYBXIIfmEd6z6Lc8ZheF0g" name="ComponentRules.reo" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_bhrG0IfmEd6z6Lc8ZheF0g" type="1001" element="_bhmOUIfmEd6z6Lc8ZheF0g" fontName="Sans">
+      <children xmi:type="notation:DecorationNode" xmi:id="_bhrt4IfmEd6z6Lc8ZheF0g" type="4004"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_bhs8AIfmEd6z6Lc8ZheF0g" type="5001">
+        <children xmi:type="notation:Shape" xmi:id="_cdkuYIfmEd6z6Lc8ZheF0g" type="2001" element="_cdjgQIfmEd6z6Lc8ZheF0g" fontName="Sans">
+          <children xmi:type="notation:DecorationNode" xmi:id="_cdlVcIfmEd6z6Lc8ZheF0g" type="4001">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_cdlVcYfmEd6z6Lc8ZheF0g" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cdkuYYfmEd6z6Lc8ZheF0g" x="65" y="33"/>
+        </children>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bhrG0YfmEd6z6Lc8ZheF0g" x="132" y="69" width="159" height="124"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_mtEoQIfmEd6z6Lc8ZheF0g" type="1002" element="_mtA94IfmEd6z6Lc8ZheF0g" fontName="Sans">
+      <children xmi:type="notation:DecorationNode" xmi:id="_mtEoQofmEd6z6Lc8ZheF0g" type="4005"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_mtFPUIfmEd6z6Lc8ZheF0g" type="5002">
+        <children xmi:type="notation:Node" xmi:id="_mtFPU4fmEd6z6Lc8ZheF0g" type="2004" element="_mtCMAIfmEd6z6Lc8ZheF0g">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_mtFPVIfmEd6z6Lc8ZheF0g"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_mtFPUYfmEd6z6Lc8ZheF0g"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_mtFPUofmEd6z6Lc8ZheF0g"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_mtKH0IfmEd6z6Lc8ZheF0g" type="2006" element="_mtCMAofmEd6z6Lc8ZheF0g" fontName="Sans">
+        <children xmi:type="notation:DecorationNode" xmi:id="_mtKu4IfmEd6z6Lc8ZheF0g" type="4010">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_mtKu4YfmEd6z6Lc8ZheF0g" x="-10" y="24"/>
+        </children>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mtKH0YfmEd6z6Lc8ZheF0g"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mtEoQYfmEd6z6Lc8ZheF0g" x="323" y="106"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_aYDzYYfmEd6z6Lc8ZheF0g"/>
+    <edges xmi:type="notation:Connector" xmi:id="_nxB_oIfmEd6z6Lc8ZheF0g" type="3013" source="_cdkuYIfmEd6z6Lc8ZheF0g" target="_mtKH0IfmEd6z6Lc8ZheF0g">
+      <styles xmi:type="notation:FontStyle" xmi:id="_nxB_oYfmEd6z6Lc8ZheF0g" fontName="Sans"/>
+      <element xsi:nil="true"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nxB_oofmEd6z6Lc8ZheF0g" points="[9, 0, -103, 0]$[112, 7, 0, 7]"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>
