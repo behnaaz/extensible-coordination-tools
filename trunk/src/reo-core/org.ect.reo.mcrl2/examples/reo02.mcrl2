@@ -1,0 +1,25 @@
+%%3 synchronous channels, replicate node
+
+act
+  x1, y1, 
+  x2, y2,
+  x3, y3, 
+  x, y, z, 
+  a, b, c;
+
+proc 
+  C1 = x1|y1.C1;
+  C2 = x2|y2.C2;
+  C3 = x3|y3.C3;
+  %replicate
+  R1 = x|y|z.R1;
+
+init
+   block({y1, x2, x3, x, y, z},
+   hide({a,b,c},
+   comm({
+       y1|x -> a, y|x2 -> b, z|x3 -> c},
+       C1 || C2 || C3 || R1
+   )));
+
+

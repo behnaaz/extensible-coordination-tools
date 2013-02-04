@@ -1,0 +1,32 @@
+<%@ jet package="org.ect.reo.animation.templates" 
+		imports="org.ect.reo.animation.folders.*" 
+		class="MenuFrameTemplate"%><%
+	
+	BasicAnimationFolder folder = (BasicAnimationFolder) argument;
+	
+%><html>
+
+<head>
+	<title><%= folder.getName() %></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<% if (!folder.isFinished()) { %>
+	<meta http-equiv="refresh" content="2">
+<% 	} %>
+	<link rel="stylesheet" type="text/css" href="<%= folder.getStyleSheet() %>">
+</head>
+
+<body>
+
+<h3>List of animations</h3>
+<div id="animationLinks">
+<%	for (int i=1; i<folder.getLength(); i++) { 
+		MovieDescription desc = folder.getMovieDescription(i); %>
+		<a href="<%= desc.getHTML() %>" target="animation">Animation&nbsp;<%= i %> (<%= folder.getAnimation(i).size() %>&nbsp;steps)</a>
+<%	} 
+	if (!folder.isFinished()) { %>
+		<br> <i>loading...</i>
+<%	} %>
+</div>
+
+</body>
+</html>

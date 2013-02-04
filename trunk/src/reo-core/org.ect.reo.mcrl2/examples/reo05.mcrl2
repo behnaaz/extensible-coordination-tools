@@ -1,0 +1,49 @@
+%% 2 FIFO1, sync drain, 2 sync, 2 replicate nodes, 1 XOR, 1 join, deadlock 
+
+act
+  x1, y1, 
+  x2, y2,
+  x3, y3,
+  x4, y4,
+  x5, y5,
+  a1, b1, c1,
+  a2, b2, c2,
+  a3, b3, c3,
+  a4, b4, c4,
+  a, b, c, d, e, f, g, h, k, l;
+
+proc 
+  % FIFO1
+  C1(b:Bool) = !b -> x1.C1(!b) + b -> y1.C1(!b);
+  % FIFO1
+  C2(b:Bool) = !b -> x2.C2(!b) + b -> y2.C2(!b);
+  %sync
+  C3 = x3|y3.C3;     
+  %sync
+  C4 = x4|y4.C4;     
+  %sync drain
+  C5 = x5|y5.C5;     
+  
+  %replicate
+  R1 = a1|b1|c1.R1;
+  %xor
+  X1 = a2|b2.X1 + a2|c2.X1;
+  %replicate
+  R2 = a3|b3|c3.R2;
+  %join
+  J1 = a4|c4.J1 + b4|c4.J1;
+
+init
+   block({b1, x1, c1, x2, y1, a2, y2, a3, c2, x5, c3, y5, b2, x3, b3, x4, y3, a4, y4, b4},
+   hide({a, b, c, d, e, f, g, h, k, l},
+   comm({
+       b1|x1 -> a, c1|x2 -> b, 
+       y1|a2 -> c, y2|a3 -> d, 
+       c2|x5 -> e, c3|y5 -> f, 
+       b2|x3 -> g, b3|x4 -> h, 
+       y3|a4 -> k, y4|b4 -> l
+       },
+       C1(false) || C2(false) || C3 || C4 || C5 || R1 || X1 || R2 || J1  
+   )));
+
+

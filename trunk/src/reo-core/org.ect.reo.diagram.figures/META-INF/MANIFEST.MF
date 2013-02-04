@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.ect.reo.diagram.figures; singleton:=true
+Bundle-Version: 3.4.12
+Bundle-Vendor: %providerName
+Bundle-Activator: org.ect.reo.diagram.figures.activator.ReoDiagramFiguresPlugin
+Bundle-Localization: plugin
+Export-Package: org.ect.reo.diagram.figures,
+ org.ect.reo.diagram.figures.activator,
+ org.ect.reo.diagram.figures.decorations,
+ org.ect.reo.diagram.figures.geometry,
+ org.ect.reo.diagram.figures.util
+Require-Bundle: org.eclipse.gmf.runtime.draw2d.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.draw2d,
+ org.ect.reo;bundle-version="3.2.0",
+ org.eclipse.emf.ecore;bundle-version="2.4.0",
+ org.eclipse.gmf.runtime.notation;bundle-version="1.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+

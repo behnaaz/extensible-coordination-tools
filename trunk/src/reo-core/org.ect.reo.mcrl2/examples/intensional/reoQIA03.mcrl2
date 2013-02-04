@@ -1,0 +1,54 @@
+%% QIA for lossy sync, sync, FIFO1
+
+act
+  iA, iB, oA, oB, 
+  iC, iD, oC, oD, 
+  iE, iF, oE, oF, 
+  iFIFO, oFIFO, 
+  ia, oa, id, od, ie, oe, if, 
+  t, tt;
+
+proc 
+  %lossy sync
+  C1(a: Bool, b: Bool) = !a -> iA.C1(!a, b) + 
+	                 !b -> iB.C1(a, !b) +
+                         a -> (b -> oA|oB.C1(!a, !b) + !b -> oA.C1(!a, b));
+  %sync 
+  C2(a: Bool, b: Bool) = !a -> iC.C2(!a, b) + 
+                         !b -> iD.C2(a, !b) +
+                          a -> (b -> oC|oD.C2(!a, !b));
+
+  C3(f: Bool, a: Bool, b: Bool) = 
+         !a -> iFIFO|iE.C3(f, !a, b) +
+         !b -> iF.C3(f, a, !b) +
+         !f -> (a -> oFIFO|oE.C3(!f, !a, b)) +
+          f -> (b -> oF.C3(!f, a, !b) 
+         );  
+
+  P1 = block({iB, oB, iC, oC, iD, oD},
+       comm({
+         iA|iC -> iA,
+         oA|oC -> oA,
+         iB|iD -> id,
+         oB|oD -> od
+       },
+       C1(false, false) || C2(false, false)
+   ));
+
+  P2 = allow({iA, oA, iF, oF},
+         hide({iFIFO, oFIFO},
+           comm({
+             iA|iE -> iA,
+             oA|oE -> oA,
+             id|iFIFO -> tau,
+             od|oFIFO -> tau
+           },
+         P1 || C3(false, false, false)
+       )));
+
+init
+   P2;
+
+
+
+

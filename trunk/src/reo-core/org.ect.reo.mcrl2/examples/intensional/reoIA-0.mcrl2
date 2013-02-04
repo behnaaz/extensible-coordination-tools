@@ -1,0 +1,39 @@
+%% IA for basic channels
+
+act
+  iA, iB, oA, oB;
+
+proc 
+
+  %sync
+  C1(a: Bool, b: Bool) = !a -> iA.C1(!a, b) + 
+                         !b -> iB.C1(a, !b) +
+                          a -> (b -> oA|oB.C1(!a, !b));
+
+  %context independent lossy sync
+  C2(a: Bool, b: Bool) = !a -> iA.C2(!a, b) + 
+                         !b -> iB.C2(a, !b) +
+                          a -> (b -> oA|oB.C2(!a, !b) + oA.C2(!a, b));
+
+  %context dependent lossy sync
+  C3(a: Bool, b: Bool) = !a -> iA.C3(!a, b) + 
+                         !b -> iB.C3(a, !b) +
+                          a -> (b -> oA|oB.C3(!a, !b) + !b -> oA.C3(!a, b));
+
+  %sync drain
+  C4(a: Bool, b: Bool) = !a -> iA.C4(!a, b) + 
+                         !b -> iB.C4(a, !b) +
+                          a -> (b -> oA|oB.C4(!a, !b));
+
+  %FIFO1
+  C5(f: Bool, a: Bool, b: Bool) = 
+         !a -> iA.C5(f, !a, b) +
+         !b -> iB.C5(f, a, !b) +
+         !f -> (a -> oA.C5(!f, !a, b)) +
+          f -> (b -> oB.C5(!f, a, !b));  
+
+
+init
+  C5(false, false, false);
+
+ 

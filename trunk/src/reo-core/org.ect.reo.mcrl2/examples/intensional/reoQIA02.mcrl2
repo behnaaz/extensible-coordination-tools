@@ -1,0 +1,47 @@
+%% QIA for lossy sync, sync, sync
+
+act
+  iA, iB, oA, oB, 
+  iC, iD, oC, oD, 
+  iE, iF, oE, oF, 
+  id, od, ie, oe, 
+  t, tt;
+
+proc 
+  %lossy sync
+  C1(a: Bool, b: Bool) = !a -> iA.C1(!a, b) + 
+	                 !b -> iB.C1(a, !b) +
+                         a -> (b -> oA|oB.C1(!a, !b) + !b -> oA.C1(!a, b));
+  %sync 
+  C2(a: Bool, b: Bool) = !a -> iC.C2(!a, b) + 
+                         !b -> iD.C2(a, !b) +
+                          a -> (b -> oC|oD.C2(!a, !b));
+
+  %sync 
+  C3(a: Bool, b: Bool) = !a -> iE.C3(!a, b) + 
+                         !b -> iF.C3(a, !b) +
+                          a -> (b -> oE|oF.C3(!a, !b));
+
+  P1 =    block({iB, oB, iC, oC, iD, oD},
+   comm({
+       iA|iC -> iA,
+       oA|oC -> oA,
+       iB|iD -> id,
+       oB|oD -> od
+       },
+       C1(false, false) || C2(false, false)
+   ));
+ 
+init
+   block({id, od, iE, oE, iF, oF},
+   comm({
+       iA|iE -> iA,
+       oA|oE -> oA,
+       id|iF -> ie,
+       od|oF -> oe
+       },
+       P1 || C3(false, false)
+   ));
+
+
+

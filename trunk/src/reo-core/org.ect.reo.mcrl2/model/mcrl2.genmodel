@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ect.reo.mcrl2/src"
+    modelPluginID="org.ect.reo.mcrl2" modelName="mCRL2" suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" publicConstructors="true">
+  <foreignModel>mcrl2.ecore</foreignModel>
+  <genPackages prefix="MCRL2" basePackage="org.ect.reo" disposableProviderFactory="true"
+      ecorePackage="mcrl2.ecore#/">
+    <genClasses ecoreClass="mcrl2.ecore#//Specification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Specification/atoms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Specification/processes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Specification/sorts"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Sort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcrl2.ecore#//Sort/definition"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Process">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Process/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcrl2.ecore#//Process/initial"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Process/action"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcrl2.ecore#//Parameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcrl2.ecore#//Parameter/initial"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Atom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Atom/references"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Action"/>
+    <genClasses ecoreClass="mcrl2.ecore#//AtomicAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcrl2.ecore#//AtomicAction/atom"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mcrl2.ecore#//CompositeAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//CompositeAction/actions"/>
+      <genOperations ecoreOperation="mcrl2.ecore#//CompositeAction/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Synchronization"/>
+    <genClasses ecoreClass="mcrl2.ecore#//Parallelism"/>
+    <genClasses ecoreClass="mcrl2.ecore#//Sequence"/>
+    <genClasses ecoreClass="mcrl2.ecore#//Choice"/>
+    <genClasses ecoreClass="mcrl2.ecore#//Instance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcrl2.ecore#//Instance/arguments"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Instance/process"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Implication">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcrl2.ecore#//Implication/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Implication/action"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Communication">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Communication/implications"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Communication/parallelism"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Allow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Allow/communication"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Allow/atoms"/>
+    </genClasses>
+    <genClasses ecoreClass="mcrl2.ecore#//Block">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Block/communication"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcrl2.ecore#//Block/atoms"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mcrl2.ecore#//Nameable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcrl2.ecore#//Nameable/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

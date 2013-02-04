@@ -1,0 +1,7 @@
+# Tracing options for the org.ect.reo.diagram plug-in
+
+# Common issues
+org.ect.reo.diagram/debug=false
+
+# Visual IDs
+org.ect.reo.diagram/debug/visualID=false

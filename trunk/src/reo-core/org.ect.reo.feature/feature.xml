@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.ect.reo"
+      label="Reo Core Tools (required)"
+      version="3.4.12"
+      provider-name="Extensible Coordination Tools">
+
+   <description url="http://reo.project.cwi.nl">
+      Contains the Reo model, graphical editor, animation view,
+a mCRL2 conversion tool and a simulator.
+   </description>
+
+   <copyright>
+      Copyright (C) 2013 ECT developers.
+   </copyright>
+
+   <license>
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+  </license>
+
+   <url>
+      <update label="ECT Update Site" url="http://reo.project.cwi.nl/update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties"/>
+      <import plugin="org.eclipse.ocl.ecore"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.ui.navigator.resources"/>
+      <import plugin="org.eclipse.emf.ecore.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.core"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.ui.properties"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers.ide"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.render"/>
+      <import plugin="org.eclipse.draw2d"/>
+      <import plugin="org.eclipse.gef"/>
+      <import plugin="org.eclipse.emf.edit" version="2.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.icu"/>
+      <import plugin="org.eclipse.gmf.runtime.draw2d.ui"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.notation" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.workspace" version="1.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+   </requires>
+
+   <plugin
+         id="org.ect.reo"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.reo.animation"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.reo.diagram"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.reo.edit"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.reo.ui"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.reo.mcrl2"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.reo.diagram.figures"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.reo.simulation"
+         download-size="0"
+         install-size="0"
+         version="3.4.12"
+         unpack="false"/>
+
+</feature>

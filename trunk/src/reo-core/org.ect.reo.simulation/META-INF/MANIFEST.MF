@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Stochatic Reo Plug-In
+Bundle-SymbolicName: org.ect.reo.simulation;singleton:=true
+Bundle-Version: 3.4.12
+Bundle-Activator: org.ect.reo.simulation.StochasticReoPlugin
+Require-Bundle: org.ect.reo.animation;bundle-version="3.2.25",
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.1.0",
+ org.ect.reo.diagram;bundle-version="3.2.0",
+ org.ect.reo.ui;bundle-version="3.2.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .,
+ lib/jsci-core.jar,
+ lib/jcommon-1.0.16.jar,
+ lib/jfreechart-1.0.13.jar,
+ lib/jfreechart-1.0.13-swt.jar
