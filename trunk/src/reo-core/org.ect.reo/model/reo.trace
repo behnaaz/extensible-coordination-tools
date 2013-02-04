@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:TraceModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
+  <nodeTraces
+      visualID="1001"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Connector') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Module') and _containmentMF_.name = 'connectors')">
+    <nodeLabelTraces
+        visualID="4004"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5001"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="1002"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/components' and _eClass_.name = 'Reader') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Module') and _containmentMF_.name = 'components')">
+    <nodeLabelTraces
+        visualID="4005"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5002"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="1003"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/components' and _eClass_.name = 'Writer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Module') and _containmentMF_.name = 'components')">
+    <nodeLabelTraces
+        visualID="4006"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5003"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="1004"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Component') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Module') and _containmentMF_.name = 'components')">
+    <nodeLabelTraces
+        visualID="4007"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5004"
+        queryText="true"/>
+  </nodeTraces>
+  <childNodeTraces
+      visualID="2001"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Node') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Connector') and _containmentMF_.name = 'nodes')">
+    <nodeLabelTraces
+        visualID="4001"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="2005"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Connector') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Connector') and _containmentMF_.name = 'subConnectors')">
+    <nodeLabelTraces
+        visualID="4012"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5005"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="2006"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'SourceEnd') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Primitive') and _containmentMF_.name = 'sourceEnds')">
+    <nodeLabelTraces
+        visualID="4010"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="2007"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'SinkEnd') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Primitive') and _containmentMF_.name = 'sinkEnds')">
+    <nodeLabelTraces
+        visualID="4011"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="2004"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Property') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'PropertyHolder') and _containmentMF_.name = 'properties')"/>
+  <childNodeTraces
+      visualID="2008"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/components' and _eClass_.name = 'Reader') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Connector') and _containmentMF_.name = 'primitives')">
+    <nodeLabelTraces
+        visualID="4016"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5006"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="2009"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/components' and _eClass_.name = 'Writer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Connector') and _containmentMF_.name = 'primitives')">
+    <nodeLabelTraces
+        visualID="4017"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5007"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="2010"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Component') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Connector') and _containmentMF_.name = 'primitives')">
+    <nodeLabelTraces
+        visualID="4018"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="5008"
+        queryText="true"/>
+  </childNodeTraces>
+  <linkTraces
+      visualID="3001"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'Sync')"/>
+  <linkTraces
+      visualID="3002"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'LossySync')"/>
+  <linkTraces
+      visualID="3003"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'FIFO')"/>
+  <linkTraces
+      visualID="3005"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'SyncDrain')">
+    <linkLabelTraces
+        visualID="4019"
+        queryText="true"/>
+  </linkTraces>
+  <linkTraces
+      visualID="3006"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'SyncSpout')"/>
+  <linkTraces
+      visualID="3007"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'AsyncDrain')"/>
+  <linkTraces
+      visualID="3008"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'AsyncSpout')"/>
+  <linkTraces
+      visualID="3011"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'Filter')">
+    <linkLabelTraces
+        visualID="4008"
+        queryText="true"/>
+  </linkTraces>
+  <linkTraces
+      visualID="3012"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'Transform')">
+    <linkLabelTraces
+        visualID="4009"
+        queryText="true"/>
+  </linkTraces>
+  <linkTraces
+      visualID="3015"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'Timer')">
+    <linkLabelTraces
+        visualID="4015"
+        queryText="true"/>
+  </linkTraces>
+  <linkTraces
+      visualID="3013"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'Node') and _feature_.name = 'sourceEnds')"/>
+  <linkTraces
+      visualID="3014"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo' and _eClass_.name = 'SinkEnd') and _feature_.name = 'node')"/>
+  <linkTraces
+      visualID="3016"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'CustomDirectedChannel')"/>
+  <linkTraces
+      visualID="3017"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'CustomDrainChannel')"/>
+  <linkTraces
+      visualID="3018"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'CustomSpoutChannel')"/>
+  <linkTraces
+      visualID="3019"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'PrioritySync')"/>
+  <linkTraces
+      visualID="3020"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'BlockingSync')"/>
+ <linkTraces
+      visualID="3021"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'BlockingSinkSync')"/>
+ <linkTraces
+      visualID="3022"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.cwi.nl/reo/channels' and _eClass_.name = 'BlockingSourceSync')"/>
+</trace:TraceModel>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.ect.reo="http://www.cwi.nl/reo" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <org.ect.reo:Module xmi:id="_DYnp4IfrEd62HNAcXjSpng">
+    <connectors xmi:type="org.ect.reo:Connector" xmi:id="_Ek8TEIfrEd62HNAcXjSpng" name="Test">
+      <nodes xmi:type="org.ect.reo:Node" xmi:id="_FOWccIfrEd62HNAcXjSpng" name="A"/>
+    </connectors>
+  </org.ect.reo:Module>
+  <notation:Diagram xmi:id="_DYoQ8IfrEd62HNAcXjSpng" type="Reo" element="_DYnp4IfrEd62HNAcXjSpng" name="ComponentTest.reo" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_Ek-vUIfrEd62HNAcXjSpng" type="1001" element="_Ek8TEIfrEd62HNAcXjSpng" fontName="Sans">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Ek_WYIfrEd62HNAcXjSpng" type="4004"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_Ek_WYYfrEd62HNAcXjSpng" type="5001">
+        <children xmi:type="notation:Shape" xmi:id="_FOXqkIfrEd62HNAcXjSpng" type="2001" element="_FOWccIfrEd62HNAcXjSpng" fontName="Sans">
+          <children xmi:type="notation:DecorationNode" xmi:id="_FOYRoIfrEd62HNAcXjSpng" type="4001">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_FOYRoYfrEd62HNAcXjSpng" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FOXqkYfrEd62HNAcXjSpng" x="59" y="20"/>
+        </children>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ek-vUYfrEd62HNAcXjSpng" x="145" y="83" width="141" height="100"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_DYoQ8YfrEd62HNAcXjSpng"/>
+  </notation:Diagram>
+</xmi:XMI>
