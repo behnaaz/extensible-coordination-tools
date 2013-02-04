@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="portNames"
+    nsURI="http://www.cwi.nl/ea/portNames" nsPrefix="portNames">
+  <eClassifiers xsi:type="ecore:EClass" name="AutomatonPortNames" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/StringListExtension">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inPorts" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outPorts" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionPortNames" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/StringListExtension"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntensionalPortNames" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requests" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="firings" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DelayElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="input" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rewards" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DelayInformation" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//DelayElement" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

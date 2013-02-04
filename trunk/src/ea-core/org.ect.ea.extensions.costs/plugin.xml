@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/ea/costs" 
+       class = "org.ect.ea.costs.CostsPackage"
+       genModel = "model/ea-costs.genmodel" /> 
+  </extension>
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/ea/costExtensions" 
+       class = "org.ect.ea.extensions.costs.CostsPackage"
+       genModel = "model/costs.genmodel" /> 
+  </extension>
+  
+  <extension
+        point="org.ect.ea.extensions">
+     <extensionDefinition
+           enabledFor="automata"
+           icon="icons/costs.gif"
+           id="cwi.ea.extensions.costAlgebras"
+           name="Cost Algebras"
+           providerClass="org.ect.ea.extensions.costs.providers.CostAlgebrasProvider"
+           type="textual">
+     </extensionDefinition>
+     <extensionDefinition
+           enabledFor="transitions"
+           icon="icons/costs.gif"
+           id="cwi.ea.extensions.costValues"
+           name="Cost Values"
+           providerClass="org.ect.ea.extensions.costs.providers.CostValuesProvider"
+           type="textual">
+        <dependency
+              id="cwi.ea.extensions.costAlgebras">
+        </dependency>
+     </extensionDefinition>
+  </extension>
+
+</plugin>

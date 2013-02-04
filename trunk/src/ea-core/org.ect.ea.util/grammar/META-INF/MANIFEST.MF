@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Constraint Automata compatibility classes
+Bundle-SymbolicName: org.ect.ea.util;singleton:=true
+Bundle-Version: 1.7.0
+Require-Bundle: org.ect.ea,
+ org.ect.ea.extensions.constraints,
+ org.ect.ea.extensions.portNames,
+ org.ect.ea.extensions.startStates,
+ org.ect.ea.extensions.stateMemory,
+ org.ect.org.antlr;bundle-version="3.1.0"
+Export-Package: org.ect.ea.util.cacompat,
+ org.ect.ea.util.textserializer
+Bundle-Vendor: CWI
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

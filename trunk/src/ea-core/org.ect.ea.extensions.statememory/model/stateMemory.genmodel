@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ect.ea.extensions.stateMemory/src"
+    modelPluginID="org.ect.ea.extensions.stateMemory" modelName="StateMemory" suppressInterfaces="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    publicConstructors="true" usedGenPackages="platform:/plugin/org.ect.ea/model/ea.genmodel#//ea">
+  <foreignModel>stateMemory.ecore</foreignModel>
+  <genPackages prefix="StateMemory" basePackage="org.ect.ea.extensions" disposableProviderFactory="true"
+      ecorePackage="stateMemory.ecore#/">
+    <genClasses ecoreClass="stateMemory.ecore#//StateMemory">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMemory.ecore#//StateMemory/initializations"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMemory.ecore#//StringToEObjectEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMemory.ecore#//StringToEObjectEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMemory.ecore#//StringToEObjectEntry/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

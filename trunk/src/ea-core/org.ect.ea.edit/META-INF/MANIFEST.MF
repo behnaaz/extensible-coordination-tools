@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.ect.ea.edit;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: org.ect.ea.automata.provider.ExtendibleAutomataEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.ect.ea.automata.provider,
+ org.ect.ea.extensions.provider
+Require-Bundle: org.eclipse.core.runtime,
+ org.ect.ea;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

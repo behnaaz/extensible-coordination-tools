@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="constraints"
+    nsURI="http://www.cwi.nl/ea/constraints" nsPrefix="constraints">
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" interface="true"
+      eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/IExtension"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conjunction" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/ExtensionElement #//Composite"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Disjunction" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/ExtensionElement #//Composite"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Equation" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/ExtensionElement #//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Parameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Parameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/ExtensionElement #//Constraint #//Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element" eSuperTypes="#//Parameter">
+    <eOperations name="isIdentifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isStringValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isIntegerValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isSourceMemory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isTargetMemory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isMemory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ElementType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true" interface="true">
+    <eOperations name="getValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="setValue">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getEquation" eType="#//Equation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="../../org.ect.ea/model/ea.ecore#//extensions/ExtensionElement #//Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Composite" abstract="true" interface="true"
+      eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//Constraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ElementType">
+    <eLiterals name="IDENTIFIER"/>
+    <eLiterals name="STRING" value="1"/>
+    <eLiterals name="INTEGER" value="2"/>
+    <eLiterals name="SOURCE_MEMORY" value="3"/>
+    <eLiterals name="TARGET_MEMORY" value="4"/>
+    <eLiterals name="ARBITRARY" value="5" literal="ARBITRARY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PredicateType">
+    <eLiterals name="EQUAL" literal="=="/>
+    <eLiterals name="NOT_EQUAL" value="1" literal="!="/>
+    <eLiterals name="GREATER" value="2" literal=">"/>
+    <eLiterals name="GREATER_EQUAL" value="3" literal=">="/>
+    <eLiterals name="LESS" value="4" literal="&lt;"/>
+    <eLiterals name="LESS_EQUAL" value="5" literal="&lt;="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Predicate" eSuperTypes="#//Equation">
+    <eOperations name="negate"/>
+    <eOperations name="flip"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//PredicateType"/>
+  </eClassifiers>
+</ecore:EPackage>

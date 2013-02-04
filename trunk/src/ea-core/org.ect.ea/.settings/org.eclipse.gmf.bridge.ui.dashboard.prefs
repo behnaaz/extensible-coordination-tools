@@ -1,0 +1,8 @@
+#Tue Jun 19 14:53:49 CEST 2007
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/org.ect.ea/model/ea.genmodel
+gmf_dashboard/domainModel=platform\:/resource/org.ect.ea/model/ea.ecore
+gmf_dashboard/generationModel=platform\:/resource/org.ect.ea/model/ea.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/org.ect.ea/model/ea.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/org.ect.ea/model/ea.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/org.ect.ea/model/ea.gmftool

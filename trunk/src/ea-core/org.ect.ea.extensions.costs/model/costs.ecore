@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="costs"
+    nsURI="http://www.cwi.nl/ea/costExtensions" nsPrefix="costs">
+  <eClassifiers xsi:type="ecore:EClass" name="CostsObjectExtension" eSuperTypes="platform:/plugin/org.ect.ea/model/ea.ecore#//extensions/ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="costsObjects" upperBound="-1"
+        eType="ecore:EClass ea-costs.ecore#//CostsObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CostsAlgebraExtension" eSuperTypes="platform:/plugin/org.ect.ea/model/ea.ecore#//extensions/ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="costsAlgebras" upperBound="-1"
+        eType="ecore:EClass ea-costs.ecore#//CostsAlgebra"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

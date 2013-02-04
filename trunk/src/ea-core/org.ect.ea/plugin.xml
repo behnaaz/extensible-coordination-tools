@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+   <extension-point id="extensions" name="Automata Extensions" schema="schema/extensions.exsd"/>
+   <extension-point id="products" name="Product Definitions" schema="schema/products.exsd"/>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/ea/automata" 
+       class = "org.ect.ea.automata.AutomataPackage"
+       genModel = "model/ea.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cwi.nl/ea/extensions" 
+       class = "org.ect.ea.extensions.ExtensionsPackage"
+       genModel = "model/ea.genmodel" /> 
+  </extension>
+  <extension
+        point="org.ect.ea.products">
+     <productDefinition
+           id="cwi.ea.automata.AutomataProduct"
+           name="Default"
+           providerClass="org.ect.ea.automata.AutomataProduct">
+     </productDefinition>
+  </extension>
+
+</plugin>
+

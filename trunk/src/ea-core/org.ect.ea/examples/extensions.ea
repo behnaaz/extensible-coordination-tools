@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:constraints="http://www.cwi.nl/ea/constraints" xmlns:costs="http://www.cwi.nl/ea/costExtensions" xmlns:org.ect.ea.automata="http://www.cwi.nl/ea/automata" xmlns:org.ect.ea.costs.algebras="http://www.cwi.nl/ea/costs/algebras" xmlns:org.ect.ea.costs.types="http://www.cwi.nl/ea/costs/types" xmlns:org.ect.ea.extensions="http://www.cwi.nl/ea/extensions" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:portNames="http://www.cwi.nl/ea/portNames" xsi:schemaLocation="http://www.cwi.nl/ea/costs/algebras http://www.cwi.nl/ea/costs#//algebras http://www.cwi.nl/ea/costs/types http://www.cwi.nl/ea/costs#//types">
+  <org.ect.ea.automata:Module xmi:id="_xZ_mgDHYEdyCpLsS7QFyGA">
+    <automata xmi:type="org.ect.ea.automata:Automaton" xmi:id="_5bc7gDHYEdyCpLsS7QFyGA" name="Start States">
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_8C7UEDHYEdyCpLsS7QFyGA" outgoing="_KaaXADHZEdyCpLsS7QFyGA" name="q1">
+        <extensions xmi:type="org.ect.ea.extensions:BooleanExtension" xmi:id="_9xfHoDHYEdyCpLsS7QFyGA" id="org.ect.ea.extensions.startStates" value="true"/>
+      </states>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_HhWfMDHZEdyCpLsS7QFyGA" incoming="_KaaXADHZEdyCpLsS7QFyGA" name="q2">
+        <extensions xmi:type="org.ect.ea.extensions:BooleanExtension" xmi:id="_HhWfNTHZEdyCpLsS7QFyGA" id="org.ect.ea.extensions.startStates"/>
+      </states>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_KaaXADHZEdyCpLsS7QFyGA" source="_8C7UEDHYEdyCpLsS7QFyGA" target="_HhWfMDHZEdyCpLsS7QFyGA"/>
+      <usedExtensionIds>org.ect.ea.extensions.startStates</usedExtensionIds>
+    </automata>
+    <automata xmi:type="org.ect.ea.automata:Automaton" xmi:id="_euI5oDH_EdyXL5hv9xFSXg" name="Port Names">
+      <extensions xmi:type="portNames:AutomatonPortNames" xmi:id="_n4WmcDH_EdyXL5hv9xFSXg" id="org.ect.ea.extensions.automatonPortNames">
+        <values>A</values>
+        <values>B</values>
+        <values>C</values>
+      </extensions>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_iQCTEDH_EdyXL5hv9xFSXg" outgoing="_kXDC4DH_EdyXL5hv9xFSXg" name="q1">
+        <extensions xmi:type="org.ect.ea.extensions:BooleanExtension" xmi:id="_Cwe_IDIDEdyG6slFAJR_bQ" id="org.ect.ea.extensions.startStates" value="true"/>
+      </states>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_jEyw0DH_EdyXL5hv9xFSXg" incoming="_kXDC4DH_EdyXL5hv9xFSXg _GFa6oDIDEdyG6slFAJR_bQ" outgoing="_E09YUDIDEdyG6slFAJR_bQ" name="q2">
+        <extensions xmi:type="org.ect.ea.extensions:BooleanExtension" xmi:id="_Cwe_ITIDEdyG6slFAJR_bQ" id="org.ect.ea.extensions.startStates"/>
+      </states>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_A5Rl4DIDEdyG6slFAJR_bQ" incoming="_E09YUDIDEdyG6slFAJR_bQ" outgoing="_GFa6oDIDEdyG6slFAJR_bQ" name="q3">
+        <extensions xmi:type="org.ect.ea.extensions:BooleanExtension" xmi:id="_Cwe_IjIDEdyG6slFAJR_bQ" id="org.ect.ea.extensions.startStates"/>
+      </states>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_kXDC4DH_EdyXL5hv9xFSXg" source="_iQCTEDH_EdyXL5hv9xFSXg" target="_jEyw0DH_EdyXL5hv9xFSXg">
+        <extensions xmi:type="portNames:TransitionPortNames" xmi:id="_k7QjMDH_EdyXL5hv9xFSXg" id="org.ect.ea.extensions.transitionPortNames">
+          <values>A</values>
+          <values>B</values>
+        </extensions>
+      </transitions>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_E09YUDIDEdyG6slFAJR_bQ" source="_jEyw0DH_EdyXL5hv9xFSXg" target="_A5Rl4DIDEdyG6slFAJR_bQ">
+        <extensions xmi:type="portNames:TransitionPortNames" xmi:id="_MDyWgDIDEdyG6slFAJR_bQ" id="org.ect.ea.extensions.transitionPortNames">
+          <values>B</values>
+        </extensions>
+      </transitions>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_GFa6oDIDEdyG6slFAJR_bQ" source="_A5Rl4DIDEdyG6slFAJR_bQ" target="_jEyw0DH_EdyXL5hv9xFSXg">
+        <extensions xmi:type="portNames:TransitionPortNames" xmi:id="_M3MwcDIDEdyG6slFAJR_bQ" id="org.ect.ea.extensions.transitionPortNames">
+          <values>D</values>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>org.ect.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.startStates</usedExtensionIds>
+    </automata>
+    <automata xmi:type="org.ect.ea.automata:Automaton" xmi:id="_uBvmoDH_EdyXL5hv9xFSXg" name="Memory">
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_uBvmojH_EdyXL5hv9xFSXg" outgoing="_uBvmpDH_EdyXL5hv9xFSXg" name="q1">
+        <extensions xmi:type="org.ect.ea.extensions:StringListExtension" xmi:id="_7H7ZsDH_EdyXL5hv9xFSXg" id="org.ect.ea.extensions.stateMemory">
+          <values>id</values>
+          <values>name</values>
+        </extensions>
+      </states>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_uBvmozH_EdyXL5hv9xFSXg" incoming="_uBvmpDH_EdyXL5hv9xFSXg" name="q2">
+        <extensions xmi:type="org.ect.ea.extensions:StringListExtension" xmi:id="_CYGbsDIAEdyXL5hv9xFSXg" id="org.ect.ea.extensions.stateMemory">
+          <values>time</values>
+        </extensions>
+      </states>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_uBvmpDH_EdyXL5hv9xFSXg" source="_uBvmojH_EdyXL5hv9xFSXg" target="_uBvmozH_EdyXL5hv9xFSXg"/>
+      <usedExtensionIds>org.ect.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata xmi:type="org.ect.ea.automata:Automaton" xmi:id="_F7MvFDIAEdyXL5hv9xFSXg" name="Constraints">
+      <extensions xmi:type="portNames:AutomatonPortNames" xmi:id="_UJziwDIAEdyXL5hv9xFSXg" id="org.ect.ea.extensions.automatonPortNames">
+        <values>A</values>
+        <values>B</values>
+        <values>C</values>
+      </extensions>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_F7MvFTIAEdyXL5hv9xFSXg" outgoing="_F7MvGTIAEdyXL5hv9xFSXg" name="q1">
+        <extensions xmi:type="org.ect.ea.extensions:StringListExtension" xmi:id="_F7MvFjIAEdyXL5hv9xFSXg" id="org.ect.ea.extensions.stateMemory">
+          <values>id</values>
+          <values>name</values>
+        </extensions>
+      </states>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_F7MvFzIAEdyXL5hv9xFSXg" incoming="_F7MvGTIAEdyXL5hv9xFSXg" name="q2">
+        <extensions xmi:type="org.ect.ea.extensions:StringListExtension" xmi:id="_F7MvGDIAEdyXL5hv9xFSXg" id="org.ect.ea.extensions.stateMemory">
+          <values>time</values>
+        </extensions>
+      </states>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_F7MvGTIAEdyXL5hv9xFSXg" source="_F7MvFTIAEdyXL5hv9xFSXg" target="_F7MvFzIAEdyXL5hv9xFSXg">
+        <extensions xmi:type="portNames:TransitionPortNames" xmi:id="_TXvMoDIAEdyXL5hv9xFSXg" id="org.ect.ea.extensions.transitionPortNames">
+          <values>A</values>
+          <values>B</values>
+          <values>C</values>
+        </extensions>
+        <extensions xmi:type="constraints:Disjunction" xmi:id="_IfSm8DIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.constraints">
+          <members xmi:type="constraints:Conjunction" xmi:id="_IfSm8TIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.constraints">
+            <members xmi:type="constraints:Equation" xmi:id="_IfSm8jIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.constraints">
+              <left xmi:type="constraints:Element" xmi:id="_hL12EFR4EdyCZbC7NnG53w" value="A"/>
+              <right xmi:type="constraints:Element" xmi:id="_hL12EVR4EdyCZbC7NnG53w" value="B"/>
+            </members>
+            <members xmi:type="constraints:Equation" xmi:id="_IfSm9TIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.constraints">
+              <left xmi:type="constraints:Element" xmi:id="_hL12ElR4EdyCZbC7NnG53w" value="C"/>
+              <right xmi:type="constraints:Element" xmi:id="_hL12E1R4EdyCZbC7NnG53w" value="yes" type="STRING"/>
+            </members>
+          </members>
+          <members xmi:type="constraints:Equation" xmi:id="_IfSm-DIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.constraints">
+            <left xmi:type="constraints:Element" xmi:id="_hL12ElR4EdyCZbC7NnG53w" value="C"/>
+            <right xmi:type="constraints:Element" xmi:id="_hL12FFR4EdyCZbC7NnG53w" value="id" type="SOURCE_MEMORY"/>
+          </members>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>org.ect.ea.extensions.stateMemory</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.constraints</usedExtensionIds>
+    </automata>
+    <automata xmi:type="org.ect.ea.automata:Automaton" xmi:id="_NL_mtDIBEdyXL5hv9xFSXg" name="Costs">
+      <extensions xmi:type="costs:CostsAlgebraExtension" xmi:id="_Q8gD0DIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.costAlgebras">
+        <costsAlgebras xmi:type="org.ect.ea.costs.algebras:MemoryAlgebra" xmi:id="_SnfmADIBEdyXL5hv9xFSXg"/>
+        <costsAlgebras xmi:type="org.ect.ea.costs.algebras:BandwidthAlgebra" xmi:id="_UiIGsDIBEdyXL5hv9xFSXg"/>
+      </extensions>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_NL_mtTIBEdyXL5hv9xFSXg" incoming="_Yv_OQDIBEdyXL5hv9xFSXg" outgoing="_NL_muTIBEdyXL5hv9xFSXg" name="q1"/>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_NL_mtzIBEdyXL5hv9xFSXg" incoming="_NL_muTIBEdyXL5hv9xFSXg" outgoing="_Yv_OQDIBEdyXL5hv9xFSXg" name="q2"/>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_NL_muTIBEdyXL5hv9xFSXg" source="_NL_mtTIBEdyXL5hv9xFSXg" target="_NL_mtzIBEdyXL5hv9xFSXg">
+        <extensions xmi:type="costs:CostsObjectExtension" xmi:id="_YH56kDIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.costValues">
+          <costsObjects xmi:type="org.ect.ea.costs.types:IntegerCosts" xmi:id="_YH56kTIBEdyXL5hv9xFSXg" integerValue="4"/>
+          <costsObjects xmi:type="org.ect.ea.costs.types:IntegerCosts" xmi:id="_YH56kjIBEdyXL5hv9xFSXg" integerValue="16"/>
+        </extensions>
+      </transitions>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_Yv_OQDIBEdyXL5hv9xFSXg" source="_NL_mtzIBEdyXL5hv9xFSXg" target="_NL_mtTIBEdyXL5hv9xFSXg">
+        <extensions xmi:type="costs:CostsObjectExtension" xmi:id="_aC1WMDIBEdyXL5hv9xFSXg" id="org.ect.ea.extensions.costValues">
+          <costsObjects xmi:type="org.ect.ea.costs.types:IntegerCosts" xmi:id="_aC1WMTIBEdyXL5hv9xFSXg" integerValue="-4"/>
+          <costsObjects xmi:type="org.ect.ea.costs.types:IntegerCosts" xmi:id="_aC1WMjIBEdyXL5hv9xFSXg" integerValue="32"/>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>org.ect.ea.extensions.costAlgebras</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.costValues</usedExtensionIds>
+    </automata>
+    <automata xmi:type="org.ect.ea.automata:Automaton" xmi:id="_lpRJdlJkEdyVbP8gfSl7xA" name="Port Names">
+      <extensions xmi:type="portNames:AutomatonPortNames" xmi:id="_lpRJd1JkEdyVbP8gfSl7xA" id="org.ect.ea.extensions.automatonPortNames">
+        <values>A</values>
+        <values>B</values>
+        <values>C</values>
+      </extensions>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_lpRJeFJkEdyVbP8gfSl7xA" incoming="_aNs_QFR4EdyCZbC7NnG53w" outgoing="_lpRJflJkEdyVbP8gfSl7xA" name="q1">
+        <extensions xmi:type="org.ect.ea.extensions:BooleanExtension" xmi:id="_lpRJeVJkEdyVbP8gfSl7xA" id="org.ect.ea.extensions.startStates"/>
+      </states>
+      <states xmi:type="org.ect.ea.automata:State" xmi:id="_lpRJelJkEdyVbP8gfSl7xA" incoming="_lpRJflJkEdyVbP8gfSl7xA" outgoing="_aNs_QFR4EdyCZbC7NnG53w" name="q2">
+        <extensions xmi:type="org.ect.ea.extensions:BooleanExtension" xmi:id="_lpRJe1JkEdyVbP8gfSl7xA" id="org.ect.ea.extensions.startStates"/>
+      </states>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_lpRJflJkEdyVbP8gfSl7xA" source="_lpRJeFJkEdyVbP8gfSl7xA" target="_lpRJelJkEdyVbP8gfSl7xA">
+        <extensions xmi:type="portNames:TransitionPortNames" xmi:id="_lpRJf1JkEdyVbP8gfSl7xA" id="org.ect.ea.extensions.transitionPortNames">
+          <values>A</values>
+          <values>B</values>
+        </extensions>
+      </transitions>
+      <transitions xmi:type="org.ect.ea.automata:Transition" xmi:id="_aNs_QFR4EdyCZbC7NnG53w" source="_lpRJelJkEdyVbP8gfSl7xA" target="_lpRJeFJkEdyVbP8gfSl7xA">
+        <extensions xmi:type="portNames:TransitionPortNames" xmi:id="_bPArQFR4EdyCZbC7NnG53w" id="org.ect.ea.extensions.transitionPortNames">
+          <values>C</values>
+          <values>D</values>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>org.ect.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>org.ect.ea.extensions.startStates</usedExtensionIds>
+    </automata>
+  </org.ect.ea.automata:Module>
+  <notation:Diagram xmi:id="_xeBK4DHYEdyCpLsS7QFyGA" type="Automata" element="_xZ_mgDHYEdyCpLsS7QFyGA" name="extensions.ea" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_5cy_UDHYEdyCpLsS7QFyGA" type="1001" element="_5bc7gDHYEdyCpLsS7QFyGA">
+      <children xmi:type="notation:Node" xmi:id="_5dF6QDHYEdyCpLsS7QFyGA" type="4003"/>
+      <children xmi:type="notation:Node" xmi:id="_5dPEMDHYEdyCpLsS7QFyGA" type="5001">
+        <children xmi:type="notation:Node" xmi:id="_8FdqsDHYEdyCpLsS7QFyGA" type="2001" element="_8C7UEDHYEdyCpLsS7QFyGA">
+          <children xmi:type="notation:Node" xmi:id="_8Fm0oDHYEdyCpLsS7QFyGA" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_8FdqsTHYEdyCpLsS7QFyGA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8FdqsjHYEdyCpLsS7QFyGA" x="39" y="21"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_-T54MDHYEdyCpLsS7QFyGA" type="org.ect.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-T54MTHYEdyCpLsS7QFyGA" x="9" y="6"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_HhWfMTHZEdyCpLsS7QFyGA" type="2001" element="_HhWfMDHZEdyCpLsS7QFyGA">
+          <children xmi:type="notation:Node" xmi:id="_HhWfNDHZEdyCpLsS7QFyGA" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_HhWfMjHZEdyCpLsS7QFyGA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HhWfMzHZEdyCpLsS7QFyGA" x="151" y="57"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_w1RHwFJkEdyVbP8gfSl7xA" type="org.ect.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w1RHwVJkEdyVbP8gfSl7xA" x="9" y="6"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Mkb9gFJlEdyo2LUBqmXJVw" type="org.ect.ea.extensions.startStates_invisibleNode" element="_9xfHoDHYEdyCpLsS7QFyGA">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mkb9gVJlEdyo2LUBqmXJVw" x="9" y="6"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_5dPEMTHYEdyCpLsS7QFyGA"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_5dPEMjHYEdyCpLsS7QFyGA"/>
+      </children>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_5cy_UTHYEdyCpLsS7QFyGA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5cy_UjHYEdyCpLsS7QFyGA" x="36" y="36" width="229" height="145"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_evVMcDH_EdyXL5hv9xFSXg" type="1001" element="_euI5oDH_EdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_eve9cDH_EdyXL5hv9xFSXg" type="4003"/>
+      <children xmi:type="notation:Node" xmi:id="_eve9cTH_EdyXL5hv9xFSXg" type="5001">
+        <children xmi:type="notation:Node" xmi:id="_iQMEEDH_EdyXL5hv9xFSXg" type="2001" element="_iQCTEDH_EdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_iQMEEzH_EdyXL5hv9xFSXg" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_iQMEETH_EdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iQMEEjH_EdyXL5hv9xFSXg" x="43" y="36"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_jEyw0TH_EdyXL5hv9xFSXg" type="2001" element="_jEyw0DH_EdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_jEyw1DH_EdyXL5hv9xFSXg" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_jEyw0jH_EdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jEyw0zH_EdyXL5hv9xFSXg" x="139" y="108"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_A5Rl4TIDEdyG6slFAJR_bQ" type="2001" element="_A5Rl4DIDEdyG6slFAJR_bQ">
+          <children xmi:type="notation:Node" xmi:id="_A5bW4DIDEdyG6slFAJR_bQ" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_A5Rl4jIDEdyG6slFAJR_bQ"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_A5Rl4zIDEdyG6slFAJR_bQ" x="39" y="169"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_EApmgDIDEdyG6slFAJR_bQ" type="org.ect.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EApmgTIDEdyG6slFAJR_bQ" x="13" y="21"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_yKDJYFJkEdyVbP8gfSl7xA" type="org.ect.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yKDJYVJkEdyVbP8gfSl7xA" x="13" y="21"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_NlHXYFJlEdyo2LUBqmXJVw" type="org.ect.ea.extensions.startStates_invisibleNode" element="_Cwe_IDIDEdyG6slFAJR_bQ">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NlHXYVJlEdyo2LUBqmXJVw" x="13" y="21"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_eve9cjH_EdyXL5hv9xFSXg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_eve9czH_EdyXL5hv9xFSXg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_hqMbEDH_EdyXL5hv9xFSXg" type="4004" element="_n4WmcDH_EdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_evVMcTH_EdyXL5hv9xFSXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_evVMcjH_EdyXL5hv9xFSXg" x="684" y="216" width="217" height="289"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_uBvmkDH_EdyXL5hv9xFSXg" type="1001" element="_uBvmoDH_EdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_uBvmkTH_EdyXL5hv9xFSXg" type="4003"/>
+      <children xmi:type="notation:Node" xmi:id="_uBvmkjH_EdyXL5hv9xFSXg" type="5001">
+        <children xmi:type="notation:Node" xmi:id="_uBvmkzH_EdyXL5hv9xFSXg" type="2001" element="_uBvmojH_EdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_uBvmlDH_EdyXL5hv9xFSXg" type="4001"/>
+          <children xmi:type="notation:Node" xmi:id="_x-UJ0TH_EdyXL5hv9xFSXg" type="4002" element="_7H7ZsDH_EdyXL5hv9xFSXg">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_x-UJ0jH_EdyXL5hv9xFSXg" x="-16" y="56"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_uBvmlTH_EdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uBvmljH_EdyXL5hv9xFSXg" x="19" y="9"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_uBvmlzH_EdyXL5hv9xFSXg" type="2001" element="_uBvmozH_EdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_uBvmmDH_EdyXL5hv9xFSXg" type="4001"/>
+          <children xmi:type="notation:Node" xmi:id="_x-UJ1DH_EdyXL5hv9xFSXg" type="4002" element="_CYGbsDIAEdyXL5hv9xFSXg">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_x-UJ1TH_EdyXL5hv9xFSXg" x="-16" y="56"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_uBvmmTH_EdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uBvmmjH_EdyXL5hv9xFSXg" x="151" y="57"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_uBvmmzH_EdyXL5hv9xFSXg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_uBvmnDH_EdyXL5hv9xFSXg"/>
+      </children>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_uBvmnjH_EdyXL5hv9xFSXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uBvmnzH_EdyXL5hv9xFSXg" x="300" y="36" width="229" height="169"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_F7MvATIAEdyXL5hv9xFSXg" type="1001" element="_F7MvFDIAEdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_F7MvAjIAEdyXL5hv9xFSXg" type="4003"/>
+      <children xmi:type="notation:Node" xmi:id="_F7MvAzIAEdyXL5hv9xFSXg" type="5001">
+        <children xmi:type="notation:Node" xmi:id="_F7MvBDIAEdyXL5hv9xFSXg" type="2001" element="_F7MvFTIAEdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_F7MvBTIAEdyXL5hv9xFSXg" type="4001"/>
+          <children xmi:type="notation:Node" xmi:id="_F7MvBjIAEdyXL5hv9xFSXg" type="4002" element="_F7MvFjIAEdyXL5hv9xFSXg">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_F7MvBzIAEdyXL5hv9xFSXg" x="56" y="3"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_F7MvCDIAEdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F7MvCTIAEdyXL5hv9xFSXg" x="7" y="12"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_F7MvCjIAEdyXL5hv9xFSXg" type="2001" element="_F7MvFzIAEdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_F7MvCzIAEdyXL5hv9xFSXg" type="4001"/>
+          <children xmi:type="notation:Node" xmi:id="_F7MvDDIAEdyXL5hv9xFSXg" type="4002" element="_F7MvGDIAEdyXL5hv9xFSXg">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_F7MvDTIAEdyXL5hv9xFSXg" x="56" y="12"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_F7MvDjIAEdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F7MvDzIAEdyXL5hv9xFSXg" x="91" y="96"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_F7MvEDIAEdyXL5hv9xFSXg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_F7MvETIAEdyXL5hv9xFSXg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_MKsXITIAEdyXL5hv9xFSXg" type="4004" element="_UJziwDIAEdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_F7MvEjIAEdyXL5hv9xFSXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F7MvEzIAEdyXL5hv9xFSXg" x="300" y="252" width="229" height="205"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_NL_moTIBEdyXL5hv9xFSXg" type="1001" element="_NL_mtDIBEdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_NL_mojIBEdyXL5hv9xFSXg" type="4003"/>
+      <children xmi:type="notation:Node" xmi:id="_NL_mozIBEdyXL5hv9xFSXg" type="5001">
+        <children xmi:type="notation:Node" xmi:id="_NL_mpDIBEdyXL5hv9xFSXg" type="2001" element="_NL_mtTIBEdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_NL_mpTIBEdyXL5hv9xFSXg" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_NL_mqDIBEdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NL_mqTIBEdyXL5hv9xFSXg" x="19" y="9"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_NL_mqjIBEdyXL5hv9xFSXg" type="2001" element="_NL_mtzIBEdyXL5hv9xFSXg">
+          <children xmi:type="notation:Node" xmi:id="_NL_mqzIBEdyXL5hv9xFSXg" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_NL_mrjIBEdyXL5hv9xFSXg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NL_mrzIBEdyXL5hv9xFSXg" x="151" y="60"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_NL_msDIBEdyXL5hv9xFSXg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_NL_msTIBEdyXL5hv9xFSXg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_Q9PqsDIBEdyXL5hv9xFSXg" type="4004" element="_Q8gD0DIBEdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_NL_msjIBEdyXL5hv9xFSXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NL_mszIBEdyXL5hv9xFSXg" x="36" y="492" width="229" height="169"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_lpRJYFJkEdyVbP8gfSl7xA" type="1001" element="_lpRJdlJkEdyVbP8gfSl7xA">
+      <children xmi:type="notation:Node" xmi:id="_lpRJYVJkEdyVbP8gfSl7xA" type="4003"/>
+      <children xmi:type="notation:Node" xmi:id="_lpRJYlJkEdyVbP8gfSl7xA" type="5001">
+        <children xmi:type="notation:Node" xmi:id="_lpRJY1JkEdyVbP8gfSl7xA" type="2001" element="_lpRJeFJkEdyVbP8gfSl7xA">
+          <children xmi:type="notation:Node" xmi:id="_lpRJZFJkEdyVbP8gfSl7xA" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_lpRJZVJkEdyVbP8gfSl7xA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lpRJZlJkEdyVbP8gfSl7xA" x="19" y="12"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_lpRJZ1JkEdyVbP8gfSl7xA" type="2001" element="_lpRJelJkEdyVbP8gfSl7xA">
+          <children xmi:type="notation:Node" xmi:id="_lpRJaFJkEdyVbP8gfSl7xA" type="4001"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_lpRJaVJkEdyVbP8gfSl7xA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lpRJalJkEdyVbP8gfSl7xA" x="151" y="60"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_lpRJb1JkEdyVbP8gfSl7xA" type="org.ect.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lpRJcFJkEdyVbP8gfSl7xA" x="13" y="21"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_lpRJcVJkEdyVbP8gfSl7xA"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_lpRJclJkEdyVbP8gfSl7xA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_lpRJc1JkEdyVbP8gfSl7xA" type="4004" element="_lpRJd1JkEdyVbP8gfSl7xA"/>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_lpRJdFJkEdyVbP8gfSl7xA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lpRJdVJkEdyVbP8gfSl7xA" x="36" y="252" width="229" height="169"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_xeBK4THYEdyCpLsS7QFyGA"/>
+    <edges xmi:type="notation:Edge" xmi:id="_KatR8DHZEdyCpLsS7QFyGA" type="3001" element="_KaaXADHZEdyCpLsS7QFyGA" source="_8FdqsDHYEdyCpLsS7QFyGA" target="_HhWfMTHZEdyCpLsS7QFyGA">
+      <styles xmi:type="notation:FontStyle" xmi:id="_KatR8THZEdyCpLsS7QFyGA"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_KatR8jHZEdyCpLsS7QFyGA" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KatR8zHZEdyCpLsS7QFyGA" points="[7, 2, -72, -29]$[43, 10, -36, -21]$[79, 31, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KbAM4DHZEdyCpLsS7QFyGA" id="(0.825,0.45)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6WUy4DHZEdyCpLsS7QFyGA" id="(0.15,0.35)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_kXDC4TH_EdyXL5hv9xFSXg" type="3001" element="_kXDC4DH_EdyXL5hv9xFSXg" source="_iQMEEDH_EdyXL5hv9xFSXg" target="_jEyw0TH_EdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_kXMM0TH_EdyXL5hv9xFSXg" type="4005" element="_k7QjMDH_EdyXL5hv9xFSXg">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_kXMM0jH_EdyXL5hv9xFSXg" x="-7" y="-32"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_kXDC4jH_EdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_kXDC4zH_EdyXL5hv9xFSXg" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kXDC5DH_EdyXL5hv9xFSXg" points="[20, 18, -83, -118]$[58, 53, -45, -83]$[100, 130, -3, -6]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__vqScDICEdyG6slFAJR_bQ" id="(0.85,0.425)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rYd3MDH_EdyXL5hv9xFSXg" id="(0.425,0.125)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_uCVccDH_EdyXL5hv9xFSXg" type="3001" element="_uBvmpDH_EdyXL5hv9xFSXg" source="_uBvmkzH_EdyXL5hv9xFSXg" target="_uBvmlzH_EdyXL5hv9xFSXg">
+      <styles xmi:type="notation:FontStyle" xmi:id="_uCVccTH_EdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_uCVccjH_EdyXL5hv9xFSXg" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uCVcczH_EdyXL5hv9xFSXg" points="[20, 4, -100, -44]$[58, 13, -62, -35]$[100, 37, -20, -11]"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_F7V48DIAEdyXL5hv9xFSXg" type="3001" element="_F7MvGTIAEdyXL5hv9xFSXg" source="_F7MvBDIAEdyXL5hv9xFSXg" target="_F7MvCjIAEdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_MKsXIzIAEdyXL5hv9xFSXg" type="4005" element="_TXvMoDIAEdyXL5hv9xFSXg">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MKsXJDIAEdyXL5hv9xFSXg" x="-10" y="27"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_e1K5QDIAEdyXL5hv9xFSXg" type="4005" element="_IfSm8DIBEdyXL5hv9xFSXg">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_e1K5QTIAEdyXL5hv9xFSXg" x="49" y="-61"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_F7V48TIAEdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_F7V48jIAEdyXL5hv9xFSXg" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_F7V48zIAEdyXL5hv9xFSXg" points="[15, 20, -93, -64]$[37, 50, -71, -34]$[88, 74, -20, -10]"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_NMJXoDIBEdyXL5hv9xFSXg" type="3001" element="_NL_muTIBEdyXL5hv9xFSXg" source="_NL_mpDIBEdyXL5hv9xFSXg" target="_NL_mqjIBEdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_Q9PqsjIBEdyXL5hv9xFSXg" type="4005" element="_YH56kDIBEdyXL5hv9xFSXg">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Q9PqszIBEdyXL5hv9xFSXg" x="52" y="-14"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_NMJXoTIBEdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_NMJXojIBEdyXL5hv9xFSXg" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NMJXozIBEdyXL5hv9xFSXg" points="[5, 7, -104, -30]$[64, 7, -45, -30]$[108, 36, -1, -1]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V3D5UDIBEdyXL5hv9xFSXg" id="(0.875,0.225)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_c_LykDIBEdyXL5hv9xFSXg" id="(0.3,0.025)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_Yv_OQTIBEdyXL5hv9xFSXg" type="3001" element="_Yv_OQDIBEdyXL5hv9xFSXg" source="_NL_mqjIBEdyXL5hv9xFSXg" target="_NL_mpDIBEdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_Yv_OSDIBEdyXL5hv9xFSXg" type="4005" element="_aC1WMDIBEdyXL5hv9xFSXg">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Yv_OSTIBEdyXL5hv9xFSXg" x="21" y="-24"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Yv_OQjIBEdyXL5hv9xFSXg"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_Yv_OQzIBEdyXL5hv9xFSXg" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Yv_ORDIBEdyXL5hv9xFSXg" points="[-20, -3, 113, 29]$[-79, -10, 54, 22]$[-123, -28, 10, 4]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lJ6_YDIBEdyXL5hv9xFSXg" id="(0.05,0.55)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fawdIDIBEdyXL5hv9xFSXg" id="(0.575,0.95)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_E1GiQDIDEdyG6slFAJR_bQ" type="3001" element="_E09YUDIDEdyG6slFAJR_bQ" source="_jEyw0TH_EdyXL5hv9xFSXg" target="_A5Rl4TIDEdyG6slFAJR_bQ">
+      <children xmi:type="notation:Node" xmi:id="_E1GiRzIDEdyG6slFAJR_bQ" type="4005" element="_MDyWgDIDEdyG6slFAJR_bQ">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_E1GiSDIDEdyG6slFAJR_bQ" x="22" y="34"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_E1GiQTIDEdyG6slFAJR_bQ"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_E1GiQjIDEdyG6slFAJR_bQ" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E1GiQzIDEdyG6slFAJR_bQ" points="[-2, 1, 68, -39]$[-36, 10, 34, -30]$[-62, 33, 8, -7]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E1GiRDIDEdyG6slFAJR_bQ" id="(0.05,0.55)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E1GiRTIDEdyG6slFAJR_bQ" id="(0.55,0.05)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_GFkroDIDEdyG6slFAJR_bQ" type="3001" element="_GFa6oDIDEdyG6slFAJR_bQ" source="_A5Rl4TIDEdyG6slFAJR_bQ" target="_jEyw0TH_EdyXL5hv9xFSXg">
+      <children xmi:type="notation:Node" xmi:id="_GFt1kTIDEdyG6slFAJR_bQ" type="4005" element="_M3MwcDIDEdyG6slFAJR_bQ">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_GFt1kjIDEdyG6slFAJR_bQ" x="15" y="23"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_GFkroTIDEdyG6slFAJR_bQ"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_GFkrojIDEdyG6slFAJR_bQ" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GFkrozIDEdyG6slFAJR_bQ" points="[7, -1, -85, 50]$[60, -12, -32, 39]$[86, -44, -6, 7]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IzBJUDIDEdyG6slFAJR_bQ" id="(0.825,0.575)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GFkrpDIDEdyG6slFAJR_bQ" id="(0.625,0.825)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_lp2_QFJkEdyVbP8gfSl7xA" type="3001" element="_lpRJflJkEdyVbP8gfSl7xA" source="_lpRJY1JkEdyVbP8gfSl7xA" target="_lpRJZ1JkEdyVbP8gfSl7xA">
+      <children xmi:type="notation:Node" xmi:id="_lp2_RFJkEdyVbP8gfSl7xA" type="4005" element="_lpRJf1JkEdyVbP8gfSl7xA">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_lp2_RVJkEdyVbP8gfSl7xA" x="37" y="-7"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_lp2_QVJkEdyVbP8gfSl7xA"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_lp2_QlJkEdyVbP8gfSl7xA" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lp2_Q1JkEdyVbP8gfSl7xA" points="[2, 0, -105, -47]$[59, 10, -48, -37]$[101, 42, -6, -5]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tBoeEFJkEdyVbP8gfSl7xA" id="(0.925,0.25)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uZGnUFJkEdyVbP8gfSl7xA" id="(0.325,0.125)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_Mkb9glJlEdyo2LUBqmXJVw" type="org.ect.ea.extensions.startStates_fakeTransition" element="_9xfHoDHYEdyCpLsS7QFyGA" source="_Mkb9gFJlEdyo2LUBqmXJVw" target="_8FdqsDHYEdyCpLsS7QFyGA">
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_Mkb9g1JlEdyo2LUBqmXJVw" smoothness="Normal"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Mkb9hFJlEdyo2LUBqmXJVw"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Mkb9hVJlEdyo2LUBqmXJVw" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Mkb9hlJlEdyo2LUBqmXJVw" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_NlHXYlJlEdyo2LUBqmXJVw" type="org.ect.ea.extensions.startStates_fakeTransition" element="_Cwe_IDIDEdyG6slFAJR_bQ" source="_NlHXYFJlEdyo2LUBqmXJVw" target="_iQMEEDH_EdyXL5hv9xFSXg">
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_NlHXY1JlEdyo2LUBqmXJVw" smoothness="Normal"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_NlHXZFJlEdyo2LUBqmXJVw"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NlHXZVJlEdyo2LUBqmXJVw" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NlHXZlJlEdyo2LUBqmXJVw" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_aN_TIFR4EdyCZbC7NnG53w" type="3001" element="_aNs_QFR4EdyCZbC7NnG53w" source="_lpRJZ1JkEdyVbP8gfSl7xA" target="_lpRJY1JkEdyVbP8gfSl7xA">
+      <children xmi:type="notation:Node" xmi:id="_aOLgYFR4EdyCZbC7NnG53w" type="4005" element="_bPArQFR4EdyCZbC7NnG53w">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_aOLgYVR4EdyCZbC7NnG53w" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_aN_6MFR4EdyCZbC7NnG53w" fontName="Sans"/>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_aN_6MVR4EdyCZbC7NnG53w" smoothness="Normal"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aN_6MlR4EdyCZbC7NnG53w" points="[-3, -9, 98, 27]$[-71, -9, 30, 27]$[-97, -32, 4, 4]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cIQAYFR4EdyCZbC7NnG53w" id="(0.075,0.6)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cbcCIFR4EdyCZbC7NnG53w" id="(0.55,0.9)"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

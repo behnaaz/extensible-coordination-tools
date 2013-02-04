@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (C) SEN3 group at CWI, Amsterdam. Published under the terms of the GPL2."
+    modelDirectory="/org.ect.ea.costs/src" modelPluginID="org.ect.ea.costs" modelName="Extendible Automata - Costs"
+    suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>ea-costs.ecore</foreignModel>
+  <genPackages prefix="Costs" basePackage="org.ect.ea" disposableProviderFactory="true"
+      utilityPackageSuffix="" ecorePackage="ea-costs.ecore#/">
+    <genClasses ecoreClass="ea-costs.ecore#//CostsObject">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ea-costs.ecore#//CostsObject/type"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ea-costs.ecore#//CostsObject/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ea-costs.ecore#//CostsAlgebra">
+      <genOperations ecoreOperation="ea-costs.ecore#//CostsAlgebra/choose">
+        <genParameters ecoreParameter="ea-costs.ecore#//CostsAlgebra/choose/c1"/>
+        <genParameters ecoreParameter="ea-costs.ecore#//CostsAlgebra/choose/c2"/>
+      </genOperations>
+      <genOperations ecoreOperation="ea-costs.ecore#//CostsAlgebra/combineSequentially">
+        <genParameters ecoreParameter="ea-costs.ecore#//CostsAlgebra/combineSequentially/c1"/>
+        <genParameters ecoreParameter="ea-costs.ecore#//CostsAlgebra/combineSequentially/c2"/>
+      </genOperations>
+      <genOperations ecoreOperation="ea-costs.ecore#//CostsAlgebra/combineParallel">
+        <genParameters ecoreParameter="ea-costs.ecore#//CostsAlgebra/combineParallel/c1"/>
+        <genParameters ecoreParameter="ea-costs.ecore#//CostsAlgebra/combineParallel/c2"/>
+      </genOperations>
+    </genClasses>
+    <nestedGenPackages prefix="Types" disposableProviderFactory="true" utilityPackageSuffix=""
+        ecorePackage="ea-costs.ecore#//types">
+      <genClasses ecoreClass="ea-costs.ecore#//types/IntegerCosts">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ea-costs.ecore#//types/IntegerCosts/integerValue"/>
+      </genClasses>
+      <genClasses ecoreClass="ea-costs.ecore#//types/StringCosts">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ea-costs.ecore#//types/StringCosts/stringValue"/>
+      </genClasses>
+      <genClasses ecoreClass="ea-costs.ecore#//types/FloatCosts">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ea-costs.ecore#//types/FloatCosts/floatValue"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Algebras" disposableProviderFactory="true" utilityPackageSuffix=""
+        ecorePackage="ea-costs.ecore#//algebras">
+      <genClasses ecoreClass="ea-costs.ecore#//algebras/MemoryAlgebra"/>
+      <genClasses ecoreClass="ea-costs.ecore#//algebras/CPUAlgebra"/>
+      <genClasses ecoreClass="ea-costs.ecore#//algebras/BandwidthAlgebra"/>
+      <genClasses ecoreClass="ea-costs.ecore#//algebras/DelayAlgebra"/>
+      <genClasses ecoreClass="ea-costs.ecore#//algebras/ReliabilityAlgebra"/>
+      <genClasses ecoreClass="ea-costs.ecore#//algebras/SecurityAlgebra"/>
+      <genClasses ecoreClass="ea-costs.ecore#//algebras/ExponentialDelayAlgebra"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

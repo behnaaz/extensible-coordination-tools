@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Extendible Automata - Diagram Contributions Plug-in
+Bundle-SymbolicName: org.ect.ea.diagram.contributions;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: CWI
+Bundle-Localization: plugin
+Require-Bundle: org.ect.ea.diagram,
+ org.eclipse.gmf.runtime.common.ui,
+ org.eclipse.gmf.runtime.common.ui.services.action,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.eclipse.gmf.runtime.diagram.ui.providers,
+ org.eclipse.gmf.runtime.diagram.ui.actions
+Export-Package: org.ect.ea.diagram.contributions,
+ org.ect.ea.diagram.contributions.actions,
+ org.ect.ea.diagram.contributions.commands,
+ org.ect.ea.diagram.contributions.edit
+Bundle-Activator: org.ect.ea.diagram.contributions.ContributionsPlugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

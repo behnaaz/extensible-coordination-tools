@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CWI Antlr Plug-in
+Bundle-SymbolicName: org.ect.antlr;singleton:=true
+Bundle-Version: 3.2.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: lib/antlr-3.1.1.jar,
+ lib/stringtemplate.jar,
+ lib/antlr-2.7.7.jar
+Export-Package: org.antlr.runtime;uses:="org.antlr.runtime.tree",
+ org.antlr.runtime.tree;uses:="org.antlr.runtime,org.antlr.stringtemplate,org.antlr.runtime.misc",
+ org.antlr.stringtemplate;uses:="org.antlr.stringtemplate.language",
+ org.antlr.stringtemplate.language;
+  uses:="antlr.collections.impl,
+   antlr.collections,
+   antlr,
+   org.antlr.stringtemplate"
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: CWI

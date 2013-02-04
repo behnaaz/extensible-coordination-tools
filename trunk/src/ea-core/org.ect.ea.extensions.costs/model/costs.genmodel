@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ect.ea.extensions.costs/src"
+    modelPluginID="org.ect.ea.extensions.costs" modelName="CostsExtensions" suppressInterfaces="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    publicConstructors="true" usedGenPackages="platform:/plugin/org.ect.ea/model/ea.genmodel#//ea ea-costs.genmodel#//costs">
+  <foreignModel>costs.ecore</foreignModel>
+  <genPackages prefix="Costs" basePackage="org.ect.ea.extensions" disposableProviderFactory="true"
+      utilityPackageSuffix="" ecorePackage="costs.ecore#/">
+    <genClasses ecoreClass="costs.ecore#//CostsObjectExtension">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference costs.ecore#//CostsObjectExtension/costsObjects"/>
+    </genClasses>
+    <genClasses ecoreClass="costs.ecore#//CostsAlgebraExtension">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference costs.ecore#//CostsAlgebraExtension/costsAlgebras"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

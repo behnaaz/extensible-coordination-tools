@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Extendible Automata - Constraints Extension
+Bundle-SymbolicName: org.ect.ea.extensions.constraints;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: CWI
+Require-Bundle: org.ect.ea.extensions.portnames;bundle-version="3.2.0",
+ org.ect.ea.extensions.startstates;bundle-version="3.2.0",
+ org.ect.ea.extensions.statememory;bundle-version="3.2.0",
+ org.ect.ea.diagram;bundle-version="3.2.0",
+ org.ect.ea.diagram.contributions;bundle-version="3.2.0",
+ org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.ect.antlr;bundle-version="3.2.0"
+Export-Package: org.ect.ea.extensions.constraints,
+ org.ect.ea.extensions.constraints.operations,
+ org.ect.ea.extensions.constraints.parsers,
+ org.ect.ea.extensions.constraints.providers
+Bundle-ClassPath: antlr-3.0.jar,
+ .
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

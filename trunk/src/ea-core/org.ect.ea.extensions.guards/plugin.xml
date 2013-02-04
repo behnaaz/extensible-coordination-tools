@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.cwi.nl/ea/guards"
+            class="org.ect.ea.extensions.guards.GuardsPackage"
+            genModel="model/guards.genmodel"/>
+   </extension>
+   
+    <extension
+         point="org.ect.ea.extensions">
+   <extensionDefinition
+            enabledFor="transitions"
+            id="cwi.ea.extensions.guards"
+            name="Guards"
+            providerClass="org.ect.ea.extensions.guards.GuardsProvider"
+            type="textual">
+         <dependency
+               id="cwi.ea.extensions.transitionPortNames">
+         </dependency>
+      </extensionDefinition>
+   <automatonType
+         name="Guarded Port Automaton">
+      <extensionReference
+            id="cwi.ea.extensions.guards">
+      </extensionReference>
+      <extensionReference
+            id="cwi.ea.extensions.transitionPortNames">
+      </extensionReference>
+      <extensionReference
+            id="cwi.ea.extensions.automatonPortNames">
+      </extensionReference>
+      <extensionReference
+            id="cwi.ea.extensions.startStates">
+      </extensionReference>
+   </automatonType>
+      </extension>
+</plugin>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.ect.ea.extensions">
+      <extensionDefinition
+            enabledFor="automata"
+            icon="icons/clock.gif"
+            id="cwi.ea.extensions.clocks.automatonClocks"
+            name="Clock (Automaton)"
+            providerClass="org.ect.ea.extensions.clocks.AutomatonClocksProvider"
+            type="textual">
+      </extensionDefinition>
+      <extensionDefinition
+            enabledFor="transitions"
+            icon="icons/guard.gif"
+            id="cwi.ea.extensions.clocks.transitionGuards"
+            name="Clock guard (Transition)"
+            providerClass="org.ect.ea.extensions.clocks.TransitionGuardProvider"
+            type="textual">
+         <dependency
+               id="cwi.ea.extensions.clocks.automatonClocks">
+         </dependency>
+         <dependency
+               id="cwi.ea.extensions.clocks.transitionUpdates">
+         </dependency>
+      </extensionDefinition>
+      <extensionDefinition
+            enabledFor="transitions"
+            icon="icons/update.gif"
+            id="cwi.ea.extensions.clocks.transitionUpdates"
+            name="Clock update (Transition)"
+            providerClass="org.ect.ea.extensions.clocks.TransitionUpdateProvider"
+            type="textual">
+         <dependency
+               id="cwi.ea.extensions.clocks.automatonClocks">
+         </dependency>
+         <dependency
+               id="cwi.ea.extensions.clocks.transitionGuards">
+         </dependency>
+      </extensionDefinition>
+      <extensionDefinition
+            enabledFor="states"
+            icon="icons/invariant.gif"
+            id="cwi.ea.extensions.clocks.stateInvariants"
+            name="Invariant (State)"
+            providerClass="org.ect.ea.extensions.clocks.StateInvariantProvider"
+            type="textual">
+         <dependency
+               id="cwi.ea.extensions.clocks.automatonClocks">
+         </dependency>
+      </extensionDefinition>
+      <automatonType
+            name="Timed Constraint Automaton">
+         <extensionReference
+               id="cwi.ea.extensions.automatonPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.transitionPortNames">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.startStates">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.clocks.stateInvariants">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.clocks.automatonClocks">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.clocks.transitionGuards">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.clocks.transitionUpdates">
+         </extensionReference>
+         <extensionReference
+               id="cwi.ea.extensions.clocks.tcaConstraints">
+         </extensionReference>
+      </automatonType>
+      <extensionDefinition
+            enabledFor="transitions"
+            icon="icons/constraint.gif"
+            id="cwi.ea.extensions.clocks.tcaConstraints"
+            name="TCA Data Constraints"
+            providerClass="org.ect.ea.extensions.clocks.TCADataConstraintsProvider"
+            type="textual">
+         <mutualExclusion
+               global="true"
+               id="cwi.ea.extensions.constraints">
+         </mutualExclusion>
+      </extensionDefinition>
+   </extension>
+
+</plugin>

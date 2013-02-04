@@ -1,0 +1,33 @@
+group CAT;
+
+automaton(ca)::=<<
+"<ca.name>"[<
+["inPorts","outPorts"],["IN","OUT"]
+:{l,t|<portlist(list=ca.portNames.(l), type=t)>}
+; separator=", ">]
+<ca.states:state(); separator=",\n">
+>>
+
+
+portlist(list, type)::=<<
+<list:{l|<l><if (type)>::<type><endif>} ; separator=", ">
+>>
+
+state(s)::=<<
+<s.name><if (s.startState)>*<endif><cells(s.MemoryCells)>
+<if(!s.outgoing.Empty)>[
+	<s.outgoing:transition(); separator=",\n">
+]
+<endif>
+>>
+
+cells(c)::=<<
+<if (!c.values.Empty)>
+[<c.values; separator=", ">]
+<endif> 
+>>
+
+transition(t)::=<<
+[<t.portNames>]::<t.Constraint>::<t.target.name>
+>>  
+
