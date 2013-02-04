@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.extensions.constraints.parts;
 
 import org.eclipse.jface.action.IAction;
@@ -10,9 +20,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.ect.ea.automata.Automaton;
 import org.ect.ea.diagram.edit.parts.AutomatonEditPart;
 
-
 /*
- * TODO: MOVE ALL PORT RELATED STUFF TO org.ect.ea.extensions.portNames !
+ * TODO: MOVE ALL PORT RELATED STUFF TO org.ect.ea.extensions.portnames !
  */
 public class EditPortTypesAction implements IObjectActionDelegate  {
 

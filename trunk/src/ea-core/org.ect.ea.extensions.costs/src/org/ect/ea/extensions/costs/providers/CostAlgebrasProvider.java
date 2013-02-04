@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.extensions.costs.providers;
 
 import java.text.ParseException;
@@ -21,7 +31,6 @@ import org.ect.ea.extensions.IExtension;
 import org.ect.ea.extensions.costs.CostsAlgebraExtension;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
-
 
 
 public class CostAlgebrasProvider implements ITextualExtensionProvider, ICustomExtensionProvider {
