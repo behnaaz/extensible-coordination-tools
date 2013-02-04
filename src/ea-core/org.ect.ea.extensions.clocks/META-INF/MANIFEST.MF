@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.gef,
  org.ect.ea.extensions.startstates;bundle-version="3.2.0",
  org.ect.ea.extensions.statememory;bundle-version="3.2.5",
  org.ect.ea.diagram;bundle-version="3.2.0",
- org.ect.antlr;bundle-version="3.2.2",
+ org.ect.ea.antlr;bundle-version="3.2.2",
  org.ect.ea.extensions.statememory;bundle-version="3.2.5"
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

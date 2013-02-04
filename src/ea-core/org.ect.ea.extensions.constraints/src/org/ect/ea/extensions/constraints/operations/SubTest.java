@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.extensions.constraints.operations;
 
 import java.util.Arrays;
@@ -11,8 +21,6 @@ import org.ect.ea.extensions.constraints.Function;
 import org.ect.ea.extensions.constraints.Literal;
 import org.ect.ea.extensions.constraints.Parameter;
 import org.ect.ea.extensions.constraints.parsers.ConstraintParserHelper;
-
-
 
 public class SubTest {
 	private static Parameter tr(String s) {

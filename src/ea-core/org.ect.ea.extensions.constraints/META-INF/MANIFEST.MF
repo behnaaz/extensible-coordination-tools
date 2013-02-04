@@ -12,7 +12,7 @@ Require-Bundle: org.ect.ea.extensions.portnames;bundle-version="3.2.0",
  org.eclipse.core.runtime,
  org.eclipse.ui,
  org.eclipse.gmf.runtime.diagram.ui,
- org.ect.antlr;bundle-version="3.2.0"
+ org.ect.ea.antlr;bundle-version="3.2.0"
 Export-Package: org.ect.ea.extensions.constraints,
  org.ect.ea.extensions.constraints.operations,
  org.ect.ea.extensions.constraints.parsers,

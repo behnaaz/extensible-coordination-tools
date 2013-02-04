@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.extensions.constraints.operations;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -11,7 +21,6 @@ import org.ect.ea.extensions.constraints.Equation;
 import org.ect.ea.extensions.constraints.Predicate;
 import org.ect.ea.extensions.constraints.PredicateType;
 import org.ect.ea.extensions.constraints.parsers.ConstraintParserHelper;
-
 
 public final class Normaliser extends ConstraintsSwitch<Disjunction> {
 	@Override
