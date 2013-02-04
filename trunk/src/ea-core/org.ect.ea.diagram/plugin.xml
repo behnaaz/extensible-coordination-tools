@@ -43,11 +43,15 @@
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/AutomataDiagramFile.gif"
-  	     category="org.ect.reo"
+  	     category="org.ect"
   	     class="org.ect.ea.diagram.part.AutomataCreationWizard"
   	     id="org.ect.ea.diagram.part.AutomataCreationWizardID">
   	  	 <description>%newWizardDesc</description>  
       </wizard>
+     <category
+           id="org.ect"
+           name="Extensible Coordination Tools">
+     </category>
    </extension>
 <extension point="org.eclipse.ui.popupMenus">
       <?gmfgen generated="true"?>
