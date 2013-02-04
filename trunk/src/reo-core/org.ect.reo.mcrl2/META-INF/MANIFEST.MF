@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Reo to mCRL2 Conversion Plug-in
 Bundle-SymbolicName: org.ect.reo.mcrl2;singleton:=true
-Bundle-Version: 3.4.12
+Bundle-Version: 4.0.0.qualifier
 Bundle-Vendor: Extensible Coordination Tools
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.1.0",
