@@ -1,8 +1,13 @@
-/**
- * Copyright (C) SEN3 group at CWI, Amsterdam. Published under the terms of the GPL2.
- *
- * $Id$
- */
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.automata;
 
 import java.util.List;
@@ -11,8 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.ect.ea.extensions.ExtendibleElement;
 import org.ect.ea.extensions.IExtendible;
-
-
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +31,7 @@ import org.ect.ea.extensions.IExtendible;
  * @generated
  */
 public class AutomataSwitch<T> {
+	
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->

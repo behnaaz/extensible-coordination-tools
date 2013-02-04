@@ -1,8 +1,13 @@
-/**
- * Copyright (C) SEN3 group at CWI, Amsterdam. Published under the terms of the GPL2.
- *
- * $Id$
- */
+/*******************************************************************************
+ * <copyright>
+ * This file is part of the Extensible Coordination Tools (ECT).
+ * Copyright (c) 2013 ECT developers. 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * </copyright>
+ *******************************************************************************/
 package org.ect.ea.configuration;
 
 import java.util.ArrayList;
@@ -20,7 +25,6 @@ import org.ect.ea.IAutomatonType;
 import org.ect.ea.IAutomatonTypeRegistry;
 import org.ect.ea.automata.Automaton;
 
-
 /**
  * Default implementation of {@link org.ect.ea.IAutomatonTypeRegistry}.
  * @author Christian Krause
@@ -31,14 +35,12 @@ public class AutomatonTypeRegistry implements IAutomatonTypeRegistry {
 	// Hashmap for registered automata types.
 	private HashMap<HashSet<String>,IAutomatonType> types;
 	
-	
 	/**
 	 * Default constructor.
 	 */
 	public AutomatonTypeRegistry() {
 		types = new LinkedHashMap<HashSet<String>, IAutomatonType>();		
 	}
-
 	
 	/**
 	 * Load automata types. Initializes the registry with all automata types
