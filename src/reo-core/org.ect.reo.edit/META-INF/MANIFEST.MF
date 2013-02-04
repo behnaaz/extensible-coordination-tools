@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.ect.reo.edit; singleton:=true
-Bundle-Version: 3.4.12
+Bundle-Version: 4.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.ect.reo.provider.ReoEditPlugin$Implementation
 Bundle-Vendor: %providerName
