@@ -29,7 +29,7 @@ import org.ect.ea.extensions.BooleanExtension;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.portnames.DelayElement;
 import org.ect.ea.extensions.portnames.DelayInformation;
-import org.ect.ea.extensions.portnames.IntentionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
 import org.ect.ea.extensions.portnames.actions.QIARefinement;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 import org.ect.ea.util.ProductCache;
@@ -167,7 +167,7 @@ public class IEAProduct extends AutomataProduct{
 						State productSource = new State();
 						//Check the number of source states
 						productSource=productStates.getProduct(sources.get(indexS++),sources.get(indexS++));
-						IntentionalPortNames ports = (IntentionalPortNames) transition.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+						IntensionalPortNames ports = (IntensionalPortNames) transition.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 												
 						Transition newTransition2 = new Transition();
 						newTransition2.setSource(productSource);
@@ -190,7 +190,7 @@ public class IEAProduct extends AutomataProduct{
 						String stateName6 = target2.getName()!=null ? target2.getName() : target2.getId();
 						productTarget.setName(stateName5 + " x " + stateName6);*/
 													
-						IntentionalPortNames newPorts2 = new IntentionalPortNames();
+						IntensionalPortNames newPorts2 = new IntensionalPortNames();
 						newPorts2.setOwner(newTransition2);
 						newPorts2.getRequests().addAll(ports.getRequests());
 						newPorts2.getFirings().addAll(ports.getFirings());
@@ -224,14 +224,14 @@ public class IEAProduct extends AutomataProduct{
 				
 				EList<Transition> temp1 = reachable1.pop().getOutgoing(); 
 				for(Transition element1 : temp1){
-					if(!((IntentionalPortNames)element1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getMcollections() && element1.getTarget()!=null){
+					if(!((IntensionalPortNames)element1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getMcollections() && element1.getTarget()!=null){
 						transitions1.add(element1); 
 					}
 				}	
 				
 				EList<Transition> temp2 = reachable2.pop().getOutgoing();
 				for(Transition element3 : temp2){
-					if(!((IntentionalPortNames)element3.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getMcollections() && element3.getTarget()!=null){
+					if(!((IntensionalPortNames)element3.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getMcollections() && element3.getTarget()!=null){
 						transitions2.add(element3);
 					}
 				}
@@ -256,8 +256,8 @@ public class IEAProduct extends AutomataProduct{
 		for(Transition a: outgoings){
 			if(!a.equals(t)){
 				if(a.getTarget().equals(t.getTarget())){
-					IntentionalPortNames tIp = (IntentionalPortNames) t.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
-					IntentionalPortNames aIp = (IntentionalPortNames) a.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+					IntensionalPortNames tIp = (IntensionalPortNames) t.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+					IntensionalPortNames aIp = (IntensionalPortNames) a.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 					
 					/*if(tIp.getRequests().equals(aIp.getRequests()) 
 							&& tIp.getFirings().equals(aIp.getFirings())){*/
@@ -282,9 +282,9 @@ public class IEAProduct extends AutomataProduct{
 			if (PortNamesProductConditions.canIJoin(t1, t2)) {
 				interleaving = true;
 				Transition t = new Transition();
-				IntentionalPortNames p1 = (IntentionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
-				IntentionalPortNames p2 = (IntentionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
-				IntentionalPortNames joined = IntentionalPortNames.join(p1, p2);
+				IntensionalPortNames p1 = (IntensionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+				IntensionalPortNames p2 = (IntensionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+				IntensionalPortNames joined = IntensionalPortNames.join(p1, p2);
 				joined.setOwner(t);
 				
 				sources.add(t1.getSource());
@@ -303,7 +303,7 @@ public class IEAProduct extends AutomataProduct{
 			PortNamesProductConditions.getTargets().clear();
 		}
 		else{
-			List<IntentionalPortNames> iports = PortNamesProductConditions.canMJoin(t1, t2);
+			List<IntensionalPortNames> iports = PortNamesProductConditions.canMJoin(t1, t2);
 			if(!iports.isEmpty()){
 				sources.addAll(PortNamesProductConditions.getSources());
 				targets.addAll(PortNamesProductConditions.getTargets());
@@ -311,10 +311,10 @@ public class IEAProduct extends AutomataProduct{
 				PortNamesProductConditions.getTargets().clear();
 				interleaving = false;
 				for(int i=0;i<iports.size()-1;i++){
-					IntentionalPortNames n1 = iports.get(i++);
-					IntentionalPortNames n2 = iports.get(i);
+					IntensionalPortNames n1 = iports.get(i++);
+					IntensionalPortNames n2 = iports.get(i);
 					
-					IntentionalPortNames joined = IntentionalPortNames.join(n1, n2);
+					IntensionalPortNames joined = IntensionalPortNames.join(n1, n2);
 					Transition t = new Transition();
 					joined.setOwner(t);
 					
@@ -339,8 +339,8 @@ public class IEAProduct extends AutomataProduct{
 			interleaving = true;
 		}
 		else{
-			IntentionalPortNames iports1 = (IntentionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
-			IntentionalPortNames iports2 = (IntentionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+			IntensionalPortNames iports1 = (IntensionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+			IntensionalPortNames iports2 = (IntensionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 			Set<String> requests1 = new HashSet<String>(iports1.getRequests());
 			Set<String> firings1 = new HashSet<String>(iports1.getFirings());
 			Set<String> requests2 = new HashSet<String>(iports2.getRequests());
@@ -377,10 +377,10 @@ public class IEAProduct extends AutomataProduct{
 		
 		for(int i=0;i<merged.size();i++){
 			Transition check1 = merged.get(i);
-			IntentionalPortNames ports1 = (IntentionalPortNames) check1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+			IntensionalPortNames ports1 = (IntensionalPortNames) check1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 			for(int j=i+1;j<merged.size();j++){
 				Transition check2 = merged.get(j);
-				IntentionalPortNames ports2 = (IntentionalPortNames) check2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+				IntensionalPortNames ports2 = (IntensionalPortNames) check2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 				if(ports1.getRequests().containsAll(ports2.getRequests()) && ports1.getFirings().containsAll(ports2.getFirings()) && 
 				   ports2.getRequests().containsAll(ports1.getRequests()) && ports2.getFirings().containsAll(ports1.getFirings())){
 					remove.add(check2);

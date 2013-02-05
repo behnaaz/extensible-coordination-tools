@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.ect.ea.extensions.ExtensionElement;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.portnames.providers.DelayInfoProvider;
 import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
@@ -50,11 +49,10 @@ public class DelayInformation extends ExtensionElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public DelayInformation() {
 		super();
-		setId(DelayInfoProvider.EXTENSION_ID);
 	}
 	
 	/**
@@ -177,7 +175,7 @@ public class DelayInformation extends ExtensionElement {
 	 */
 	public IValidationResult validate()
 	{	
-		IntentionalPortNames portNames = (IntentionalPortNames)this.getOwner().findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+		IntensionalPortNames portNames = (IntensionalPortNames)this.getOwner().findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 		if (portNames==null) return ValidationResult.newOKResult();
 		
 		StringListExtension ports = new StringListExtension(portNames.getRequests());

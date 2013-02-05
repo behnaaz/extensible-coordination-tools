@@ -21,7 +21,7 @@ import org.ect.ea.automata.Automaton;
 import org.ect.ea.automata.State;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.BooleanExtension;
-import org.ect.ea.extensions.portnames.IntentionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
 import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 
@@ -43,13 +43,13 @@ public class QIARefinement {
 				List<Transition> tempTransitions = a.getOutgoing();
 				for(int i=0;i<tempTransitions.size();i++){
 					Transition t = tempTransitions.get(i);
-					IntentionalPortNames ip = (IntentionalPortNames) t.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+					IntensionalPortNames ip = (IntensionalPortNames) t.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 					List<String> M = tokenize(ip.getRequests());
 					List<String> N = tokenize(ip.getFirings());
 					for(int j=0;j<tempTransitions.size();j++){
 						if(i!=j){
 							Transition t1 = tempTransitions.get(j);
-							IntentionalPortNames ip1 = (IntentionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+							IntensionalPortNames ip1 = (IntensionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 							List<String> M1 = tokenize(ip1.getRequests());
 							List<String> N1 = tokenize(ip1.getFirings());
 							if(M1.containsAll(M) && !N.isEmpty() && N1.containsAll(N)){
@@ -65,7 +65,7 @@ public class QIARefinement {
 									for(int k=0;k<tempTransitions.size();k++){
 										if(k!=i && k!=j){
 											Transition t2 = tempTransitions.get(k);
-											IntentionalPortNames ip2 = (IntentionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+											IntensionalPortNames ip2 = (IntensionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 											List<String> N2 = tokenize(ip2.getFirings());
 											
 											if(!N2.isEmpty()){

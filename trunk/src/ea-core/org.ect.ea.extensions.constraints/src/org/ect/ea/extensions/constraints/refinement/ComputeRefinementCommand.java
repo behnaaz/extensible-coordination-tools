@@ -29,7 +29,7 @@ import org.ect.ea.extensions.constraints.Constraint;
 import org.ect.ea.extensions.constraints.Literal;
 import org.ect.ea.extensions.constraints.operations.Comparator;
 import org.ect.ea.extensions.constraints.providers.ConstraintExtensionProvider;
-import org.ect.ea.extensions.portnames.IntentionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
 import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 
@@ -58,14 +58,14 @@ public class ComputeRefinementCommand extends ChangeExtensionsCommand {
 				List<Transition> tempTransitions = a.getOutgoing();
 				for(int i=0;i<tempTransitions.size();i++){
 					Transition t1 = tempTransitions.get(i);
-					IntentionalPortNames ip1 = (IntentionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+					IntensionalPortNames ip1 = (IntensionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 					List<String> M1 = tokenize(ip1.getRequests());
 					List<String> N1 = tokenize(ip1.getFirings());
 					State target1 = t1.getTarget();
 					for(int j=0;j<tempTransitions.size();j++){
 						if(i!=j){
 							Transition t2 = tempTransitions.get(j);
-							IntentionalPortNames ip2 = (IntentionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+							IntensionalPortNames ip2 = (IntensionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 							List<String> M2 = tokenize(ip2.getRequests());
 							List<String> N2 = tokenize(ip2.getFirings());
 							State target2 = t2.getTarget();
@@ -98,7 +98,7 @@ public class ComputeRefinementCommand extends ChangeExtensionsCommand {
 								boolean contains = false;
 								for(Transition t3 : transitions){
 									if(!t3.equals(t1) && !t3.equals(t2)){
-										IntentionalPortNames ip3 = (IntentionalPortNames) t3.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+										IntensionalPortNames ip3 = (IntensionalPortNames) t3.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 										List<String> N = tokenize(ip3.getFirings());
 										if(N.containsAll(M1) && N.containsAll(N2)){
 											contains = true;

@@ -23,7 +23,7 @@ import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.ExtensionElement;
 import org.ect.ea.extensions.portnames.DelayElement;
 import org.ect.ea.extensions.portnames.DelayInformation;
-import org.ect.ea.extensions.portnames.IntentionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
 import org.ect.ea.extensions.portnames.PortNamesPackage;
 
 public class CollectingMixed extends ExtensionElement{
@@ -57,7 +57,7 @@ public class CollectingMixed extends ExtensionElement{
 		Stack<Transition> collected = new Stack<Transition>();
 		String id = IntensionalPortNamesProvider.EXTENSION_ID;
 		boolean readyforCollection = false;
-		for(String a : ((IntentionalPortNames)t.findExtension(id)).getRequests()){
+		for(String a : ((IntensionalPortNames)t.findExtension(id)).getRequests()){
 			if(newMixed.contains(a)){
 				readyforCollection = true;
 				break;
@@ -67,7 +67,7 @@ public class CollectingMixed extends ExtensionElement{
 		if(readyforCollection)	temp.push(t);
 		while(!temp.isEmpty()){
 			Transition concern = temp.pop();  
-			IntentionalPortNames ports = (IntentionalPortNames)concern.findExtension(id);
+			IntensionalPortNames ports = (IntensionalPortNames)concern.findExtension(id);
 			
 			//if collecting processing is done
 			if(!ports.getFirings().isEmpty() && hasCommon(ports.getRequests(),ports.getFirings(),newMixed)){//mark if it is already checked or not
@@ -86,14 +86,14 @@ public class CollectingMixed extends ExtensionElement{
 				EList<Transition> outgoings = tempState.getOutgoing();
 				Stack<Transition> outstack = new Stack<Transition>();
 				for(Transition a : outgoings){
-					if(!collected.contains(a) && outstack.search(a)==-1 && !((IntentionalPortNames)a.findExtension(id)).getMcollections()){
+					if(!collected.contains(a) && outstack.search(a)==-1 && !((IntensionalPortNames)a.findExtension(id)).getMcollections()){
 						outstack.push(a);
 					} 
 				}
 				while(!outstack.isEmpty()){
 					Transition b = outstack.pop();
 					if(!b.getSource().equals(b.getTarget())){
-						IntentionalPortNames checkIports = ((IntentionalPortNames) b.findExtension(id));
+						IntensionalPortNames checkIports = ((IntensionalPortNames) b.findExtension(id));
 						
 						boolean Continue = false;
 						boolean Last = false;
@@ -109,15 +109,15 @@ public class CollectingMixed extends ExtensionElement{
 							tempcollect.setTarget(b.getTarget()); 
 							
 							//To collect intentional ports
-							IntentionalPortNames Iports = new IntentionalPortNames();
+							IntensionalPortNames Iports = new IntensionalPortNames();
 							Iports.setOwner(tempcollect); 
 							Iports.setId(id);
 							Iports.setMcollections(true);
-							Iports.getRequests().addAll(((IntentionalPortNames) concern.findExtension(id)).getRequests());
-							Iports.getRequests().addAll(((IntentionalPortNames) b.findExtension(id)).getRequests());
+							Iports.getRequests().addAll(((IntensionalPortNames) concern.findExtension(id)).getRequests());
+							Iports.getRequests().addAll(((IntensionalPortNames) b.findExtension(id)).getRequests());
 							if(Last){
-								Iports.getFirings().addAll(((IntentionalPortNames) concern.findExtension(id)).getFirings());
-								Iports.getFirings().addAll(((IntentionalPortNames) b.findExtension(id)).getFirings());
+								Iports.getFirings().addAll(((IntensionalPortNames) concern.findExtension(id)).getFirings());
+								Iports.getFirings().addAll(((IntensionalPortNames) b.findExtension(id)).getFirings());
 								
 								if(hasCommon(Iports.getRequests(), Iports.getFirings(), newMixed)){
 									addable = true;
@@ -177,8 +177,8 @@ public class CollectingMixed extends ExtensionElement{
 			
 			if(a.getSource()==t.getSource() && 
 					a.getTarget()==t.getTarget()){
-				IntentionalPortNames ip1 = (IntentionalPortNames) a.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
-				IntentionalPortNames ip2 = (IntentionalPortNames) t.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+				IntensionalPortNames ip1 = (IntensionalPortNames) a.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+				IntensionalPortNames ip2 = (IntensionalPortNames) t.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 				
 				if(ip1.getRequests().containsAll(ip2.getRequests()) &&
 						ip2.getRequests().containsAll(ip1.getRequests())){
@@ -206,7 +206,7 @@ public class CollectingMixed extends ExtensionElement{
 	    boolean N2subN1 =true;
 	    String id = IntensionalPortNamesProvider.EXTENSION_ID;
 	    EList<Transition> transitions = t1.getAutomaton().getTransitions();
-	    IntentionalPortNames check = (IntentionalPortNames) t2.findExtension(id);
+	    IntensionalPortNames check = (IntensionalPortNames) t2.findExtension(id);
 	    State source = t2.getSource();
 	    State target = t2.getTarget();
 	    EList<String> M2 = check.getRequests();
@@ -214,7 +214,7 @@ public class CollectingMixed extends ExtensionElement{
 	    for(Transition a : transitions){
 	         if(a.getSource()==source && a.getTarget() == target){
 	             commonST=true;
-	             IntentionalPortNames temp = (IntentionalPortNames) a.findExtension(id);
+	             IntensionalPortNames temp = (IntensionalPortNames) a.findExtension(id);
 	             EList<String> M1 = temp.getRequests();
 	             EList<String> N1 = temp.getFirings();
 				 if(!M2.containsAll(M1))		M1subM2 = false;

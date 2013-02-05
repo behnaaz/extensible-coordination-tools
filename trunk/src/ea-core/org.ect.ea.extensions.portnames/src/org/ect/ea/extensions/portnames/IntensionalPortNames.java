@@ -16,10 +16,8 @@ import java.util.List;
 import java.util.Vector;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.ect.ea.automata.Automaton;
@@ -27,7 +25,6 @@ import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.ExtensionElement;
 import org.ect.ea.extensions.StringListExtension;
 import org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider;
-import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 
@@ -39,8 +36,8 @@ import org.ect.ea.util.ValidationResult;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.ect.ea.extensions.portNames.IntensionalPortNames#getRequests <em>Requests</em>}</li>
- *   <li>{@link org.ect.ea.extensions.portNames.IntensionalPortNames#getFirings <em>Firings</em>}</li>
+ *   <li>{@link org.ect.ea.extensions.portnames.IntensionalPortNames#getRequests <em>Requests</em>}</li>
+ *   <li>{@link org.ect.ea.extensions.portnames.IntensionalPortNames#getFirings <em>Firings</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,14 +45,13 @@ import org.ect.ea.util.ValidationResult;
  * @model kind="class"
  * @generated
  */
-public class IntentionalPortNames extends ExtensionElement {
+public class IntensionalPortNames extends ExtensionElement {
 	
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
-	public IntentionalPortNames() {
+	public IntensionalPortNames() {
 		super();
-		setId(IntensionalPortNamesProvider.EXTENSION_ID);
 	}
 	
 	/**
@@ -301,25 +297,25 @@ public class IntentionalPortNames extends ExtensionElement {
 	
 	}	
 	
-	public static IntentionalPortNames join(IntentionalPortNames n1, IntentionalPortNames n2) {
+	public static IntensionalPortNames join(IntensionalPortNames n1, IntensionalPortNames n2) {
 		
-		IntentionalPortNames result = new IntentionalPortNames();
+		IntensionalPortNames result = new IntensionalPortNames();
 		// Refine the result i.e. to remove duplicate ports names from firing and request sets
 		EObject Iport1 = EcoreUtil.copy(n1);
 		EObject Iport2 = EcoreUtil.copy(n2);
 			
-		HashSet<String> requesttemp1 = new HashSet<String>(((IntentionalPortNames)Iport1).getRequests());
-		HashSet<String> requesttemp2 = new HashSet<String>(((IntentionalPortNames)Iport2).getRequests());
-		HashSet<String> firingtemp1 = new HashSet<String>(((IntentionalPortNames)Iport1).getFirings());
-		HashSet<String> firingtemp2 = new HashSet<String>(((IntentionalPortNames)Iport2).getFirings());
+		HashSet<String> requesttemp1 = new HashSet<String>(((IntensionalPortNames)Iport1).getRequests());
+		HashSet<String> requesttemp2 = new HashSet<String>(((IntensionalPortNames)Iport2).getRequests());
+		HashSet<String> firingtemp1 = new HashSet<String>(((IntensionalPortNames)Iport1).getFirings());
+		HashSet<String> firingtemp2 = new HashSet<String>(((IntensionalPortNames)Iport2).getFirings());
 		
 		requesttemp1.retainAll(requesttemp2);
 		firingtemp1.retainAll(firingtemp2);
 			
-		result.getRequests().addAll(((IntentionalPortNames)Iport1).getRequests());
-		result.getRequests().addAll(((IntentionalPortNames)Iport2).getRequests());
-		result.getFirings().addAll(((IntentionalPortNames)Iport1).getFirings());
-		result.getFirings().addAll(((IntentionalPortNames)Iport2).getFirings());
+		result.getRequests().addAll(((IntensionalPortNames)Iport1).getRequests());
+		result.getRequests().addAll(((IntensionalPortNames)Iport2).getRequests());
+		result.getFirings().addAll(((IntensionalPortNames)Iport1).getFirings());
+		result.getFirings().addAll(((IntensionalPortNames)Iport2).getFirings());
 			
 		if(!requesttemp1.isEmpty()){
 			for(String a : requesttemp1){
