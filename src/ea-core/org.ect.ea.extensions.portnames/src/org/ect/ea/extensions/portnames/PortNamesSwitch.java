@@ -111,7 +111,7 @@ public class PortNamesSwitch<T> {
 				return result;
 			}
 			case PortNamesPackage.INTENSIONAL_PORT_NAMES: {
-				IntentionalPortNames intensionalPortNames = (IntentionalPortNames)theEObject;
+				IntensionalPortNames intensionalPortNames = (IntensionalPortNames)theEObject;
 				T result = caseIntensionalPortNames(intensionalPortNames);
 				if (result == null) result = caseExtensionElement(intensionalPortNames);
 				if (result == null) result = caseIExtension(intensionalPortNames);
@@ -177,11 +177,10 @@ public class PortNamesSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIntensionalPortNames(IntentionalPortNames object) {
+	public T caseIntensionalPortNames(IntensionalPortNames object) {
 		return null;
 	}
 
-	
 	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Delay Element</em>'.
 	 * <!-- begin-user-doc -->

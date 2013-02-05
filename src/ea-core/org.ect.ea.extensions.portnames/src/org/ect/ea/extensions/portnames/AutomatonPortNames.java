@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 
@@ -29,11 +28,10 @@ import org.ect.ea.util.ValidationResult;
 public class AutomatonPortNames extends StringListExtension {
 	
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	public AutomatonPortNames() {
 		super();
-		setId(AutomatonPortNamesProvider.EXTENSION_ID);
 	}
 
 	/**

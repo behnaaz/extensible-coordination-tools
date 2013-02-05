@@ -40,7 +40,7 @@ public class PortNamesPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String eNAME = "portNames";
+	public static final String eNAME = "portnames";
 
 	/**
 	 * The package namespace URI.
@@ -56,7 +56,7 @@ public class PortNamesPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String eNS_PREFIX = "portNames";
+	public static final String eNS_PREFIX = "portnames";
 
 	/**
 	 * The singleton instance of the package.
@@ -177,10 +177,10 @@ public class PortNamesPackage extends EPackageImpl {
 	public static final int TRANSITION_PORT_NAMES_FEATURE_COUNT = ExtensionsPackage.STRING_LIST_EXTENSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.ect.ea.extensions.portnames.IntentionalPortNames <em>Intensional Port Names</em>}' class.
+	 * The meta object id for the '{@link org.ect.ea.extensions.portnames.IntensionalPortNames <em>Intensional Port Names</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.ect.ea.extensions.portnames.IntentionalPortNames
+	 * @see org.ect.ea.extensions.portnames.IntensionalPortNames
 	 * @see org.ect.ea.extensions.portnames.PortNamesPackage#getIntensionalPortNames()
 	 * @generated
 	 */
@@ -497,11 +497,11 @@ public class PortNamesPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.ect.ea.extensions.portnames.IntentionalPortNames <em>Intensional Port Names</em>}'.
+	 * Returns the meta object for class '{@link org.ect.ea.extensions.portnames.IntensionalPortNames <em>Intensional Port Names</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Intensional Port Names</em>'.
-	 * @see org.ect.ea.extensions.portnames.IntentionalPortNames
+	 * @see org.ect.ea.extensions.portnames.IntensionalPortNames
 	 * @generated
 	 */
 	public EClass getIntensionalPortNames() {
@@ -510,11 +510,11 @@ public class PortNamesPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.ect.ea.extensions.portnames.IntentionalPortNames#getRequests <em>Requests</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.ect.ea.extensions.portnames.IntensionalPortNames#getRequests <em>Requests</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Requests</em>'.
-	 * @see org.ect.ea.extensions.portnames.IntentionalPortNames#getRequests()
+	 * @see org.ect.ea.extensions.portnames.IntensionalPortNames#getRequests()
 	 * @see #getIntensionalPortNames()
 	 * @generated
 	 */
@@ -524,11 +524,11 @@ public class PortNamesPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.ect.ea.extensions.portnames.IntentionalPortNames#getFirings <em>Firings</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.ect.ea.extensions.portnames.IntensionalPortNames#getFirings <em>Firings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Firings</em>'.
-	 * @see org.ect.ea.extensions.portnames.IntentionalPortNames#getFirings()
+	 * @see org.ect.ea.extensions.portnames.IntensionalPortNames#getFirings()
 	 * @see #getIntensionalPortNames()
 	 * @generated
 	 */
@@ -741,9 +741,9 @@ public class PortNamesPackage extends EPackageImpl {
 
 		initEClass(transitionPortNamesEClass, TransitionPortNames.class, "TransitionPortNames", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(intensionalPortNamesEClass, IntentionalPortNames.class, "IntensionalPortNames", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIntensionalPortNames_Requests(), ecorePackage.getEString(), "requests", null, 0, -1, IntentionalPortNames.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIntensionalPortNames_Firings(), ecorePackage.getEString(), "firings", null, 0, -1, IntentionalPortNames.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(intensionalPortNamesEClass, IntensionalPortNames.class, "IntensionalPortNames", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntensionalPortNames_Requests(), ecorePackage.getEString(), "requests", null, 0, -1, IntensionalPortNames.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntensionalPortNames_Firings(), ecorePackage.getEString(), "firings", null, 0, -1, IntensionalPortNames.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(delayElementEClass, DelayElement.class, "DelayElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDelayElement_Input(), ecorePackage.getEString(), "input", null, 0, -1, DelayElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -809,10 +809,10 @@ public class PortNamesPackage extends EPackageImpl {
 		public static final EClass TRANSITION_PORT_NAMES = eINSTANCE.getTransitionPortNames();
 
 		/**
-		 * The meta object literal for the '{@link org.ect.ea.extensions.portnames.IntentionalPortNames <em>Intensional Port Names</em>}' class.
+		 * The meta object literal for the '{@link org.ect.ea.extensions.portnames.IntensionalPortNames <em>Intensional Port Names</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.ect.ea.extensions.portnames.IntentionalPortNames
+		 * @see org.ect.ea.extensions.portnames.IntensionalPortNames
 		 * @see org.ect.ea.extensions.portnames.PortNamesPackage#getIntensionalPortNames()
 		 * @generated
 		 */

@@ -85,7 +85,7 @@ public class PortNamesAdapterFactory extends AdapterFactoryImpl {
 				return createTransitionPortNamesAdapter();
 			}
 			@Override
-			public Adapter caseIntensionalPortNames(IntentionalPortNames object) {
+			public Adapter caseIntensionalPortNames(IntensionalPortNames object) {
 				return createIntensionalPortNamesAdapter();
 			}
 			@Override
@@ -157,13 +157,13 @@ public class PortNamesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.ect.ea.extensions.portnames.IntentionalPortNames <em>Intensional Port Names</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.ect.ea.extensions.portnames.IntensionalPortNames <em>Intensional Port Names</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.ect.ea.extensions.portnames.IntentionalPortNames
+	 * @see org.ect.ea.extensions.portnames.IntensionalPortNames
 	 * @generated
 	 */
 	public Adapter createIntensionalPortNamesAdapter() {

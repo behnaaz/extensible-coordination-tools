@@ -21,7 +21,7 @@ import org.ect.ea.automata.State;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.portnames.AutomatonPortNames;
 import org.ect.ea.extensions.portnames.DelayInformation;
-import org.ect.ea.extensions.portnames.IntentionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
 import org.ect.ea.extensions.portnames.TransitionPortNames;
 
 public class PortNamesProductConditions {
@@ -62,8 +62,8 @@ public class PortNamesProductConditions {
 				
 		// Check if t1 and t2 are independent or not. 
 		if(!newMixed.isEmpty()){
-			IntentionalPortNames Mports1 = (IntentionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
-			IntentionalPortNames Mports2 = (IntentionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+			IntensionalPortNames Mports1 = (IntensionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+			IntensionalPortNames Mports2 = (IntensionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 			
 			for(String a : Mports1.getFirings()){
 				if(newMixed.contains(a))	independent = false;
@@ -128,8 +128,8 @@ public class PortNamesProductConditions {
 	 */
 	public static boolean includesMixedNodes(Transition t1, Transition t2, Transition ports1, Transition ports2){
 		boolean result = false;
-		IntentionalPortNames n1 = (IntentionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
-		IntentionalPortNames n2 = (IntentionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+		IntensionalPortNames n1 = (IntensionalPortNames) t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+		IntensionalPortNames n2 = (IntensionalPortNames) t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 		
 		// f1, f2 : firing sets
 		// N1, N2 : automatonPorts 
@@ -167,17 +167,17 @@ public class PortNamesProductConditions {
 	public static List<State> getTargets(){
 		return targets;
 	}
-	public static EList<IntentionalPortNames> canMJoin(Transition t1, Transition t2)
+	public static EList<IntensionalPortNames> canMJoin(Transition t1, Transition t2)
 	{
 		List<String> mixed = getNewMixed(t1, t2);
 		
 		boolean MT1 = false;
 		boolean MT2 = false;
-		EList<IntentionalPortNames> transitions = new BasicEList<IntentionalPortNames>();
-		for(String a : ((IntentionalPortNames)t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getRequests()){
+		EList<IntensionalPortNames> transitions = new BasicEList<IntensionalPortNames>();
+		for(String a : ((IntensionalPortNames)t1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getRequests()){
 			if(mixed.contains(a))	MT1 = true;
 		}
-		for(String c : ((IntentionalPortNames)t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getRequests()){
+		for(String c : ((IntensionalPortNames)t2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID)).getRequests()){
 			if(mixed.contains(c))	MT2 = true;
 		}
 		
@@ -191,9 +191,9 @@ public class PortNamesProductConditions {
 				List<Transition> CList1 = c1.getCollected();
 				List<Transition> CList2 = c2.getCollected();
 				for(Transition temp1 : CList1){
-					IntentionalPortNames n1 = (IntentionalPortNames) temp1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+					IntensionalPortNames n1 = (IntensionalPortNames) temp1.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 					for(Transition temp2 : CList2){
-						IntentionalPortNames n2 = (IntentionalPortNames) temp2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+						IntensionalPortNames n2 = (IntensionalPortNames) temp2.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 																		
 						// f1, f2 : firing sets 
 						// N1, N2 : AutomatonPort sets 
@@ -284,12 +284,12 @@ public class PortNamesProductConditions {
 	public static HashSet<String> getrequests(Transition owner)
 	{
 		String id = IntensionalPortNamesProvider.EXTENSION_ID;
-		return new HashSet<String> (((IntentionalPortNames) owner.findExtension(id)).getRequests());
+		return new HashSet<String> (((IntensionalPortNames) owner.findExtension(id)).getRequests());
 	}
 
 	public static HashSet<String> getfirings(Transition owner)
 	{
 		String id = IntensionalPortNamesProvider.EXTENSION_ID;
-		return new HashSet<String> (((IntentionalPortNames) owner.findExtension(id)).getFirings());
+		return new HashSet<String> (((IntensionalPortNames) owner.findExtension(id)).getFirings());
 	}
 }

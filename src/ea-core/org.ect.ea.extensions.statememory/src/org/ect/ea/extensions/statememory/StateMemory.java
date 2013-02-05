@@ -73,7 +73,6 @@ public class StateMemory extends StringListExtension {
 		return occ;
 	}
 	
-	
 	/**
 	 * @generated NOT
 	 */
@@ -93,8 +92,6 @@ public class StateMemory extends StringListExtension {
 		return result.toString();
 	}
 	
-	
-	
 	/* ---------------------------------------------------------------- *
 	 * GENERATED CODE.                                                  *
 	 * Do not edit below this line. If you need to edit, move it above  *
@@ -113,7 +110,6 @@ public class StateMemory extends StringListExtension {
 	 */
 	public StateMemory() {
 		super();
-		setId(StateMemoryExtensionProvider.EXTENSION_ID);
 	}
 
 	/**

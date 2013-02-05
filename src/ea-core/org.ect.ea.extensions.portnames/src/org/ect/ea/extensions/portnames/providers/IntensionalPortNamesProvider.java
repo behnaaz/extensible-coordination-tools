@@ -24,7 +24,7 @@ import org.ect.ea.configuration.ExtensionDefinition;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.IExtension;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.portnames.IntentionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
 import org.ect.ea.util.IValidationResult;
 
 public class IntensionalPortNamesProvider  implements ITextualExtensionProvider {
@@ -45,7 +45,7 @@ public class IntensionalPortNamesProvider  implements ITextualExtensionProvider 
 	 */
 	public IExtension createDefaultExtension(IExtendible owner) {
 		// Create an empty intentional port names.
-		return new IntentionalPortNames();
+		return new IntensionalPortNames();
 	}
 	
 	/**
@@ -59,14 +59,14 @@ public class IntensionalPortNamesProvider  implements ITextualExtensionProvider 
 	 * Check whether a port names extension is silent, i.e. empty.
 	 */
 	public boolean isSilentExtension(IExtension extension) {
-		IntentionalPortNames names = (IntentionalPortNames) extension;
+		IntensionalPortNames names = (IntensionalPortNames) extension;
 		return names.getRequests().isEmpty() && names.getFirings().isEmpty();
 	}
 
 
 	
 	public String editExtension(IExtension extension) {
-		IntentionalPortNames portNames = (IntentionalPortNames) extension;
+		IntensionalPortNames portNames = (IntensionalPortNames) extension;
 		String Temp1 = portNames.getRequests().toString();
 		String Temp2 = portNames.getFirings().toString();
 		
@@ -82,7 +82,7 @@ public class IntensionalPortNamesProvider  implements ITextualExtensionProvider 
 	}
 	
 	public IExtension parseExtension(String value, IExtendible owner) throws ParseException {
-		IntentionalPortNames portNames = new IntentionalPortNames();
+		IntensionalPortNames portNames = new IntensionalPortNames();
 		StringListExtension requests = null;
 		StringListExtension firings = null;
 		StringListExtension requestTemp;
@@ -159,25 +159,25 @@ public class IntensionalPortNamesProvider  implements ITextualExtensionProvider 
 	public EList<IExtension> computeProductExtensions(IExtension x1, IExtension x2) {
 		
 		EList<IExtension> result = new BasicEList<IExtension>();
-		IntentionalPortNames p1 = (IntentionalPortNames) x1;
-		IntentionalPortNames p2 = (IntentionalPortNames) x2;
+		IntensionalPortNames p1 = (IntensionalPortNames) x1;
+		IntensionalPortNames p2 = (IntensionalPortNames) x2;
 		
 		Transition t1 = (Transition) x1.getOwner();
 		Transition t2 = (Transition) x2.getOwner();			
 						
 		if (PortNamesProductConditions.canIJoin(t1, t2)) {
-			IntentionalPortNames joined = IntentionalPortNames.join(p1, p2);
+			IntensionalPortNames joined = IntensionalPortNames.join(p1, p2);
 			result.add(joined);	
 		}
 		else{
-			EList<IntentionalPortNames> transitions = PortNamesProductConditions.canMJoin(t1, t2);
+			EList<IntensionalPortNames> transitions = PortNamesProductConditions.canMJoin(t1, t2);
 			
 			if(!transitions.isEmpty()){
 				for(int i=0;i<transitions.size()-1;i++){
-					IntentionalPortNames n1 = transitions.get(i++);
-					IntentionalPortNames n2 = transitions.get(i);
+					IntensionalPortNames n1 = transitions.get(i++);
+					IntensionalPortNames n2 = transitions.get(i);
 					
-					IntentionalPortNames joined = IntentionalPortNames.join(n1, n2);
+					IntensionalPortNames joined = IntensionalPortNames.join(n1, n2);
 					result.add(joined);
 				}
 			}
@@ -194,7 +194,7 @@ public class IntensionalPortNamesProvider  implements ITextualExtensionProvider 
 	 * @see org.ect.ea.IExtensionProvider#validateExtension(org.ect.ea.extensions.IExtension)
 	 */
 	public IValidationResult validateExtension(IExtension extension) {
-		return ((IntentionalPortNames) extension).validate();
+		return ((IntensionalPortNames) extension).validate();
 	}
 
 	

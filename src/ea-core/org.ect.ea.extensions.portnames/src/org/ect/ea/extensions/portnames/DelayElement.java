@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
@@ -40,7 +40,8 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * @model kind="class"
  * @generated
  */
-public class DelayElement extends MinimalEObjectImpl.Container implements EObject {
+public class DelayElement extends EObjectImpl implements EObject {
+	
 	/**
 	 * The cached value of the '{@link #getInput() <em>Input</em>}' attribute list.
 	 * <!-- begin-user-doc -->

@@ -107,8 +107,8 @@ public class PortNamesFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntentionalPortNames createIntensionalPortNames() {
-		IntentionalPortNames intensionalPortNames = new IntentionalPortNames();
+	public IntensionalPortNames createIntensionalPortNames() {
+		IntensionalPortNames intensionalPortNames = new IntensionalPortNames();
 		return intensionalPortNames;
 	}
 

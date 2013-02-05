@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.portnames.IntentionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
 import org.ect.ea.extensions.portnames.TransitionPortNames;
 import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider;
@@ -189,7 +189,7 @@ public class Element extends EObjectImpl implements Parameter {
 				
 				// Check whether the identifier is a legal port name.
 				TransitionPortNames ports = (TransitionPortNames) owner.findExtension(TransitionPortNamesProvider.EXTENSION_ID);		
-				IntentionalPortNames iports = (IntentionalPortNames) owner.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
+				IntensionalPortNames iports = (IntensionalPortNames) owner.findExtension(IntensionalPortNamesProvider.EXTENSION_ID);
 				
 				if ((ports==null || !ports.getValues().contains(getValue())) &&
 					(iports==null || (!iports.getRequests().contains(getValue()) && !iports.getFirings().contains(getValue())))) {
