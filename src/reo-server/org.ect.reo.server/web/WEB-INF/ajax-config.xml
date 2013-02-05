@@ -1,0 +1,96 @@
+<ajaxConfig>
+	
+	<group ajaxRef="Reo">
+
+	<!-- Page refreshing. -->
+	
+	<element ajaxRef="networks">
+		<event type="manual">
+		<requestHandler type="std:SimpleRequest" method="get">
+			<target>/refresh/networks</target>
+			<parameter/>
+		</requestHandler>
+		<responseHandler type="std:InnerHTML">
+			<parameter>content</parameter>
+		</responseHandler>
+		</event>
+	</element>
+
+	<element ajaxRef="network">
+		<event type="manual">
+		<requestHandler type="std:SimpleRequest" method="get">
+			<target>/refresh/networks/0</target>
+			<parameter/>
+		</requestHandler>
+		<responseHandler type="std:InnerHTML">
+			<parameter>content</parameter>
+		</responseHandler>
+		</event>
+	</element>
+	
+	<element ajaxRef="rules">
+		<event type="manual">
+		<requestHandler type="std:SimpleRequest" method="get">
+			<target>/refresh/rules</target>
+			<parameter/>
+		</requestHandler>
+		<responseHandler type="std:InnerHTML">
+			<parameter>content</parameter>
+		</responseHandler>
+		</event>
+	</element>
+	
+	<element ajaxRef="connectors">
+		<event type="manual">
+		<requestHandler type="std:SimpleRequest" method="get">
+			<target>/refresh/connectors</target>
+			<parameter/>
+		</requestHandler>
+		<responseHandler type="std:InnerHTML">
+			<parameter>content</parameter>
+		</responseHandler>
+		</event>
+	</element>
+	
+	<element ajaxRef="components">
+		<event type="manual">
+		<requestHandler type="std:SimpleRequest" method="get">
+			<target>/refresh/components</target>
+			<parameter/>
+		</requestHandler>
+		<responseHandler type="std:InnerHTML">
+			<parameter>content</parameter>
+		</responseHandler>
+		</event>
+	</element>
+	
+	<element ajaxRef="log">
+		<event type="manual">
+		<requestHandler type="std:SimpleRequest" method="get">
+			<target>/refresh/log</target>
+			<parameter/>
+		</requestHandler>
+		<responseHandler type="std:InnerHTML">
+			<parameter>content</parameter>
+		</responseHandler>
+		</event>
+	</element>
+	
+	
+	<!-- Timer events. -->
+	
+	<element ajaxRef="monitor">
+		<event type="timer">
+		<requestHandler type="std:SimpleRequest" method="get">
+			<target>/actions/monitor</target>
+			<parameter/>
+		</requestHandler>
+		<responseHandler type="std:InnerHTML">
+			<parameter>monitor</parameter>
+		</responseHandler>
+		</event>
+	</element>
+
+  </group>
+  
+</ajaxConfig>

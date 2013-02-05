@@ -1,0 +1,39 @@
+<%@ jet package="cwi.reo.templates" imports="cwi.reo.data.ComponentDescriptor" class="BuildXml"%><%
+
+	ComponentDescriptor descriptor = (ComponentDescriptor) argument;
+	String fullname = (descriptor.packageName==null) ? descriptor.packageName : descriptor.packageName + "." + descriptor.componentName;
+
+%><?xml version="1.0"?>
+<project name="<%= descriptor.componentName %>" default="compile">
+
+	<property name="src" value="src"/>
+	<property name="bin" value="bin"/>
+	<property name="lib" value="lib"/>
+	<property name="component" value="<%= fullname %>"/>
+
+	<path id="classpath">
+		<pathelement location="${bin}"/>
+		<fileset dir="${lib}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="clean" description="Clean project.">
+		<delete dir="${bin}"/>
+	</target>
+	
+	<target name="compile" description="Compile component source code.">
+		<mkdir dir="bin"/>
+		<javac srcdir="${src}" 
+			   destdir="${bin}" 
+			   classpathref="classpath"
+			   source="1.5"
+			   debug="true"
+               includeAntRuntime="false"/>
+	</target>
+	
+	<target name="run" description="Run the component.">
+		<java classname="${component}" classpathref="classpath"/>
+	</target>
+	
+</project>

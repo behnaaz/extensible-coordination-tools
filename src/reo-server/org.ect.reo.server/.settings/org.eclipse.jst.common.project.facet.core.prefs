@@ -1,0 +1,4 @@
+#Sun Nov 09 15:05:43 CET 2008
+classpath.helper/org.eclipse.jdt.launching.JRE_CONTAINER\:\:org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType\:\:java-1.5.0-sun-1.5.0.10/owners=jst.java\:5.0
+classpath.helper/org.eclipse.jdt.launching.JRE_CONTAINER\:\:org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType\:\:sun-jdk-1.6.0.07/owners=jst.java\:6.0
+eclipse.preferences.version=1
