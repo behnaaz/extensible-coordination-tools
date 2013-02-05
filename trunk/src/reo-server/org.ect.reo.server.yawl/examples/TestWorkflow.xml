@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specificationSet xmlns="http://www.citi.qut.edu.au/yawl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Beta 4" xsi:schemaLocation="http://www.citi.qut.edu.au/yawl d:/yawl/schema/YAWL_SchemaBeta4.xsd">
+  <specification uri="TestWorkflow">
+    <metaData />
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" />
+    <decomposition id="declare" isRootNet="true" xsi:type="NetFactsType">
+      <inputParam>
+        <name>dataItem</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <name>dataItem</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <processControlElements>
+        <inputCondition id="0_InputCondition">
+          <flowsInto>
+            <nextElementRef id="4_before" />
+          </flowsInto>
+        </inputCondition>
+        <task id="4_before">
+          <flowsInto>
+            <nextElementRef id="3_during" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;dataItem&gt;{/declare/dataItem/text()}&lt;/dataItem&gt;" />
+              <mapsTo>dataItem</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;dataItem&gt;{/before/dataItem/text()}&lt;/dataItem&gt;" />
+              <mapsTo>dataItem</mapsTo>
+            </mapping>
+          </completedMappings>
+          <decomposesTo id="before" />
+        </task>
+        <task id="3_during">
+          <flowsInto>
+            <nextElementRef id="2_after" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;dataItem&gt;{/declare/dataItem/text()}&lt;/dataItem&gt;" />
+              <mapsTo>dataItem</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;dataItem&gt;{/reo/dataItem/text()}&lt;/dataItem&gt;" />
+              <mapsTo>dataItem</mapsTo>
+            </mapping>
+          </completedMappings>
+          <decomposesTo id="reo" />
+        </task>
+        <task id="2_after">
+          <flowsInto>
+            <nextElementRef id="1_OutputCondition" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;dataItem&gt;{/declare/dataItem/text()}&lt;/dataItem&gt;" />
+              <mapsTo>dataItem</mapsTo>
+            </mapping>
+          </startingMappings>
+          <decomposesTo id="after" />
+        </task>
+        <outputCondition id="1_OutputCondition" />
+      </processControlElements>
+    </decomposition>
+    <decomposition id="after" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <name>dataItem</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+    </decomposition>
+    <decomposition id="reo" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <name>dataItem</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <name>dataItem</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+			<yawlService id="http://localhost:8080/reo-yawl/write">
+				<wsdlLocation>http://www.xmethods.net/sd/2001/BNQuoteService.wsdl</wsdlLocation>
+				<operationName>write</operationName>
+			</yawlService>
+    </decomposition>
+    <decomposition id="before" xsi:type="WebServiceGatewayFactsType">
+      <inputParam>
+        <name>dataItem</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <name>dataItem</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+    </decomposition>
+  </specification>
+</specificationSet>
+
+

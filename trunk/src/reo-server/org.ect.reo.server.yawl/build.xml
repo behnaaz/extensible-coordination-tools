@@ -1,0 +1,35 @@
+
+<project name="cwi.reo.server.yawl" default="all">
+
+	<property name="lib" value="WEB-INF/lib"/>
+	<property name="bin" value="WEB-INF/classes"/>
+	<property name="src" value="src"/>
+
+	<!-- Construct compile classpath -->
+	<path id="classpath">
+		<fileset dir="${lib}">
+		<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="all" depends="war"
+			description="Build entire application"/>
+
+	<target name="compile" description="Compile">
+		<mkdir dir="${bin}"/>
+		<javac srcdir="${src}" destdir="${bin}">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="war" depends="compile"
+			description="Generate a *.war file of the application">
+		<jar jarfile="../reo-yawl.war" basedir=".">
+			<exclude name="**/servlet-api.jar"/>
+			<exclude name="**/.svn"/>
+		</jar>
+
+  </target>
+
+</project>
+

@@ -1,0 +1,48 @@
+
+#log {
+	overflow: auto;
+}
+
+#monitor {
+	font-size: 75%;
+	position: absolute;
+	height: 50px;
+	width: 33%;
+	top: 15px;
+	right: 20px;
+	overflow: auto;
+}
+
+.progresscontainer {
+	margin-top: 2px;
+	border: 1px solid black;
+	background-color: #ffffff;
+	height: 10px;
+	width: 95%;
+}
+
+.progressbar {
+	border-width: 0px;
+	background-color: #DCDCDC;
+	height: 5px;
+	margin: 2px;
+}
+
+.stopped {
+	color: red;
+}
+
+.running {
+	color: green;
+}
+
+span.logmessage {
+	background: url(images/info.gif) center left no-repeat;
+	padding-left: 18px;
+}
+
+span.logerror {
+	background: url(images/error.gif) center left no-repeat;
+	padding-left: 18px;
+}
+

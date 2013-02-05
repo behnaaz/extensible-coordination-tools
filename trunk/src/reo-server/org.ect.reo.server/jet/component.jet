@@ -1,0 +1,85 @@
+<%@ jet package="cwi.reo.templates" imports="cwi.reo.data.ComponentDescriptor" class="ComponentJava"%><%
+
+	ComponentDescriptor descriptor = (ComponentDescriptor) argument;
+	String name = descriptor.componentName;
+	String instance = name.substring(0,1).toLowerCase() + name.substring(1);
+	if (instance.equals(name)) instance = "_" + instance;
+	
+	String[] sources = descriptor.sources;
+	String[] sinks = descriptor.sinks;
+
+%>package <%= descriptor.packageName %>;
+
+import cwi.reo.client.sources.*;
+import cwi.reo.client.sinks.*;
+import cwi.ea.runtime.*;
+
+
+public class <%= name %> implements ReoComponent<String,String> {
+	
+<% for (int i=0; i<sources.length; i++) { %>
+	private Source<String> source<%= i %>;
+<% }
+   for (int i=0; i<sinks.length; i++) { %>
+	private Sink<String> sink<%= i %>;
+<% } %>
+	
+	public ReoComponent withSourcePorts(Source<String>... sources) {
+<% for (int i=0; i<sources.length; i++) { %>
+		source<%= i %> = sources[<%= i %>];
+<% } %>	
+		return this;
+	}
+	
+	public ReoComponent withSinkPorts(Sink<String>... sinks) {
+<% for (int i=0; i<sinks.length; i++) { %>
+		sink<%= i %> = sinks[<%= i %>];
+<% } %>	
+		return this;
+	}
+	
+	public void run() {
+		try {
+			// perform I/O operations on the port here, e.g.:
+			while (true) {
+<% if (sinks.length>0) { %>
+				String data = "data from <%= sinks[0] %>";
+				System.out.println("writing '" + data + "'");
+				sink0.write(data);
+<% } else { %>
+				long time = System.currentTimeMillis();
+				String data = source0.take();
+				time = System.currentTimeMillis() - time;
+				System.out.println("read '" + data + "' (took " + time + "ms)");
+<% } %>
+			}
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void main(String[] args) {	
+
+<%
+	String websources = "";
+	for (int i=0; i<sources.length; i++) {
+		websources = websources + "new WebSource(\"" + descriptor.sourcesServiceURL + "/" + sources[i] + "\")";
+		if (i<sources.length-1) websources = websources + ", ";
+	}
+	String websinks = "";
+	for (int i=0; i<sinks.length; i++) {
+		websinks = websinks + "new WebSink(\"" + descriptor.sinksServiceURL + "/" +  sinks[i] + "\")";
+		if (i<sinks.length-1) websinks = websinks + ", ";
+	}
+%>
+		<%= name %> <%= instance %> = new <%= name %>();
+		<%= instance %>.withSourcePorts(<%= websources %>);
+		<%= instance %>.withSinkPorts(<%= websinks %>);
+		
+		<%= instance %>.run();
+		
+	}
+	
+}

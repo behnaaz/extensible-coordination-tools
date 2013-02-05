@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cwi.reo="http://www.cwi.nl/reo" xmlns:cwi.reo.animation="http://www.cwi.nl/reo/animation" xmlns:cwi.reo.colouring="http://www.cwi.nl/reo/colouring" xmlns:generics="http://www.cwi.nl/reo/generics" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xsi:schemaLocation="http://www.cwi.nl/reo/animation http://www.cwi.nl/reo#//animation http://www.cwi.nl/reo/colouring http://www.cwi.nl/reo#//colouring">
+  <generics:PrimitiveLibrary xmi:id="_nQqkMMBxEdySj7se46dE5g">
+    <types xmi:type="generics:PrimitiveType" xmi:id="_nRdOYMBxEdySj7se46dE5g" name="Adapter1">
+      <sinkEnds xmi:type="cwi.reo:SinkEnd" xmi:id="_nRdOYcBxEdySj7se46dE5g"/>
+      <allAnimationTables xmi:type="cwi.reo.animation:AnimationTable" xmi:id="_nRdOYsBxEdySj7se46dE5g">
+        <colourings xmi:type="cwi.reo.animation:Animation" xmi:id="_nRdOY8BxEdySj7se46dE5g" nextColouringTable="_nRdOYsBxEdySj7se46dE5g">
+          <colours xmi:type="cwi.reo.colouring:PrimitiveEndToColourMapEntry" xmi:id="_nRd1cMBxEdySj7se46dE5g" key="_nRdOYcBxEdySj7se46dE5g"/>
+          <steps xmi:type="cwi.reo.animation:CreateTokenStep" xmi:id="_nRd1ccBxEdySj7se46dE5g" activeEnds="_nRdOYcBxEdySj7se46dE5g"/>
+          <steps xmi:type="cwi.reo.animation:SendTokenStep" xmi:id="_nRd1csBxEdySj7se46dE5g" activeEnds="_nRdOYcBxEdySj7se46dE5g"/>
+        </colourings>
+        <colourings xmi:type="cwi.reo.animation:Animation" xmi:id="_nRd1c8BxEdySj7se46dE5g" nextColouringTable="_nRdOYsBxEdySj7se46dE5g">
+          <colours xmi:type="cwi.reo.colouring:PrimitiveEndToColourMapEntry" xmi:id="_nRd1dMBxEdySj7se46dE5g" key="_nRdOYcBxEdySj7se46dE5g" value="-&lt;-"/>
+        </colourings>
+      </allAnimationTables>
+    </types>
+    <types xmi:type="generics:PrimitiveType" xmi:id="_nRpboMBxEdySj7se46dE5g" name="Adapter2">
+      <sinkEnds xmi:type="cwi.reo:SinkEnd" xmi:id="_nRpbocBxEdySj7se46dE5g"/>
+      <allAnimationTables xmi:type="cwi.reo.animation:AnimationTable" xmi:id="_nRpbosBxEdySj7se46dE5g">
+        <colourings xmi:type="cwi.reo.animation:Animation" xmi:id="_nRpbo8BxEdySj7se46dE5g" nextColouringTable="_nRpbosBxEdySj7se46dE5g">
+          <colours xmi:type="cwi.reo.colouring:PrimitiveEndToColourMapEntry" xmi:id="_nRpbpMBxEdySj7se46dE5g" key="_nRpbocBxEdySj7se46dE5g"/>
+          <steps xmi:type="cwi.reo.animation:CreateTokenStep" xmi:id="_nRpbpcBxEdySj7se46dE5g" activeEnds="_nRpbocBxEdySj7se46dE5g"/>
+          <steps xmi:type="cwi.reo.animation:SendTokenStep" xmi:id="_nRpbpsBxEdySj7se46dE5g" activeEnds="_nRpbocBxEdySj7se46dE5g"/>
+        </colourings>
+        <colourings xmi:type="cwi.reo.animation:Animation" xmi:id="_nRpbp8BxEdySj7se46dE5g" nextColouringTable="_nRpbosBxEdySj7se46dE5g">
+          <colours xmi:type="cwi.reo.colouring:PrimitiveEndToColourMapEntry" xmi:id="_nRpbqMBxEdySj7se46dE5g" key="_nRpbocBxEdySj7se46dE5g" value="-&lt;-"/>
+        </colourings>
+      </allAnimationTables>
+    </types>
+  </generics:PrimitiveLibrary>
+  <notation:Diagram xmi:id="_nRqCsMBxEdySj7se46dE5g" type="Generics" element="_nQqkMMBxEdySj7se46dE5g" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_nRqCssBxEdySj7se46dE5g" type="1001" element="_nRdOYMBxEdySj7se46dE5g">
+      <children xmi:type="notation:Node" xmi:id="_nRrQ0MBxEdySj7se46dE5g" type="4001"/>
+      <children xmi:type="notation:Node" xmi:id="_nRrQ0cBxEdySj7se46dE5g" type="5001">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_nRrQ0sBxEdySj7se46dE5g"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_nRrQ08BxEdySj7se46dE5g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_nRr34MBxEdySj7se46dE5g" type="5002">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_nRr34cBxEdySj7se46dE5g"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_nRr34sBxEdySj7se46dE5g"/>
+      </children>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_nRqCs8BxEdySj7se46dE5g" fontName="Sans"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nRr348BxEdySj7se46dE5g" x="63" y="45"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_nRr35MBxEdySj7se46dE5g" type="1001" element="_nRpboMBxEdySj7se46dE5g">
+      <children xmi:type="notation:Node" xmi:id="_nRse8MBxEdySj7se46dE5g" type="4001"/>
+      <children xmi:type="notation:Node" xmi:id="_nRtGAMBxEdySj7se46dE5g" type="5001">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_nRtGAcBxEdySj7se46dE5g"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_nRtGAsBxEdySj7se46dE5g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_nRtGA8BxEdySj7se46dE5g" type="5002">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_nRtGBMBxEdySj7se46dE5g"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_nRtGBcBxEdySj7se46dE5g"/>
+      </children>
+      <styles xmi:type="notation:ShapeStyle" xmi:id="_nRr35cBxEdySj7se46dE5g" fontName="Sans"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nRttEMBxEdySj7se46dE5g" x="207" y="45"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_nRqCscBxEdySj7se46dE5g"/>
+  </notation:Diagram>
+</xmi:XMI>

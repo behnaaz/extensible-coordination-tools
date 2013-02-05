@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
+		 version="2.4">
+	
+	
+	<!-- GENERAL CONFIGURATION -->
+	
+	<display-name>ReoLive</display-name>
+
+	<description>
+	</description>
+
+	<context-param>
+		<param-name>application</param-name>
+		<param-value>live</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>sources</param-name>
+		<param-value>http://reo.project.cwi.nl/live/sources</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>sinks</param-name>
+		<param-value>http://reo.project.cwi.nl/live/sinks</param-value>
+	</context-param>
+		
+	<context-param>
+		<param-name>trac</param-name>
+		<param-value>http://reo.project.cwi.nl/cgi-bin/trac.cgi/reo</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>font</param-name>
+		<param-value>/images/VerdanaFont.swf</param-value>
+	</context-param>
+	
+	<welcome-file-list>
+		<welcome-file>networks</welcome-file>
+	</welcome-file-list>
+	
+	<session-config>
+		<session-timeout>45</session-timeout>
+	</session-config>
+	
+	
+	<!-- AJAX CONFIGURATION -->
+	
+	<context-param>
+		<param-name>AjaxPartsTaglibConfig</param-name>
+		<param-value>/WEB-INF/ajax-config.xml</param-value>
+	</context-param>
+
+	
+	<!-- JAX-WS LISTENER -->
+	
+	<listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+		
+	
+	<!-- TOP-LEVEL PAGES -->
+	
+	<!-- Network list -->
+	
+	<servlet>
+		<servlet-name>networks</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+		<init-param>
+			<param-name>page</param-name>
+			<param-value>networks</param-value>
+		</init-param>
+		<init-param>
+			<param-name>title</param-name>
+			<param-value>Network List</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>networks</servlet-name>
+		<url-pattern>/networks</url-pattern>
+	</servlet-mapping>
+		
+	
+	<!-- Connector list -->
+	
+	<servlet>
+		<servlet-name>connectors</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+		<init-param>
+			<param-name>page</param-name>
+			<param-value>connectors</param-value>
+		</init-param>
+		<init-param>
+			<param-name>title</param-name>
+			<param-value>Connector List</param-value>
+			</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>connectors</servlet-name>
+		<url-pattern>/connectors</url-pattern>
+	</servlet-mapping>
+	
+
+	<!-- Component list -->
+	
+	<servlet>
+		<servlet-name>components</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+		<init-param>
+			<param-name>page</param-name>
+			<param-value>components</param-value>
+		</init-param>
+		<init-param>
+			<param-name>title</param-name>
+			<param-value>Component List</param-value>
+			</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>components</servlet-name>
+		<url-pattern>/components</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- Reconfiguration rule list -->
+	
+	<servlet>
+		<servlet-name>rules</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+		<init-param>
+			<param-name>page</param-name>
+			<param-value>rules</param-value>
+		</init-param>
+		<init-param>
+			<param-name>title</param-name>
+			<param-value>Reconfiguration Rules</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>rules</servlet-name>
+		<url-pattern>/rules</url-pattern>
+	</servlet-mapping>
+		
+	
+	
+	<!-- Network details -->
+	
+    <servlet>
+		<servlet-name>network</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+        <init-param>
+			<param-name>page</param-name>
+			<param-value>network</param-value>
+   		</init-param>
+        <init-param>
+			<param-name>title</param-name>
+			<param-value>Network</param-value>
+		</init-param>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>network</servlet-name>
+        <url-pattern>/networks/*</url-pattern>
+    </servlet-mapping>
+	
+	
+    <!-- Connector details -->
+	
+    <servlet>
+	<servlet-name>connector</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+        <init-param>
+			<param-name>page</param-name>
+      		<param-value>connector</param-value>
+   	</init-param>
+        <init-param>
+      		<param-name>title</param-name>
+      		<param-value>Connector</param-value>
+	</init-param>
+    </servlet>
+	
+    <servlet-mapping>
+		<servlet-name>connector</servlet-name>
+		<url-pattern>/connectors/*</url-pattern>
+    </servlet-mapping>
+	
+	
+    <!-- Component details -->
+	
+    <servlet>
+	<servlet-name>component</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+        <init-param>
+      		<param-name>page</param-name>
+      		<param-value>component</param-value>
+   	</init-param>
+        <init-param>
+      		<param-name>title</param-name>
+      		<param-value>Component</param-value>
+	</init-param>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>component</servlet-name>
+        <url-pattern>/components/*</url-pattern>
+    </servlet-mapping>
+	
+		
+	<!-- The log -->
+
+    <servlet>
+        <servlet-name>log</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+        <init-param>
+      		<param-name>page</param-name>
+      		<param-value>log</param-value>
+   		</init-param>
+        <init-param>
+      		<param-name>title</param-name>
+      		<param-value>Log</param-value>
+   		</init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>log</servlet-name>
+        <url-pattern>/log</url-pattern>
+    </servlet-mapping>
+	
+	
+	
+	
+	<!-- PAGE REFRESHING  -->
+	
+	<servlet>
+		<servlet-name>refreshNetworks</servlet-name>
+		<jsp-file>/pages/networks.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>refreshNetworks</servlet-name>
+		<url-pattern>/refresh/networks</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>refreshNetwork</servlet-name>
+		<jsp-file>/pages/network.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>refreshNetwork</servlet-name>
+		<url-pattern>/refresh/networks/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>refreshComponents</servlet-name>
+		<jsp-file>/pages/components.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>refreshComponents</servlet-name>
+		<url-pattern>/refresh/components</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>refreshConnectors</servlet-name>
+		<jsp-file>/pages/connectors.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>refreshConnectors</servlet-name>
+		<url-pattern>/refresh/connectors</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>refreshRules</servlet-name>
+		<jsp-file>/pages/rules.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>refreshRules</servlet-name>
+		<url-pattern>/refresh/rules</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>
+        <servlet-name>refreshLog</servlet-name>
+        <jsp-file>/pages/log.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>refreshLog</servlet-name>
+        <url-pattern>/refresh/log</url-pattern>
+    </servlet-mapping>
+	
+	
+	
+ 	<!-- ACTIONS / SERVLETS. -->
+ 	
+ 	<servlet>
+        <servlet-name>NetworkAction</servlet-name>
+        <servlet-class>cwi.reo.actions.NetworkAction</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>NetworkAction</servlet-name>
+        <url-pattern>/actions/network</url-pattern>
+    </servlet-mapping>
+
+
+ 	<servlet>
+        <servlet-name>RuleAction</servlet-name>
+        <servlet-class>cwi.reo.actions.RuleAction</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>RuleAction</servlet-name>
+        <url-pattern>/actions/rule</url-pattern>
+    </servlet-mapping>
+ 	
+ 	
+	<servlet>
+        <servlet-name>UploadAction</servlet-name>
+        <servlet-class>cwi.reo.actions.UploadAction</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UploadAction</servlet-name>
+        <url-pattern>/actions/upload</url-pattern>
+    </servlet-mapping>
+	
+	
+	<servlet>
+        <servlet-name>ChangeNetworkIDAction</servlet-name>
+        <servlet-class>cwi.reo.actions.ChangeNetworkIDAction</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeNetworkIDAction</servlet-name>
+        <url-pattern>/actions/changeID</url-pattern>
+    </servlet-mapping>
+
+
+ 	<servlet>
+        <servlet-name>ReconfigurationAction</servlet-name>
+        <servlet-class>cwi.reo.actions.ReconfigurationAction</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>ReconfigurationAction</servlet-name>
+        <url-pattern>/actions/reconfiguration</url-pattern>
+    </servlet-mapping>
+ 	
+	
+ 	
+	<servlet>
+		<servlet-name>ClientImplAction</servlet-name>
+		<servlet-class>cwi.reo.actions.ClientImplAction</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>ClientImplAction</servlet-name>
+        <url-pattern>/clients/*</url-pattern>
+    </servlet-mapping>
+    
+
+	<servlet>
+		<servlet-name>AnimationAction</servlet-name>
+		<servlet-class>cwi.reo.actions.AnimationAction</servlet-class>
+    </servlet>
+		
+    <servlet-mapping>
+        <servlet-name>AnimationAction</servlet-name>
+        <url-pattern>/animations/*</url-pattern>
+    </servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Reo2EaAction</servlet-name>
+		<servlet-class>cwi.reo.actions.Reo2EaAction</servlet-class>
+    </servlet>
+		
+    <servlet-mapping>
+        <servlet-name>Reo2EaAction</servlet-name>
+        <url-pattern>/reo2ea/*</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>MonitorAction</servlet-name>
+        <servlet-class>cwi.reo.actions.MonitorAction</servlet-class>
+    </servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MonitorAction</servlet-name>
+    	<url-pattern>/actions/monitor</url-pattern>
+    </servlet-mapping>
+	
+	
+	<!-- JAX WEB SERVICES -->
+	
+	<servlet>
+        <servlet-name>sources</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sources</servlet-name>
+        <url-pattern>/sources/*</url-pattern>
+    </servlet-mapping>
+
+
+	<servlet>
+        <servlet-name>sinks</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sinks</servlet-name>
+        <url-pattern>/sinks/*</url-pattern>
+    </servlet-mapping>
+	
+</web-app>

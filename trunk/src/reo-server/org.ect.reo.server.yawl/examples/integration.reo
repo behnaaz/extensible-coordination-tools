@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cwi.reo="http://www.cwi.nl/reo" xmlns:cwi.reo.channels="http://www.cwi.nl/reo/channels" xmlns:generics="http://www.cwi.nl/reo/generics" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation">
+  <cwi.reo:Module>
+    <connectors name="YAWL adapters">
+      <nodes name="A" sourceEnds="/0/@connectors.0/@primitives.2/@sourceEnds.0" sinkEnds="/0/@connectors.0/@primitives.0/@sinkEnds.0"/>
+      <nodes name="B" sourceEnds="/0/@connectors.0/@primitives.2/@sourceEnds.1" sinkEnds="/0/@connectors.0/@primitives.1/@sinkEnds.0"/>
+      <primitives xsi:type="generics:GenericPrimitive">
+        <sinkEnds node="/0/@connectors.0/@nodes.0"/>
+        <type href="adapters.reolib#_nRdOYMBxEdySj7se46dE5g"/>
+      </primitives>
+      <primitives xsi:type="generics:GenericPrimitive">
+        <sinkEnds node="/0/@connectors.0/@nodes.1"/>
+        <type href="adapters.reolib#_nRpboMBxEdySj7se46dE5g"/>
+      </primitives>
+      <primitives xsi:type="cwi.reo.channels:SyncDrain">
+        <sourceEnds node="/0/@connectors.0/@nodes.0"/>
+        <sourceEnds node="/0/@connectors.0/@nodes.1"/>
+      </primitives>
+    </connectors>
+  </cwi.reo:Module>
+  <notation:Diagram type="Reo" element="/0" name="adapter-test.reo" measurementUnit="Pixel">
+    <children type="1001" element="/0/@connectors.0">
+      <children type="4004"/>
+      <children type="5001">
+        <children type="1001" element="/0/@connectors.0/@primitives.0">
+          <eAnnotations source="Shortcut">
+            <details key="modelID" value="Generics"/>
+          </eAnnotations>
+          <children type="4001"/>
+          <children type="5001">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <children type="5002">
+            <children type="2001" element="/0/@connectors.0/@primitives.0/@sinkEnds.0">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="31" y="27"/>
+        </children>
+        <children type="1001" element="/0/@connectors.0/@primitives.1">
+          <eAnnotations source="Shortcut">
+            <details key="modelID" value="Generics"/>
+          </eAnnotations>
+          <children type="4001"/>
+          <children type="5001">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <children type="5002">
+            <children type="2001" element="/0/@connectors.0/@primitives.1/@sinkEnds.0">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="31" y="108"/>
+        </children>
+        <children type="2001" element="/0/@connectors.0/@nodes.0">
+          <children type="4001">
+            <layoutConstraint xsi:type="notation:Location" x="33"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="157" y="27"/>
+        </children>
+        <children type="2001" element="/0/@connectors.0/@nodes.1">
+          <children type="4001">
+            <layoutConstraint xsi:type="notation:Location" x="33" y="18"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="157" y="108"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="45" y="45" width="262" height="217"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle"/>
+    <edges type="3005" element="/0/@connectors.0/@primitives.2" source="/1/@children.0/@children.1/@children.2" target="/1/@children.0/@children.1/@children.3">
+      <styles xsi:type="notation:RoutingStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Sans"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-1, 9, -1, -72]$[-9, 80, -9, -1]"/>
+    </edges>
+    <edges type="9009" source="/1/@children.0/@children.1/@children.0/@children.2/@children.0" target="/1/@children.0/@children.1/@children.2">
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:RoutingStyle"/>
+      <styles xsi:type="notation:FontStyle"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[4, 1, -59, -10]$[54, 9, -9, -2]"/>
+    </edges>
+    <edges type="9009" source="/1/@children.0/@children.1/@children.1/@children.2/@children.0" target="/1/@children.0/@children.1/@children.3">
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:RoutingStyle"/>
+      <styles xsi:type="notation:FontStyle"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[4, 1, -59, -10]$[54, 12, -9, 1]"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

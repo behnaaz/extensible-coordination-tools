@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="all" name="live">
+	
+    <property environment="env"/>
+    
+	<property name="source.main" value="${basedir}/src"/>
+	<property name="source.jaxws" value="${basedir}/jaxws"/>
+	<property name="build.home" value="${basedir}/build"/>
+	<property name="build.classes" value="${build.home}/classes"/>
+	<property name="build.war" value="${build.home}/live.war"/>
+	<property name="build.client" value="${basedir}/web/client/lib/reo-jaxws.jar"/>
+	
+	<path id="jaxws.classpath">
+		<fileset dir="lib/jaxws-ri">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<path id="main.classpath">
+		<fileset dir="lib/servlet-api">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="web/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<path id="services.classpath">
+		<pathelement path="${javac.classpath}"/>
+		<pathelement location="${java.home}/../lib/tools.jar"/>
+		<pathelement location="${build.classes}"/>		
+		<pathelement location="${basedir}/web/WEB-INF/lib/cwi.ea.runtime_*.jar"/>
+	</path>
+	
+	<taskdef name="wsgen" classname="com.sun.tools.ws.ant.WsGen">
+		<classpath refid="jaxws.classpath"/>
+	</taskdef>
+	
+	<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+		<classpath refid="jaxws.classpath"/>
+	</taskdef>
+
+	
+	<target name="generate-services">
+		<wsgen
+			sei="cwi.reo.service.sources.SourceEndpoint"
+			debug="true"
+			keep="true"
+			destdir="${build.classes}"
+			sourcedestdir="${source.jaxws}">
+			<classpath refid="services.classpath"/>
+		</wsgen>
+		<wsgen
+			sei="cwi.reo.service.sinks.SinkEndpoint"
+			debug="true"
+			keep="true"
+			destdir="${build.classes}"
+			sourcedestdir="${source.jaxws}">
+			<classpath refid="services.classpath"/>
+		</wsgen>
+	</target>
+	
+	
+	<target name="generate-clients">
+		<wsimport
+			debug="true"
+			verbose="${verbose}"
+			keep="true"
+			package="cwi.reo.client.sources.jaxws"
+			destdir="${build.classes}"
+			sourcedestdir="${source.jaxws}"
+			wsdl="http://reo.project.cwi.nl/live/sources?wsdl">
+		</wsimport>
+		<wsimport
+			debug="true"
+			verbose="${verbose}"
+			keep="true"
+			package="cwi.reo.client.sinks.jaxws"
+			destdir="${build.classes}"
+			sourcedestdir="${source.jaxws}"
+			wsdl="http://reo.project.cwi.nl/live/sinks?wsdl">
+		</wsimport>
+	</target>
+	
+	
+	<target name="build-classes">
+		<javac srcdir="${source.main}" 
+		       destdir="${build.classes}"
+			   classpathref="main.classpath"
+	    	   source="1.5"
+			   debug="true"
+               includeAntRuntime="false"/>
+	</target>
+
+	
+	<target name="bundle-clients">
+		<jar destfile="${build.client}"
+		     basedir="${build.classes}"
+			 includes="cwi/reo/client/**">
+		</jar>
+	</target>
+
+	
+	<target name="bundle-war">
+		<war destfile="${build.war}" webxml="web/WEB-INF/web.xml">
+			<fileset dir="web"/>
+			<classes dir="${build.classes}"/>
+		</war>
+	</target>
+	
+	
+	<target name="all">
+		<antcall target="clean"></antcall>
+		<antcall target="generate-clients"></antcall>
+		<antcall target="build-classes"></antcall>
+		<antcall target="generate-services"></antcall>
+		<antcall target="build-classes"></antcall>
+		<antcall target="bundle-clients"></antcall>
+		<antcall target="bundle-war"></antcall>
+	</target>
+	
+	
+	<target name="clean">
+		<delete includeemptydirs="true">
+			<fileset dir="${source.jaxws}" includes="**/*"/>
+			<fileset dir="${build.classes}" includes="**/*"/>
+			<fileset file="${build.war}"/>
+			<fileset file="${build.client}"/>
+		</delete>
+	</target>
+
+</project>
+

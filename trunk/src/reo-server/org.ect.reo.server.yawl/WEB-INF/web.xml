@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+    <display-name>YAWL-Reo Adapter</display-name>
+    <description>
+    </description>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	
+	<!-- YAWL Service Controller -->
+
+	<context-param>
+		<param-name>InterfaceBWebSideController</param-name>
+		<param-value>cwi.yawl.servlets.YAWLServlet</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>InterfaceB_BackEnd</param-name>   
+		<param-value>http://localhost:8080/yawl/ib</param-value>
+	</context-param>
+	
+
+	<!-- Servlets -->
+	
+	<servlet>
+		<servlet-name>soap</servlet-name>
+		<servlet-class>cwi.yawl.servlets.SOAPServlet</servlet-class>
+	</servlet>	
+	
+	<servlet-mapping>
+		<servlet-name>soap</servlet-name>
+		<url-pattern>/soap/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- YAWL Engine Adapters -->
+
+	<servlet>
+		<servlet-name>write</servlet-name>
+		<servlet-class>au.edu.qut.yawl.engine.interfce.InterfaceB_EnvironmentBasedServer</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>write</servlet-name>
+		<url-pattern>/write</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>take</servlet-name>
+		<servlet-class>au.edu.qut.yawl.engine.interfce.InterfaceB_EnvironmentBasedServer</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>take</servlet-name>
+		<url-pattern>/take</url-pattern>
+	</servlet-mapping>
+
+</web-app>
