@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Simple, self-contained and extensible CA runtime
+Bundle-SymbolicName: org.ect.ea.runtime;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Export-Package: org.ect.ea.runtime,
+ org.ect.ea.runtime.conditions,
+ org.ect.ea.runtime.constraints,
+ org.ect.ea.runtime.primitives;uses:="cwi.ea.runtime"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: CWI

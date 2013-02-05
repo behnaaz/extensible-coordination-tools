@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.ect.ea"
-      label="Reo Automata Tools"
+      label="Extensible Automata Tools"
       version="4.0.0.qualifier"
       provider-name="Extensible Coordination Tools">
 
    <description url="http://reo.project.cwi.nl">
-      Reo Automata Tools. Contains model, extensions and graphical editor for constraint automata and variations of them.
+      Extensible Automata Tools. Contains model, extensions and graphical
+editor for constraint automata and variations of them.
    </description>
 
    <copyright>
@@ -47,8 +48,6 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
       <import plugin="org.eclipse.gmf.runtime.notation.providers"/>
-      <import plugin="cwi.ea"/>
-      <import plugin="cwi.ea.edit"/>
       <import plugin="org.eclipse.gmf.runtime.draw2d.ui"/>
       <import plugin="org.eclipse.draw2d"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties"/>
@@ -56,15 +55,14 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.ui.navigator"/>
       <import plugin="org.eclipse.ui.navigator.resources"/>
       <import plugin="org.eclipse.ocl.ecore"/>
-      <import plugin="cwi.ea.diagram"/>
       <import plugin="org.eclipse.gmf.runtime.common.ui"/>
       <import plugin="org.eclipse.gmf.runtime.common.ui.services.action"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.actions"/>
       <import plugin="org.eclipse.emf.edit"/>
       <import plugin="org.eclipse.emf.transaction"/>
-      <import plugin="cwi.codegen" version="1.4.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui.ide" version="3.4.0" match="greaterOrEqual"/>
-      <import plugin="cwi.reo.ui" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea"/>
+      <import plugin="org.ect.ea.edit"/>
+      <import plugin="org.ect.ea.diagram"/>
    </requires>
 
    <plugin
@@ -138,13 +136,27 @@ http://www.eclipse.org/legal/epl-v10.html
          unpack="false"/>
 
    <plugin
-         id="org.ect.org.antlr"
+         id="org.ect.ea.util"
          download-size="0"
          install-size="0"
-         version="3.2.6"/>
+         version="4.0.0.qualifier"
+         unpack="false"/>
 
    <plugin
-         id="org.ect.ea.util"
+         id="org.ect.ea.antlr"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"/>
+
+   <plugin
+         id="org.ect.ea.extensions.guards"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.ea.runtime"
          download-size="0"
          install-size="0"
          version="4.0.0.qualifier"
