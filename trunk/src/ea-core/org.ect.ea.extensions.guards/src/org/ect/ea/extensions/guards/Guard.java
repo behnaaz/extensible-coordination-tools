@@ -24,7 +24,7 @@ import org.ect.ea.extensions.BooleanExtension;
 import org.ect.ea.extensions.IExtension;
 import org.ect.ea.extensions.StringListExtension;
 import org.ect.ea.extensions.portnames.AutomatonPortNames;
-import org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider;
+import org.ect.ea.extensions.portnames.AutomatonPortNamesProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 
@@ -41,7 +41,15 @@ public class Guard extends StringListExtension {
 	 * @generated NOT
 	 */
 	public static final char NEGATION = '!';
-	
+
+	/**
+	 * @generated NOT
+	 */
+	public Guard() {
+		super();
+		setId(GuardsProvider.EXTENSION_ID);
+	}
+
 	/**
 	 * Parse a guard from a string representation. This returns either an instance of
 	 * {@link Guard} or of {@link BooleanExtension}.
@@ -134,20 +142,12 @@ public class Guard extends StringListExtension {
 	 * this line and change the '@generated'-tag to '@generated NOT'.   *
 	 * ---------------------------------------------------------------- */
 	
-	
 	/**
 	 * @see #getNegated()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<String> negated;
-
-	/**
-	 * @generated
-	 */
-	public Guard() {
-		super();
-	}
 
 	/**
 	 * @generated
