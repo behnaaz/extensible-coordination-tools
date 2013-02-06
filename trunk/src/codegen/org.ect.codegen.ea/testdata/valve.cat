@@ -1,0 +1,8 @@
+"Valve"[A::OUT, B::IN, J::OUT, K::OUT]
+valve1*[fd::"FULL"][
+	[B, A]::(B=A & $t.ef=$s.fd)::valve2],
+valve2[ef][
+	[J]::$t.gh=J::valve3, 
+	[B, A]::(B=A & $t.ef=$s.ef)::valve2],
+valve3[gh][
+	[K]::($t.ef=K)::valve2]

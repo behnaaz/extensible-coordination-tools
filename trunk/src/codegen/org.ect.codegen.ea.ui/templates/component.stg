@@ -1,0 +1,45 @@
+group component;
+
+component(id, package)::= <<
+package <package>
+
+import org.ect.ea.runtime.ReoComponent;
+import org.ect.ea.runtime.Sink;
+import org.ect.ea.runtime.Source;
+
+public class <id> implements ReoComponent {
+	private Sink[] out;
+	private Source[] in;
+
+	public ReoComponent  withSinkPorts(Sink... sinks) {
+		out = sinks;
+		return this;
+	}
+
+	public ReoComponent withSourcePorts(Source... sources) {
+		in = sources;
+		return this;
+	}
+}
+>>
+
+functionDefs(id, funcs)	::=<<
+package <package>;
+
+import org.ect.ea.runtime.ChannelOperation;
+
+public class <functionClass> {
+	<funcs:func(); separator="\n">
+}
+>>
+
+func(id)::=<<
+public static ChannelOperation <id>() { 
+	return new ChannelOperation() {
+		@Override public Object apply(Object arg0) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	};
+}
+>> 

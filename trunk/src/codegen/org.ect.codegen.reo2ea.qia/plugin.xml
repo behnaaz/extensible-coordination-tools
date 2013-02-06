@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="qia"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.ect.codegen.reo2ea.qia.plugin.Reo2QiaApp">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="Reo2QIA"
+         name="Reo to QIA convertor"
+         point="org.ect.codegen.reo2ea.core.transformation">
+      <transformation
+            description="Reo to QIA convertor"
+            end_naming_policy="org.ect.codegen.reo2ea.qia.transform.QIANamingPolicyFactory"
+            product_class="org.ect.ea.extensions.portnames.IEAProduct"
+            property_key="QIA"
+            wizard_class="org.ect.codegen.reo2ea.qia.wizards.Reo2QiaWizard">
+         <transform
+               class="org.ect.codegen.reo2ea.qia.transform.channels.ChannelTransform"
+               target="org.ect.reo.channels.Channel">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.qia.transform.channels.FifoTransform"
+               target="org.ect.reo.channels.FIFO">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.qia.transform.nodes.Replicate"
+               target="REPLICATE">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.qia.transform.components.ComponentTransform"
+               target="org.ect.reo.Component">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.qia.transform.nodes.Route"
+               target="ROUTE">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.qia.transform.components.WriterTransform"
+               target="org.ect.reo.components.Writer">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.qia.transform.components.ReaderTransform"
+               target="org.ect.reo.components.Reader">
+         </transform>
+      </transformation>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+               afterTab="property.tab.domain"
+               category="domain"
+               id="org.ect.reo.diagram.rewardsTab"
+               label="Rewards"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection
+               class="org.ect.codegen.reo2ea.qia.properties.RewardsPropertySection"
+               enablesFor="1"
+               filter="org.ect.reo.ui.properties.helpers.ConnectableFilter"
+               id="org.ect.reo.diagram.rewardsTab.RewardsPropertySection"
+               tab="org.ect.reo.diagram.rewardsTab">
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.ect.codegen.reo2ea.qia.EAobjectContribution"
+            objectClass="org.ect.ea.diagram.edit.parts.AutomatonEditPart">
+         <action
+               class="org.ect.codegen.reo2ea.qia.actions.HideMenu"
+               id="org.ect.codegen.reo2ea.qia.hideAction"
+               label="Hide ports (QIA)"
+               tooltip="Hide port names">
+         </action>
+         <action
+               class="org.ect.codegen.reo2ea.qia.actions.ImmediateActionMenu"
+               id="org.ect.codegen.reo2ea.qia.ImmediateAction"
+               label="Make an immediate action (QIA)"
+               tooltip="Make an immediate action">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

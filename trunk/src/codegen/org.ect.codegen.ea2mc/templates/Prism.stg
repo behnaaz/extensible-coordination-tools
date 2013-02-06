@@ -1,0 +1,31 @@
+group Prism;
+
+MC(name,states,transitions,delays,listingDelayNames,delayNames,func,timestamps,existingRewards,rewards,showingReward,rewardNames,Rstate) ::=<<
+	// CTMC model
+	//
+	// <timestamps>
+	//
+	ctmc
+	
+	const int N = <length(states)>;
+	<delays,listingDelayNames:{d, n| 
+	const double <n><if(d.useful)>=<d.Delay><endif>;}
+	;separator="\n">
+	
+	module <name>
+		s : [0..N-1] init 0;
+				
+	<transitions,delayNames,func:{ t, delay, f |
+	[t<f>] s=<t.source.name> -> <delay> : (s'=<t.target.name>);}
+	; separator="\n">
+	endmodule
+			
+				
+	<if(existingRewards)>
+	<rewardNames,rewards :{ Rname,reward| 
+	rewards "<Rname>"
+	<Rstate, reward, showingReward : {state, r, show|
+	<if(show)>
+	s=<state.name> : <r>;<endif>};separator="\n">
+	endrewards};separator="\n"><endif>
+>>

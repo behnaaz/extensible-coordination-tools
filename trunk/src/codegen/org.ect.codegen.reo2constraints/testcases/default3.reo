@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:channels="http://www.cwi.nl/reo/channels" xmlns:components="http://www.cwi.nl/reo/components" xmlns:cwi.reo="http://www.cwi.nl/reo" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xsi:schemaLocation="http://www.cwi.nl/reo/channels http://www.cwi.nl/reo#//channels http://www.cwi.nl/reo/components http://www.cwi.nl/reo#//components">
+  <cwi.reo:Module xmi:id="_gxOckMHKEeCnJsAmB1fxcw">
+    <connectors xmi:type="cwi.reo:Connector" xmi:id="_hR0BIMHKEeCnJsAmB1fxcw">
+      <nodes xmi:type="cwi.reo:Node" xmi:id="_hjPIUMHKEeCnJsAmB1fxcw" name="aa" sourceEnds="_kXmGUMHKEeCnJsAmB1fxcw" sinkEnds="_ynf6kcHKEeCnJsAmB1fxcw"/>
+      <nodes xmi:type="cwi.reo:Node" xmi:id="_h2h3wMHKEeCnJsAmB1fxcw" name="cc" sourceEnds="_j8xykMHKEeCnJsAmB1fxcw" sinkEnds="_kXmGUsHKEeCnJsAmB1fxcw"/>
+      <nodes xmi:type="cwi.reo:Node" xmi:id="_iWNdYMHKEeCnJsAmB1fxcw" name="bb" sourceEnds="_y2f_4cHKEeCnJsAmB1fxcw" sinkEnds="_j8yZoMHKEeCnJsAmB1fxcw"/>
+      <primitives xmi:type="channels:FIFO" xmi:id="_j8wkcMHKEeCnJsAmB1fxcw">
+        <sourceEnds xmi:type="cwi.reo:SourceEnd" xmi:id="_j8xykMHKEeCnJsAmB1fxcw" node="_h2h3wMHKEeCnJsAmB1fxcw"/>
+        <sinkEnds xmi:type="cwi.reo:SinkEnd" xmi:id="_j8yZoMHKEeCnJsAmB1fxcw" node="_iWNdYMHKEeCnJsAmB1fxcw"/>
+      </primitives>
+      <primitives xmi:type="channels:FIFO" xmi:id="_kXlfQMHKEeCnJsAmB1fxcw">
+        <sourceEnds xmi:type="cwi.reo:SourceEnd" xmi:id="_kXmGUMHKEeCnJsAmB1fxcw" node="_hjPIUMHKEeCnJsAmB1fxcw"/>
+        <sinkEnds xmi:type="cwi.reo:SinkEnd" xmi:id="_kXmGUsHKEeCnJsAmB1fxcw" node="_h2h3wMHKEeCnJsAmB1fxcw"/>
+      </primitives>
+    </connectors>
+    <components xmi:type="components:Writer" xmi:id="_ynbpIMHKEeCnJsAmB1fxcw">
+      <properties xmi:type="cwi.reo:Property" xmi:id="_ynfTgMHKEeCnJsAmB1fxcw" key="requests" value="1"/>
+      <sinkEnds xmi:type="cwi.reo:SinkEnd" xmi:id="_ynf6kcHKEeCnJsAmB1fxcw" name="out" node="_hjPIUMHKEeCnJsAmB1fxcw"/>
+    </components>
+    <components xmi:type="components:Reader" xmi:id="_y2fY0MHKEeCnJsAmB1fxcw">
+      <properties xmi:type="cwi.reo:Property" xmi:id="_y2fY0cHKEeCnJsAmB1fxcw" key="requests" value="1"/>
+      <sourceEnds xmi:type="cwi.reo:SourceEnd" xmi:id="_y2f_4cHKEeCnJsAmB1fxcw" name="in" node="_iWNdYMHKEeCnJsAmB1fxcw"/>
+    </components>
+  </cwi.reo:Module>
+  <notation:Diagram xmi:id="_gxe7QMHKEeCnJsAmB1fxcw" type="Reo" element="_gxOckMHKEeCnJsAmB1fxcw" name="default3.reo" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_hSCqoMHKEeCnJsAmB1fxcw" type="1001" element="_hR0BIMHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_hSD4wMHKEeCnJsAmB1fxcw" type="4004"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_hSD4wcHKEeCnJsAmB1fxcw" type="5001">
+        <children xmi:type="notation:Shape" xmi:id="_hjQ9gMHKEeCnJsAmB1fxcw" type="2001" element="_hjPIUMHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+          <children xmi:type="notation:DecorationNode" xmi:id="_hjRkkMHKEeCnJsAmB1fxcw" type="4001">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_hjRkkcHKEeCnJsAmB1fxcw" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hjQ9gcHKEeCnJsAmB1fxcw" x="128" y="22"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_h2js8MHKEeCnJsAmB1fxcw" type="2001" element="_h2h3wMHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+          <children xmi:type="notation:DecorationNode" xmi:id="_h2kUAMHKEeCnJsAmB1fxcw" type="4001">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_h2k7EMHKEeCnJsAmB1fxcw" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h2js8cHKEeCnJsAmB1fxcw" x="238" y="59"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_iWOrgMHKEeCnJsAmB1fxcw" type="2001" element="_iWNdYMHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+          <children xmi:type="notation:DecorationNode" xmi:id="_iWP5oMHKEeCnJsAmB1fxcw" type="4001">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_iWP5ocHKEeCnJsAmB1fxcw" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iWPSkMHKEeCnJsAmB1fxcw" x="377" y="65"/>
+        </children>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSCqocHKEeCnJsAmB1fxcw" x="294" y="49" width="502" height="175"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_yniW0MHKEeCnJsAmB1fxcw" type="1003" element="_ynbpIMHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_ynjk8MHKEeCnJsAmB1fxcw" type="4006"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_ynjk8cHKEeCnJsAmB1fxcw" type="5003">
+        <children xmi:type="notation:Node" xmi:id="_ynkMAMHKEeCnJsAmB1fxcw" type="2004" element="_ynfTgMHKEeCnJsAmB1fxcw">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ynkMAcHKEeCnJsAmB1fxcw"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_ynjk8sHKEeCnJsAmB1fxcw"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_ynjk88HKEeCnJsAmB1fxcw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_ynqSoMHKEeCnJsAmB1fxcw" type="2007" element="_ynf6kcHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_ynq5sMHKEeCnJsAmB1fxcw" type="4011">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ynq5scHKEeCnJsAmB1fxcw" y="5"/>
+        </children>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ynqSocHKEeCnJsAmB1fxcw"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yniW0cHKEeCnJsAmB1fxcw" x="907" y="147"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_y2h1EMHKEeCnJsAmB1fxcw" type="1002" element="_y2fY0MHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_y2icIMHKEeCnJsAmB1fxcw" type="4005"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_y2jDMMHKEeCnJsAmB1fxcw" type="5002">
+        <children xmi:type="notation:Node" xmi:id="_y2jDM8HKEeCnJsAmB1fxcw" type="2004" element="_y2fY0cHKEeCnJsAmB1fxcw">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_y2jDNMHKEeCnJsAmB1fxcw"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_y2jDMcHKEeCnJsAmB1fxcw"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_y2jDMsHKEeCnJsAmB1fxcw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_y2n7sMHKEeCnJsAmB1fxcw" type="2006" element="_y2f_4cHKEeCnJsAmB1fxcw" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_y2oiwMHKEeCnJsAmB1fxcw" type="4010">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_y2oiwcHKEeCnJsAmB1fxcw" y="5"/>
+        </children>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y2n7scHKEeCnJsAmB1fxcw"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y2h1EcHKEeCnJsAmB1fxcw" x="169" y="117"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_gxe7QcHKEeCnJsAmB1fxcw"/>
+    <edges xmi:type="notation:Connector" xmi:id="_j83SIMHKEeCnJsAmB1fxcw" type="3003" element="_j8wkcMHKEeCnJsAmB1fxcw" source="_h2js8MHKEeCnJsAmB1fxcw" target="_iWOrgMHKEeCnJsAmB1fxcw">
+      <styles xmi:type="notation:FontStyle" xmi:id="_j83SIcHKEeCnJsAmB1fxcw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_j83SIsHKEeCnJsAmB1fxcw" points="[8, 7, -131, 1]$[135, 14, -4, 8]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_kXoikMHKEeCnJsAmB1fxcw" type="3003" element="_kXlfQMHKEeCnJsAmB1fxcw" source="_hjQ9gMHKEeCnJsAmB1fxcw" target="_h2js8MHKEeCnJsAmB1fxcw">
+      <styles xmi:type="notation:FontStyle" xmi:id="_kXoikcHKEeCnJsAmB1fxcw" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kXoiksHKEeCnJsAmB1fxcw" points="[8, 3, -128, 3]$[132, 8, -4, 8]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_zdmcIMHKEeCnJsAmB1fxcw" type="3013" source="_iWOrgMHKEeCnJsAmB1fxcw" target="_y2n7sMHKEeCnJsAmB1fxcw">
+      <styles xmi:type="notation:FontStyle" xmi:id="_zdmcIcHKEeCnJsAmB1fxcw" fontName="Segoe UI"/>
+      <element xsi:nil="true"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zdmcIsHKEeCnJsAmB1fxcw" points="[-8, 0, 512, 0]$[-522, 0, -2, 0]"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zdrUoMHKEeCnJsAmB1fxcw" id="(0.14285714285714285,0.5)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_1LxOIMHKEeCnJsAmB1fxcw" type="3014" source="_ynqSoMHKEeCnJsAmB1fxcw" target="_hjQ9gMHKEeCnJsAmB1fxcw">
+      <styles xmi:type="notation:FontStyle" xmi:id="_1LxOIcHKEeCnJsAmB1fxcw" fontName="Segoe UI"/>
+      <element xsi:nil="true"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1LxOIsHKEeCnJsAmB1fxcw" points="[-7, -1, 577, 79]$[-585, -81, -1, -1]"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1L2GoMHKEeCnJsAmB1fxcw" id="(0.375,0.0625)"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

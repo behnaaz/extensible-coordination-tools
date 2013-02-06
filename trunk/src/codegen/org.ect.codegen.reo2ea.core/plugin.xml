@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="transformation" name="Transformation" schema="schema/transformation.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.ect.codegen.reo2ea.batchTransform"
+            nameFilter="*.notreo"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="Generate constraint automata..."
+               class="org.ect.codegen.reo2ea.popup.actions.ReoFileMenu"
+               enablesFor="+"
+               id="org.ect.codegen.reo2ea.newAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.ect.codegen.reo2ea.ReoobjectContribution"
+            objectClass="org.ect.reo.diagram.edit.parts.ConnectorEditPart">
+         <action
+               class="org.ect.codegen.reo2ea.popup.actions.ReoEditorMenu"
+               id="org.ect.codegen.reo2ea.action1"
+               label="Convert to Extensible Automaton">
+         </action>
+         <action
+               class="org.ect.codegen.reo2ea.popup.actions.ComponentAction"
+               id="org.ect.codegen.reo2ea.core.action2"
+               label="Component with Automata semantics">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="org.ect.codegen.reo2ea"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.ect.codegen.reo2ea.plugin.Reo2EaApp">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.ect.reo.preferences"
+            class="org.ect.codegen.reo2ea.preferences.Reo2EaPreferencePage"
+            id="org.ect.codegen.reo2ea.preferences.Reo2EaPreferencePage"
+            name="Reo2EA Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.ect.codegen.reo2ea.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.ect.reo.libraryProviders">
+      <provider
+            class="org.ect.codegen.reo2ea.libraryprovider.AutomataLibraryProvider"
+            id="org.ect.codegen.reo2ea.libraryprovider"
+            name="Automata Library provider">
+      </provider>
+   </extension>
+
+</plugin>

@@ -1,0 +1,8 @@
+"lofi"[A::OUT, C::IN]
+lofi_1*[
+	[A]::$t.z=f(g(A))::lofi_2, 
+	[A]::p(true)::lofi_1],
+lofi_2[z][
+	[A, C]::C=$s.z::lofi_1, 
+	[A]::$s.z=$t.z::lofi_2, 
+	[C]::C=$s.z&$t.z=A::lofi_1]

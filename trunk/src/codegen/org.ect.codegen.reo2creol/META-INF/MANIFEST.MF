@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Reo2Creol Plug-in
+Bundle-SymbolicName: org.ect.codegen.reo2creol;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.ect.codegen;bundle-version="1.4.0",
+ org.ect.reo;bundle-version="3.1.0",
+ org.ect.reo.diagram;bundle-version="3.0.0",
+ org.ect.codegen.reo2ea.ca;bundle-version="3.1.0",
+ org.ect.ea;bundle-version="3.1.0",
+ org.ect.ea.extensions.constraints;bundle-version="4.0.0",
+ org.ect.ea.extensions.portnames;bundle-version="4.0.0"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.ect.reo.diagram.edit.parts.ConnectorEditPart"
+            id="org.ect.codegen.reo2constraints.contribution1">
+         <menu
+               label="Constraint Semantics"
+               path="additions"
+               id="org.ect.codegen.reo2constraints.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Data-aware Constraint Semantics"
+               class="org.ect.codegen.reo2constraints.popup.actions.NewAction"
+               menubarPath="org.ect.codegen.reo2constraints.menu1/group1"
+               enablesFor="1"
+               id="org.ect.codegen.reo2constraints.dataaware">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

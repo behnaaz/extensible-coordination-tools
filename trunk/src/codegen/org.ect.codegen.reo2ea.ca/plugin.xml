@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="catransform"
+         name="catransform"
+         point="org.ect.codegen.reo2ea.core.transformation">
+      <transformation
+            description="CA transformer"
+            end_naming_policy="org.ect.codegen.reo2ea.ca.transform.CANamingPolicyFactory"
+            product_class="org.ect.ea.extensions.startstates.ReachableStatesProduct"
+            property_key="CA"
+            wizard_class="org.ect.codegen.reo2ea.ca.wizards.Reo2CaWizard">
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.channels.ChannelTransform"
+               target="org.ect.reo.channels.Channel">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.channels.FifoTransform"
+               target="org.ect.reo.channels.FIFO">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.channels.DataTransform"
+               target="org.ect.reo.channels.Transform">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.channels.DataTransform"
+               target="org.ect.reo.channels.SyncDrain">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.channels.FilterTransform"
+               target="org.ect.reo.channels.Filter">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.nodes.Replicate"
+               target="REPLICATE">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.nodes.Route"
+               target="ROUTE">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.components.ComponentTransform"
+               target="org.ect.reo.Component">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.components.ReaderTransform"
+               target="org.ect.reo.components.Reader">
+         </transform>
+         <transform
+               class="org.ect.codegen.reo2ea.ca.transform.components.WriterTransform"
+               target="org.ect.reo.components.Writer">
+         </transform>
+      </transformation>
+   </extension>
+   <extension
+         id="Reo2CA"
+         name="Reo to Constraint Automata"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.ect.codegen.reo2ea.ca.Reo2CaApp">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.ect.codegen.reo2ea.ca.EAobjectContribution"
+            objectClass="org.ect.ea.diagram.edit.parts.AutomatonEditPart">
+         <action
+               class="org.ect.codegen.reo2ea.ca.popup.actions.HideMenu"
+               id="org.ect.codegen.reo2ea.ca.hideAction"
+               label="Hide port"
+               tooltip="Hide a port name">
+         </action>
+      </objectContribution>
+   </extension>
+
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+               afterTab="org.ect.reo.diagram.AnimationsTab"
+               category="domain"
+               id="org.ect.reo.diagram.caTab"
+               label="CA"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection
+               class="org.ect.codegen.reo2ea.ca.properties.CAPropertySection"
+               enablesFor="1"
+               id="org.ect.reo.diagram.caTab.ConnectableSection"
+               tab="org.ect.reo.diagram.caTab">
+            <input
+                  type="org.ect.reo.diagram.edit.parts.ComponentEditPart">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>

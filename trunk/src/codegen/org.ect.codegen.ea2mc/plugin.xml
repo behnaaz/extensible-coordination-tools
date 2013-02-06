@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.ect.codegen.ea2mc.contribution1"
+            objectClass="org.ect.ea.diagram.edit.parts.AutomatonEditPart">
+         <action
+               class="org.ect.codegen.ea2mc.actions.TranslateAction"
+               enablesFor="1"
+               id="org.ect.codegen.ea2mc.translation.mc"
+               label="Translate to MC diadram"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.ect.codegen.ea2mc.actions.GenMCFileAction"
+               id="org.ect.codegen.ea2mc.translation.Prism"
+               label="Generate MC textual file">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

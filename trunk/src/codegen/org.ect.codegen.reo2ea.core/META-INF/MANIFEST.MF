@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Reo to Extensible Automata Convertor
+Bundle-SymbolicName: org.ect.codegen.reo2ea.core;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: Extensible Coordination Tools
+Require-Bundle: org.eclipse.ui.ide,
+ org.ect.reo.diagram,
+ org.ect.ea.diagram,
+ org.ect.ea.diagram.contributions,
+ org.ect.ea.extensions.constraints;bundle-version="3.1.0",
+ org.ect.ea.extensions.portnames;bundle-version="3.1.0",
+ org.ect.ea.extensions.startstates;bundle-version="3.1.0"
+Export-Package: org.ect.codegen.reo2ea.core,
+ org.ect.codegen.reo2ea.libraryprovider,
+ org.ect.codegen.reo2ea.plugin;
+  uses:="org.ect.ea.automata,
+   org.eclipse.core.runtime,
+   org.eclipse.ui.plugin,
+   org.eclipse.equinox.app,
+   org.osgi.framework,
+   org.ect.reo",
+ org.ect.codegen.reo2ea.preferences,
+ org.ect.codegen.reo2ea.transform,
+ org.ect.codegen.reo2ea.util;uses:="org.ect.ea.automata,org.ect.reo",
+ org.ect.codegen.reo2ea.wizards
+Eclipse-LazyStart: true
+Bundle-Activator: org.ect.codegen.reo2ea.plugin.Reo2EAPlugin
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

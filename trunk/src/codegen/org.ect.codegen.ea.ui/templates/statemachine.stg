@@ -1,0 +1,54 @@
+group StateMachine;
+
+disjunction(id, members)			::= ""
+
+conjunction(id, members)			::= ""
+
+function(id, arg, funcs)			::= ""
+
+predicate(id, lhs, rhs)				::=""
+
+equation(id, lhs, rhs)				::= ""
+
+port(id, type)						::= "<id>"
+
+cell(id, init)						::= ""
+
+state(name, isstart, cells, trans)::= <<
+case <name>:
+	<trans; separator="\n">
+	break;
+>>
+
+transition(dest, ports, cons)		::=<<
+if (txnStart(<ports; separator=", ">)) {
+	if (<name>_<ports; separator="_">_<dest.name>.execute())
+		current = State.<dest.name>;
+	txnFinish(<ports; separator=", ">);
+	continue;
+}
+>>
+
+automaton(id, ports, states)		::= <<
+/**
+* The state machine corresponding to the CA which the coordinator thread "runs"
+*/
+public void run() {
+	while (!Thread.interrupted()) { 
+		switch(current) {
+		<states; separator="\n">
+		
+		default:
+			throw new IllegalStateException();
+		}
+		try {
+			events.acquire(); //read/write on a port
+		} catch (InterruptedException e) {
+			System.err.println("Terminating coordinator thread...");
+			return;
+		}
+	}
+}
+>>
+
+filler(id) 							::="++"

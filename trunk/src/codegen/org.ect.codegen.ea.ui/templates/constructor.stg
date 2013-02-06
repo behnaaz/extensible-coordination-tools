@@ -1,0 +1,69 @@
+group Constructor;
+
+disjunction(id, members)		::= <<
+Or <id> = new Or();
+<members:append(); separator="\n">
+>>
+
+conjunction(id, members)		::= <<
+And <id> = new And();
+<members:append(); separator="\n">
+>>
+ 
+function(id, arg, funcs)		::= <<
+FunComposition <id> = new FunComposition(<arg.id>);
+<funcs:{f| <id>.applyFunction(<f>());}; separator="\n">
+>> 
+
+predicate(id, lhs, rhs)			::=<<
+<lhs>
+<rhs>
+Predicate <id> = new Predicate(<lhs.id>, <rhs.id>);
+>>
+
+equation(id, lhs, rhs)			::= <<
+<lhs>
+<rhs>
+Assignment <id> = new Assignment(<lhs.id>, <rhs.id>);
+>>
+
+append(val)						::= <<
+<val>
+<id>.add(<val.id>);
+>>
+
+port(id, type)					::= <<
+<id>
+>>
+
+cell(id, init)					::= ""
+
+state(name, isstart, cells, trans)::= <<
+<trans>
+>>
+
+transition(dest, ports, cons)		::=<<
+
+//Constraints for <name>-[<ports; separator=",">]-><dest.name>
+<cons>
+<name>_<ports; separator="_">_<dest.name> = <cons.id>;
+
+>>
+
+automaton(id, ports, states)		::= <<
+/**
+* Constructor with all the constraint definitions
+<ports:{p| * @param <p>}; separator="\n">
+*/
+public <connectorClass>(<ports:{p|TransactionalIO <p>}; separator=", ">) {
+<ports:{p|
+	((Observable)<p>).addObserver(this);
+	this.<p> = <p>;}
+;separator="\n">
+	
+	<states:{s | <if (s.isstart)>current = State.<s.name>; <endif>}>	
+	<states> 
+}
+>>
+
+filler(id) 					::=""

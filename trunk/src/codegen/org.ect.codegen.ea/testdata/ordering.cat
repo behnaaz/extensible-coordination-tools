@@ -1,0 +1,5 @@
+"Ordering"[A::OUT, B::OUT, C::IN]
+ordering1*[
+	[C, A, B]::(C=A & $t.y=B)::ordering2],
+ordering2[y][
+	[C]::(C=$s.y)::ordering1]

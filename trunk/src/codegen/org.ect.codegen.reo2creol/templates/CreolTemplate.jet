@@ -1,0 +1,43 @@
+<%@ jet package="org.ect.codegen.reo2creol" 
+		imports="java.util.* org.ect.ea.automata.*" 
+		class="CreolTemplate"%><%
+
+Automaton automaton = (Automaton) argument;
+Connector cnt = new Connector(automaton);
+%>
+/*Creol code automatically generated from the Constraint Automaton for the Reo citcuit <%=automaton.getName()%>.*/
+class <%= automaton.getName() %> implements<%
+	if (cnt.hasSource) { %> WConnector<% }
+	if (cnt.hasSource && cnt.hasSink) { %>,<% }
+	if (cnt.hasSink) { %> RConnector<% }
+	if ((cnt.hasSource || cnt.hasSink) && cnt.hasSignal) { %>,<% }
+	if (cnt.hasSignal) { %> SConnector<% } %>
+begin
+	var state : String = "<%=cnt.getInitialState()%>"		// initial state
+<%=cnt.varDecl%><%=cnt.transitions%>
+	op init ==<% for (int i=1; i<=cnt.transCount; i++) { %>
+		! transition<%= i %> ;
+<% 	}%>
+
+<%if (cnt.hasSource) { %>
+<%=Source.getOperation()%>
+
+<%}
+if (cnt.hasSink) { %>
+<%=Sink.getOperation()%>
+
+<%}
+if (cnt.hasSignal) { %>
+<%=Signal.getOperation()%>
+
+<%}%>
+	with NetworkManager op create (out ce:List[ConnectorEnd]) ==
+		ce := empty_list;
+<%	Iterator<?> ice = cnt.connectorEndList.iterator();
+	while (ice.hasNext()){
+		ConnectorEnd cce = (ConnectorEnd)ice.next();	%>
+		<%=cce.getPrefixedName()%> := new <%=cce.getCreolTypeName()%>(this);
+		add[ce,<%=cce.getPrefixedName()%>];
+<%	}%>
+
+end

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.ect.codegen.feature"
+      label="Reo/EA Code Generators"
+      version="4.0.0.qualifier"
+      provider-name="Extensible Coordination Tools">
+
+   <description url="http://reo.project.cwi.nl">
+      Reo/EA Code Generators.
+   </description>
+
+   <copyright>
+      Copyright (C) 2013 ECT developers.
+   </copyright>
+
+   <license>
+      All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+   </license>
+
+   <url>
+      <update label="ECT Update Site" url="http://reo.project.cwi.nl/update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.ect.ea.antlr" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.runtime" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.antlr" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo.diagram" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.util" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.diagram" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.constraints" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.portnames" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.startstates" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.statememory" version="3.2.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.diagram" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.diagram.contributions" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.portnames" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.startstates" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.antlr" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo.ui" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.clocks" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.guards" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.portnames" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.startstates" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.statememory" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.constraints" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.diagram" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo.diagram" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.4.1" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.8.1" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo.diagram" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common.ui" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo.ui" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.diagram.contributions" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.util" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.constraints" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.portnames" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.startstates" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.ea.extensions.constraints" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo.diagram" version="3.1.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.ect.codegen"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.ea"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.ea.ui"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.ea2mc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.ea2smt"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.reo2constraints"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.reo2creol"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.reo2ea.ca"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.reo2ea.core"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.reo2ea.qia"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.reo2mc"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+</feature>
