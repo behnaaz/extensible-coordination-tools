@@ -1,0 +1,13 @@
+#TeXlipse project settings
+#Mon Sep 08 14:16:41 CEST 2008
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=ect-manual.tex
+outputFile=ect-manual.pdf
+langSpell=en
+markDer=true
+srcDir=
