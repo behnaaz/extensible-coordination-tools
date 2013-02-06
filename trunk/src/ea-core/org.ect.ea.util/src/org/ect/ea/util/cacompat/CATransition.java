@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.ect.ea.IExtensionProvider;
 import org.ect.ea.extensions.IExtension;
 import org.ect.ea.extensions.constraints.Constraint;
+import org.ect.ea.extensions.constraints.ConstraintExtensionProvider;
 import org.ect.ea.extensions.constraints.operations.Normaliser;
-import org.ect.ea.extensions.constraints.providers.ConstraintExtensionProvider;
 import org.ect.ea.extensions.portnames.TransitionPortNames;
-import org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider;
+import org.ect.ea.extensions.portnames.TransitionPortNamesProvider;
 import org.ect.ea.util.cacompat.CA.PortType;
 
 public class CATransition extends org.ect.ea.automata.Transition {
