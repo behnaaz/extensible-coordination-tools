@@ -29,6 +29,14 @@ import org.ect.ea.extensions.StringListExtension;
 public class StateMemory extends StringListExtension {
 	
 	/**
+	 * @generated NOT
+	 */
+	public StateMemory() {
+		super();
+		setId(StateMemoryExtensionProvider.EXTENSION_ID);
+	}
+	
+	/**
 	 * Parse a state memory definition.
 	 * @generated NOT
 	 */
@@ -104,13 +112,6 @@ public class StateMemory extends StringListExtension {
 	 * @ordered
 	 */
 	protected EMap<String, String> initializations;
-
-	/**
-	 * @generated
-	 */
-	public StateMemory() {
-		super();
-	}
 
 	/**
 	 * @generated
