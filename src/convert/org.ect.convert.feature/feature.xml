@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.ect.convert"
+      label="Reo Conversion Tools (BPEL, UML-SD, UML-AD)"
+      version="4.0.0.qualifier"
+      provider-name="Extensible Coordination Tools">
+
+   <description url="http://reo.project.cwi.nl">
+      Reo Conversion Tools (BPEL, UML-SD, UML-AD).
+   </description>
+
+   <copyright>
+      Copyright (C) 2013 ECT developers.
+   </copyright>
+
+   <license>
+      All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+   </license>
+
+   <url>
+      <update label="ECT Update Site" url="http://reo.project.cwi.nl/update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.ect.reo" version="3.2.20" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo.diagram" version="3.2.20" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.gmf.runtime.notation" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.reo" version="3.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common" version="2.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.4.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.ect.convert.bpel2reo"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.convert.umlsd2reo"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.convert.umlad2reo"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+</feature>

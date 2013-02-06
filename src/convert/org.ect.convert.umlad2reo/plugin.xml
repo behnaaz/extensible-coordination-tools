@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="cwi.umlad2reo.atl.contribution1">
+         <action
+               label="Convert UML Activity Diagram to Reo"
+               class="org.ect.convert.umlad2reo.actions.UMLAC2ReoAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.ect.convert.umlad2reo.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
