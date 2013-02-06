@@ -20,9 +20,9 @@ import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.StringListExtension;
 import org.ect.ea.extensions.portnames.IntensionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.portnames.TransitionPortNames;
-import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
-import org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider;
+import org.ect.ea.extensions.portnames.TransitionPortNamesProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 

@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.constraints.providers;
+package org.ect.ea.extensions.constraints;
 
 import java.text.ParseException;
 import java.util.HashSet;
@@ -26,16 +26,6 @@ import org.ect.ea.configuration.ExtensionDefinition;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.IExtension;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.constraints.CA;
-import org.ect.ea.extensions.constraints.Conjunction;
-import org.ect.ea.extensions.constraints.Constraint;
-import org.ect.ea.extensions.constraints.Disjunction;
-import org.ect.ea.extensions.constraints.Element;
-import org.ect.ea.extensions.constraints.ElementType;
-import org.ect.ea.extensions.constraints.Equation;
-import org.ect.ea.extensions.constraints.Function;
-import org.ect.ea.extensions.constraints.Literal;
-import org.ect.ea.extensions.constraints.Parameter;
 import org.ect.ea.extensions.constraints.operations.Normaliser;
 import org.ect.ea.extensions.constraints.parsers.ConstraintParserHelper;
 import org.ect.ea.extensions.statememory.StateMemoryExtensionProvider;

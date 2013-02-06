@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.ect.ea.extensions.ExtensionElement;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.IExtension;
-import org.ect.ea.extensions.constraints.providers.ConstraintExtensionProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 

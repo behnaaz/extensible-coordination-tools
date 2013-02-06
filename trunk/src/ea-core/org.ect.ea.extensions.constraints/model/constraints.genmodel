@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" * Constraint Extension, Copyright (C) 2007 SEN3 group at CWI, Amsterdam.&#xD;&#xA; * &#xD;&#xA; * This program is free software; you can redistribute it and/or&#xD;&#xA; * modify it under the terms of the GNU General Public License&#xD;&#xA; * as published by the Free Software Foundation; either version&#xD;&#xA; * 2 of the License, or (at your option) any later version.&#xD;&#xA; * This program is distributed in the hope that it will be useful,&#xD;&#xA; * but WITHOUT ANY WARRANTY; without even the implied warranty of&#xD;&#xA; * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xD;&#xA; * GNU General Public License for more details.&#xD;&#xA; * You should have received a copy of the GNU General Public License&#xD;&#xA; * along with this program; if not, write to the Free Software&#xD;&#xA; * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA&#xD;&#xA; * 02110-1301, USA.&#xD;&#xA;"
-    modelDirectory="/org.ect.ea.extensions.constraints/src" modelPluginID="org.ect.ea.extensions.constraints"
-    modelName="Constraints" suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../org.ect.ea/model/ea.genmodel#//ea">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/org.ect.ea.extensions.constraints/src"
+    modelPluginID="org.ect.ea.extensions.constraints" modelName="Constraints" suppressInterfaces="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    runtimeVersion="2.6" usedGenPackages="../../org.ect.ea/model/ea.genmodel#//ea">
   <foreignModel>constraints.ecore</foreignModel>
   <genPackages prefix="Constraints" basePackage="org.ect.ea.extensions" disposableProviderFactory="true"
       utilityPackageSuffix="" ecorePackage="constraints.ecore#/">
@@ -14,14 +13,19 @@
       <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//ElementType/INTEGER"/>
       <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//ElementType/SOURCE_MEMORY"/>
       <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//ElementType/TARGET_MEMORY"/>
+      <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//ElementType/ARBITRARY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="constraints.ecore#//PredicateType">
+      <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//PredicateType/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//PredicateType/NOT_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//PredicateType/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//PredicateType/GREATER_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//PredicateType/LESS"/>
+      <genEnumLiterals ecoreEnumLiteral="constraints.ecore#//PredicateType/LESS_EQUAL"/>
     </genEnums>
     <genClasses image="false" ecoreClass="constraints.ecore#//Constraint"/>
-    <genClasses ecoreClass="constraints.ecore#//Conjunction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraints.ecore#//Conjunction/members"/>
-    </genClasses>
-    <genClasses ecoreClass="constraints.ecore#//Disjunction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraints.ecore#//Disjunction/members"/>
-    </genClasses>
+    <genClasses ecoreClass="constraints.ecore#//Conjunction"/>
+    <genClasses ecoreClass="constraints.ecore#//Disjunction"/>
     <genClasses ecoreClass="constraints.ecore#//Equation">
       <genFeatures createChild="false" ecoreFeature="ecore:EReference constraints.ecore#//Equation/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference constraints.ecore#//Equation/right"/>
@@ -50,6 +54,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraints.ecore#//Function/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraints.ecore#//Function/className"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraints.ecore#//Function/parameters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="constraints.ecore#//Composite">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraints.ecore#//Composite/members"/>
+    </genClasses>
+    <genClasses ecoreClass="constraints.ecore#//Predicate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraints.ecore#//Predicate/type"/>
+      <genOperations ecoreOperation="constraints.ecore#//Predicate/negate"/>
+      <genOperations ecoreOperation="constraints.ecore#//Predicate/flip"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
