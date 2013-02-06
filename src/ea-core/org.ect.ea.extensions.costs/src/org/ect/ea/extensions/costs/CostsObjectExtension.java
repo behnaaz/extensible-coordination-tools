@@ -41,6 +41,7 @@ import org.ect.ea.extensions.ExtensionElement;
  * @generated
  */
 public class CostsObjectExtension extends ExtensionElement {
+	
 	/**
 	 * The cached value of the '{@link #getCostsObjects() <em>Costs Objects</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -54,10 +55,11 @@ public class CostsObjectExtension extends ExtensionElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public CostsObjectExtension() {
 		super();
+		setId(CostValuesProvider.EXTENSION_ID);
 	}
 
 	/**

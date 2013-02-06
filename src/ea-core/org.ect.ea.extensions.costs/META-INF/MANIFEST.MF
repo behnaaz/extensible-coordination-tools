@@ -15,5 +15,5 @@ Require-Bundle: org.ect.ea;bundle-version="3.2.0";visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.gmf.runtime.diagram.ui
-Bundle-Activator: org.ect.ea.extensions.costs.providers.CostsExtensionPlugin
+Bundle-Activator: org.ect.ea.extensions.costs.CostsExtensionPlugin
 Bundle-ActivationPolicy: lazy
