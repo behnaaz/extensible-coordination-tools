@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.ect.converters.bpel2reo.contribution1"
+            nameFilter="*.bpel"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="Conversion"
+               path="additions"
+               id="org.ect.converters.bpel2reo.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="BPEL to Reo"
+               class="org.ect.converters.bpel2reo.popup.actions.BPEL2Reo"
+               menubarPath="org.ect.converters.bpel2reo.menu1/group1"
+               enablesFor="1"
+               id="org.ect.converters.bpel2reo.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="idModel" name="AccessControlModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="AccessControlPackage">
+    <packagedElement xmi:type="uml:Activity" xmi:id="idActivity" name="AccessControlActivity">
+      <ownedBehavior xmi:type="uml:Activity" xmi:id="_kdGgcEjAEeCbZLVWJCzmYw" name="access request"/>
+      <ownedBehavior xmi:type="uml:Activity" xmi:id="_nJz-UEjAEeCbZLVWJCzmYw" name="access control"/>
+      <ownedBehavior xmi:type="uml:Activity" xmi:id="_r4yO4EjAEeCbZLVWJCzmYw" name="transfer"/>
+      <ownedBehavior xmi:type="uml:Activity" xmi:id="_wB6ncEjAEeCbZLVWJCzmYw" name="authenticate"/>
+      <ownedBehavior xmi:type="uml:Activity" xmi:id="_x6UTgEjAEeCbZLVWJCzmYw" name="authorize"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_hozz4EjAEeCbZLVWJCzmYw" name="InitialNode1" outgoing="_bo1C4EjKEeCbZLVWJCzmYw" inPartition="_SzWbgEjAEeCbZLVWJCzmYw"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_kcpNcEjAEeCbZLVWJCzmYw" name="a1" incoming="_bo1C4EjKEeCbZLVWJCzmYw" inPartition="_SzWbgEjAEeCbZLVWJCzmYw" behavior="_kdGgcEjAEeCbZLVWJCzmYw"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_nJxiEEjAEeCbZLVWJCzmYw" name="a2" incoming="_nPSvsEjKEeCbZLVWJCzmYw" inPartition="_SzWbgEjAEeCbZLVWJCzmYw" behavior="_nJz-UEjAEeCbZLVWJCzmYw"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_nzoXYEjAEeCbZLVWJCzmYw" name="InitialNode2" outgoing="_nPSvsEjKEeCbZLVWJCzmYw" inPartition="_SzWbgEjAEeCbZLVWJCzmYw"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_qMP0kEjAEeCbZLVWJCzmYw" name="InitialNode3" outgoing="_pOzwYEjKEeCbZLVWJCzmYw"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_r4wZsEjAEeCbZLVWJCzmYw" name="a3" incoming="_pOzwYEjKEeCbZLVWJCzmYw" behavior="_r4yO4EjAEeCbZLVWJCzmYw"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_wB5ZUEjAEeCbZLVWJCzmYw" name="a4" inPartition="_Z6nZIEjAEeCbZLVWJCzmYw" behavior="_wB6ncEjAEeCbZLVWJCzmYw"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_x6TFYEjAEeCbZLVWJCzmYw" name="a5" behavior="_x6UTgEjAEeCbZLVWJCzmYw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_bo1C4EjKEeCbZLVWJCzmYw" name="ControlFlow1" source="_hozz4EjAEeCbZLVWJCzmYw" target="_kcpNcEjAEeCbZLVWJCzmYw">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_bo1C4UjKEeCbZLVWJCzmYw" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_bo1C4kjKEeCbZLVWJCzmYw" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_nPSvsEjKEeCbZLVWJCzmYw" name="ControlFlow2" source="_nzoXYEjAEeCbZLVWJCzmYw" target="_nJxiEEjAEeCbZLVWJCzmYw">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_nPSvsUjKEeCbZLVWJCzmYw" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_nPSvskjKEeCbZLVWJCzmYw" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_pOzwYEjKEeCbZLVWJCzmYw" name="ControlFlow3" source="_qMP0kEjAEeCbZLVWJCzmYw" target="_r4wZsEjAEeCbZLVWJCzmYw">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_pOzwYUjKEeCbZLVWJCzmYw" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_pOzwYkjKEeCbZLVWJCzmYw" value="1"/>
+      </edge>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_SzWbgEjAEeCbZLVWJCzmYw" name="local station" node="_kcpNcEjAEeCbZLVWJCzmYw _nzoXYEjAEeCbZLVWJCzmYw _nJxiEEjAEeCbZLVWJCzmYw _hozz4EjAEeCbZLVWJCzmYw"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_XDUb4EjAEeCbZLVWJCzmYw" name="central station"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_Z6nZIEjAEeCbZLVWJCzmYw" name="authentication server" node="_wB5ZUEjAEeCbZLVWJCzmYw"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_eQ1ygEjAEeCbZLVWJCzmYw" name="authorization server"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

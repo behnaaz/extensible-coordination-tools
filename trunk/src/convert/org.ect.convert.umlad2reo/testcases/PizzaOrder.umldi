@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_y7zv8DU4Edyu2NgstWGcFw" activeDiagram="_y7zv8TU4Edyu2NgstWGcFw">
+  <model href="PizzaOrder.uml#idActivity"/>
+  <diagrams xmi:id="_y7zv8TU4Edyu2NgstWGcFw" position="0,0" size="100,100" name="Sales Order Processing" viewport="0,0">
+    <property xmi:id="_y7zv8jU4Edyu2NgstWGcFw" key="pageFormatName" value="A2"/>
+    <property xmi:id="_y7zv8zU4Edyu2NgstWGcFw" key="diagramWidth" value="1680"/>
+    <property xmi:id="_y7zv9DU4Edyu2NgstWGcFw" key="diagramHeight" value="2376"/>
+    <property xmi:id="_y7zv9TU4Edyu2NgstWGcFw" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_y7zv9jU4Edyu2NgstWGcFw" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_y7zv9zU4Edyu2NgstWGcFw" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_y7zv-DU4Edyu2NgstWGcFw" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_y7zv-TU4Edyu2NgstWGcFw" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_y7zv-jU4Edyu2NgstWGcFw" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7zv-zU4Edyu2NgstWGcFw" presentation="org.topcased.modeler.uml.activitydiagram">
+      <element href="PizzaOrder.uml#idActivity"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_y7zwBzU4Edyu2NgstWGcFw" position="564,192" size="30,34">
+      <property xmi:id="_YX-6QIY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y7zwCDU4Edyu2NgstWGcFw" graphEdge="_y786DDU4Edyu2NgstWGcFw _y786ETU4Edyu2NgstWGcFw _y8Gq8jU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7zwCTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_IKlF0MDwEdu-ruLcEwrO2A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y7zwCjU4Edyu2NgstWGcFw" position="73,60" size="23,23">
+      <property xmi:id="_YX-6QYY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y7zwCzU4Edyu2NgstWGcFw" graphEdge="_y786ZjU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7zwDDU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_EmfzkNh0Edu1mMb-MiZLnw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y7zwDTU4Edyu2NgstWGcFw" position="771,103" size="110,56">
+      <property xmi:id="_YX-6QoY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y7zwDjU4Edyu2NgstWGcFw" graphEdge="_y7857zU4Edyu2NgstWGcFw _y7854jU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7zwDzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#__HuL0Nh1Edu1mMb-MiZLnw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y7zwEzU4Edyu2NgstWGcFw" anchor="_y8GrCzU4Edyu2NgstWGcFw _y786ZDU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7zwFDU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_FuPM0Nh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y7zwFTU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7854DU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7854TU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <waypoints>[0, -52, -90, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y7854jU4Edyu2NgstWGcFw" anchor="_y8GrCzU4Edyu2NgstWGcFw _y7zwDjU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7854zU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_F8wJ8Nh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y7855DU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7855TU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7855jU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y7855zU4Edyu2NgstWGcFw" anchor="_y8GrCzU4Edyu2NgstWGcFw _y786VTU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7856DU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_GMICsNh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y7856TU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7856jU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7856zU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <waypoints>[0, 59, -96, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y7857DU4Edyu2NgstWGcFw" position="920,107" size="10,49">
+      <property xmi:id="_YX-6RIY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y7857TU4Edyu2NgstWGcFw" graphEdge="_y7857zU4Edyu2NgstWGcFw _y7859DU4Edyu2NgstWGcFw _y786MzU4Edyu2NgstWGcFw _qLntAM2kEdy10Ii6505iNw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7857jU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_ao7eENh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y7857zU4Edyu2NgstWGcFw" anchor="_y7zwDjU4Edyu2NgstWGcFw _y7857TU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7858DU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_fGrbwNh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y7858TU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7858jU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7858zU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y7859DU4Edyu2NgstWGcFw" anchor="_y786ZDU4Edyu2NgstWGcFw _y7857TU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y7859TU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_ffmSENh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y7859jU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y7859zU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y785-DU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <waypoints>[87, 0, 0, -53]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y785_DU4Edyu2NgstWGcFw" position="960,117" size="30,30">
+      <property xmi:id="_YX-6RoY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y785_TU4Edyu2NgstWGcFw" graphEdge="_y786MzU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y785_jU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_mRe1kNh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y785_zU4Edyu2NgstWGcFw" position="387,451" size="30,30">
+      <property xmi:id="_YX-6R4Y9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_LzlfkJK0Edysg6UWTl9OeQ" graphEdge="_LzmtsJK0Edysg6UWTl9OeQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786ATU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_r-sQANh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786AjU4Edyu2NgstWGcFw" anchor="_y786WDU4Edyu2NgstWGcFw _XHSrAM2lEdy10Ii6505iNw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786AzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_tGOf0Nh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786BDU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786BTU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786BjU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786DDU4Edyu2NgstWGcFw" anchor="_y7zwCDU4Edyu2NgstWGcFw _y8GrDjU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786DTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_8VI6ANh2Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786DjU4Edyu2NgstWGcFw" id="stereotypeEdgeObject" offset="-35,51"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786DzU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786EDU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="73" vDistance="62"/>
+      <waypoints>[82, 0, -45, 80]</waypoints>
+      <waypoints>[82, -80, -45, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786ETU4Edyu2NgstWGcFw" anchor="_y7zwCDU4Edyu2NgstWGcFw _y8GrHjU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786EjU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_AEYL4Nh3Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786EzU4Edyu2NgstWGcFw" id="stereotypeEdgeObject" offset="-34,-69"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786FDU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786FTU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="201" vDistance="-80"/>
+      <waypoints>[0, 116, 235, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786GzU4Edyu2NgstWGcFw" position="470,105" size="10,49">
+      <property xmi:id="_kutTUGgVEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <property xmi:id="_lWwKwGgVEdyapL2QBnPNVQ" key="backgroundColor" value="0,0,0"/>
+      <property xmi:id="_YX-6SIY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786HDU4Edyu2NgstWGcFw" graphEdge="_y8Gq7TU4Edyu2NgstWGcFw _Mnh38GgVEdyapL2QBnPNVQ _P7hggM2oEdy10Ii6505iNw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786HTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_1expsNh3Edu1mMb-MiZLnw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786MzU4Edyu2NgstWGcFw" anchor="_y7857TU4Edyu2NgstWGcFw _y785_TU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786NDU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_zfrDQNh4Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786NTU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786NjU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786NzU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786PTU4Edyu2NgstWGcFw" anchor="_y786VTU4Edyu2NgstWGcFw _y786WDU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786PjU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_5cxOoNiKEdu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786PzU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786QDU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786QTU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786TDU4Edyu2NgstWGcFw" anchor="_y8GrFjU4Edyu2NgstWGcFw _y786XjU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786TTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_wVpnMNiMEdu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786TjU4Edyu2NgstWGcFw" id="stereotypeEdgeObject" offset="110,90"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786TzU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786UDU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="-43" vDistance="187"/>
+      <waypoints>[-158, 0, -76, 205]</waypoints>
+      <waypoints>[-158, -205, -76, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786UTU4Edyu2NgstWGcFw" position="270,365" size="149,55">
+      <property xmi:id="_YX_hUIY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786UjU4Edyu2NgstWGcFw" graphEdge="_y8GrGDU4Edyu2NgstWGcFw _y8GrIDU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786UzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_WEfyENlREdudYNe9TScAdQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786VDU4Edyu2NgstWGcFw" position="770,161" size="149,57">
+      <property xmi:id="_YX_hUYY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786VTU4Edyu2NgstWGcFw" graphEdge="_y786PTU4Edyu2NgstWGcFw _y7855zU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786VjU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_qBLi8NlREdudYNe9TScAdQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786VzU4Edyu2NgstWGcFw" position="773,229" size="143,55">
+      <property xmi:id="_YX_hUoY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786WDU4Edyu2NgstWGcFw" graphEdge="_y786PTU4Edyu2NgstWGcFw _y786AjU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786WTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_Vr4BQNlSEdudYNe9TScAdQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786WjU4Edyu2NgstWGcFw" position="123,439" size="149,52">
+      <property xmi:id="_YX_hU4Y9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786WzU4Edyu2NgstWGcFw" graphEdge="_y786azU4Edyu2NgstWGcFw _LzmtsJK0Edysg6UWTl9OeQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786XDU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_3Px1wNlSEdudYNe9TScAdQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786XTU4Edyu2NgstWGcFw" position="56,161" size="118,56">
+      <property xmi:id="_YX_hVIY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786XjU4Edyu2NgstWGcFw" graphEdge="_y8Gq-jU4Edyu2NgstWGcFw _y786TDU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786XzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_A63bANlTEdudYNe9TScAdQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786YDU4Edyu2NgstWGcFw" position="20,99" size="128,56">
+      <property xmi:id="_YX_hVYY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786YTU4Edyu2NgstWGcFw" graphEdge="_y786ZjU4Edyu2NgstWGcFw _y786cDU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786YjU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_MF-okNlTEdudYNe9TScAdQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y786YzU4Edyu2NgstWGcFw" position="775,50" size="127,56">
+      <property xmi:id="_YX_hVoY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y786ZDU4Edyu2NgstWGcFw" graphEdge="_y7859DU4Edyu2NgstWGcFw _y7zwEzU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786ZTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_arT6QNlTEdudYNe9TScAdQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786ZjU4Edyu2NgstWGcFw" anchor="_y7zwCzU4Edyu2NgstWGcFw _y786YTU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786ZzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_DuPOoNlgEdudYNe9TScAdQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786aDU4Edyu2NgstWGcFw" id="stereotypeEdgeObject" offset="4,9"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786aTU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786ajU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786azU4Edyu2NgstWGcFw" anchor="_y8GrFjU4Edyu2NgstWGcFw _y786WzU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786bDU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_UonsINlgEdudYNe9TScAdQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y786bTU4Edyu2NgstWGcFw" id="stereotypeEdgeObject" offset="37,-5"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786bjU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y786bzU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="17" vDistance="-5"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y786cDU4Edyu2NgstWGcFw" anchor="_y786YTU4Edyu2NgstWGcFw _y8GrADU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y786cTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_UndhcMDpEdu-ruLcEwrO2A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8Gq4DU4Edyu2NgstWGcFw" id="stereotypeEdgeObject" offset="-4,25"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq4TU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq4jU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8Gq6DU4Edyu2NgstWGcFw" anchor="_y8GrAzU4Edyu2NgstWGcFw _H1LjQGgVEdyapL2QBnPNVQ">
+      <property xmi:id="_4KZP8GgVEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8Gq6TU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_9Q0VsMDpEdu-ruLcEwrO2A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8Gq6jU4Edyu2NgstWGcFw" id="stereotypeEdgeObject" offset="17,41"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq6zU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq7DU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8Gq7TU4Edyu2NgstWGcFw" anchor="_y786HDU4Edyu2NgstWGcFw _y8Gq-DU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8Gq7jU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_3cn90Nh0Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8Gq7zU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq8DU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq8TU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8Gq8jU4Edyu2NgstWGcFw" anchor="_y8Gq-DU4Edyu2NgstWGcFw _y7zwCDU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8Gq8zU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_xP6HcNh1Edu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8Gq9DU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq9TU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq9jU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y8Gq9zU4Edyu2NgstWGcFw" position="495,102" size="168,57">
+      <property xmi:id="_YX_hV4Y9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y8Gq-DU4Edyu2NgstWGcFw" graphEdge="_y8Gq7TU4Edyu2NgstWGcFw _y8Gq8jU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8Gq-TU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_sEmVoNh0Edu1mMb-MiZLnw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8Gq-jU4Edyu2NgstWGcFw" anchor="_y786XjU4Edyu2NgstWGcFw _y8GrADU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8Gq-zU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_3fBdoNiMEdu1mMb-MiZLnw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8Gq_DU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq_TU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8Gq_jU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="-43" vDistance="71"/>
+      <waypoints>[69, 0, 0, 58]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y8Gq_zU4Edyu2NgstWGcFw" position="170,112" size="29,31">
+      <property xmi:id="_YX_hWIY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y8GrADU4Edyu2NgstWGcFw" graphEdge="_y8Gq-jU4Edyu2NgstWGcFw _y786cDU4Edyu2NgstWGcFw _y8GrBTU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrATU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_DHrKIP9NEdujcdb-AyrhSA"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y8GrAjU4Edyu2NgstWGcFw" position="222,101" size="10,49">
+      <property xmi:id="_eO1F0GgVEdyapL2QBnPNVQ" key="backgroundColor" value="0,0,0"/>
+      <property xmi:id="_heuwUGgVEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <property xmi:id="_YX_hWYY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y8GrAzU4Edyu2NgstWGcFw" graphEdge="_y8Gq6DU4Edyu2NgstWGcFw _y8GrBTU4Edyu2NgstWGcFw _MveGIM2mEdy10Ii6505iNw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrBDU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_K3t_AP9NEdujcdb-AyrhSA"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8GrBTU4Edyu2NgstWGcFw" anchor="_y8GrADU4Edyu2NgstWGcFw _y8GrAzU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrBjU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_NFL8IP9NEdujcdb-AyrhSA"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8GrBzU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrCDU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrCTU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y8GrCjU4Edyu2NgstWGcFw" position="743,106" size="10,49">
+      <property xmi:id="_YX_hWoY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y8GrCzU4Edyu2NgstWGcFw" graphEdge="_y7zwEzU4Edyu2NgstWGcFw _y7854jU4Edyu2NgstWGcFw _y7855zU4Edyu2NgstWGcFw _y8GrEDU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrDDU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_VcSJ8P9NEdujcdb-AyrhSA"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y8GrDTU4Edyu2NgstWGcFw" position="692,112" size="29,35">
+      <property xmi:id="_YX_hW4Y9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y8GrDjU4Edyu2NgstWGcFw" graphEdge="_y8GrEDU4Edyu2NgstWGcFw _y786DDU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrDzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_YihiIP9NEdujcdb-AyrhSA"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8GrEDU4Edyu2NgstWGcFw" anchor="_y8GrDjU4Edyu2NgstWGcFw _y8GrCzU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrETU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_htQzYP9NEdujcdb-AyrhSA"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8GrEjU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrEzU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrFDU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y8GrFTU4Edyu2NgstWGcFw" position="183,375" size="29,38">
+      <property xmi:id="_YX_hXIY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_y8GrFjU4Edyu2NgstWGcFw" graphEdge="_y786azU4Edyu2NgstWGcFw _y8GrGDU4Edyu2NgstWGcFw _y786TDU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrFzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_K-DbEP9OEdujcdb-AyrhSA"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8GrGDU4Edyu2NgstWGcFw" anchor="_y786UjU4Edyu2NgstWGcFw _y8GrFjU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrGTU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_O71fQP9OEdujcdb-AyrhSA"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8GrGjU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrGzU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrHDU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_y8GrHTU4Edyu2NgstWGcFw" position="330,310" size="29,30">
+      <property xmi:id="_gQXfwGgVEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <property xmi:id="_YX_hXYY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <property xmi:id="_bADNQJK1Edysg6UWTl9OeQ" key="backgroundColor" value="255,255,255"/>
+      <anchorage xmi:id="_y8GrHjU4Edyu2NgstWGcFw" graphEdge="_y8GrIDU4Edyu2NgstWGcFw __ug58GgbEdyapL2QBnPNVQ _y786ETU4Edyu2NgstWGcFw _NO9egM2mEdy10Ii6505iNw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrHzU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_ihl94P9OEdujcdb-AyrhSA"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_y8GrIDU4Edyu2NgstWGcFw" anchor="_y8GrHjU4Edyu2NgstWGcFw _y786UjU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8GrITU4Edyu2NgstWGcFw" presentation="default">
+        <element href="PizzaOrder.uml#_lv5s8P9OEdujcdb-AyrhSA"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_y8GrIjU4Edyu2NgstWGcFw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrIzU4Edyu2NgstWGcFw" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_y8GrJDU4Edyu2NgstWGcFw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_FcnJYGgVEdyapL2QBnPNVQ" position="268,96" size="150,57">
+      <property xmi:id="_UU_58GgVEdyapL2QBnPNVQ" key="backgroundColor" value="255,255,255"/>
+      <property xmi:id="_0Oc-0GgVEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <property xmi:id="_YYAIYYY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_H1LjQGgVEdyapL2QBnPNVQ" graphEdge="_y8Gq6DU4Edyu2NgstWGcFw _NiC_cGgVEdyapL2QBnPNVQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FcnJYWgVEdyapL2QBnPNVQ" presentation="default">
+        <element href="PizzaOrder.uml#_Fco-kGgVEdyapL2QBnPNVQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_Mnh38GgVEdyapL2QBnPNVQ" anchor="_84nD0GgbEdyapL2QBnPNVQ _y786HDU4Edyu2NgstWGcFw">
+      <property xmi:id="_4KaeEWgVEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Mnh38WgVEdyapL2QBnPNVQ" presentation="default">
+        <element href="PizzaOrder.uml#_MnifAGgVEdyapL2QBnPNVQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Mnh38mgVEdyapL2QBnPNVQ" id="stereotypeEdgeObject" offset="-55,-10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Mnh382gVEdyapL2QBnPNVQ" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Mnh39GgVEdyapL2QBnPNVQ" visible="false" id="weightEdgeObject" uDistance="7" vDistance="-13"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Mnh39WgVEdyapL2QBnPNVQ" id="nameEdgeObject" uDistance="41" vDistance="-88"/>
+      <waypoints>[131, 0, 0, 80]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_NiC_cGgVEdyapL2QBnPNVQ" anchor="_H1LjQGgVEdyapL2QBnPNVQ _84nD0GgbEdyapL2QBnPNVQ">
+      <property xmi:id="_4KaeEGgVEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_NiC_cWgVEdyapL2QBnPNVQ" presentation="default">
+        <element href="PizzaOrder.uml#_NiC_dmgVEdyapL2QBnPNVQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_NiC_cmgVEdyapL2QBnPNVQ" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NiC_c2gVEdyapL2QBnPNVQ" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NiC_dGgVEdyapL2QBnPNVQ" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NiC_dWgVEdyapL2QBnPNVQ" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_7-tnYGgbEdyapL2QBnPNVQ" position="329,193" size="30,33">
+      <property xmi:id="_Lfl7UGgcEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <property xmi:id="_YYAIYoY9EdyP5OOK2-KIuA" key="font" value="Lucida Grande-regular-12"/>
+      <property xmi:id="_bACmMJK1Edysg6UWTl9OeQ" key="backgroundColor" value="255,255,255"/>
+      <anchorage xmi:id="_84nD0GgbEdyapL2QBnPNVQ" graphEdge="_NiC_cGgVEdyapL2QBnPNVQ __ug58GgbEdyapL2QBnPNVQ _Mnh38GgVEdyapL2QBnPNVQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_7-tnYWgbEdyapL2QBnPNVQ" presentation="default">
+        <element href="PizzaOrder.uml#_7_CXgGgbEdyapL2QBnPNVQ"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="__ug58GgbEdyapL2QBnPNVQ" anchor="_84nD0GgbEdyapL2QBnPNVQ _y8GrHjU4Edyu2NgstWGcFw">
+      <property xmi:id="_JsVN8GgcEdyapL2QBnPNVQ" key="foregroundColor" value="0,0,0"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="__ug58WgbEdyapL2QBnPNVQ" presentation="default">
+        <element href="PizzaOrder.uml#__uhhAGgbEdyapL2QBnPNVQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="__ug58mgbEdyapL2QBnPNVQ" id="stereotypeEdgeObject" offset="34,-28"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="__ug582gbEdyapL2QBnPNVQ" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="__ug59GgbEdyapL2QBnPNVQ" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="__ug59WgbEdyapL2QBnPNVQ" id="nameEdgeObject" uDistance="66" vDistance="-6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_LzmtsJK0Edysg6UWTl9OeQ" anchor="_y786WzU4Edyu2NgstWGcFw _LzlfkJK0Edysg6UWTl9OeQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LzmtsZK0Edysg6UWTl9OeQ" presentation="default">
+        <element href="PizzaOrder.uml#_LzmttpK0Edysg6UWTl9OeQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LzmtspK0Edysg6UWTl9OeQ" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Lzmts5K0Edysg6UWTl9OeQ" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LzmttJK0Edysg6UWTl9OeQ" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LzmttZK0Edysg6UWTl9OeQ" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_AmyvAM2kEdy10Ii6505iNw" position="271,30" size="150,57">
+      <property xmi:id="_XkINcM2kEdy10Ii6505iNw" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_Mvc4AM2mEdy10Ii6505iNw" graphEdge="_MveGIM2mEdy10Ii6505iNw _PdikAM2oEdy10Ii6505iNw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_AmyvAc2kEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_AntVAM2kEdy10Ii6505iNw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_qLntAM2kEdy10Ii6505iNw" anchor="_XHSrAM2lEdy10Ii6505iNw _y7857TU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_qLntAc2kEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_qLoUEM2kEdy10Ii6505iNw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_qLntAs2kEdy10Ii6505iNw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_qLntA82kEdy10Ii6505iNw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_qLntBM2kEdy10Ii6505iNw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_qLntBc2kEdy10Ii6505iNw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <waypoints>[80, 0, 0, 193]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_TBmA8M2lEdy10Ii6505iNw" position="780,294" size="130,60">
+      <property xmi:id="_VuzOEM2lEdy10Ii6505iNw" key="font" value="Lucida Grande-regular-12"/>
+      <anchorage xmi:id="_XHSrAM2lEdy10Ii6505iNw" graphEdge="_qLntAM2kEdy10Ii6505iNw _y786AjU4Edyu2NgstWGcFw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_TBmA8c2lEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_TBmoAM2lEdy10Ii6505iNw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_MveGIM2mEdy10Ii6505iNw" anchor="_y8GrAzU4Edyu2NgstWGcFw _Mvc4AM2mEdy10Ii6505iNw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MveGIc2mEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_MveGJs2mEdy10Ii6505iNw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_MveGIs2mEdy10Ii6505iNw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MveGI82mEdy10Ii6505iNw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MveGJM2mEdy10Ii6505iNw" visible="false" id="weightEdgeObject" uDistance="-22" vDistance="-52"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MveGJc2mEdy10Ii6505iNw" id="nameEdgeObject" uDistance="18" vDistance="-5"/>
+      <waypoints>[0, -66, -119, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_NO9egM2mEdy10Ii6505iNw" anchor="_LhQUoM2oEdy10Ii6505iNw _y8GrHjU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_NO9egc2mEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_NO-FkM2mEdy10Ii6505iNw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_NO9egs2mEdy10Ii6505iNw" id="stereotypeEdgeObject" offset="22,10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NO9eg82mEdy10Ii6505iNw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NO9ehM2mEdy10Ii6505iNw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NO9ehc2mEdy10Ii6505iNw" id="nameEdgeObject" uDistance="34" vDistance="13"/>
+      <waypoints>[0, 227, 108, -38]</waypoints>
+      <waypoints>[-71, 227, 37, -38]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_KkMPcM2oEdy10Ii6505iNw" position="437,41" size="30,33">
+      <anchorage xmi:id="_LhQUoM2oEdy10Ii6505iNw" graphEdge="_NO9egM2mEdy10Ii6505iNw _PdikAM2oEdy10Ii6505iNw _P7hggM2oEdy10Ii6505iNw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KkMPcc2oEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_KkNdkM2oEdy10Ii6505iNw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_PdikAM2oEdy10Ii6505iNw" anchor="_Mvc4AM2mEdy10Ii6505iNw _LhQUoM2oEdy10Ii6505iNw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_PdikAc2oEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_PdikBs2oEdy10Ii6505iNw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_PdikAs2oEdy10Ii6505iNw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_PdikA82oEdy10Ii6505iNw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_PdikBM2oEdy10Ii6505iNw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_PdikBc2oEdy10Ii6505iNw" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_P7hggM2oEdy10Ii6505iNw" anchor="_LhQUoM2oEdy10Ii6505iNw _y786HDU4Edyu2NgstWGcFw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_P7hggc2oEdy10Ii6505iNw" presentation="default">
+        <element href="PizzaOrder.uml#_P7hghs2oEdy10Ii6505iNw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_P7hggs2oEdy10Ii6505iNw" id="stereotypeEdgeObject" offset="57,14"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_P7hgg82oEdy10Ii6505iNw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_P7hghM2oEdy10Ii6505iNw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_P7hghc2oEdy10Ii6505iNw" id="nameEdgeObject" uDistance="26" vDistance="7"/>
+      <waypoints>[23, 0, 0, -69]</waypoints>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

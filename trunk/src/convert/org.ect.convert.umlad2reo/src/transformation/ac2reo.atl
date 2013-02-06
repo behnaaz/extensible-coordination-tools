@@ -1,0 +1,318 @@
+-- @nsURI UML=http://www.eclipse.org/uml2/2.1.0/UML
+-- @path Reo=/cwi.reo/model/reo.ecore
+module ac2reo;
+create OUT : Reo from IN : UML;
+
+helper context String def : cleanup : String =
+	self.replaceAll('UML!', '').regexReplaceAll(' ?><=%^!@#$%&*()_+-]', String.Empty);
+
+helper context UML!ObjectNode def : bufferType : String =
+	if self.oclIsTypeOf(UML!DataStoreNode) then 
+		'DataStore'
+	else 
+		if self.oclIsTypeOf(UML!CentralBufferNode) then
+			'CentralBuffer'
+		else
+			'Data'
+		endif
+	endif;
+
+--conditioncleanup
+helper context UML!ActivityNode def : isAction : Boolean =
+	        self.oclIsKindOf(UML!Action); --or 
+			--self.oclIsKindOf(UML!SendSignalAction) or 
+			--self.oclIsKindOf(UML!CallOperationAction) or 
+			--self.oclIsKindOf(UML!AcceptEventAction) or
+			--self.oclIsKindOf(UML!CallBehaviorAction) or 
+			--self.oclIsKindOf(UML!CentralBufferNode);
+
+helper context UML!ControlFlow def : IsFilter : Boolean =
+	self.source.oclIsTypeOf(UML!DecisionNode) and 
+	self.source.incoming.size()=1 and self.source.outgoing.size()>1;
+
+--helper def : ReservedWords : Sequence(String) = Sequence{'DecisionNode' ,'MergeNode', ''}; 
+
+
+
+--#############code behtar e.outgoing.first().in
+
+--makes sense
+helper context UML!ActivityNode def : isInterruptible : Boolean = 
+   self.isAction and self.inInterruptibleRegion.flatten().size()>0;
+
+helper context UML!ActivityNode def : isInterrupting : Boolean = 
+    self.outgoing->select(e | not e.interrupts.oclIsUndefined()).flatten().size()>0;
+
+--This version only supports one Exception Handler in each Interruptible Region
+helper context UML!ActivityNode def : exceptionHandler : UML!ActivityNode = --khodesh exceptionhandler dare baba
+	self.inInterruptibleRegion.first().interruptingEdge.first().target;
+--This version only supports one Exception in each Interruptible Region
+helper context UML!ActivityNode def : interruptingActivityOfRegion : UML!ActivityNode =
+	self.inInterruptibleRegion.first().interruptingEdge.first().source;
+	
+
+--Package-------------------------------------
+rule package2module
+{
+	from
+		p : UML!Package(p.oclIsTypeOf(UML!Package))
+	to
+	c : Reo!Module(name<-if p.name.oclIsUndefined() then 'module' else p.name endif, connectors <- p.packagedElement)
+	do 
+    {
+       	self.debug('#rule package2module applied on '+ if p.name.oclIsUndefined() then 'module' else p.name endif);
+    }
+}
+--Packed Activity-------------------------------------
+rule activity2connector
+{
+	from
+		p : UML!Activity(p.owner.oclIsKindOf(UML!Package))--notesh joor she
+	to
+		con : Reo!Connector(name<-if p.name.oclIsUndefined() then ' ' else p.name endif, nodes <- p.node, primitives <- p.edge)
+	do 
+    {
+    	p.debug('#rule activity2connector applied on '+ if p.name.oclIsUndefined() then ' ' else p.name endif);    	
+    }
+}
+--ControlFlow-------------------------------------
+rule ControlFlow2Sync{
+	from --why??????? and (not e.isInterruptingEdge)self.interrupts.oclIsUndefined()
+		e : UML!ControlFlow((not e.IsFilter) and (not e.target.oclIsKindOf(UML!FinalNode)) 
+			and e.interrupts.oclIsUndefined())
+	to
+		s : Reo!Sync(sourceEnds <- c, sinkEnds <- k),
+        c : Reo!SourceEnd(node <- thisModule.resolveTemp(e.source, 'tout')),
+		k : Reo!SinkEnd(node <- if not thisModule.resolveTemp(e.target, 'tin').oclIsUndefined() then thisModule.resolveTemp(e.target, 'tin') else thisModule.resolveTemp(e.target, 'tout') endif)
+	do{
+		thisModule.debug('#rule ControlFlow2Sync: '+e.source + if e.name.oclIsUndefined() then ' ' else e.name endif +'    to '+ e.target.oclType().toString() + e.target.name);
+	 }
+}
+
+rule ControlFlow2SyncToFinal{
+	from 
+		e : UML!ControlFlow((not e.IsFilter) and e.interrupts.oclIsUndefined() and e.target.oclIsKindOf(UML!FinalNode))
+	to
+		s : Reo!Sync(sourceEnds <- c, sinkEnds <- k),
+        c : Reo!SourceEnd(node <- thisModule.resolveTemp(e.source, 'tout')),
+		k : Reo!SinkEnd(node <- thisModule.resolveTemp(e.target, 'tout'))
+	do{
+		thisModule.debug('#rule ControlFlow2SyncToFinal: +e.source.oclType().name+    in#: '+e.source.incoming.size() + ' out#: '+e.source.outgoing.size() + 'e.source.name'+' sync '+'e.target.name');
+	 }
+}
+
+---????
+--ControlFlow-------------------------------------
+--rule ControlFlow2Sync{
+	--from --why??????? and (not e.isInterruptingEdge)self.interrupts.oclIsUndefined()
+	--	e : UML!ControlFlow(e.interrupts.oclIsUndefined() and not e.IsFilter)
+	--to
+	--	s : Reo!Sync(sourceEnds <- c, sinkEnds <- k),
+  --      c : Reo!SourceEnd(node <- thisModule.resolveTemp(e.source, 'tout')),
+--		k : Reo!SinkEnd(node <- if not thisModule.resolveTemp(e.target, 'tin').oclIsUndefined() then thisModule.resolveTemp(e.target, 'tin') else thisModule.resolveTemp(e.target, 'tout') endif)
+--	do{
+--		thisModule.debug('#rule ControlFlow2Sync: '+e.source.name+'    to '+ e.target.oclType().toString() +e.target.name);
+--	 }
+--}
+
+
+rule ControlFlow2Filter{
+	from 
+		e : UML!ControlFlow(e.IsFilter)-----vase chi??? and not e.isInterruptingEdge)e.interrupts.oclIsUndefined()
+	to
+		s : Reo!Filter(sourceEnds <- c, sinkEnds <- k, expression <- e.guard.stringValue().toString()),
+		c : Reo!SourceEnd(node <- thisModule.resolveTemp(e.source, 'tout')),---c : Reo!SourceEnd(node <- e.source),
+        k : Reo!SinkEnd(node <- e.target)
+	do{
+		thisModule.debug('e.guard.stringValue().toString()#rule ControlFlow2Filter: e.guard+(e.source.oclType().name=DecisionNode e.source.oclType().name>>source:+e.source+e.source.name+ filter target:+e.target.name');
+      }
+}
+
+--rule interruptingEdge{
+--	from 
+--		e : UML!ControlFlow(not e.interrupts.oclIsUndefined() and false)--endshaye birabt misaze
+--	to
+--		s : Reo!Sync(sourceEnd <- c, sinkEnd <- k),
+--		c : Reo!SourceEnd(node <- if not thisModule.resolveTemp(e.source, 'tin').oclIsUndefined() then thisModule.resolveTemp(e.source, 'tin') else thisModule.resolveTemp(e.source, 'tout') endif),
+--		k : Reo!SinkEnd(node <- thisModule.resolveTemp(e.source, 'tout'))
+--	do{
+---		thisModule.debug('++++#rule interruptingEdge'+e.source);
+--	}	
+--}
+
+--Time???------
+rule time{
+	from 
+		-- e: UML!TimeEvent TODO trigger esh emptie
+		e : UML!ControlFlow(false and e.source.oclIsTypeOf(UML!AcceptEventAction) and 
+			e.source.trigger.size())--endshaye birabt misaze
+	to
+		s : Reo!Timer(sourceEnd <- c, sinkEnd <- k, timeout <- e.source.trigger.first().name.toInteger()),
+		c : Reo!SourceEnd(node <- if not thisModule.resolveTemp(e.source, 'tin').oclIsUndefined() then 
+			
+			thisModule.resolveTemp(e.source, 'tin') else thisModule.resolveTemp(e.source, 'tout') endif),
+		k : Reo!SinkEnd(node <- thisModule.resolveTemp(e.source, 'tout'))
+}
+--ObjectFlow-------------------------------------
+rule ObjectFlow2Sync{--Filter
+	from 
+		e : UML!ObjectFlow(not e.source.oclIsTypeOf(UML!OutputPin) and e.target.oclIsTypeOf(UML!InputPin))
+	to
+	s : Reo!Sync(sourceEnds <- c, sinkEnds <- k),--, expression <- 'test'),
+	c : Reo!SourceEnd(node <- thisModule.resolveTemp(e.source, 'tout')),
+    k : Reo!SinkEnd(node <- if not thisModule.resolveTemp(e.target.owner, 'tin').oclIsUndefined() then thisModule.resolveTemp(e.target.owner, 'tin') else thisModule.resolveTemp(e.target.owner, 'tout') endif)
+ 	do{
+	--	s.sourceEnds.append(c);
+		--s.sourceEnds.append(k);
+		thisModule.debug('#rule ObjectFlow2Sync: target'+(e.target.oclType().name='DecisionNode') + '111'+e.source.oclType().name+ '>>source:'+e.source+e.source.name+' filter target:'+e.target.name);
+ 	  }
+}
+
+rule ObjectFlow2Transform{
+	from --begam target masalan object e kindesh
+		e : UML!ObjectFlow(e.source.oclIsTypeOf(UML!OutputPin) and not e.target.oclIsTypeOf(UML!InputPin))
+	to
+	s : Reo!Transform(sourceEnds <- c, sinkEnds <- k),-- expression <- 'xxx'),
+	c : Reo!SourceEnd(node <- thisModule.resolveTemp(e.source.owner, 'tout')),
+    k : Reo!SinkEnd(node <- if not thisModule.resolveTemp(e.target, 'tin').oclIsUndefined() then thisModule.resolveTemp(e.target, 'tin') else thisModule.resolveTemp(e.target, 'tout') endif)
+  do{
+	--	s.sourceEnds.append(c);
+		--s.sourceEnds.append(k);
+--		s.connector.nodes.add(c);
+	--	s.connector.primitives.add(k);
+		thisModule.debug('#rule ObjectFlow2Transform: target'+(e.target.oclType().name='DecisionNode') + '111'+e.source.oclType().name+ '>>source:'+e.source+e.source.name+' filter target:'+e.target.name);
+    }
+}
+
+rule ObjectNode2FIFO{
+	from 
+		e : UML!ObjectNode(e.incoming.size()>0 and e.outgoing.size()>0)
+	to
+		tin : Reo!Node(name<- e.name + e.bufferType +'In'),
+		f : Reo!FIFO(sourceEnds <- c, sinkEnds <- k),
+		c : Reo!SourceEnd(node <- tin),
+        k : Reo!SinkEnd(node <- tout),
+		tout : Reo!Node(name<- e.name + e.bufferType + 'Out')
+	--	f : Reo!FIFO(sourceEnds <- e.incoming.first().source.owner, sinkEnd <- e.outgoing.first().target.owner)
+	do{
+	  --ghalat  thisModule.resolveTemp(e.activity, 'con').primitives.add(f);
+		tin.connector.nodes.add(tout);
+		tin.connector.primitives.add(f);
+		thisModule.debug('#rule ObjectNode2FIFO on '+e.name);
+    }
+}
+--Node-------------------------------------
+rule dintactivitynode2fifo{
+	from 
+		e : UML!ActivityNode(e.isInterrupting)--only for test?? na vase chi?
+	to
+		tin : Reo!Node(name<- e.name + 'In'),
+		f : Reo!FIFO(sourceEnds <- c, sinkEnds <- k),
+		c : Reo!SourceEnd(node <- tin),
+        k : Reo!SinkEnd(node <- tout),
+		tout : Reo!Node(name<- e.name + 'Out')
+	do
+	{ 
+		tin.connector.nodes.add(tout);
+		tin.connector.primitives.add(f);
+		thisModule.debug('====interrupting :'+e.name);
+	thisModule.debug('2222'+ e.interruptingActivityOfRegion.toString() +' '+e.name+' isinterrupting? '+e.isInterrupting+'#rule controlnode2node:'+e.name);}
+}
+
+rule activitynode2fifo{
+	from 
+		e : UML!ActivityNode(e.isAction and e.inInterruptibleRegion.size()=0 and e.incoming.size() = 1 and
+			e.outgoing.size()=1)
+	to
+		tin : Reo!Node(name<- e.name + 'In'),
+		f : Reo!FIFO(sourceEnds <- c, sinkEnds <- k),
+		c : Reo!SourceEnd(node <- tin),
+        k : Reo!SinkEnd(node <- tout),
+		tout : Reo!Node(name<- e.name + 'Out')
+	do
+	{ 
+		tin.connector.nodes.add(tout);
+		tin.connector.primitives.add(f);
+		thisModule.debug('#rule activitynode2fifo :'+e.name);
+	}
+}
+
+rule activitynode2component{
+	from 
+		e : UML!ActivityNode(e.isAction and e.inInterruptibleRegion.size()=0 and not (e.incoming.size() = 1 and
+			e.outgoing.size()=1))
+	to
+	    g   : Reo!Component(name<-e.name),
+		tin : Reo!Node(name<- e.name + 'In'),
+		f : Reo!FIFO(sourceEnds <- c, sinkEnds <- k),
+		c : Reo!SourceEnd(node <- tin),
+        k : Reo!SinkEnd(node <- tout),
+		tout : Reo!Node(name<- e.name + 'Out')
+	do
+	{ 
+		tin.connector.nodes.add(tout);
+		tin.connector.primitives.add(f);
+		thisModule.debug('#rule activitynode2fifo :'+e.name);
+	}
+}
+
+rule Controlnode2node{
+	from --ActivityFinalNode motafavete 
+		e : UML!ControlNode(not e.oclIsTypeOf(UML!ActivityFinalNode))
+	to
+		tout : Reo!Node(name<-e.name, type <- if e.oclIsTypeOf(UML!JoinNode) then #JOIN else #REPLICATE endif)
+		do{thisModule.debug('#rule controlnode2node:'+e.name);
+	 --   thisModule.debug('0010'+e.allInterruptibleNodes.toString()+'#rule controlnode2node:'+e.name);
+	   thisModule.debug('0310'+e.name+'#rule controlnode2node:'+e.name);
+		}
+}
+
+rule intactivitynode2fifo{
+	from 
+		e : UML!ActivityNode(e.isInterruptible and not e.isInterrupting)
+	using {
+			i : UML!ActivityNode = e.interruptingActivityOfRegion;
+	}
+	to
+		tin : Reo!Node(name<- e.name + 'In'),
+		f : Reo!FIFO(sourceEnds <- c, sinkEnds <- k),
+		c : Reo!SourceEnd(node <- tin),
+        k : Reo!SinkEnd(node <- tout),
+		tout : Reo!Node(name<- e.name + 'Out', type <- #ROUTE),
+		s : Reo!SyncDrain(sourceEnds <- p, sourceEnds <- q),--priorirty
+		p : Reo!SourceEnd(node <- n),
+		q : Reo!SourceEnd(node <- tout),
+		n : Reo!Node(name <- 'tempinterrupt'),--?????
+		o : Reo!Sync(sourceEnds <- r, sinkEnds <- l),
+		l : Reo!SinkEnd(node <- n),
+		r : Reo!SourceEnd(node <- thisModule.resolveTemp(e.interruptingActivityOfRegion, 'tout')),
+		v : Reo!Sync(sourceEnds <- w, sinkEnds <- x),
+		w : Reo!SourceEnd(node <- n),
+		x : Reo!SinkEnd(node <- if not thisModule.resolveTemp(e.exceptionHandler, 'tin').oclIsUndefined() then thisModule.resolveTemp(e.exceptionHandler, 'tin') else thisModule.resolveTemp(e.exceptionHandler, 'tout') endif)--if az jense digeii nabud
+	do
+	{ 
+		tin.connector.nodes.add(tout);
+		tin.connector.primitives.add(f);
+		tin.connector.nodes.add(n);
+		tin.connector.primitives.add(o);
+		tin.connector.primitives.add(s);
+		tin.connector.primitives.add(v);
+		thisModule.debug('xxxx'+e.exceptionHandler.toString());
+	}
+}
+--InterruptibleActivityRegion--------------------------------------------
+rule int{
+	from 
+		x : UML!InterruptibleActivityRegion(false)--(x.containedNode!!!!)--(not e.IsFilter)
+	to
+		tout : Reo!Node(name<-'InterruptibleActivityRegion')
+		--s : Reo!Sync(sourceEnds <- c, sinkEnds <- k),
+       -- c : Reo!SourceEnd(node <- thisModule.resolveTemp(e.source, 'tout')),
+		--k : Reo!SinkEnd(node <- e.target)
+	do{--thisModule.debug(thisModule.faz.toString()+thisModule.faz.size().toString()+' jjjjjjjjj');
+	--thisModule.debug(UML!InterruptibleActivityRegion.allInstances()->collect(e | e.node).toString());
+	--------------------hatman flatten beshe thisModule.debug('InterruptibleActivityRegion'+UML!InterruptibleActivityRegion.allInstances()->collect(e | e.node).flatten().size());
+	thisModule.debug(x.node.toString()+'InterruptibleActivityRegion');
+	}		--thisModule.debug('#rule ControlFlow2Sync: '+e.source.oclType().name+'    in#: '+e.source.incoming.size() + ' out#: '+e.source.outgoing.size() + e.source.name+' sync '+e.target.name);
+}
+

@@ -1,0 +1,578 @@
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.io.*;
+import java.util.*; 
+
+public class bouml{
+	String modelname = "";
+	public static String newline = System.getProperty("line.separator");
+	public static class Constants
+	{
+		public static class In
+		{
+			public static String CombinedFragment = "umlCombinedFragment";
+			public static String LostFound = "null";
+		}
+		public static class Out
+		{
+			public static class MessageType
+			{
+				public static String SYNCRONIZED = "SYNCRONIZED";
+				public static String ASYNCRONIZED = "ASYNCRONIZED";
+				public static String LOST = "LOST";
+				public static String FOUND = "FOUND";
+			}
+			public static class DiagramType
+			{
+				public static String SIMPLE = "simple";
+				public static String COMPOSED = "composed";
+			}
+			public static class OperatorType
+			{
+				public static String WEAK = "WEAK";
+				public static String STRICT = "STRICT";
+				public static String PARALLEL = "PARALLEL";
+				public static String OPTION = "OPTION";
+				public static String LOOP = "LOOP";
+				public static String ALTERNATIVE = "ALTERNATIVE";
+				public static String REF = "REF";
+				public static String getOperatorType(String boumloperatorname)
+				{
+					if (boumloperatorname.compareTo("weak") == 0) return WEAK;
+					else if (boumloperatorname.compareTo("strict") == 0) return STRICT;
+					else if (boumloperatorname.compareTo("par") == 0) 	return PARALLEL;
+					else if (boumloperatorname.compareTo("opt") == 0) 	return OPTION;
+					else if (boumloperatorname.compareTo("loop") == 0) 	return LOOP;
+					else if (boumloperatorname.compareTo("alt") == 0) 	return ALTERNATIVE;
+					else if (boumloperatorname.compareTo("ref") == 0) 	return REF;
+					else 	
+					{
+						System.out.println("+++Undefined boumloperatorname type: "+boumloperatorname);
+						return "?";
+					}
+				}
+			}
+		}		   
+	}
+
+	public class Specification
+	{
+		String xmitype, xmiid, body;
+		public Specification(String xmityp, String xmid, String bdy)
+		{   
+			xmitype = xmityp; xmiid = xmid; body = ""; 
+			for (int i = 0; i < bdy.length(); i++)
+			 	 if (bdy.charAt(i) != '[' && bdy.charAt(i) != ']')
+					 body = body.concat(bdy.substring(i, i+1)); 
+		}
+	}
+	public class Guard
+	{
+		Specification spec;
+		String xmitype, xmiid;
+		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+		public Guard(String xmityp,String xmid)
+		{  xmitype = xmityp; xmiid = xmid; }
+		public void addSpecification(Specification spc){spec = spc;}
+		public Specification getSpecification(){return spec;}
+	}
+	public class Operand extends Fragment
+	{
+		Guard guard;
+		String xmitype, xmiid;
+		int order;
+		public Operand(String name, String xmityp, String xmid, int ord, Fragment owner)
+		{   super(name, "","","", owner); xmitype = xmityp; xmiid = xmid; order = ord; }
+	}
+	public class LifeLine
+	{
+		String xmitype, xmiid, name, represents;
+		public LifeLine(String xmityp, String xmid, String nam, String reprsents)
+		{	xmitype = xmityp; xmiid = xmid; name = nam; represents = reprsents;  }
+	}
+	public abstract class Fragment 
+	{
+		String name, xmitype, xmiid, covered;
+		Fragment owner;
+		Map<String, Fragment> innerfragments = new TreeMap<String, Fragment>();
+
+		public Fragment(String nam, String xmityp, String xmid, String coverd, Fragment ownr)
+		{	name = nam;	xmitype = xmityp; xmiid = xmid; covered = coverd; owner = ownr;	}
+	
+		public void addFragment(Fragment fg)
+		{	innerfragments.put(fg.xmiid, fg); }
+
+		public boolean hasCombined()
+		{	 
+			for (Fragment f : innerfragments.values())
+				if (f instanceof CombinedFragment)
+					return true;
+			return false;
+		}
+		public int getCombinedFragmentNumber()
+		{
+			int cnt = 0;
+			for (Fragment f : innerfragments.values())
+				 if (f instanceof CombinedFragment)
+					 cnt++;
+			return cnt;
+		}
+	}
+	public class CombinedFragment extends Fragment
+	{
+		String interactionOperator;
+		ArrayList<Operand> Operands = new ArrayList<Operand>(); 
+		public CombinedFragment(String nam, String xmitype, String xmiid, String commaseparatorcovereds, String interactionoprerator, Fragment owner)
+		{
+			super(nam, xmitype, xmiid, commaseparatorcovereds, owner);
+			interactionOperator = interactionoprerator;
+		}    
+		public int getGuardsNumber()
+		{
+			int cnt = 0;
+			for (Operand op : Operands)
+				 if (op.guard != null)
+					 cnt++;
+			return cnt;
+		}
+	}
+	public class MessageOccurrenceSpecification extends Fragment
+	{
+		String event, message;
+		public MessageOccurrenceSpecification(String xmityp, String xmid, String coverd, String evnt, String messag, Fragment owner)
+		{
+			super("", xmityp, xmid, coverd, owner);
+			event = evnt;
+			message = messag;
+		}
+	}
+	public class BehaviorOccurrenceSpecification extends Fragment
+	{
+		String _start, _finish;
+		public BehaviorOccurrenceSpecification(String xmitype, String xmiid, String covered, String start, String finish, Fragment owner)
+		{
+			super("", xmitype, xmiid, covered, owner);
+			_start = start;
+			_finish = finish;
+		}
+	}
+	public class ExecutionOccurrenceSpecification extends Fragment
+	{
+		String _event, _execution;
+		public ExecutionOccurrenceSpecification(String xmitype, String xmiid, String covered, String event, String execution, Fragment owner)
+		{
+			super("", xmitype, xmiid, covered, owner);
+			_event = event;
+			_execution = execution;
+		}    	   
+	}
+	public class Message
+	{
+		private String xmiid, name, messagesort, sendevent, receiveevent;
+		public Message(String xmid, String nam, String messagesrt, String sendevnt, String receiveevnt, String connctor)
+		{
+			xmiid = xmid; name = nam; messagesort = messagesrt; sendevent = sendevnt; receiveevent = receiveevnt; 
+		}
+		public String getType()
+		{
+			return (messagesort.compareTo("synchCall")==0)?"SYNCRONIZED":"ASYNCRONIZED";
+		}
+	}
+	public class SequenceDiagram extends Fragment{
+		Map<String, LifeLine> LifeLines = new HashMap<String, LifeLine>(); 
+		Map<String, Message> Messages = new TreeMap<String, Message>();
+		public SequenceDiagram(String name){ super(name, "??","","", null); }
+		public Message getMessageById(String msgid)
+		{
+			for (Message msg : Messages.values())
+			{
+				if (msg.xmiid.compareTo(msgid) == 0)
+					return msg;
+			}
+			System.out.println("**--*--**Message " + msgid + " not found!");
+			return null;
+		}
+		public String findMessageSourceTarget(String msgoccurenceid, Fragment fo)
+		{
+			MessageOccurrenceSpecification spec =  findMessageOccurance(msgoccurenceid, fo);
+			if (spec != null)
+			{ 
+				LifeLine lifeline = sd.LifeLines.get(spec.covered);
+				if (lifeline != null)
+					return lifeline.name;
+			}
+			else
+				System.out.println("**MessageOccurrenceSpecification with id = " + msgoccurenceid + " not found!");
+			return Constants.In.LostFound;
+		}
+	}
+
+	%include{ dom.tom }
+	static Document dom;
+	SequenceDiagram sd = new SequenceDiagram("");
+	static public void main (String args[]) {
+		bouml instance = new bouml();
+		String in = "/ufs/behnaz/Desktop/b4.xmi"; 
+		System.out.print(instance.transform(in));
+	}
+
+	public java.io.InputStream parseStringToIS(String str){
+		   if(str==null) return null;
+		   str = str.trim();
+		   java.io.InputStream in = null;
+		   try{
+		     in = new java.io.ByteArrayInputStream(str.getBytes("UTF-8"));
+		   }catch(Exception ex){}
+		   return in;      
+		 }
+
+	public String transform(String in)
+	{
+		String result = "";
+		String refinedinput = refine(in);
+		DataInputStream temp = new DataInputStream(parseStringToIS(refinedinput));
+		try 
+		{	   
+			dom = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(temp);
+			start(dom.getDocumentElement());
+			result = serialize(sd);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}	
+
+	MessageOccurrenceSpecification findMessageOccurance(String id, Fragment fo)
+	{
+		MessageOccurrenceSpecification spec = (MessageOccurrenceSpecification)fo.innerfragments.get(id);
+		if (spec == null)
+		{ 
+			if (fo.innerfragments.size() > 0)
+			{	
+				for (Fragment cf : fo.innerfragments.values())
+				{
+					if (cf instanceof CombinedFragment)
+					{
+						spec = findMessageOccurance(id, cf);
+						if (spec != null)
+							return spec;
+					}
+				}
+			}
+			else
+				System.out.println("MessageOccurrenceSpecification not found key: " + id);
+		}
+		return spec;
+	}
+
+	String serialize(Fragment fo)
+	{
+		String result = "";
+		if (fo instanceof CombinedFragment || fo instanceof SequenceDiagram && fo.hasCombined())
+		{	
+			if (fo instanceof CombinedFragment)
+			{
+				for (Operand op : ((CombinedFragment) fo).Operands)
+				{
+					if (!op.hasCombined())
+						result = result + reportSimple(op); 
+					else for (Fragment fop : op.innerfragments.values())
+						if (fop instanceof CombinedFragment)
+							if (!(fop instanceof MessageOccurrenceSpecification || fop instanceof BehaviorOccurrenceSpecification || fop instanceof ExecutionOccurrenceSpecification))
+								result = result + serialize(fop);
+				}
+				result = result + reportComposed((CombinedFragment)fo);	
+			}
+			else
+			{	
+				for (Fragment f : fo.innerfragments.values())
+				{
+					if (f instanceof CombinedFragment)
+					{	
+						for (Operand op : ((CombinedFragment) f).Operands)
+						{
+							if (!op.hasCombined())
+								result = result + reportSimple(op); 
+							else for (Fragment fop : op.innerfragments.values())
+								if (!(fop instanceof MessageOccurrenceSpecification || fop instanceof BehaviorOccurrenceSpecification || fop instanceof ExecutionOccurrenceSpecification))
+									result = result + serialize(fop); 
+						}
+						result = result + reportComposed((CombinedFragment)f);
+					}
+					else if (f.hasCombined())
+						if (!(f instanceof MessageOccurrenceSpecification || f instanceof BehaviorOccurrenceSpecification || f instanceof ExecutionOccurrenceSpecification))
+							result = result + serialize(f);
+				}
+			}
+		}
+		else if ((fo instanceof SequenceDiagram) && !fo.hasCombined())
+			result = result + reportSimple(fo);			
+		return result;	
+	}
+
+	ArrayList<String> getParticipants(final Fragment fo)
+	{	
+		ArrayList<String> result = new ArrayList<String>();
+		if (fo instanceof SequenceDiagram || fo instanceof Operand)
+		{
+			for (Fragment f : fo.innerfragments.values())
+			{	
+				if (f instanceof MessageOccurrenceSpecification)
+				{
+					MessageOccurrenceSpecification spec = (MessageOccurrenceSpecification)f;
+					LifeLine lifeline = this.sd.LifeLines.get(spec.covered);
+					if (lifeline != null && !result.contains(lifeline.name))
+						result.add(lifeline.name);
+				}
+			}
+		}
+		return result;		
+	}
+
+	ArrayList<Message> getMessages(final Fragment fo) 
+	{
+		ArrayList<Message> result = new ArrayList<Message>();
+		if (fo instanceof SequenceDiagram || fo instanceof Operand)
+		{
+			for (Fragment f : fo.innerfragments.values())
+			{	
+				if (f instanceof MessageOccurrenceSpecification)
+				{
+					MessageOccurrenceSpecification spec = (MessageOccurrenceSpecification)f;
+					Message msg = sd.getMessageById(spec.message);
+					if (msg != null && !result.contains(msg))
+						result.add(msg);					
+				}
+			}
+		}
+		return result;
+	}
+
+	String reportSimple(Fragment fo) 
+	{
+		String result = newline + "SD name = \"" + fo.name + "\" type = \"" + Constants.Out.DiagramType.SIMPLE + "\"";
+		result = result + newline + "\tSD.PARTICIPANTS";
+		result = result + newline + newline;
+		for (String p : getParticipants(fo))
+			 result = result + "\t\tPARTICIPANT name = \"" + p + "\"" + newline;
+		result = result + newline;
+		result = result + "\t/SD.PARTICIPANTS";
+		result = result + newline + newline;
+		result = result + "\tSD.ACTIONS";
+		result = result + newline + newline;
+		for (Message msg : getMessages(fo))
+		{
+			String sender, receiver;
+			sender = sd.findMessageSourceTarget(msg.sendevent, fo); 
+			receiver = sd.findMessageSourceTarget(msg.receiveevent, fo);
+			if (sender.compareTo(Constants.In.LostFound) == 0)
+				result = result + "\t\tMESSAGE.FOUND name = \"" + msg.name + "\" receiver = \"" + receiver + "\"" + newline;
+			else if (receiver.compareTo(Constants.In.LostFound) == 0)
+				result = result + "\t\tMESSAGE.LOST name = \"" + msg.name + "\""+ " sender = \"" + sender + "\"" + newline;
+			else
+				result = result + "\t\tMESSAGE." + msg.getType() + " name = \"" + msg.name + "\""+ " sender = \"" + sender + "\""+" receiver = \"" + receiver + "\"" + newline;
+		}
+		result = result + newline;
+		result = result + "\t/SD.ACTIONS" + newline;
+		result = result + newline + "/SD" + newline;
+		return result;
+	}
+
+	String reportComposed(CombinedFragment fo)
+	{	
+		String result = newline + "SD name = \"" + fo.name + "\" type = \"" + Constants.Out.DiagramType.COMPOSED + "\"";
+		result = result + newline + "\tSD.OPERATORS";
+		result = result + newline + newline + "\t\tOPERATOR." + Constants.Out.OperatorType.getOperatorType(fo.interactionOperator);
+		if (fo.Operands.size() == 1)
+			result = result + " member = \""+ fo.Operands.get(0).name + "\"";
+		int i = 1;
+		for (Operand op : fo.Operands)
+		{
+			result = result + " member" + ((((CombinedFragment)fo).Operands.size()>1)? Integer.toString(i):"") + " = \""+ op.name + "\"";
+			i++;				
+		}
+		i = 1;
+		for (Operand op : fo.Operands)
+		{
+			if (op.guard != null && op.guard.spec != null && op.guard.spec.body != null && op.guard.spec.body.length() > 0)
+				result = result + " guard" + ((fo.getGuardsNumber()>1)? Integer.toString(i):"") + " = \"" + op.guard.spec.body + "\""; 
+				i++;				
+		}
+		result = result + newline + newline;
+		result = result + "\t/SD.OPERATORS" + newline;
+		result = result + "/SD" + newline;
+		return result;
+	}
+
+	String process(String str)
+	{	
+		return str.replaceAll("uml:", "uml").replaceAll("xmi:", "xmi");	
+	}
+
+	String refine(String infilename)
+	{
+		String out = new String();
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(infilename));
+			String str;
+			while ((str = in.readLine()) != null) {            
+				out += process(str) + newline;                     
+			}
+			in.close();
+		} catch (IOException e) {System.out.println(e.getMessage());
+		}
+		return out;
+	}
+
+	private void start(Node doc) {
+		%match(doc) {
+			<xmiXMI><umlModel>a@<packagedElement xmitype=t></packagedElement></umlModel></xmiXMI>
+			-> 
+			{ 
+				if (`t.compareTo("umlPackage") == 0)
+					extractNestedInfo(`a); 
+			} 
+		}   	 
+	}
+
+	private void extractCollaboration(Node doc)
+	{
+		%match(doc) {			
+			<packagedElement>a@<ownedBehavior xmitype=t name=m></ownedBehavior></packagedElement> -> 
+				{	
+					modelname = `m;
+					if (`t.compareTo("umlInteraction") == 0)
+						extractOwnedBehavior(`a);
+				}
+			}
+		}
+
+		private void extractNestedInfo(Node doc) {		
+			%match(doc) {
+				<packagedElement>a@<packagedElement xmitype=t></packagedElement></packagedElement>  -> 
+				{
+					if (`t.compareTo("umlCollaboration") == 0)
+						extractCollaboration(`a);
+				}  
+			}
+		}
+
+		private void extractLifeLine(String xmitype, String xmiid, String name, String represents)
+		{
+			if (name.compareTo(Constants.In.LostFound) == 0)
+				return;
+			LifeLine lifeline = new LifeLine(xmitype, xmiid, name, represents);
+			sd.LifeLines.put(xmiid, lifeline);
+		}
+
+		private void extractMessage(String xmiid, String name, String messagesort, String sendevent, String receiveevent, String connector)
+		{
+			Message msg = new Message(xmiid, name, messagesort, sendevent, receiveevent, connector);
+			String nameparts[] = name.split(":");
+			if (nameparts.length < 2)
+			{
+				System.out.println("Error: Message name " + name + " should begin with number following by :");///////ERRORRRRRRRRRRRRRR
+			}
+			sd.Messages.put(nameparts[0], msg);
+		}
+
+		private void extractFragment(Node doc, String name, Fragment owner)
+		{
+			%match(doc) {
+				a@<fragment xmitype=t xmiid=i></fragment> 
+				-> 
+				{
+					if (`t.compareTo("umlExecutionOccurrenceSpecification") == 0)
+						extractExecutionOccurrenceSpecification(`a, owner);	  	
+					else if (`t.compareTo("umlBehaviorExecutionSpecification") == 0)
+						extractBehaviorExecutionSpecification(`a, owner);	  	
+					else if (`t.compareTo("umlMessageOccurrenceSpecification") == 0)
+						extractMessageOccurrenceSpecification(`a, owner);	  	
+					else if (`t.compareTo("umlCombinedFragment") == 0)
+						extractCombinedFragment(`a, owner);					
+				}
+			}
+		}
+
+		private void extractExecutionOccurrenceSpecification(Node doc, Fragment owner) {		
+			%match(doc) {
+				<fragment xmitype=t xmiid=i covered=c event=e execution=x/>  -> 
+				{	owner.addFragment(new ExecutionOccurrenceSpecification(`t, `i, `c, `e, `x, owner));  }
+			}
+		}
+
+		private void extractBehaviorExecutionSpecification(Node doc, Fragment owner) {		
+			%match(doc) {
+				<fragment xmitype=t xmiid=i covered=c start=s finish=f/>  -> 
+				{ 	owner.addFragment(new BehaviorOccurrenceSpecification(`t, `i, `c, `s, `f, owner));	}  
+			}
+		}
+
+		private void extractMessageOccurrenceSpecification(Node doc, Fragment owner) {		
+			%match(doc) {
+				<fragment xmitype=t xmiid=i covered=c event=e message=m/> -> 
+				{ 	owner.addFragment(new MessageOccurrenceSpecification(`t, `i, `c, `e, `m, owner)); 	}  
+			}
+		}
+
+		private void extractCombinedFragment(Node doc, Fragment owner) {	
+			%match(doc) {
+				<fragment xmitype=t xmiid=i interactionOperator=o></fragment>  -> 
+				{
+					String name = (owner.name.isEmpty())?modelname:owner.name;
+					CombinedFragment comfrag = new CombinedFragment(name, `t, `i, "`c", `o, owner);
+					extractOperand(doc, comfrag);
+					owner.addFragment(comfrag);					
+				}  
+			}
+		}
+
+		private Guard extractGuard(Node doc) {
+			%match(doc) {
+				 <guard xmitype=gt xmiid=gi><specification xmitype=t xmiid=i>b@<body></body></specification></guard>  ->
+				 {
+					 String val = null;
+					 Guard guard = new Guard(`gt, `gi);					
+					 if (`gt.compareTo("umlInteractionConstraint") == 0) //*????????if (`t.copareTo("umlOpaqueExpression") == 0)
+					 	val = ((Node)`b).getTextContent();
+					 guard.spec = new Specification(`t, `i, val);
+					 return guard;
+				 }				
+			}  
+			return null;
+		}
+
+		private void extractOperand(Node doc, CombinedFragment owner) {	
+			Operand oprnd = null; 
+			%match(doc) {
+			<fragment>op@<operand xmitype=t xmiid=i></operand></fragment>  -> 
+			{
+				 int indt = owner.Operands.size() + 1;
+				 oprnd = new Operand(owner.name + "_" + Integer.toString(indt), `t, `i,  indt, owner);
+				 Node node = (Node)`op;
+				 NodeList list = node.getChildNodes();       
+				 if (list.getLength() > 0) 
+				 	 for(int i = 0 ; i<list.getLength() ; i++) 
+					 	 if (list.item(i).getNodeName().compareTo("guard") == 0)
+						 	 oprnd.guard = extractGuard(list.item(i));		
+						 else if (list.item(i).getNodeName().compareTo("fragment") == 0)	
+						 	 extractFragment(list.item(i), oprnd.name, oprnd);		
+				owner.Operands.add(oprnd);
+			}				
+		  }
+		}
+
+		private void extractOwnedBehavior(Node doc) {	
+			%match(doc) {
+				<ownedBehavior><lifeline xmitype=t xmiid=i name=n represents=r/></ownedBehavior>  -> 
+				{  extractLifeLine(`t, `i, `n, `r); }  
+				<ownedBehavior><message xmiid=i name=n messageSort=s sendEvent=d receiveEvent=r connector=c></message></ownedBehavior>  -> 
+				{  extractMessage(`i, `n, `s, `d, `r, `c);  }  
+				<ownedBehavior>a@<fragment></fragment></ownedBehavior>  -> 
+				{  extractFragment(`a, modelname, sd); 	}  
+			}
+		}	
+	}
