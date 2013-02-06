@@ -32,6 +32,7 @@ import org.ect.ea.extensions.portnames.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 
 public class QIAintoMC {
+	
 	public Automaton automaton = new Automaton();
 	public List<DelayElement> external = new Vector<DelayElement>();
 	public List<String> edgePorts = new Vector<String>();
