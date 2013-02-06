@@ -6,8 +6,7 @@
       provider-name="Extensible Coordination Tools">
 
    <description url="http://reo.project.cwi.nl">
-      Contains the Reo model, graphical editor, animation view,
-a mCRL2 conversion tool and a simulator.
+      Reo Core Tools.
    </description>
 
    <copyright>
