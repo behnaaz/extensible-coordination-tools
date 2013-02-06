@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.ect.codegen.codeGenerators">
+      <codeGenerator
+            generatorClass="org.ect.codegen.ea.ui.CaCodeGenerator"
+            id="org.ect.codegen.ea.ui.xcaGen"
+            name="Java Code Generator">
+         <property
+               boolean="false"
+               key="package"
+               name="Base package">
+         </property>
+         <property
+               boolean="false"
+               key="connectorClass"
+               name="Connector class">
+         </property>
+         <property
+               boolean="false"
+               key="functionClass"
+               name="Class for functions &amp; predicates">
+         </property>
+         <property
+               boolean="true"
+               key="generateMain"
+               name="Generate main()">
+         </property>
+         <target
+               targetClass="org.ect.ea.diagram.edit.parts.AutomatonEditPart"
+               targetPlugin="org.ect.ea.diagram">
+         </target>
+		<target
+               targetClass="org.ect.reo.diagram.edit.parts.ConnectorEditPart"
+               targetPlugin="org.ect.reo.diagram">
+         </target>
+      </codeGenerator>
+   </extension>
+
+</plugin>

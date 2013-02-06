@@ -1,0 +1,8 @@
+"mrg"[A::OUT, B::OUT, C::IN]
+mrg1*[
+	[C, A, B]::(C=A | C=B)::mrg1, 
+	[C, A]::(C=A)::mrg1, 
+	[C, B]::(C=B)::mrg1, 
+	[A, B]::true::mrg1, 
+	[A]::true::mrg1, 
+	[B]::true::mrg1]

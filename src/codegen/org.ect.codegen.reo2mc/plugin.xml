@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.ect.codegen.reo2mc.SreoContribution"
+            objectClass="org.ect.reo.diagram.edit.parts.ConnectorEditPart">
+         <action
+               class="org.ect.codegen.reo2mc.actions.TranslateAction"
+               id="org.ect.codegen.reo2mc.action1"
+               label="Convert Reo to Markov Chain - no diagram">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

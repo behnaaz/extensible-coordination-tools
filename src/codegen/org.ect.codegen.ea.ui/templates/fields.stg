@@ -1,0 +1,74 @@
+group Fields;
+
+disjunction(id, members)			::= ""
+
+conjunction(id, members)			::= ""
+
+function(id, arg, funcs)			::= ""
+
+predicate(id, lhs, rhs)				::=""
+
+equation(id, lhs, rhs)				::= ""
+
+port(id, type)						::= <<
+<id>
+>>
+
+cell(id, init)						::= <<
+<id> = new Cell("<id>", <init; null="null">)
+>>
+
+state(name, isstart, cells, trans)::= <<
+/** Transition constraint and cell definitions for state <name> */
+<if (trans)>
+private TransCon <trans; separator=", ", wrap, anchor>;
+<endif>
+<if (cells)>
+<if (!strip(cells).Empty)>
+
+private TransactionalIO <strip(cells); separator=", ", wrap, anchor>;
+<endif>
+<endif>
+>>
+
+transition(dest, ports, cons)		::=<<
+<name>_<ports; separator="_">_<dest.name>
+>>
+
+automaton(id, ports, states)::= <<
+private TransactionalIO <ports; separator=", ">;
+
+/** Enumeration of CA states */
+enum State {
+	<states:{s|<s.name>}; separator=", ">
+}
+private State current;
+
+<states; separator="\n\n">
+>>
+
+top(package, staticImports, functionClass, connectorClass, fields, constructor, methods)::=<<
+<if (package)>
+package <package>;
+<endif>
+
+import java.util.Observable;
+
+import org.ect.ea.runtime.*;
+import org.ect.ea.runtime.primitives.*;
+import org.ect.ea.runtime.composite.*;
+import org.ect.ea.runtime.codegen.Coordinator;
+
+<staticImports: {imp| 
+import static <package>.<functionClass>.<imp>;}>
+
+public class <connectorClass> extends Coordinator {
+	<fields>
+
+	<constructor>
+
+	<methods>	
+}
+>>
+
+filler(id) 					::=""

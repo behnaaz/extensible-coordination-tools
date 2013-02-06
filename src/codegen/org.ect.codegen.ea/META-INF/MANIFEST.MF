@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Code genrator targetting our runtime
+Bundle-SymbolicName: org.ect.codegen.ea;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Export-Package: org.ect.codegen.ea.catparser;uses:="org.antlr.runtime.tree,org.antlr.runtime",
+ org.ect.codegen.ea.components,
+ org.ect.codegen.ea.generator;uses:="org.antlr.runtime,org.antlr.stringtemplate",
+ org.ect.codegen.ea.interpreter;uses:="org.ect.ea.runtime"
+Require-Bundle: org.ect.ea.antlr;bundle-version="4.0.0",
+ org.ect.codegen.ea.runtime;bundle-version="4.0.0"
+Bundle-ClassPath: .
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

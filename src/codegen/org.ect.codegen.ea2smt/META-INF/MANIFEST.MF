@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ea2saatre
+Bundle-SymbolicName: org.ect.codegen.ea2smt;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.emf;bundle-version="2.6.0",
+ org.eclipse.emf.common;bundle-version="2.6.0",
+ org.ect.ea.extensions.clocks;bundle-version="4.0.0",
+ org.ect.ea.extensions.guards;bundle-version="4.0.0",
+ org.ect.ea.extensions.portnames;bundle-version="4.0.0",
+ org.ect.ea.extensions.startstates;bundle-version="4.0.0",
+ org.ect.ea.extensions.statememory;bundle-version="4.0.0",
+ org.ect.ea.antlr;bundle-version="4.0.0",
+ org.ect.codegen;bundle-version="4.0.0",
+ org.ect.ea.extensions.constraints;bundle-version="4.0.0",
+ org.ect.ea.diagram;bundle-version="4.0.0"

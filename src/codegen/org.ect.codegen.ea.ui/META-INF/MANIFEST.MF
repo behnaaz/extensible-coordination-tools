@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EA Runtime UI Plug-in
+Bundle-SymbolicName: org.ect.codegen.ea.ui;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.jdt.core;bundle-version="3.4.0",
+ org.ect.codegen;bundle-version="3.2.0",
+ org.ect.ea.antlr;bundle-version="3.1.0",
+ org.ect.ea;bundle-version="3.1.0",
+ org.ect.reo.diagram;bundle-version="3.2.0",
+ org.ect.codegen.reo2ea.ca;bundle-version="3.2.0",
+ org.ect.codegen.ea;bundle-version="3.2.0",
+ org.ect.codegen.reo2ea.core;bundle-version="3.2.0",
+ org.ect.ea.util;bundle-version="3.2.2",
+ org.ect.ea.diagram;bundle-version="3.2.2",
+ org.ect.ea.extensions.constraints;bundle-version="3.2.2",
+ org.ect.ea.extensions.portnames;bundle-version="3.2.2",
+ org.ect.ea.extensions.startstates;bundle-version="3.2.2",
+ org.ect.ea.extensions.statememory;bundle-version="3.2.2"
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.ect.codegen.ea.ui.Activator
+Bundle-ClassPath: .

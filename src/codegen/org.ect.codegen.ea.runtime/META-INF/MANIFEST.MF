@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Simple, self-contained and extensible CA runtime
+Bundle-SymbolicName: org.ect.codegen.ea.runtime;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Export-Package: org.ect.codegen.ea.runtime,
+ org.ect.codegen.ea.runtime.conditions,
+ org.ect.codegen.ea.runtime.constraints,
+ org.ect.codegen.ea.runtime.primitives;uses:="org.ect.codegen.ea.runtime"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Extensible Coordination Tools

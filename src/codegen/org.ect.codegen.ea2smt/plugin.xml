@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.ect.codegen.codeGenerators">
+      <codeGenerator
+            generatorClass="org.ect.codegen.ea2smt.SMTFormulaGenerator"
+            id="org.ect.ea.extensions.clocks.codegen.smt"
+            name="SMT Formula Generator">
+         <target
+               targetClass="org.ect.ea.diagram.edit.parts.AutomatonEditPart"
+               targetPlugin="org.ect.ea.diagram">
+         </target>
+         <property
+               boolean="false"
+               key="depth"
+               name="Unfolding depth (number of steps)">
+         </property>
+         <property
+               boolean="false"
+               key="range"
+               name="Range of Data Values (leave empty for infinite)">
+         </property>
+         <property
+               boolean="false"
+               key="filename"
+               name="Output file name">
+         </property>
+         <property
+               boolean="false"
+               key="targetlang"
+               name="Target Language">
+         </property>
+         <wizardPage
+               pageClass="org.ect.codegen.ea2smt.SMTFormulaGenProductWizardPage">
+         </wizardPage>
+         <wizardPage
+               pageClass="org.ect.codegen.ea2smt.SMTFormulaGenPropertyWizardPage">
+         </wizardPage>
+      </codeGenerator>
+   </extension>
+
+</plugin>

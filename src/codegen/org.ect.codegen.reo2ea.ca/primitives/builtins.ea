@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:constraints="http://www.cwi.nl/ea/constraints" xmlns:cwi.ea.automata="http://www.cwi.nl/ea/automata" xmlns:cwi.ea.extensions="http://www.cwi.nl/ea/extensions" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:portNames="http://www.cwi.nl/ea/portNames" xmlns:stateMemory="http://www.cwi.nl/ea/stateMemory">
+  <cwi.ea.automata:Module xmi:id="_5BcqEC75Edysdt__CW9ULg">
+    <automata xmi:id="_6vBmMC75Edysdt__CW9ULg" name="org.ect.reo.channels.Sync">
+      <extensions xsi:type="portNames:AutomatonPortNames" xmi:id="_R0M0gFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SINK0</values>
+      </extensions>
+      <states xmi:id="_OXkTEC76Edysdt__CW9ULg" incoming="_dkfwQC76Edysdt__CW9ULg" outgoing="_dkfwQC76Edysdt__CW9ULg" name="START">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="_OXnWYC76Edysdt__CW9ULg" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="_OXnWYS76Edysdt__CW9ULg" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <transitions xmi:id="_dkfwQC76Edysdt__CW9ULg" source="_OXkTEC76Edysdt__CW9ULg" target="_OXkTEC76Edysdt__CW9ULg">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_S0sBIFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+          <values>SINK0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" xmi:id="_UWZEcFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="SINK0"/>
+          <right xsi:type="constraints:Element" value="SOURCE0"/>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata xmi:id="_miaGcC76Edysdt__CW9ULg" name="org.ect.reo.channels.SyncDrain">
+      <extensions xsi:type="portNames:AutomatonPortNames" xmi:id="_XJUfEFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SOURCE1</values>
+      </extensions>
+      <states xmi:id="_miaGci76Edysdt__CW9ULg" incoming="_miaGdS76Edysdt__CW9ULg" outgoing="_miaGdS76Edysdt__CW9ULg" name="START">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="_miaGcy76Edysdt__CW9ULg" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="_miaGdC76Edysdt__CW9ULg" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <transitions xmi:id="_miaGdS76Edysdt__CW9ULg" source="_miaGci76Edysdt__CW9ULg" target="_miaGci76Edysdt__CW9ULg">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_YfbWYFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+          <values>SOURCE1</values>
+        </extensions>
+        <extensions xsi:type="constraints:Literal" xmi:id="_EHim8C-5EdyLetStd7Zjaw" id="cwi.ea.extensions.constraints" value="true"/>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata xmi:id="_IR0PAC-5EdyLetStd7Zjaw" name="org.ect.reo.channels.AsyncDrain">
+      <extensions xsi:type="portNames:AutomatonPortNames" xmi:id="_MRi84FJIEdyhPOcODtDYZA" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SOURCE1</values>
+      </extensions>
+      <states xmi:id="_IR0PAi-5EdyLetStd7Zjaw" incoming="_IR02Ei-5EdyLetStd7Zjaw _NH4mEC-5EdyLetStd7Zjaw" outgoing="_IR02Ei-5EdyLetStd7Zjaw _NH4mEC-5EdyLetStd7Zjaw" name="START">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="_IR02EC-5EdyLetStd7Zjaw" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="_IR02ES-5EdyLetStd7Zjaw" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <transitions xmi:id="_IR02Ei-5EdyLetStd7Zjaw" source="_IR0PAi-5EdyLetStd7Zjaw" target="_IR0PAi-5EdyLetStd7Zjaw">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_m8O-MFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Literal" xmi:id="_oO52sC-5EdyLetStd7Zjaw" id="cwi.ea.extensions.constraints" value="true"/>
+      </transitions>
+      <transitions xmi:id="_NH4mEC-5EdyLetStd7Zjaw" source="_IR0PAi-5EdyLetStd7Zjaw" target="_IR0PAi-5EdyLetStd7Zjaw">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_Mw-D0FJIEdyhPOcODtDYZA" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE1</values>
+        </extensions>
+        <extensions xsi:type="constraints:Literal" xmi:id="_NI5SsC-5EdyLetStd7Zjaw" id="cwi.ea.extensions.constraints" value="true"/>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata xmi:id="_Hx528DkcEdy7NuexcNcnug" name="org.ect.reo.channels.FIFO">
+      <extensions xsi:type="portNames:AutomatonPortNames" xmi:id="_iX7FgFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SINK0</values>
+      </extensions>
+      <states xmi:id="_Hx528jkcEdy7NuexcNcnug" incoming="_d1wIoDkcEdy7NuexcNcnug" outgoing="_SxtMYDkcEdy7NuexcNcnug" name="EMPTY">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="_Hx528zkcEdy7NuexcNcnug" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="_Hx529DkcEdy7NuexcNcnug" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <states xmi:id="_OnRzUDkcEdy7NuexcNcnug" incoming="_SxtMYDkcEdy7NuexcNcnug" outgoing="_d1wIoDkcEdy7NuexcNcnug" name="FULL">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="_On2bEDkcEdy7NuexcNcnug" id="cwi.ea.extensions.startStates"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="_ZJ3BQDkcEdy7NuexcNcnug" id="cwi.ea.extensions.stateMemory">
+          <values>x</values>
+        </extensions>
+      </states>
+      <transitions xmi:id="_SxtMYDkcEdy7NuexcNcnug" source="_Hx528jkcEdy7NuexcNcnug" target="_OnRzUDkcEdy7NuexcNcnug">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_i8nuAFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" xmi:id="_jwYtQFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="x" type="TARGET_MEMORY"/>
+          <right xsi:type="constraints:Element" value="SOURCE0"/>
+        </extensions>
+      </transitions>
+      <transitions xmi:id="_d1wIoDkcEdy7NuexcNcnug" source="_OnRzUDkcEdy7NuexcNcnug" target="_Hx528jkcEdy7NuexcNcnug">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_kQlQQFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.transitionPortNames">
+          <values>SINK0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" xmi:id="_lMYxMFJFEdyATe-FBQSTUQ" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="SINK0"/>
+          <right xsi:type="constraints:Element" value="x" type="SOURCE_MEMORY"/>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata xmi:id="_4D70EFJHEdyhPOcODtDYZA" name="org.ect.reo.channels.SyncSpout">
+      <extensions xsi:type="portNames:AutomatonPortNames" xmi:id="_YBa_EJO1Ed2plroEUkn42w" id="cwi.ea.extensions.automatonPortNames">
+        <values>SINK0</values>
+        <values>SINK1</values>
+      </extensions>
+      <states xmi:id="_4D70ElJHEdyhPOcODtDYZA" incoming="_4D70FVJHEdyhPOcODtDYZA" outgoing="_4D70FVJHEdyhPOcODtDYZA" name="START">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="_4D70E1JHEdyhPOcODtDYZA" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="_4D70FFJHEdyhPOcODtDYZA" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <transitions xmi:id="_4D70FVJHEdyhPOcODtDYZA" source="_4D70ElJHEdyhPOcODtDYZA" target="_4D70ElJHEdyhPOcODtDYZA">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_ZIy20JO1Ed2plroEUkn42w" id="cwi.ea.extensions.transitionPortNames">
+          <values>SINK0</values>
+          <values>SINK1</values>
+        </extensions>
+        <extensions xsi:type="constraints:Conjunction" xmi:id="_KdHNMKXXEd2bPtVEEDZJww" id="cwi.ea.extensions.constraints">
+          <members xsi:type="constraints:Equation" xmi:id="_KdHNMaXXEd2bPtVEEDZJww" id="cwi.ea.extensions.constraints">
+            <left xsi:type="constraints:Element" value="SINK0"/>
+            <right xsi:type="constraints:Element" value="?" type="ARBITRARY"/>
+          </members>
+          <members xsi:type="constraints:Equation" xmi:id="_KdHNM6XXEd2bPtVEEDZJww" id="cwi.ea.extensions.constraints">
+            <left xsi:type="constraints:Element" value="SINK1"/>
+            <right xsi:type="constraints:Element" value="?" type="ARBITRARY"/>
+          </members>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata xmi:id="___92gFJHEdyhPOcODtDYZA" name="org.ect.reo.channels.LossySync">
+      <extensions xsi:type="portNames:AutomatonPortNames" xmi:id="___92gVJHEdyhPOcODtDYZA" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SINK0</values>
+      </extensions>
+      <states xmi:id="___92glJHEdyhPOcODtDYZA" incoming="___92hVJHEdyhPOcODtDYZA _Rp6IsFJIEdyhPOcODtDYZA" outgoing="___92hVJHEdyhPOcODtDYZA _Rp6IsFJIEdyhPOcODtDYZA" name="START">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="___92g1JHEdyhPOcODtDYZA" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="___92hFJHEdyhPOcODtDYZA" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <transitions xmi:id="___92hVJHEdyhPOcODtDYZA" source="___92glJHEdyhPOcODtDYZA" target="___92glJHEdyhPOcODtDYZA">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="___92hlJHEdyhPOcODtDYZA" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+          <values>SINK0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" xmi:id="___92h1JHEdyhPOcODtDYZA" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="SINK0"/>
+          <right xsi:type="constraints:Element" value="SOURCE0"/>
+        </extensions>
+      </transitions>
+      <transitions xmi:id="_Rp6IsFJIEdyhPOcODtDYZA" source="___92glJHEdyhPOcODtDYZA" target="___92glJHEdyhPOcODtDYZA">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="__8yKMFJIEdyhPOcODtDYZA" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Literal" xmi:id="_RqA2Y1JIEdyhPOcODtDYZA" id="cwi.ea.extensions.constraints" value="true"/>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata xmi:id="_IcHZgCZZEd2sD6DOCXLLjQ" name="org.ect.reo.channels.Transform">
+      <extensions xsi:type="portNames:AutomatonPortNames" xmi:id="_IcHZgSZZEd2sD6DOCXLLjQ" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SINK0</values>
+      </extensions>
+      <states xmi:id="_IcInoCZZEd2sD6DOCXLLjQ" incoming="_gPl1wCZZEd2sD6DOCXLLjQ" outgoing="_gPl1wCZZEd2sD6DOCXLLjQ" name="START">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" xmi:id="_IcInoSZZEd2sD6DOCXLLjQ" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" xmi:id="_IcInoiZZEd2sD6DOCXLLjQ" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <transitions xmi:id="_gPl1wCZZEd2sD6DOCXLLjQ" source="_IcInoCZZEd2sD6DOCXLLjQ" target="_IcInoCZZEd2sD6DOCXLLjQ">
+        <extensions xsi:type="portNames:TransitionPortNames" xmi:id="_id3EICZZEd2sD6DOCXLLjQ" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+          <values>SINK0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" xmi:id="_lj_uoCZZEd2sD6DOCXLLjQ" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="SINK0"/>
+          <right xsi:type="constraints:Function" xmi:id="_lj_uoSZZEd2sD6DOCXLLjQ" value="FUNC">
+            <parameters xsi:type="constraints:Element" value="SOURCE0"/>
+          </right>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata name="org.ect.reo.channels.Filter">
+      <extensions xsi:type="portNames:AutomatonPortNames" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SINK0</values>
+      </extensions>
+      <states incoming="/0/@automata.7/@transitions.0 /0/@automata.7/@transitions.1" outgoing="/0/@automata.7/@transitions.0 /0/@automata.7/@transitions.1" name="START">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <transitions source="/0/@automata.7/@states.0" target="/0/@automata.7/@states.0">
+        <extensions xsi:type="portNames:TransitionPortNames" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+          <values>SINK0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="SINK0"/>
+          <right xsi:type="constraints:Element" value="SOURCE0"/>
+        </extensions>
+      </transitions>
+      <transitions source="/0/@automata.7/@states.0" target="/0/@automata.7/@states.0">
+        <extensions xsi:type="portNames:TransitionPortNames" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Literal" id="cwi.ea.extensions.constraints" value="true"/>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+    <automata name="org.ect.reo.channels.LossyFIFO">
+      <extensions xsi:type="portNames:AutomatonPortNames" id="cwi.ea.extensions.automatonPortNames">
+        <values>SOURCE0</values>
+        <values>SINK0</values>
+      </extensions>
+      <states incoming="/0/@automata.8/@transitions.1" outgoing="/0/@automata.8/@transitions.0" name="EMPTY">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" id="cwi.ea.extensions.startStates" value="true"/>
+        <extensions xsi:type="stateMemory:StateMemory" id="cwi.ea.extensions.stateMemory"/>
+      </states>
+      <states incoming="/0/@automata.8/@transitions.0 /0/@automata.8/@transitions.2" outgoing="/0/@automata.8/@transitions.1 /0/@automata.8/@transitions.2" name="FULL">
+        <extensions xsi:type="cwi.ea.extensions:BooleanExtension" id="cwi.ea.extensions.startStates"/>
+        <extensions xsi:type="stateMemory:StateMemory" id="cwi.ea.extensions.stateMemory">
+          <values>x</values>
+        </extensions>
+      </states>
+      <transitions source="/0/@automata.8/@states.0" target="/0/@automata.8/@states.1">
+        <extensions xsi:type="portNames:TransitionPortNames" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="x" type="TARGET_MEMORY"/>
+          <right xsi:type="constraints:Element" value="SOURCE0"/>
+        </extensions>
+      </transitions>
+      <transitions source="/0/@automata.8/@states.1" target="/0/@automata.8/@states.0">
+        <extensions xsi:type="portNames:TransitionPortNames" id="cwi.ea.extensions.transitionPortNames">
+          <values>SINK0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="SINK0"/>
+          <right xsi:type="constraints:Element" value="x" type="SOURCE_MEMORY"/>
+        </extensions>
+      </transitions>
+      <transitions source="/0/@automata.8/@states.1" target="/0/@automata.8/@states.1">
+        <extensions xsi:type="portNames:TransitionPortNames" id="cwi.ea.extensions.transitionPortNames">
+          <values>SOURCE0</values>
+        </extensions>
+        <extensions xsi:type="constraints:Equation" id="cwi.ea.extensions.constraints">
+          <left xsi:type="constraints:Element" value="x" type="TARGET_MEMORY"/>
+          <right xsi:type="constraints:Element" value="x" type="SOURCE_MEMORY"/>
+        </extensions>
+      </transitions>
+      <usedExtensionIds>cwi.ea.extensions.transitionPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.automatonPortNames</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.constraints</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.startStates</usedExtensionIds>
+      <usedExtensionIds>cwi.ea.extensions.stateMemory</usedExtensionIds>
+    </automata>
+  </cwi.ea.automata:Module>
+  <notation:Diagram xmi:id="_5CJNoC75Edysdt__CW9ULg" type="Automata" element="_5BcqEC75Edysdt__CW9ULg" name="builtins.ea" measurementUnit="Pixel">
+    <children xmi:id="_6vYykC75Edysdt__CW9ULg" type="1001" element="_6vBmMC75Edysdt__CW9ULg">
+      <children xmi:id="_6ve5MC75Edysdt__CW9ULg" type="4003"/>
+      <children xmi:id="_6vfgQC75Edysdt__CW9ULg" type="5001">
+        <children xmi:id="_OXlhMC76Edysdt__CW9ULg" type="2001" element="_OXkTEC76Edysdt__CW9ULg">
+          <children xmi:id="_OXmIQC76Edysdt__CW9ULg" type="4001"/>
+          <children xmi:id="_OXn9cC76Edysdt__CW9ULg" type="4002" element="_OXnWYS76Edysdt__CW9ULg">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_OXn9cS76Edysdt__CW9ULg" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_OXlhMS76Edysdt__CW9ULg" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_OXlhMi76Edysdt__CW9ULg" x="91" y="48" width="61" height="61"/>
+        </children>
+        <children xmi:id="_Zyk90C76Edysdt__CW9ULg" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Zyk90S76Edysdt__CW9ULg" x="67" y="36"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_6vgHUC75Edysdt__CW9ULg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_6vgHUS75Edysdt__CW9ULg"/>
+      </children>
+      <children xmi:id="_E68AkC76Edysdt__CW9ULg" type="4004" element="_R0M0gFJFEdyATe-FBQSTUQ"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_6vYykS75Edysdt__CW9ULg" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6vYyki75Edysdt__CW9ULg" x="20" y="70" width="409" height="265"/>
+    </children>
+    <children xmi:id="_miYRQC76Edysdt__CW9ULg" type="1001" element="_miaGcC76Edysdt__CW9ULg">
+      <children xmi:id="_miYRQS76Edysdt__CW9ULg" type="4003"/>
+      <children xmi:id="_miYRQi76Edysdt__CW9ULg" type="5001">
+        <children xmi:id="_miYRQy76Edysdt__CW9ULg" type="2001" element="_miaGci76Edysdt__CW9ULg">
+          <children xmi:id="_miYRRC76Edysdt__CW9ULg" type="4001"/>
+          <children xmi:id="_miYRRS76Edysdt__CW9ULg" type="4002" element="_miaGdC76Edysdt__CW9ULg">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_miYRRi76Edysdt__CW9ULg" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_miYRRy76Edysdt__CW9ULg" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_miYRSC76Edysdt__CW9ULg" x="91" y="48" width="61" height="61"/>
+        </children>
+        <children xmi:id="_miYRSS76Edysdt__CW9ULg" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_miYRSi76Edysdt__CW9ULg" x="67" y="36"/>
+        </children>
+        <children xmi:id="_mjQbAC76Edysdt__CW9ULg" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_mjQbAS76Edysdt__CW9ULg" x="61" y="33"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_miYRSy76Edysdt__CW9ULg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_miYRTC76Edysdt__CW9ULg"/>
+      </children>
+      <children xmi:id="_miYRTS76Edysdt__CW9ULg" type="4004" element="_XJUfEFJFEdyATe-FBQSTUQ"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_miYRTi76Edysdt__CW9ULg" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_miY4UC76Edysdt__CW9ULg" x="24" y="372" width="409" height="265"/>
+    </children>
+    <children xmi:id="_IRxywC-5EdyLetStd7Zjaw" type="1001" element="_IR0PAC-5EdyLetStd7Zjaw">
+      <children xmi:id="_IRxywS-5EdyLetStd7Zjaw" type="4003"/>
+      <children xmi:id="_IRxywi-5EdyLetStd7Zjaw" type="5001">
+        <children xmi:id="_IRxywy-5EdyLetStd7Zjaw" type="2001" element="_IR0PAi-5EdyLetStd7Zjaw">
+          <children xmi:id="_IRxyxC-5EdyLetStd7Zjaw" type="4001"/>
+          <children xmi:id="_IRxyxS-5EdyLetStd7Zjaw" type="4002" element="_IR02ES-5EdyLetStd7Zjaw">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_IRxyxi-5EdyLetStd7Zjaw" x="-45" y="24"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_IRxyxy-5EdyLetStd7Zjaw" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_IRxyyC-5EdyLetStd7Zjaw" x="175" y="60" width="61" height="61"/>
+        </children>
+        <children xmi:id="_IRxyyS-5EdyLetStd7Zjaw" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_IRxyyi-5EdyLetStd7Zjaw" x="277" y="15"/>
+        </children>
+        <children xmi:id="_IV6r4C-5EdyLetStd7Zjaw" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_IV6r4S-5EdyLetStd7Zjaw" x="271" y="12"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_IRxyyy-5EdyLetStd7Zjaw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_IRxyzC-5EdyLetStd7Zjaw"/>
+      </children>
+      <children xmi:id="_IRxyzS-5EdyLetStd7Zjaw" type="4004" element="_MRi84FJIEdyhPOcODtDYZA"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_IRxyzi-5EdyLetStd7Zjaw" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_IRxyzy-5EdyLetStd7Zjaw" x="620" y="70" width="409" height="265"/>
+    </children>
+    <children xmi:id="_Hx2zoDkcEdy7NuexcNcnug" type="1001" element="_Hx528DkcEdy7NuexcNcnug">
+      <children xmi:id="_Hx2zoTkcEdy7NuexcNcnug" type="4003"/>
+      <children xmi:id="_Hx2zojkcEdy7NuexcNcnug" type="5001">
+        <children xmi:id="_Hx2zozkcEdy7NuexcNcnug" type="2001" element="_Hx528jkcEdy7NuexcNcnug">
+          <children xmi:id="_Hx2zpDkcEdy7NuexcNcnug" type="4001"/>
+          <children xmi:id="_Hx2zpTkcEdy7NuexcNcnug" type="4002" element="_Hx529DkcEdy7NuexcNcnug">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_Hx2zpjkcEdy7NuexcNcnug" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Hx2zpzkcEdy7NuexcNcnug" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Hx2zqDkcEdy7NuexcNcnug" x="91" y="48" width="61" height="61"/>
+        </children>
+        <children xmi:id="_Hx2zqTkcEdy7NuexcNcnug" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Hx2zqjkcEdy7NuexcNcnug" x="67" y="36"/>
+        </children>
+        <children xmi:id="_Hx2zqzkcEdy7NuexcNcnug" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Hx2zrDkcEdy7NuexcNcnug" x="61" y="33"/>
+        </children>
+        <children xmi:id="_Hy0c8DkcEdy7NuexcNcnug" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Hy0c8TkcEdy7NuexcNcnug" x="61" y="33"/>
+        </children>
+        <children xmi:id="_OndZgDkcEdy7NuexcNcnug" type="2001" element="_OnRzUDkcEdy7NuexcNcnug">
+          <children xmi:id="_On0l4DkcEdy7NuexcNcnug" type="4001"/>
+          <children xmi:id="_On2bEjkcEdy7NuexcNcnug" type="4002" element="_ZJ3BQDkcEdy7NuexcNcnug">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_On2bEzkcEdy7NuexcNcnug" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_OndZgTkcEdy7NuexcNcnug" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_OndZgjkcEdy7NuexcNcnug" x="295" y="48" width="73" height="73"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Hx2zrTkcEdy7NuexcNcnug"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Hx2zrjkcEdy7NuexcNcnug"/>
+      </children>
+      <children xmi:id="_Hx4BwDkcEdy7NuexcNcnug" type="4004" element="_iX7FgFJFEdyATe-FBQSTUQ"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_Hx4o0DkcEdy7NuexcNcnug" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Hx4o0TkcEdy7NuexcNcnug" x="624" y="384" width="409" height="265"/>
+    </children>
+    <children xmi:id="_4D5-4FJHEdyhPOcODtDYZA" type="1001" element="_4D70EFJHEdyhPOcODtDYZA">
+      <children xmi:id="_4D5-4VJHEdyhPOcODtDYZA" type="4003"/>
+      <children xmi:id="_4D5-4lJHEdyhPOcODtDYZA" type="5001">
+        <children xmi:id="_4D6l8FJHEdyhPOcODtDYZA" type="2001" element="_4D70ElJHEdyhPOcODtDYZA">
+          <children xmi:id="_4D6l8VJHEdyhPOcODtDYZA" type="4001"/>
+          <children xmi:id="_4D6l8lJHEdyhPOcODtDYZA" type="4002" element="_4D70FFJHEdyhPOcODtDYZA">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_4D6l81JHEdyhPOcODtDYZA" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_4D6l9FJHEdyhPOcODtDYZA" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4D6l9VJHEdyhPOcODtDYZA" x="91" y="48" width="61" height="61"/>
+        </children>
+        <children xmi:id="_4D6l9lJHEdyhPOcODtDYZA" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4D6l91JHEdyhPOcODtDYZA" x="67" y="36"/>
+        </children>
+        <children xmi:id="_4D6l-FJHEdyhPOcODtDYZA" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4D6l-VJHEdyhPOcODtDYZA" x="61" y="33"/>
+        </children>
+        <children xmi:id="_4EOvAFJHEdyhPOcODtDYZA" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4EdYgFJHEdyhPOcODtDYZA" x="61" y="33"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_4D6l-lJHEdyhPOcODtDYZA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_4D6l-1JHEdyhPOcODtDYZA"/>
+      </children>
+      <children xmi:id="_4D6l_FJHEdyhPOcODtDYZA" type="4004" element="_YBa_EJO1Ed2plroEUkn42w"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_4D6l_VJHEdyhPOcODtDYZA" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4D6l_lJHEdyhPOcODtDYZA" x="24" y="672" width="409" height="265"/>
+    </children>
+    <children xmi:id="___9PcFJHEdyhPOcODtDYZA" type="1001" element="___92gFJHEdyhPOcODtDYZA">
+      <children xmi:id="___9PcVJHEdyhPOcODtDYZA" type="4003"/>
+      <children xmi:id="___9PclJHEdyhPOcODtDYZA" type="5001">
+        <children xmi:id="___9Pc1JHEdyhPOcODtDYZA" type="2001" element="___92glJHEdyhPOcODtDYZA">
+          <children xmi:id="___9PdFJHEdyhPOcODtDYZA" type="4001"/>
+          <children xmi:id="___9PdVJHEdyhPOcODtDYZA" type="4002" element="___92hFJHEdyhPOcODtDYZA">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="___9PdlJHEdyhPOcODtDYZA" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="___9Pd1JHEdyhPOcODtDYZA" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="___9PeFJHEdyhPOcODtDYZA" x="187" y="48" width="61" height="61"/>
+        </children>
+        <children xmi:id="___9PeVJHEdyhPOcODtDYZA" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="___9PelJHEdyhPOcODtDYZA" x="67" y="36"/>
+        </children>
+        <children xmi:id="_0nzO8FJIEdyhPOcODtDYZA" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_0nzO8VJIEdyhPOcODtDYZA" x="157" y="33"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="___9Pe1JHEdyhPOcODtDYZA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="___9PfFJHEdyhPOcODtDYZA"/>
+      </children>
+      <children xmi:id="___9PfVJHEdyhPOcODtDYZA" type="4004" element="___92gVJHEdyhPOcODtDYZA"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="___9PflJHEdyhPOcODtDYZA" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="___9Pf1JHEdyhPOcODtDYZA" x="624" y="672" width="409" height="265"/>
+    </children>
+    <children xmi:id="_Ict2cCZZEd2sD6DOCXLLjQ" type="1001" element="_IcHZgCZZEd2sD6DOCXLLjQ">
+      <children xmi:id="_Ict2cSZZEd2sD6DOCXLLjQ" type="4003"/>
+      <children xmi:id="_Ict2ciZZEd2sD6DOCXLLjQ" type="5001">
+        <children xmi:id="_Ict2cyZZEd2sD6DOCXLLjQ" type="2001" element="_IcInoCZZEd2sD6DOCXLLjQ">
+          <children xmi:id="_Ict2dCZZEd2sD6DOCXLLjQ" type="4001"/>
+          <children xmi:id="_Ict2dSZZEd2sD6DOCXLLjQ" type="4002" element="_IcInoiZZEd2sD6DOCXLLjQ">
+            <layoutConstraint xsi:type="notation:Location" xmi:id="_Ict2diZZEd2sD6DOCXLLjQ" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Ict2dyZZEd2sD6DOCXLLjQ" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Ict2eCZZEd2sD6DOCXLLjQ" x="91" y="48" width="61" height="61"/>
+        </children>
+        <children xmi:id="_Ict2eSZZEd2sD6DOCXLLjQ" type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Ict2eiZZEd2sD6DOCXLLjQ" x="67" y="36"/>
+        </children>
+        <children xmi:id="_gP5XwCZZEd2sD6DOCXLLjQ" type="cwi.ea.extensions.startStates_invisibleNode" element="_IcInoSZZEd2sD6DOCXLLjQ">
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_gP5XwSZZEd2sD6DOCXLLjQ" x="61" y="33"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Ict2eyZZEd2sD6DOCXLLjQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Ict2fCZZEd2sD6DOCXLLjQ"/>
+      </children>
+      <children xmi:id="_Ict2fSZZEd2sD6DOCXLLjQ" type="4004" element="_IcHZgSZZEd2sD6DOCXLLjQ"/>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_Ict2fiZZEd2sD6DOCXLLjQ" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Ict2fyZZEd2sD6DOCXLLjQ" x="630" y="980" width="409" height="265"/>
+    </children>
+    <children type="1001" element="/0/@automata.7">
+      <children type="4003"/>
+      <children type="5001">
+        <children type="2001" element="/0/@automata.7/@states.0">
+          <children type="4001"/>
+          <children type="4002" element="/0/@automata.7/@states.0/@extensions.1">
+            <layoutConstraint xsi:type="notation:Location" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="187" y="48" width="61" height="61"/>
+        </children>
+        <children type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" x="67" y="36"/>
+        </children>
+        <children type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" x="157" y="33"/>
+        </children>
+        <children type="cwi.ea.extensions.startStates_invisibleNode" element="/0/@automata.7/@states.0/@extensions.0">
+          <layoutConstraint xsi:type="notation:Bounds" x="157" y="33"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <children type="4004" element="/0/@automata.7/@extensions.0"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="30" y="985" width="409" height="265"/>
+    </children>
+    <children type="1001" element="/0/@automata.8">
+      <children type="4003"/>
+      <children type="5001">
+        <children type="2001" element="/0/@automata.8/@states.0">
+          <children type="4001"/>
+          <children type="4002" element="/0/@automata.8/@states.0/@extensions.1">
+            <layoutConstraint xsi:type="notation:Location" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="55" y="54" width="61" height="61"/>
+        </children>
+        <children type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" x="67" y="36"/>
+        </children>
+        <children type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" x="61" y="33"/>
+        </children>
+        <children type="cwi.ea.extensions.startStates_invisibleNode">
+          <layoutConstraint xsi:type="notation:Bounds" x="61" y="33"/>
+        </children>
+        <children type="2001" element="/0/@automata.8/@states.1">
+          <children type="4001"/>
+          <children type="4002" element="/0/@automata.8/@states.1/@extensions.1">
+            <layoutConstraint xsi:type="notation:Location" x="6" y="26"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="295" y="48" width="73" height="73"/>
+        </children>
+        <children type="cwi.ea.extensions.startStates_invisibleNode" element="/0/@automata.8/@states.0/@extensions.0">
+          <layoutConstraint xsi:type="notation:Bounds" x="25" y="39"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <children type="4004" element="/0/@automata.8/@extensions.0"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="635" y="1265" width="409" height="265"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_5CJNoS75Edysdt__CW9ULg"/>
+    <edges xmi:id="_ZymzAC76Edysdt__CW9ULg" type="cwi.ea.extensions.startStates_fakeTransition" element="_OXnWYC76Edysdt__CW9ULg" source="_Zyk90C76Edysdt__CW9ULg" target="_OXlhMC76Edysdt__CW9ULg">
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_ZymzAS76Edysdt__CW9ULg" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_ZymzAi76Edysdt__CW9ULg"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_ZymzAy76Edysdt__CW9ULg" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_ZynaEC76Edysdt__CW9ULg" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:id="_dkl24C76Edysdt__CW9ULg" type="3001" element="_dkfwQC76Edysdt__CW9ULg" source="_OXlhMC76Edysdt__CW9ULg" target="_OXlhMC76Edysdt__CW9ULg">
+      <children xmi:id="_dkzSQS76Edysdt__CW9ULg" type="4005" element="_S0sBIFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_dkzSQi76Edysdt__CW9ULg" y="-20"/>
+      </children>
+      <children xmi:id="_dlCi0C76Edysdt__CW9ULg" type="4005" element="_UWZEcFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_dlCi0S76Edysdt__CW9ULg" x="32" y="56"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_dkl24S76Edysdt__CW9ULg" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_dkl24i76Edysdt__CW9ULg" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_dkl24y76Edysdt__CW9ULg" points="[-52, 26, -30, 1]$[-52, 18, -30, -7]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_dkxdEC76Edysdt__CW9ULg" id="(0.852459,0.08196721)"/>
+    </edges>
+    <edges xmi:id="_mjOl0C76Edysdt__CW9ULg" type="3001" element="_miaGdS76Edysdt__CW9ULg" source="_miYRQy76Edysdt__CW9ULg" target="_miYRQy76Edysdt__CW9ULg">
+      <children xmi:id="_m7ZOMC76Edysdt__CW9ULg" type="4005" element="_YfbWYFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_m7ZOMS76Edysdt__CW9ULg" x="-67" y="-42"/>
+      </children>
+      <children xmi:id="_m7Z1QC76Edysdt__CW9ULg" type="4005" element="_EHim8C-5EdyLetStd7Zjaw">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_m7Z1QS76Edysdt__CW9ULg" x="4" y="-64"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_mjOl0S76Edysdt__CW9ULg" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_mjOl0i76Edysdt__CW9ULg" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_mjOl0y76Edysdt__CW9ULg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:id="_mjRCEC76Edysdt__CW9ULg" type="cwi.ea.extensions.startStates_fakeTransition" element="_miaGcy76Edysdt__CW9ULg" source="_mjQbAC76Edysdt__CW9ULg" target="_miYRQy76Edysdt__CW9ULg">
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_mjRCES76Edysdt__CW9ULg" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_mjRCEi76Edysdt__CW9ULg"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_mjRCEy76Edysdt__CW9ULg" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_mjRpIC76Edysdt__CW9ULg" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:id="_IVlUsC-5EdyLetStd7Zjaw" type="3001" element="_IR02Ei-5EdyLetStd7Zjaw" source="_IRxywy-5EdyLetStd7Zjaw" target="_IRxywy-5EdyLetStd7Zjaw">
+      <children xmi:id="_I5ONQC-5EdyLetStd7Zjaw" type="4005" element="_m8O-MFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_I5ONQS-5EdyLetStd7Zjaw" y="-20"/>
+      </children>
+      <children xmi:id="_I5ONQi-5EdyLetStd7Zjaw" type="4005" element="_oO52sC-5EdyLetStd7Zjaw">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_I5ONQy-5EdyLetStd7Zjaw" x="-20" y="27"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_IVlUsS-5EdyLetStd7Zjaw" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_IVlUsi-5EdyLetStd7Zjaw" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_IVlUsy-5EdyLetStd7Zjaw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:id="_IV7S8C-5EdyLetStd7Zjaw" type="cwi.ea.extensions.startStates_fakeTransition" element="_IR02EC-5EdyLetStd7Zjaw" source="_IV6r4C-5EdyLetStd7Zjaw" target="_IRxywy-5EdyLetStd7Zjaw">
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_IV7S8S-5EdyLetStd7Zjaw" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_IV7S8i-5EdyLetStd7Zjaw"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_IV7S8y-5EdyLetStd7Zjaw" points="[1, 3, 70, -72]$[9, 43, 78, -32]$[-38, 62, 31, -13]"/>
+    </edges>
+    <edges xmi:id="_NH8QcC-5EdyLetStd7Zjaw" type="3001" element="_NH4mEC-5EdyLetStd7Zjaw" source="_IRxywy-5EdyLetStd7Zjaw" target="_IRxywy-5EdyLetStd7Zjaw">
+      <children xmi:id="_NI4roS-5EdyLetStd7Zjaw" type="4005" element="_Mw-D0FJIEdyhPOcODtDYZA">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_NI4roi-5EdyLetStd7Zjaw" y="-20"/>
+      </children>
+      <children xmi:id="_NI5SsS-5EdyLetStd7Zjaw" type="4005" element="_NI5SsC-5EdyLetStd7Zjaw">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_NI5Ssi-5EdyLetStd7Zjaw" x="6" y="26"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_NH8QcS-5EdyLetStd7Zjaw" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_NH8Qci-5EdyLetStd7Zjaw" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_NH8Qcy-5EdyLetStd7Zjaw" points="[-13, -4, -30, -30]$[-105, -32, -122, -58]$[-98, 69, -115, 43]$[-13, 37, -30, 11]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_NH-ssC-5EdyLetStd7Zjaw" id="(0.21311475,0.06557377)"/>
+    </edges>
+    <edges xmi:id="_Hy1EADkcEdy7NuexcNcnug" type="cwi.ea.extensions.startStates_fakeTransition" element="_Hx528zkcEdy7NuexcNcnug" source="_Hy0c8DkcEdy7NuexcNcnug" target="_Hx2zozkcEdy7NuexcNcnug">
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_Hy1EATkcEdy7NuexcNcnug" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_Hy1EAjkcEdy7NuexcNcnug"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_Hy1EAzkcEdy7NuexcNcnug" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_Hy1EBDkcEdy7NuexcNcnug" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:id="_SxvooDkcEdy7NuexcNcnug" type="3001" element="_SxtMYDkcEdy7NuexcNcnug" source="_Hx2zozkcEdy7NuexcNcnug" target="_OndZgDkcEdy7NuexcNcnug">
+      <children xmi:id="_Sx714DkcEdy7NuexcNcnug" type="4005" element="_i8nuAFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_Sx714TkcEdy7NuexcNcnug" y="-20"/>
+      </children>
+      <children xmi:id="_Sx714zkcEdy7NuexcNcnug" type="4005" element="_jwYtQFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_Sx715DkcEdy7NuexcNcnug" x="15" y="-41"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_SxwPsDkcEdy7NuexcNcnug" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_SxwPsTkcEdy7NuexcNcnug" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_SxwPsjkcEdy7NuexcNcnug" points="[20, -2, -162, 0]$[174, -14, -8, -12]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_Sx5ZoDkcEdy7NuexcNcnug" id="(0.6721311,0.22950819)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_Sx5ZoTkcEdy7NuexcNcnug" id="(0.26027396,0.16438356)"/>
+    </edges>
+    <edges xmi:id="_d1yk4DkcEdy7NuexcNcnug" type="3001" element="_d1wIoDkcEdy7NuexcNcnug" source="_OndZgDkcEdy7NuexcNcnug" target="_Hx2zozkcEdy7NuexcNcnug">
+      <children xmi:id="_d155oTkcEdy7NuexcNcnug" type="4005" element="_kQlQQFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_d155ojkcEdy7NuexcNcnug" y="-20"/>
+      </children>
+      <children xmi:id="_d16gsDkcEdy7NuexcNcnug" type="4005" element="_lMYxMFJFEdyATe-FBQSTUQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_d16gsTkcEdy7NuexcNcnug" x="12" y="-43"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_d1yk4TkcEdy7NuexcNcnug" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_d1yk4jkcEdy7NuexcNcnug" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_d1yk4zkcEdy7NuexcNcnug" points="[-13, -9, 170, 0]$[-180, 4, 3, 13]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_d14EcDkcEdy7NuexcNcnug" id="(0.1780822,0.7808219)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_d14EcTkcEdy7NuexcNcnug" id="(0.55737704,0.78688526)"/>
+    </edges>
+    <edges xmi:id="_4ELrsFJHEdyhPOcODtDYZA" type="3001" element="_4D70FVJHEdyhPOcODtDYZA" source="_4D6l8FJHEdyhPOcODtDYZA" target="_4D6l8FJHEdyhPOcODtDYZA">
+      <children xmi:id="_4rDecFJHEdyhPOcODtDYZA" type="4005" element="_ZIy20JO1Ed2plroEUkn42w">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_4rDecVJHEdyhPOcODtDYZA" y="-20"/>
+      </children>
+      <children xmi:id="_4rDeclJHEdyhPOcODtDYZA" type="4005" element="_KdHNMKXXEd2bPtVEEDZJww">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_4rDec1JHEdyhPOcODtDYZA" x="-48" y="-49"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_4ELrsVJHEdyhPOcODtDYZA" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_4ELrslJHEdyhPOcODtDYZA" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_4ELrs1JHEdyhPOcODtDYZA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:id="_4Ed_kFJHEdyhPOcODtDYZA" type="cwi.ea.extensions.startStates_fakeTransition" element="_4D70E1JHEdyhPOcODtDYZA" source="_4EOvAFJHEdyhPOcODtDYZA" target="_4D6l8FJHEdyhPOcODtDYZA">
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_4Ed_kVJHEdyhPOcODtDYZA" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_4Ed_klJHEdyhPOcODtDYZA"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_4Ed_k1JHEdyhPOcODtDYZA" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_4Ed_lFJHEdyhPOcODtDYZA" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:id="_AAPjUFJIEdyhPOcODtDYZA" type="3001" element="___92hVJHEdyhPOcODtDYZA" source="___9Pc1JHEdyhPOcODtDYZA" target="___9Pc1JHEdyhPOcODtDYZA">
+      <children xmi:id="_AlPGwFJIEdyhPOcODtDYZA" type="4005" element="___92hlJHEdyhPOcODtDYZA">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_AlPGwVJIEdyhPOcODtDYZA" y="-20"/>
+      </children>
+      <children xmi:id="_AlPGwlJIEdyhPOcODtDYZA" type="4005" element="___92h1JHEdyhPOcODtDYZA">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_AlPGw1JIEdyhPOcODtDYZA" x="16" y="-48"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_AAPjUVJIEdyhPOcODtDYZA" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_AAPjUlJIEdyhPOcODtDYZA" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_AAPjU1JIEdyhPOcODtDYZA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:id="_Rp794FJIEdyhPOcODtDYZA" type="3001" element="_Rp6IsFJIEdyhPOcODtDYZA" source="___9Pc1JHEdyhPOcODtDYZA" target="___9Pc1JHEdyhPOcODtDYZA">
+      <children xmi:id="_RqA2YVJIEdyhPOcODtDYZA" type="4005" element="__8yKMFJIEdyhPOcODtDYZA">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_RqA2YlJIEdyhPOcODtDYZA" x="-35" y="33"/>
+      </children>
+      <children xmi:id="_RqA2ZFJIEdyhPOcODtDYZA" type="4005" element="_RqA2Y1JIEdyhPOcODtDYZA">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_RqA2ZVJIEdyhPOcODtDYZA" x="-10" y="34"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_Rp794VJIEdyhPOcODtDYZA" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_Rp794lJIEdyhPOcODtDYZA" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_Rp7941JIEdyhPOcODtDYZA" points="[-57, -4, -16, -39]$[-135, -10, -94, -45]$[-115, 55, -74, 20]$[-57, 39, -16, 4]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_Rp_oQFJIEdyhPOcODtDYZA" id="(0.93442625,0.27868852)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_Rp_oQVJIEdyhPOcODtDYZA" id="(0.26229507,0.852459)"/>
+    </edges>
+    <edges xmi:id="_0nzO8lJIEdyhPOcODtDYZA" type="cwi.ea.extensions.startStates_fakeTransition" element="___92g1JHEdyhPOcODtDYZA" source="_0nzO8FJIEdyhPOcODtDYZA" target="___9Pc1JHEdyhPOcODtDYZA">
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_0nzO81JIEdyhPOcODtDYZA" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_0nzO9FJIEdyhPOcODtDYZA"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_0nzO9VJIEdyhPOcODtDYZA" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_0nzO9lJIEdyhPOcODtDYZA" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:id="_gP5XwiZZEd2sD6DOCXLLjQ" type="cwi.ea.extensions.startStates_fakeTransition" element="_IcInoSZZEd2sD6DOCXLLjQ" source="_gP5XwCZZEd2sD6DOCXLLjQ" target="_Ict2cyZZEd2sD6DOCXLLjQ">
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_gP5XwyZZEd2sD6DOCXLLjQ" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_gP5XxCZZEd2sD6DOCXLLjQ"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_gP5XxSZZEd2sD6DOCXLLjQ" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_gP5XxiZZEd2sD6DOCXLLjQ" id="(0.175,0.55)"/>
+    </edges>
+    <edges xmi:id="_gQBTkCZZEd2sD6DOCXLLjQ" type="3001" element="_gPl1wCZZEd2sD6DOCXLLjQ" source="_Ict2cyZZEd2sD6DOCXLLjQ" target="_Ict2cyZZEd2sD6DOCXLLjQ">
+      <children xmi:id="_gQEW4CZZEd2sD6DOCXLLjQ" type="4005" element="_id3EICZZEd2sD6DOCXLLjQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_gQEW4SZZEd2sD6DOCXLLjQ" x="12" y="-68"/>
+      </children>
+      <children xmi:id="_gQEW4iZZEd2sD6DOCXLLjQ" type="4005" element="_lj_uoCZZEd2sD6DOCXLLjQ">
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_gQEW4yZZEd2sD6DOCXLLjQ" x="32" y="-50"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" xmi:id="_gQB6oCZZEd2sD6DOCXLLjQ" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" xmi:id="_gQB6oSZZEd2sD6DOCXLLjQ" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_gQB6oiZZEd2sD6DOCXLLjQ" points="[-24, 48, -5, 10]$[-17, 48, 2, 10]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_gQChsCZZEd2sD6DOCXLLjQ" id="(0.86885244,0.21311475)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_gQChsSZZEd2sD6DOCXLLjQ" id="(0.55737704,0.8360656)"/>
+    </edges>
+    <edges type="3001" element="/0/@automata.7/@transitions.0" source="/1/@children.7/@children.1/@children.0" target="/1/@children.7/@children.1/@children.0">
+      <children type="4005" element="/0/@automata.7/@transitions.0/@extensions.0">
+        <layoutConstraint xsi:type="notation:Location" y="-20"/>
+      </children>
+      <children type="4005" element="/0/@automata.7/@transitions.0/@extensions.1">
+        <layoutConstraint xsi:type="notation:Location" x="29" y="13"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+    <edges type="3001" element="/0/@automata.7/@transitions.1" source="/1/@children.7/@children.1/@children.0" target="/1/@children.7/@children.1/@children.0">
+      <children type="4005" element="/0/@automata.7/@transitions.1/@extensions.0">
+        <layoutConstraint xsi:type="notation:Location" x="5" y="-68"/>
+      </children>
+      <children type="4005" element="/0/@automata.7/@transitions.1/@extensions.1">
+        <layoutConstraint xsi:type="notation:Location" x="-16" y="-54"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-30, 15, -30, 15]$[-122, 59, -122, 59]$[-77, -56, -77, -56]$[-30, -22, -30, -22]"/>
+    </edges>
+    <edges type="cwi.ea.extensions.startStates_fakeTransition" element="/0/@automata.7/@states.0/@extensions.0" source="/1/@children.7/@children.1/@children.3" target="/1/@children.7/@children.1/@children.0">
+      <styles xsi:type="notation:RoutingStyle" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.175,0.55)"/>
+    </edges>
+    <edges type="3001" element="/0/@automata.8/@transitions.0" source="/1/@children.8/@children.1/@children.0" target="/1/@children.8/@children.1/@children.4">
+      <children type="4005" element="/0/@automata.8/@transitions.0/@extensions.0">
+        <layoutConstraint xsi:type="notation:Location" y="-20"/>
+      </children>
+      <children type="4005" element="/0/@automata.8/@transitions.0/@extensions.1">
+        <layoutConstraint xsi:type="notation:Location" x="6" y="26"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[31, 13, -215, 13]$[110, 48, -136, 48]$[210, 13, -36, 13]"/>
+    </edges>
+    <edges type="3001" element="/0/@automata.8/@transitions.1" source="/1/@children.8/@children.1/@children.4" target="/1/@children.8/@children.1/@children.0">
+      <children type="4005" element="/0/@automata.8/@transitions.1/@extensions.0">
+        <layoutConstraint xsi:type="notation:Location" y="-20"/>
+      </children>
+      <children type="4005" element="/0/@automata.8/@transitions.1/@extensions.1">
+        <layoutConstraint xsi:type="notation:Location" x="6" y="26"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-36, -12, 210, -12]$[-116, -37, 130, -37]$[-215, -9, 31, -9]"/>
+    </edges>
+    <edges type="cwi.ea.extensions.startStates_fakeTransition" element="/0/@automata.8/@states.0/@extensions.0" source="/1/@children.8/@children.1/@children.5" target="/1/@children.8/@children.1/@children.0">
+      <styles xsi:type="notation:RoutingStyle" smoothness="Normal"/>
+      <styles xsi:type="notation:FontStyle"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[1, 3, -33, -31]$[7, 20, -27, -14]$[27, 30, -7, -4]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.175,0.55)"/>
+    </edges>
+    <edges type="3001" element="/0/@automata.8/@transitions.2" source="/1/@children.8/@children.1/@children.4" target="/1/@children.8/@children.1/@children.4">
+      <children type="4005" element="/0/@automata.8/@transitions.2/@extensions.0">
+        <layoutConstraint xsi:type="notation:Location" y="-20"/>
+      </children>
+      <children type="4005" element="/0/@automata.8/@transitions.2/@extensions.1">
+        <layoutConstraint xsi:type="notation:Location" x="26" y="58"/>
+      </children>
+      <styles xsi:type="notation:FontStyle" fontName="Sans"/>
+      <styles xsi:type="notation:RoutingStyle" smoothness="Normal"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-7, 63, 13, 37]$[17, 51, 37, 25]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.7671232876712328,0.136986301369863)"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

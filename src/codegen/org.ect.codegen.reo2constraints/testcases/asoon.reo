@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cwi.reo="http://www.cwi.nl/reo" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <cwi.reo:Module xmi:id="_PfS08W0LEeChn6kBPLci6w">
+    <connectors xmi:type="cwi.reo:Connector" xmi:id="_M-K0wdljEeC7I9cPxMQPvw"/>
+  </cwi.reo:Module>
+  <notation:Diagram xmi:id="_Pi4UcG0LEeChn6kBPLci6w" type="Reo" element="_PfS08W0LEeChn6kBPLci6w" name="asoon.reo" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_M_fDYNljEeC7I9cPxMQPvw" type="1001" element="_M-K0wdljEeC7I9cPxMQPvw" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_M_gRgNljEeC7I9cPxMQPvw" type="4004"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_M_g4kNljEeC7I9cPxMQPvw" type="5001"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M_fDYdljEeC7I9cPxMQPvw" x="388" y="115" width="201" height="139"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_Pi4UcW0LEeChn6kBPLci6w"/>
+  </notation:Diagram>
+</xmi:XMI>

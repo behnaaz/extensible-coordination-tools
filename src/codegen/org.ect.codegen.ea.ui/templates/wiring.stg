@@ -1,0 +1,43 @@
+group wiring;
+
+top(imports, package, main)::= <<
+package <package>;
+
+import org.ect.ea.runtime.primitives.TimeoutPort;
+import org.ect.ea.runtime.ReoComponent;
+
+<imports: {m | import <m>;}; separator="\n">
+
+
+@SuppressWarnings("unchecked")
+public class Main {
+	<main>
+}
+>>
+
+main(ports, components, coordinator)::= <<
+public static void main(String[] args) throws Exception {
+	TimeoutPort <ports:{p| <p> = new TimeoutPort("<p>")}; separator=",\n\t">;
+	
+	<components; separator="\n">
+	
+	Thread[] components = new Thread[] {
+		<components: {c |new Thread(<c.id>)}; separator=",">
+	};
+	
+	Thread coordinator = new Thread(new <coordinator>(<ports; separator=",">));
+	coordinator.start();
+	for (Thread _thr_:components)
+		_thr_.start();
+	
+	for (Thread _thr_:components)
+		_thr_.join();
+		
+	coordinator.interrupt();
+}
+>>
+
+component(id, class, args)::=<<
+ReoComponent <id> = new <class>()
+<args.keys:{k| .with<k>( <args.(k)> )}; separator="\n"> ;
+>>

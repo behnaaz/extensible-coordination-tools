@@ -1,0 +1,9 @@
+"diamond"[END::IN, BEGIN::OUT]
+diamond1*[
+	[BEGIN]::($t.y=BEGIN & $t.w=BEGIN)::diamond2],
+diamond2[y,w][
+	[END, BEGIN]::($t.y=BEGIN & $t.w=BEGIN)::diamond2, 
+	[END]::true::diamond1, 
+	[BEGIN]::($s.w=$t.u & $t.y=BEGIN & $t.w=BEGIN & $s.y=$t.s)::diamond3],
+diamond3[u,y,w,s][
+	[END]::($s.y=$t.y & $s.w=$t.w)::diamond2]
