@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.ect.ea.IExtensionProvider;
 import org.ect.ea.automata.State;
 import org.ect.ea.extensions.IExtension;
-import org.ect.ea.extensions.constraints.providers.ConstraintExtensionProvider;
+import org.ect.ea.extensions.constraints.ConstraintExtensionProvider;
 import org.ect.ea.extensions.portnames.AutomatonPortNames;
-import org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider;
-import org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider;
+import org.ect.ea.extensions.portnames.AutomatonPortNamesProvider;
+import org.ect.ea.extensions.portnames.TransitionPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 import org.ect.ea.extensions.statememory.StateMemoryExtensionProvider;
 

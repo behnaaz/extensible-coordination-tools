@@ -12,6 +12,6 @@ Require-Bundle: org.ect.ea;bundle-version="3.2.0",
 Export-Package: org.ect.ea.util.ca,
  org.ect.ea.util.text.parse,
  org.ect.ea.util.text.serialize
-Bundle-Vendor: CWI
+Bundle-Vendor: Extensible Coordination Tools
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
