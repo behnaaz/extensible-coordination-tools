@@ -23,7 +23,6 @@ import org.ect.ea.automata.State;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.BooleanExtension;
 import org.ect.ea.extensions.portnames.*;
-import org.ect.ea.extensions.portnames.providers.*;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 import org.ect.ea.util.ProductCache;
 

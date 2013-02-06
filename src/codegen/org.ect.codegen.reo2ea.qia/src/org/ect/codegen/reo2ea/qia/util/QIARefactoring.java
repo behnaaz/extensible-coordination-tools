@@ -20,13 +20,9 @@ import java.util.Vector;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.ect.ea.automata.Automaton;
-import org.ect.ea.automata.Transition;
-import org.ect.ea.extensions.constraints.Constraint;
-import org.ect.ea.extensions.constraints.Parameter;
+import org.ect.ea.automata.*;
+import org.ect.ea.extensions.constraints.*;
 import org.ect.ea.extensions.portnames.*;
-import org.ect.ea.extensions.portnames.providers.*;
-
 
 public class QIARefactoring {
 	
