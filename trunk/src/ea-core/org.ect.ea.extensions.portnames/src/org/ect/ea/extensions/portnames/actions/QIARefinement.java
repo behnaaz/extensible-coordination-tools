@@ -22,7 +22,7 @@ import org.ect.ea.automata.State;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.BooleanExtension;
 import org.ect.ea.extensions.portnames.IntensionalPortNames;
-import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
+import org.ect.ea.extensions.portnames.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 
 public class QIARefinement {

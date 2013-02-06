@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.portnames.providers;
+package org.ect.ea.extensions.portnames;
 
 import java.util.HashSet;
 import java.util.List;
@@ -21,10 +21,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.ect.ea.automata.State;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.ExtensionElement;
-import org.ect.ea.extensions.portnames.DelayElement;
-import org.ect.ea.extensions.portnames.DelayInformation;
-import org.ect.ea.extensions.portnames.IntensionalPortNames;
-import org.ect.ea.extensions.portnames.PortNamesPackage;
 
 public class CollectingMixed extends ExtensionElement{
 	

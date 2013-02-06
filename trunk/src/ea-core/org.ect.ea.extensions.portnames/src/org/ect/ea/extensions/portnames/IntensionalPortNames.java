@@ -24,7 +24,6 @@ import org.ect.ea.automata.Automaton;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.ExtensionElement;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 
@@ -48,10 +47,11 @@ import org.ect.ea.util.ValidationResult;
 public class IntensionalPortNames extends ExtensionElement {
 	
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public IntensionalPortNames() {
 		super();
+		setId(IntensionalPortNamesProvider.EXTENSION_ID);
 	}
 	
 	/**
