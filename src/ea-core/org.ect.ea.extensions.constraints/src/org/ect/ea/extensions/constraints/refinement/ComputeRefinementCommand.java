@@ -26,11 +26,11 @@ import org.ect.ea.extensions.BooleanExtension;
 import org.ect.ea.extensions.IExtension;
 import org.ect.ea.extensions.constraints.Conjunction;
 import org.ect.ea.extensions.constraints.Constraint;
+import org.ect.ea.extensions.constraints.ConstraintExtensionProvider;
 import org.ect.ea.extensions.constraints.Literal;
 import org.ect.ea.extensions.constraints.operations.Comparator;
-import org.ect.ea.extensions.constraints.providers.ConstraintExtensionProvider;
 import org.ect.ea.extensions.portnames.IntensionalPortNames;
-import org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider;
+import org.ect.ea.extensions.portnames.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 
 public class ComputeRefinementCommand extends ChangeExtensionsCommand {

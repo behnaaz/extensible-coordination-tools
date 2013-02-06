@@ -4,12 +4,12 @@
    <extension
          point="org.ect.ea.extensions">
       <extensionDefinition
-            editParts="org.ect.ea.extensions.constraints.providers.RefinementMenuProvider"
+            editParts="org.ect.ea.extensions.constraints.RefinementMenuProvider"
             enabledFor="transitions"
             icon="icons/constraint.gif"
             id="cwi.ea.extensions.constraints"
             name="Constraints"
-            providerClass="org.ect.ea.extensions.constraints.providers.ConstraintExtensionProvider"
+            providerClass="org.ect.ea.extensions.constraints.ConstraintExtensionProvider"
             type="textual">
          <mutualExclusion
                global="true"
