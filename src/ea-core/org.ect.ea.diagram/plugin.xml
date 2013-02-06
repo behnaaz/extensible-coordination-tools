@@ -120,35 +120,35 @@
             category="org.ect.reo.preferences"
             class="org.ect.ea.diagram.preferences.DiagramGeneralPreferencePage"
             id="org.ect.ea.diagram.general"
-            name="%preference.page.title.cwi.ea.diagram.general">
+            name="%preference.page.title.org.ect.ea.diagram.general">
       </page>
       <page
             id="org.ect.ea.diagram.appearance"
-            name="%preference.page.title.cwi.ea.diagram.appearance"
+            name="%preference.page.title.org.ect.ea.diagram.appearance"
             category="org.ect.ea.diagram.general"
             class="org.ect.ea.diagram.preferences.DiagramAppearancePreferencePage">
       </page>
       <page
             id="org.ect.ea.diagram.connections"
-            name="%preference.page.title.cwi.ea.diagram.connections"
+            name="%preference.page.title.org.ect.ea.diagram.connections"
             category="org.ect.ea.diagram.general"
             class="org.ect.ea.diagram.preferences.DiagramConnectionsPreferencePage">
       </page>
       <page
             id="org.ect.ea.diagram.printing"
-            name="%preference.page.title.cwi.ea.diagram.printing"
+            name="%preference.page.title.org.ect.ea.diagram.printing"
             category="org.ect.ea.diagram.general"
             class="org.ect.ea.diagram.preferences.DiagramPrintingPreferencePage">
       </page>
       <page
             id="org.ect.ea.diagram.rulersAndGrid"
-            name="%preference.page.title.cwi.ea.diagram.rulersAndGrid"
+            name="%preference.page.title.org.ect.ea.diagram.rulersAndGrid"
             category="org.ect.ea.diagram.general"
             class="org.ect.ea.diagram.preferences.DiagramRulersAndGridPreferencePage">
       </page>
       <page
             id="org.ect.ea.diagram.pathmaps"
-            name="%preference.page.title.cwi.ea.diagram.pathmaps"
+            name="%preference.page.title.org.ect.ea.diagram.pathmaps"
             category="org.ect.ea.diagram.general"
             class="org.eclipse.gmf.runtime.emf.ui.preferences.PathmapsPreferencePage">
       </page>

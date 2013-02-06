@@ -150,20 +150,4 @@ public class AutomatonMonitor extends AdapterImpl {
 		}
 	}
 	
-/*	
-	public static void main(String[] args) {
-		
-		EA.initStandalone();
-		Automaton automaton = new Automaton();
-		State state = new State();
-		
-		EA.monitorExtensions(automaton, true);
-		
-		automaton.getUsedExtensionIds().add("cwi.reo..");
-		automaton.getStates().add(state);
-		
-		System.out.println(state);
-		
-	}
-*/	
 }
