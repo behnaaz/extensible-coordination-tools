@@ -17,17 +17,18 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.ect.codegen.ea2mc.providers.DElmNode;
 import org.ect.codegen.ea2mc.providers.NewLinkedList;
-import org.ect.codegen.ea2mc.providers.Seq2Automaton;
 import org.ect.codegen.ea2mc.providers.newSeq2Automaton;
 import org.ect.ea.EA;
 import org.ect.ea.automata.Automaton;
 import org.ect.ea.automata.State;
 import org.ect.ea.automata.Transition;
-import org.ect.ea.extensions.portnames.*;
-import org.ect.ea.extensions.portnames.providers.*;
+import org.ect.ea.extensions.portnames.DelayElement;
+import org.ect.ea.extensions.portnames.DelayInfoProvider;
+import org.ect.ea.extensions.portnames.DelayInformation;
+import org.ect.ea.extensions.portnames.IntensionalPortNames;
+import org.ect.ea.extensions.portnames.IntensionalPortNamesProvider;
 import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
 
 public class QIAintoMC {
