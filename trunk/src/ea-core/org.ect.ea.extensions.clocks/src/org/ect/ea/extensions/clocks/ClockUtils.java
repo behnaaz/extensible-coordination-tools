@@ -51,10 +51,10 @@ public class ClockUtils {
 		TRANSITION_UPDATE_ID = org.ect.ea.extensions.clocks.TransitionUpdateProvider.EXTENSION_ID,
 		TRANSITION_GUARD_ID = org.ect.ea.extensions.clocks.TransitionGuardProvider.EXTENSION_ID,
 		DATA_CONSTRAINT_ID = org.ect.ea.extensions.clocks.TCADataConstraintsProvider.EXTENSION_ID,
-		CONSTRAINT_ID = org.ect.ea.extensions.constraints.providers.ConstraintExtensionProvider.EXTENSION_ID,
+		CONSTRAINT_ID = org.ect.ea.extensions.constraints.ConstraintExtensionProvider.EXTENSION_ID,
 		START_STATE_ID = org.ect.ea.extensions.startstates.StartStateExtensionProvider.EXTENSION_ID,
-		AUTOMATON_PORT_NAMES_ID = org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider.EXTENSION_ID,
-		TRANSITION_PORT_NAMES_ID = org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider.EXTENSION_ID,
+		AUTOMATON_PORT_NAMES_ID = org.ect.ea.extensions.portnames.AutomatonPortNamesProvider.EXTENSION_ID,
+		TRANSITION_PORT_NAMES_ID = org.ect.ea.extensions.portnames.TransitionPortNamesProvider.EXTENSION_ID,
 		STATE_MEMORY_ID = org.ect.ea.extensions.statememory.StateMemoryExtensionProvider.EXTENSION_ID;
 	
 	/** Simplify a clock constraint. Simplifications are: (1) Check whether the 
