@@ -17,10 +17,9 @@ import java.util.Map;
 import java.util.Vector;
 
 import org.ect.ea.automata.*;
-import org.ect.ea.extensions.BooleanExtension;
+import org.ect.ea.extensions.*;
 import org.ect.ea.extensions.portnames.*;
-import org.ect.ea.extensions.portnames.providers.*;
-import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
+import org.ect.ea.extensions.startstates.*;
 
 public class QIAHelper {
 	static final String 	// Extension IDs used for constraint automata (with memory)

@@ -29,11 +29,9 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.ect.ea.*;
 import org.ect.ea.automata.*;
 import org.ect.ea.extensions.*;
-import org.ect.ea.extensions.constraints.Constraint;
-import org.ect.ea.extensions.constraints.ConstraintExtensionProvider;
+import org.ect.ea.extensions.constraints.*;
 import org.ect.ea.extensions.portnames.*;
-import org.ect.ea.extensions.portnames.providers.*;
-import org.ect.ea.extensions.startstates.StartStateExtensionProvider;
+import org.ect.ea.extensions.startstates.*;
 
 /**
  * General helper methods for handling constraint automata models.
