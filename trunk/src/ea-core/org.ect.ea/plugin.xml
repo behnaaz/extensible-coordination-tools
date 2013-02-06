@@ -28,7 +28,7 @@
   <extension
         point="org.ect.ea.products">
      <productDefinition
-           id="cwi.ea.automata.AutomataProduct"
+           id="org.ect.ea.automata.AutomataProduct"
            name="Default"
            providerClass="org.ect.ea.automata.AutomataProduct">
      </productDefinition>
