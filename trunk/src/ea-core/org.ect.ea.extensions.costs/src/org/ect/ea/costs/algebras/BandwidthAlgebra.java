@@ -36,6 +36,7 @@ import org.ect.ea.costs.types.IntegerCosts;
  * @generated
  */
 public class BandwidthAlgebra extends CostsAlgebra {
+	
 	/**
 	 * @generated NOT
 	 */
@@ -56,7 +57,6 @@ public class BandwidthAlgebra extends CostsAlgebra {
 	{
 		return new IntegerCosts(0);
 	}
-	
 	
 	/**
 	 * @generated NOT

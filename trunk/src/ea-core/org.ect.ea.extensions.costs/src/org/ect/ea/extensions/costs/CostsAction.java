@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.costs.providers;
+package org.ect.ea.extensions.costs;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
@@ -19,8 +19,6 @@ import org.ect.ea.costs.algebras.AlgebrasFactory;
 import org.ect.ea.diagram.contributions.actions.ChangeExtensionsAction;
 import org.ect.ea.diagram.contributions.commands.ChangeExtensionsCommand;
 import org.ect.ea.diagram.edit.parts.AutomatonEditPart;
-import org.ect.ea.extensions.costs.CostsAlgebraExtension;
-import org.ect.ea.extensions.costs.CostsObjectExtension;
 
 public class CostsAction extends ChangeExtensionsAction {
 	

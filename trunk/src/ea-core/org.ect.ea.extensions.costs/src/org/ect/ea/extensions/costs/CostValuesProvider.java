@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.costs.providers;
+package org.ect.ea.extensions.costs;
 
 import java.text.ParseException;
 
@@ -25,8 +25,6 @@ import org.ect.ea.costs.CostsObject;
 import org.ect.ea.costs.UnsupportedCostsTypeException;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.IExtension;
-import org.ect.ea.extensions.costs.CostsAlgebraExtension;
-import org.ect.ea.extensions.costs.CostsObjectExtension;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 

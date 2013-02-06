@@ -25,7 +25,6 @@ import org.ect.ea.costs.UnsupportedCostsTypeException;
 import org.ect.ea.extensions.ExtensionElement;
 import org.ect.ea.extensions.StringListExtension;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Algebra Extension</b></em>'.
@@ -43,7 +42,17 @@ import org.ect.ea.extensions.StringListExtension;
  * @generated
  */
 public class CostsAlgebraExtension extends ExtensionElement {
-	
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public CostsAlgebraExtension() {
+		super();
+		setId(CostAlgebrasProvider.EXTENSION_ID);
+	}
+
 	/**
 	 * @generated NOT
 	 */
@@ -146,15 +155,6 @@ public class CostsAlgebraExtension extends ExtensionElement {
 	 * @ordered
 	 */
 	protected EList<CostsAlgebra> costsAlgebras;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CostsAlgebraExtension() {
-		super();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

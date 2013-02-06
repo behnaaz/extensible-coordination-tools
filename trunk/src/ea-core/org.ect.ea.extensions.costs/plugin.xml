@@ -24,7 +24,7 @@
            icon="icons/costs.gif"
            id="cwi.ea.extensions.costAlgebras"
            name="Cost Algebras"
-           providerClass="org.ect.ea.extensions.costs.providers.CostAlgebrasProvider"
+           providerClass="org.ect.ea.extensions.costs.CostAlgebrasProvider"
            type="textual">
      </extensionDefinition>
      <extensionDefinition
@@ -32,7 +32,7 @@
            icon="icons/costs.gif"
            id="cwi.ea.extensions.costValues"
            name="Cost Values"
-           providerClass="org.ect.ea.extensions.costs.providers.CostValuesProvider"
+           providerClass="org.ect.ea.extensions.costs.CostValuesProvider"
            type="textual">
         <dependency
               id="cwi.ea.extensions.costAlgebras">
