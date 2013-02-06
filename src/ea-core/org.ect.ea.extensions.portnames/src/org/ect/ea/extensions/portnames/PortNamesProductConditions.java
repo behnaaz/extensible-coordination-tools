@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.portnames.providers;
+package org.ect.ea.extensions.portnames;
 
 import java.util.HashSet;
 import java.util.List;
@@ -19,10 +19,6 @@ import org.eclipse.emf.common.util.EList;
 import org.ect.ea.automata.Automaton;
 import org.ect.ea.automata.State;
 import org.ect.ea.automata.Transition;
-import org.ect.ea.extensions.portnames.AutomatonPortNames;
-import org.ect.ea.extensions.portnames.DelayInformation;
-import org.ect.ea.extensions.portnames.IntensionalPortNames;
-import org.ect.ea.extensions.portnames.TransitionPortNames;
 
 public class PortNamesProductConditions {
 	

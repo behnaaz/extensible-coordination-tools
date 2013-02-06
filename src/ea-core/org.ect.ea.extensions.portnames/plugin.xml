@@ -8,7 +8,7 @@
             icon="icons/portNames.gif"
             id="cwi.ea.extensions.automatonPortNames"
             name="Port Names (Automata)"
-            providerClass="org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider"
+            providerClass="org.ect.ea.extensions.portnames.AutomatonPortNamesProvider"
             type="textual">
       </extensionDefinition>
       <extensionDefinition
@@ -16,19 +16,19 @@
             icon="icons/portNames.gif"
             id="cwi.ea.extensions.transitionPortNames"
             name="Port Names (Transitions)"
-            providerClass="org.ect.ea.extensions.portnames.providers.TransitionPortNamesProvider"
+            providerClass="org.ect.ea.extensions.portnames.TransitionPortNamesProvider"
             type="textual">
          <dependency
                id="cwi.ea.extensions.automatonPortNames">
          </dependency>
       </extensionDefinition>
       <extensionDefinition
-            editParts="org.ect.ea.extensions.portnames.providers.IntensionalPortNamesMenuProvider"
+            editParts="org.ect.ea.extensions.portnames.IntensionalPortNamesMenuProvider"
             enabledFor="transitions"
             icon="icons/portNames.gif"
             id="cwi.ea.extensions.intensionalPortNames"
             name="Intensional Port Names"
-            providerClass="org.ect.ea.extensions.portnames.providers.IntensionalPortNamesProvider"
+            providerClass="org.ect.ea.extensions.portnames.IntensionalPortNamesProvider"
             type="textual">
          <dependency
                id="cwi.ea.extensions.automatonPortNames">
@@ -42,7 +42,7 @@
             enabledFor="transitions"
             id="cwi.ea.extensions.portNames.delayInformation"
             name="Delay Information"
-            providerClass="org.ect.ea.extensions.portnames.providers.DelayInfoProvider"
+            providerClass="org.ect.ea.extensions.portnames.DelayInfoProvider"
             type="textual">
       </extensionDefinition>
       <automatonType
@@ -97,7 +97,7 @@
      <productDefinition
            id="org.ect.ea.extensions.portNames.intensionalProduct"
            name="Intensional (IEA)"
-           providerClass="org.ect.ea.extensions.portnames.providers.IEAProduct">
+           providerClass="org.ect.ea.extensions.portnames.IEAProduct">
      </productDefinition>
   </extension>
 

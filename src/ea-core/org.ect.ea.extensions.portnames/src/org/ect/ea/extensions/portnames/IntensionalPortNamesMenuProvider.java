@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.portnames.providers;
+package org.ect.ea.extensions.portnames;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;

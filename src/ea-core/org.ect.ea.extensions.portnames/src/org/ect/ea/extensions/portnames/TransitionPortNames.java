@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.ect.ea.automata.Automaton;
 import org.ect.ea.automata.Transition;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.portnames.providers.AutomatonPortNamesProvider;
 import org.ect.ea.util.IValidationResult;
 import org.ect.ea.util.ValidationResult;
 
@@ -31,12 +30,12 @@ import org.ect.ea.util.ValidationResult;
 public class TransitionPortNames extends StringListExtension {
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public TransitionPortNames() {
 		super();
+		setId(TransitionPortNamesProvider.EXTENSION_ID);
 	}
-	
 	
 	/**
 	 * Creates a new TransitionPortNames extension that contains all 

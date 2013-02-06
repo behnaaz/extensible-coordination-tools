@@ -28,10 +28,11 @@ import org.ect.ea.util.ValidationResult;
 public class AutomatonPortNames extends StringListExtension {
 	
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public AutomatonPortNames() {
 		super();
+		setId(AutomatonPortNamesProvider.EXTENSION_ID);
 	}
 
 	/**

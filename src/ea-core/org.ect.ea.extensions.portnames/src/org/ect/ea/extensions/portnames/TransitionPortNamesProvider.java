@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.portnames.providers;
+package org.ect.ea.extensions.portnames;
 
 import java.text.ParseException;
 
@@ -22,7 +22,6 @@ import org.ect.ea.automata.Transition;
 import org.ect.ea.configuration.ExtensionDefinition;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.IExtension;
-import org.ect.ea.extensions.portnames.TransitionPortNames;
 import org.ect.ea.util.IValidationResult;
 
 public class TransitionPortNamesProvider implements ITextualExtensionProvider {

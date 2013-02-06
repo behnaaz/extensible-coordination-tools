@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *******************************************************************************/
-package org.ect.ea.extensions.portnames.providers;
+package org.ect.ea.extensions.portnames;
 
 import java.text.MessageFormat;
 import java.text.ParseException;
@@ -26,8 +26,6 @@ import org.ect.ea.configuration.ExtensionDefinition;
 import org.ect.ea.extensions.IExtendible;
 import org.ect.ea.extensions.IExtension;
 import org.ect.ea.extensions.StringListExtension;
-import org.ect.ea.extensions.portnames.DelayElement;
-import org.ect.ea.extensions.portnames.DelayInformation;
 import org.ect.ea.util.IValidationResult;
 
 public class DelayInfoProvider implements ITextualExtensionProvider {
