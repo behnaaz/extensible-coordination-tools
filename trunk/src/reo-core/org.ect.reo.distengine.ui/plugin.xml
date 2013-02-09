@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.ect.reo"
+            class="org.ect.reo.distengine.ui.views.EnginesView"
+            icon="icons/engine.gif"
+            id="cwi.reo.engine.ui.views.EnginesView"
+            name="Reo Engines">
+      </view>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.ect.reo.diagram">
+         <propertyTab
+               category="domain"
+               id="org.ect.reo.diagram.DeploymentTab"
+               label="Deployment"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.ect.reo.diagram">
+         <propertySection
+               class="org.ect.reo.distengine.ui.views.IPPropertySection"
+               enablesFor="1"
+               id="org.ect.reo.diagram.DeploymentTab.IPPropertySection"
+               tab="org.ect.reo.diagram.DeploymentTab">
+            <input type="org.ect.reo.diagram.edit.parts.ConnectorEditPart"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>
