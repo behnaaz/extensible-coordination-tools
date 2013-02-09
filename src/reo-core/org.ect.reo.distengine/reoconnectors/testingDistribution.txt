@@ -1,0 +1,75 @@
+import redrum.distributed._
+import common._
+import common.Utils._
+import redrum.primitives._
+val eng = new Engine("e1","127.0.0.1",9010)
+eng.start
+// eng ! Connect(EnginePat,("e2","127.0.0.1",9011))
+def st = eng.status
+def kl = eng.killl
+eng ! Create(NodePat,("a",9012))
+eng ! Create(NodePat,("b",9013))
+eng ! Create(PrimPat,new Sync("sync1") with SeqChartLogger)
+eng ! Connect(PrimPat,("sync1","sync1-i","a"))
+eng ! Connect(PrimPat,("sync1","sync1-o","b"))
+eng ! Create(PrimPat,new Writer(5,List(3,4)) with SeqChartLogger)
+eng ! Create(PrimPat,new Taker(4,4) with SeqChartLogger)
+eng ! Connect(PrimPat,("Init_5","inend_5","a"))
+eng ! Connect(PrimPat,("Init_4","inend_4","b"))
+
+
+/////
+import redrum.distributed._
+import common._
+import common.Utils._
+import redrum.primitives._
+import redrum.distributed.RemoteActorsHacked._
+val em = new EngineManager
+em.addEngine("e1","127.0.0.1",9010)
+val a = em.engines.values.next.actor
+val b = a !? (3000:Long,serialize(Status()))
+em.statusEngine("e1")
+
+
+////////////
+import redrum.distributed._
+import common._
+import common.Utils._
+import redrum.primitives._
+val eng = new Engine("e2","127.0.0.1",9011)
+eng.start
+def st = eng.status
+def kl = eng.killl
+eng ! Connect(EnginePat,("e1","127.0.0.1",9010))
+eng ! Create(DNodePat,("c",9014))
+eng ! Create(PrimPat,new Taker(3,2) with SeqChartLogger)
+eng ! Connect(PrimPat,("Init_3","inend_3","c"))
+eng ! Connect(DNodePat,("c","b","127.0.0.1",9013))
+
+
+////////////
+eng ! Release("Init_3")
+eng ! Release("c")
+
+
+eng ! Release("Init_4")
+eng ! Release("Init_5")
+eng ! Release("sync1")
+eng ! Release("a")
+eng ! Release("b")
+
+
+
+
+eng.nodes("b").ends
+eng.nodes("c").ends
+
+
+import colouring._
+val c = new ColouringTable
+val col = new Colouring
+col(EndUID("a")) = ToIn
+c += col
+
+
+eng.dnodes("c")._1.remoteNodes("b")._2
