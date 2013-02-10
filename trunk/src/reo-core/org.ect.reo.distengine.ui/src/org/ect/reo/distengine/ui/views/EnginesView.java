@@ -49,6 +49,10 @@ import org.ect.reo.distengine.common.Logger;
 import org.ect.reo.distengine.common.NullLogger;
 import org.ect.reo.distengine.common.SeqChartLogger;
 
+//import scala.runtime.Nothing$;
+import scala.collection.immutable.*;
+import scala.runtime.Nothing$;
+
 public class EnginesView extends ViewPart implements //ISelectionListener,
 IPageListener {
 	
@@ -597,7 +601,7 @@ IPageListener {
 	        	i = 0;
 	        	for (SinkEnd end : snks) {
 	        		snkRef[i] = end.getNode().hashCode();
-	        		snkIsRouter[i] = end.getNode().getType().equals(cwi.reo.NodeType.ROUTE);
+	        		snkIsRouter[i] = end.getNode().getType().equals(org.ect.reo.NodeType.ROUTE);
 	        		i++;
 	        	}
 	    		System.out.println("Adding primitive!: "+type);
@@ -626,18 +630,29 @@ IPageListener {
 			}
 			else if (prim instanceof Writer) {
 				Writer wr = (Writer) prim;
-	        	scala.List list = null;
-	        	if (wr.getRequests() >= 0)
-	                list = scala.List$.MODULE$.range(0,wr.getRequests());
-	              else
-	            	  list = scala.List$.MODULE$.range(0,100);
+				scala.collection.immutable.List newlist = Nil$.MODULE$;
+//	        	scala.List list = null;
+	        	if (wr.getRequests() >= 0) {
+//	                list = scala.List$.MODULE$.range(0,wr.getRequests());
+	                for (int i = 0; i<wr.getRequests(); i++) {
+	                	newlist = $colon$colon$.MODULE$.apply((Integer) i, newlist);
+	                }
+	        	}
+	              else {
+//	            	  list = scala.List$.MODULE$.range(0,100);
+		                for (int i = 0; i<100; i++) {
+		                	newlist = $colon$colon$.MODULE$.apply((Integer) i, newlist);
+		                }
+	              }
 	        	//Object[] myargs = {prim.hashCode(),list.toArray()};
 	        	if (((Writer) prim).getName().equals("Writer")) {
-	        		Object[] myargs = {prim.hashCode(),list};
+//	        		Object[] myargs = {prim.hashCode(),list};
+	        		Object[] myargs = {prim.hashCode(),newlist};
 	        		args = myargs;
 	        	}
 	        	else {
-	        		Object[] myargs = {prim.hashCode(),list,((Writer) prim).getName()};
+//	        		Object[] myargs = {prim.hashCode(),list,((Writer) prim).getName()};
+	        		Object[] myargs = {prim.hashCode(),newlist,((Writer) prim).getName()};
 	        		args = myargs;
 	        	}
 	        	SinkEnd snk = wr.getSinkEnd();
