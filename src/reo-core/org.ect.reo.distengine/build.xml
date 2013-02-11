@@ -20,7 +20,7 @@
   </target>
   <target name="build" depends="init">
     <mkdir dir="${bin}"/>
-    <scalac srcdir="${src}" destdir="${bin}" classpathref="classpath" scalacdebugging="true"/>
+    <scalac srcdir="${src}" destdir="${bin}" classpathref="classpath"/>
   	<jar destfile="${build}" basedir="${bin}"/>
   	<delete dir="${bin}"/>
   </target>
