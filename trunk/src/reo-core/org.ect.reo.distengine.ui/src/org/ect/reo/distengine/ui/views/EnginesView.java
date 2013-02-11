@@ -46,12 +46,10 @@ import org.ect.reo.distengine.redrum.deployment.EngineManager;
 import org.ect.reo.distengine.redrum.deployment.ManagerTrait;
 import org.ect.reo.distengine.ui.wizards.EngineWizard;
 import org.ect.reo.distengine.common.Logger;
-import org.ect.reo.distengine.common.NullLogger;
 import org.ect.reo.distengine.common.SeqChartLogger;
 
-//import scala.runtime.Nothing$;
 import scala.collection.immutable.*;
-import scala.runtime.Nothing$;
+
 
 public class EnginesView extends ViewPart implements //ISelectionListener,
 IPageListener {
