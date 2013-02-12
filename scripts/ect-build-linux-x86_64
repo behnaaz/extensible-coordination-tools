@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# Eclipse paths:
+# Eclipse target directory:
 ECLIPSE_DIR="$HOME/.ect-build-eclipse-x86_64"
+
+# Eclipse downloads:
 ECLIPSE_ARCHIVE="eclipse-modeling-juno-SR1-linux-gtk-x86_64.tar.gz"
 ECLIPSE_SERVER="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/juno/SR1"
+ATL_ARCHIVE="m2m-atl-Update-3.3.1.zip"
+ATL_SERVER="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/mmt/atl/downloads/drops/3.3.1/R201209061455"
 
 # Determine working and script directories:
 WORKING_DIR=$(pwd)
@@ -22,24 +26,28 @@ if [ ! -d "$ECLIPSE_DIR" ]; then
     tar -xzf $ECLIPSE_ARCHIVE
     rm $ECLIPSE_ARCHIVE
     mv eclipse $ECLIPSE_DIR
+    mkdir $ECLIPSE_DIR/dropins/eclipse
+    rm $ATL_ARCHIVE 2> /dev/null
+    wget "$ATL_SERVER/$ATL_ARCHIVE"
+    unzip $ATL_ARCHIVE "plugins/*" "features/*" -d $ECLIPSE_DIR/dropins/eclipse > /dev/null
+    rm $ATL_ARCHIVE    
     cd $WORKING_DIR
 else
     echo "Eclipse build environment found."
 fi
 
-# Determine the source directory:
+# Find the source directory:
 SRC_DIR=$SCRIPT_DIR/../src
-cd $SRC_DIR
-SRC_DIR=$(pwd)
-cd $WORKING_DIR
-
-# Check if the source directory is really there:
 if [ -d "$SRC_DIR" ]; then
+    cd $SRC_DIR
+    SRC_DIR=$(pwd)
+    cd $WORKING_DIR
     echo "Source directory found."
 else
     echo "Error: cannot find source directory $SRC_DIR"
     exit 1
 fi
+
 
 # Create the archives directory:
 ARCHIVES=/tmp/archives
@@ -119,6 +127,10 @@ javacFailOnError=true
 javacVerbose=true
 javacSource=1.6
 javacTarget=1.6
+p2.gathering=true
+p2.metadata.repo.name=ECT Update Site
+p2.artifact.repo.name=ECT Update Site
+skipMirroring=true
 EOF
 
     # Run the build application:
@@ -131,12 +143,12 @@ EOF
          -Dbuilder=$BUILD_CONF > $BUILD_DIR/compile.log
 
     # Copy the generated archive:
-    cp $BUILD_DIR/$FEATURE-autobuild.zip $ARCHIVES 2> /dev/null
-    if [ $? -ne 0 ] ; then
-        USER="henshin.ck"
-        mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
-        echo "Build failed for $FEATURE. E-mail notification sent to ${USER}@gmail.com."
-    fi
+#    cp $BUILD_DIR/$FEATURE-autobuild.zip $ARCHIVES 2> /dev/null
+#    if [ $? -ne 0 ] ; then
+#        USER="henshin.ck"
+#        mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
+#        echo "Build failed for $FEATURE. E-mail notification sent to ${USER}@gmail.com."
+#    fi
 
     # Clean-up build config:
     rm -R -f $BUILD_CONF
@@ -146,7 +158,10 @@ EOF
 # Now invoke the builder for all features:
 build org.ect.reo.feature
 build org.ect.ea.feature
+#build org.ect.codegen.feature
+#build org.ect.convert.feature
 
 # Clean-up build directory:
-rm -R -f $BUILD_DIR
+#rm -R -f $BUILD_DIR
+
 
