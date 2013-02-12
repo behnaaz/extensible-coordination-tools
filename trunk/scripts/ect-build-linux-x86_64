@@ -1,0 +1,152 @@
+#!/bin/bash
+
+# Eclipse paths:
+ECLIPSE_DIR="$HOME/.ect-build-eclipse-x86_64"
+ECLIPSE_ARCHIVE="eclipse-modeling-juno-SR1-linux-gtk-x86_64.tar.gz"
+ECLIPSE_SERVER="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/juno/SR1"
+
+# Determine working and script directories:
+WORKING_DIR=$(pwd)
+SCRIPT_DIR=$(dirname $(which $0));
+cd $SCRIPT_DIR
+SCRIPT_DIR=$(pwd)
+cd $WORKING_DIR
+
+# Check if Eclipse is installed:
+if [ ! -d "$ECLIPSE_DIR" ]; then
+    echo "Setting up Eclipse build environment..."
+    echo
+    cd /tmp
+    rm $ECLIPSE_ARCHIVE 2> /dev/null
+    wget "$ECLIPSE_SERVER/$ECLIPSE_ARCHIVE"
+    tar -xzf $ECLIPSE_ARCHIVE
+    rm $ECLIPSE_ARCHIVE
+    mv eclipse $ECLIPSE_DIR
+    cd $WORKING_DIR
+else
+    echo "Eclipse build environment found."
+fi
+
+# Determine the source directory:
+SRC_DIR=$SCRIPT_DIR/../src
+cd $SRC_DIR
+SRC_DIR=$(pwd)
+cd $WORKING_DIR
+
+# Check if the source directory is really there:
+if [ -d "$SRC_DIR" ]; then
+    echo "Source directory found."
+else
+    echo "Error: cannot find source directory $SRC_DIR"
+    exit 1
+fi
+
+# Create the archives directory:
+ARCHIVES=/tmp/archives
+rm -R -f $ARCHIVES
+mkdir $ARCHIVES
+
+
+# Find the launcher:
+LAUNCHER=$(ls $ECLIPSE_DIR/plugins/org.eclipse.equinox.launcher_*.jar)
+if [ ! -f "$LAUNCHER" ]; then
+    echo "Error: cannot find Equinox launcher"
+    exit 1
+fi
+
+# Find the build file:
+BUILD_FILE=$(ls $ECLIPSE_DIR/plugins/org.eclipse.pde.build_*/scripts/build.xml)
+if [ ! -f "$BUILD_FILE" ]; then
+    echo "Error: cannot find build.xml"
+    exit 1
+fi
+
+# Set up the build directory:
+BUILD_DIR=/tmp/ect-build
+rm -R -f $BUILD_DIR 2> /dev/null
+mkdir $BUILD_DIR
+mkdir $BUILD_DIR/features
+mkdir $BUILD_DIR/plugins
+
+# Create the plug-in / feature path:
+echo "Setting up build directory..."
+for base in $(ls $SRC_DIR); do
+    for dir in $(ls $SRC_DIR/$base); do
+        echo "$dir" | grep 'feature$' > /dev/null
+        if [ $? -eq 0 ] ; then
+            cp -R $SRC_DIR/$base/$dir $BUILD_DIR/features
+        else
+            cp -R $SRC_DIR/$base/$dir $BUILD_DIR/plugins
+        fi
+    done
+done
+
+
+# Function for running the builder:
+function build {
+
+    # The feature to be build:
+    FEATURE=$1
+
+    # Generate the build.properties configuration file:
+    BUILD_CONF=/tmp/ect-build-conf
+    rm -R -f $BUILD_CONF 2> /dev/null
+    mkdir $BUILD_CONF
+
+    cat > $BUILD_CONF/build.properties <<EOF
+topLevelElementType=feature
+topLevelElementId=$FEATURE
+runPackager=true
+configs=*, *, *
+outputUpdateJars=true
+archivePrefix=eclipse
+buildDirectory=/tmp/ect-build-tmp
+buildType=I
+buildId=autobuild
+buildLabel=${buildType}.${buildId}
+timestamp=007
+base=$HOME
+baseLocation=$ECLIPSE_DIR
+baseos=linux
+basews=gtk
+basearch=x86_64
+skipBase=true
+skipMaps=true
+skipFetch=true
+logExtension=.log
+javacDebugInfo=false 
+javacFailOnError=true
+javacVerbose=true
+javacSource=1.6
+javacTarget=1.6
+EOF
+
+    # Run the build application:
+    echo "Building $FEATURE..."
+    java -jar $LAUNCHER\
+         -application org.eclipse.ant.core.antRunner\
+         -buildfile $BUILD_FILE\
+         -DbuildDirectory=$BUILD_DIR\
+         -DbaseLocation=$ECLIPSE_DIR\
+         -Dbuilder=$BUILD_CONF > $BUILD_DIR/compile.log
+
+    # Copy the generated archive:
+    cp $BUILD_DIR/$FEATURE-autobuild.zip $ARCHIVES 2> /dev/null
+    if [ $? -ne 0 ] ; then
+        USER="henshin.ck"
+        mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
+        echo "Build failed for $FEATURE. E-mail notification sent to ${USER}@gmail.com."
+    fi
+
+    # Clean-up build config:
+    rm -R -f $BUILD_CONF
+
+}  
+
+# Now invoke the builder for all features:
+build org.ect.reo.feature
+build org.ect.ea.feature
+
+# Clean-up build directory:
+rm -R -f $BUILD_DIR
+
