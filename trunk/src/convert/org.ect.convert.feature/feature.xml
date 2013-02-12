@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.ect.convert"
+      id="org.ect.convert.feature"
       label="Reo Conversion Tools (BPEL, UML-SD, UML-AD)"
       version="4.0.0.qualifier"
       provider-name="Extensible Coordination Tools">

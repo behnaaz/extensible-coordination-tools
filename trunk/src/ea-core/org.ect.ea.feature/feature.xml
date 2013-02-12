@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.ect.ea"
+      id="org.ect.ea.feature"
       label="Extensible Automata Tools"
       version="4.0.0.qualifier"
       provider-name="Extensible Coordination Tools">
