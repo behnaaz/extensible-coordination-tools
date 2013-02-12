@@ -144,6 +144,7 @@ EOF
         USER="henshin.ck"
         echo "Build failed! Sending e-mail notification to ${USER}@gmail.com..."
         mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
+        exit 1
     fi
 
     # Clean-up build config:
