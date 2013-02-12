@@ -189,7 +189,7 @@ EOF
 # Move the update site to the target location:
 UPDATE_DIR="$HOME/sites/reo.project.cwi.nl/WWW/update"
 if [ ! -d "$UPDATE_DIR" ]; then
-    echo "Error: directory for update site not found: $UPDATE_SITE"
+    echo "Error: directory for update site not found: $UPDATE_DIR"
     exit 1
 fi
 rm -f $UPDATE_DIR/site.xml 2> /dev/null
@@ -202,6 +202,6 @@ cp $BUILD_REPO/plugins/* $UPDATE_DIR/plugins
 cp $BUILD_REPO/features/* $UPDATE_DIR/features
 echo "Finished."
 
-# Clean-up build directory:
+# Clean-up build directory and workspace:
 rm -R -f $BUILD_DIR
-
+rm -R -f $HOME/workspace
