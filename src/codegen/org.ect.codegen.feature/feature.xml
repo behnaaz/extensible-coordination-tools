@@ -31,7 +31,6 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jdt.core"/>
       <import plugin="org.ect.ea.antlr" version="4.0.0" match="greaterOrEqual"/>
-      <import plugin="org.ect.ea.runtime" version="4.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.core" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.ect.ea.antlr" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="org.ect.ea" version="3.1.0" match="greaterOrEqual"/>
@@ -77,6 +76,7 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.ect.ea" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.ect.ea.extensions.constraints" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.ect.reo.diagram" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.ect.codegen.ea.runtime" version="4.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -154,6 +154,13 @@ http://www.eclipse.org/legal/epl-v10.html
          download-size="0"
          install-size="0"
          version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.ea.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>

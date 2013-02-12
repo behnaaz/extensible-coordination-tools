@@ -48,13 +48,6 @@ else
     exit 1
 fi
 
-
-# Create the archives directory:
-ARCHIVES=/tmp/archives
-rm -R -f $ARCHIVES
-mkdir $ARCHIVES
-
-
 # Find the launcher:
 LAUNCHER=$(ls $ECLIPSE_DIR/plugins/org.eclipse.equinox.launcher_*.jar)
 if [ ! -f "$LAUNCHER" ]; then
@@ -77,6 +70,7 @@ mkdir $BUILD_DIR/features
 mkdir $BUILD_DIR/plugins
 
 # Create the plug-in / feature path:
+echo
 echo "Setting up build directory..."
 for base in $(ls $SRC_DIR); do
     for dir in $(ls $SRC_DIR/$base); do
@@ -134,6 +128,7 @@ skipMirroring=true
 EOF
 
     # Run the build application:
+    echo
     echo "Building $FEATURE..."
     java -jar $LAUNCHER\
          -application org.eclipse.ant.core.antRunner\
@@ -142,13 +137,14 @@ EOF
          -DbaseLocation=$ECLIPSE_DIR\
          -Dbuilder=$BUILD_CONF > $BUILD_DIR/compile.log
 
-    # Copy the generated archive:
-#    cp $BUILD_DIR/$FEATURE-autobuild.zip $ARCHIVES 2> /dev/null
-#    if [ $? -ne 0 ] ; then
-#        USER="henshin.ck"
-#        mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
-#        echo "Build failed for $FEATURE. E-mail notification sent to ${USER}@gmail.com."
-#    fi
+    cat $BUILD_DIR/compile.log | grep 'BUILD SUCCESSFUL' > /dev/null
+    if [ $? -eq 0 ] ; then
+        echo "Build successful."
+    else
+        USER="henshin.ck"
+        echo "Build failed! Sending e-mail notification to ${USER}@gmail.com..."
+        mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
+    fi
 
     # Clean-up build config:
     rm -R -f $BUILD_CONF
@@ -158,10 +154,53 @@ EOF
 # Now invoke the builder for all features:
 build org.ect.reo.feature
 build org.ect.ea.feature
-#build org.ect.codegen.feature
-#build org.ect.convert.feature
+build org.ect.codegen.feature
+build org.ect.convert.feature
+
+# The build repository:
+BUILD_REPO=$BUILD_DIR/buildRepo
+
+# Remove unnessacary meta-data:
+rm -f $BUILD_REPO/artifacts.xml $BUILD_REPO/content.xml
+
+# Generate site.xml:
+echo
+echo "Generating update site..."
+CAT="Extensible Coordination Tools"
+cat > $BUILD_REPO/site.xml <<EOF
+<site>
+  <description url="http://reo.project.cwi.nl/update">$CAT</description>
+EOF
+for jar in $(ls $BUILD_REPO/features); do
+    ID=$(echo $jar | sed -e 's/\_.*$//g')
+    VERSION=$(echo $jar | sed -e 's/^.*\_//g' | sed -e 's/\.jar$//g')
+    cat >> $BUILD_REPO/site.xml <<EOF
+  <feature url="features/$jar" id="$ID" version="$VERSION">
+    <category name="$CAT"/>
+  </feature>
+EOF
+done
+cat >> $BUILD_REPO/site.xml <<EOF
+  <category-def name="$CAT" label="$CAT"/>
+</site>
+EOF
+
+# Move the update site to the target location:
+UPDATE_DIR="$HOME/sites/reo.project.cwi.nl/WWW/update"
+if [ ! -d "$UPDATE_DIR" ]; then
+    echo "Error: directory for update site not found: $UPDATE_SITE"
+    exit 1
+fi
+rm -f $UPDATE_DIR/site.xml 2> /dev/null
+rm -f -R $UPDATE_DIR/plugins/* 2> /dev/null
+rm -f -R $UPDATE_DIR/features/* 2> /dev/null
+mkdir $UPDATE_DIR/plugins 2> /dev/null
+mkdir $UPDATE_DIR/features 2> /dev/null
+cp $BUILD_REPO/site.xml $UPDATE_DIR
+cp $BUILD_REPO/plugins/* $UPDATE_DIR/plugins
+cp $BUILD_REPO/features/* $UPDATE_DIR/features
+echo "Finished."
 
 # Clean-up build directory:
-#rm -R -f $BUILD_DIR
-
+rm -R -f $BUILD_DIR
 
