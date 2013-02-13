@@ -62,6 +62,22 @@ if [ ! -f "$BUILD_FILE" ]; then
     exit 1
 fi
 
+# Check if we can find out the revision number:
+REV_FILE="$HOME/.ect-revision"
+if [ -d "$SRC_DIR/.svn" ]; then
+    cd $SRC_DIR
+    REVISION=$(svn info | grep Revision | sed -e 's/Revision\: //g')
+    if [ ! -e "$REV_FILE" ]; then
+        echo "0" > $REV_FILE
+    fi
+    OLD_REVISION=$(cat $REV_FILE)
+    echo "$REVISION" > $REV_FILE
+    if [ "$REVISION" = "$OLD_REVISION" ]; then
+        echo "Skipping update because revision number is unchanged."
+        exit 0
+    fi
+fi
+
 # Set up the build directory:
 BUILD_DIR=/tmp/ect-build
 rm -R -f $BUILD_DIR 2> /dev/null
@@ -141,6 +157,7 @@ EOF
     if [ $? -eq 0 ] ; then
         echo "Build successful."
     else
+        echo "0" > $REV_FILE
         USER="henshin.ck"
         echo "Build failed! Sending e-mail notification to ${USER}@gmail.com..."
         mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
@@ -189,6 +206,7 @@ EOF
 # Move the update site to the target location:
 UPDATE_DIR="$HOME/sites/reo.project.cwi.nl/WWW/update"
 if [ ! -d "$UPDATE_DIR" ]; then
+    echo "0" > $REV_FILE
     echo "Error: directory for update site not found: $UPDATE_DIR"
     exit 1
 fi
@@ -205,3 +223,4 @@ echo "Finished."
 # Clean-up build directory and workspace:
 rm -R -f $BUILD_DIR
 rm -R -f $HOME/workspace
+
