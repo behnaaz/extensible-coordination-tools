@@ -41,6 +41,7 @@ public class ReoPerspectiveFactory implements IPerspectiveFactory {
 		IFolderLayout outputfolder= layout.createFolder("bottom", IPageLayout.BOTTOM, (float)0.6, editorArea);
 		outputfolder.addView("org.ect.reo.animation.parts.AnimationView");
 		outputfolder.addView("org.ect.reo.stochastic.views.SimulationView");
+		outputfolder.addView("org.ect.reo.distengine.ui.views.EnginesView");
 		
 		if (Platform.getBundle("org.ect.reo.modchk.ui")!=null) {
 			outputfolder.addView("org.ect.reo.modchk.ui.ModelCheckerView");

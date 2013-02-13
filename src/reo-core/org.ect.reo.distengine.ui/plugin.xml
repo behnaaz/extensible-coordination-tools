@@ -7,7 +7,7 @@
             category="org.ect.reo"
             class="org.ect.reo.distengine.ui.views.EnginesView"
             icon="icons/engine.gif"
-            id="cwi.reo.engine.ui.views.EnginesView"
+            id="org.ect.reo.distengine.ui.views.EnginesView"
             name="Reo Engines">
       </view>
    </extension>

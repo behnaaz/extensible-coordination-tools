@@ -5,7 +5,7 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            name="Simulation"
+            name="Reo Simulation"
             icon="icons/ReoDiagramFile.gif"
             category="org.ect.reo"
             class="org.ect.reo.simulation.views.SimulationView"

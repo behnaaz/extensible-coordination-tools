@@ -12,7 +12,7 @@
             class="org.ect.reo.animation.parts.AnimationView"
             icon="icons/ReoDiagramFile.gif"
             id="org.ect.reo.animation.parts.AnimationView"
-            name="Animation"/>
+            name="Reo Animation"/>
    </extension>
    <extension
          point="org.ect.reo.animation.flashFigures">
