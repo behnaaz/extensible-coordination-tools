@@ -99,6 +99,9 @@ for base in $(ls $SRC_DIR); do
     done
 done
 
+# E-mail address for notifications:
+USER="henshin.ck"
+EMAIL="${USER}@gmail.com"
 
 # Function for running the builder:
 function build {
@@ -158,9 +161,8 @@ EOF
         echo "Build successful."
     else
         echo "0" > $REV_FILE
-        USER="henshin.ck"
-        echo "Build failed! Sending e-mail notification to ${USER}@gmail.com..."
-        mail -s "Build for $FEATURE failed" "${USER}@gmail.com" < $BUILD_DIR/compile.log
+        echo "Build failed! Sending e-mail notification to ${EMAIL}..."
+        mail -s "Build for $FEATURE failed" "${EMAIL}" < $BUILD_DIR/compile.log
         exit 1
     fi
 
@@ -219,6 +221,9 @@ cp $BUILD_REPO/site.xml $UPDATE_DIR
 cp $BUILD_REPO/plugins/* $UPDATE_DIR/plugins
 cp $BUILD_REPO/features/* $UPDATE_DIR/features
 echo "Finished."
+
+# Notification:
+mail -s "ECT Revision $REVISION released" "${EMAIL}" < $BUILD_DIR/compile.log
 
 # Clean-up build directory:
 rm -R -f $BUILD_DIR
