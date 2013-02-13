@@ -220,7 +220,6 @@ cp $BUILD_REPO/plugins/* $UPDATE_DIR/plugins
 cp $BUILD_REPO/features/* $UPDATE_DIR/features
 echo "Finished."
 
-# Clean-up build directory and workspace:
+# Clean-up build directory:
 rm -R -f $BUILD_DIR
-rm -R -f $HOME/workspace
 
