@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Stochatic Reo Plug-In
+Bundle-Name: Stochatic Reo Simulator Plug-In
 Bundle-SymbolicName: org.ect.reo.simulation;singleton:=true
 Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.ect.reo.simulation.StochasticReoPlugin
