@@ -1,0 +1,225 @@
+proxyClass(party) ::= <<
+import java.util.HashMap;
+import java.util.Map;
+
+import org.ect.codegen.v2.core.rt.java.Connector;
+import org.ect.codegen.v2.core.rt.java.Console;
+import org.ect.codegen.v2.core.rt.java.FIFO;
+import org.ect.codegen.v2.core.rt.java.InputPort;
+import org.ect.codegen.v2.core.rt.java.OutputPort;
+import org.ect.codegen.v2.core.rt.java.Ports;
+import org.ect.codegen.v2.proxy.rt.java.Log4j;
+import org.ect.codegen.v2.proxy.rt.java.SimulationAutomaton;
+import org.ect.codegen.v2.proxy.rt.java.wsdl.WSDLInfrastructure;
+import org.ect.codegen.v2.proxy.rt.java.wsdl.WSDLProxy;
+import org.ect.codegen.v2.proxy.rt.java.wsdl.WSDLService;
+import org.ect.codegen.v2.proxy.rt.java.wsdl.WSDLServices;
+import org.ect.codegen.v2.proxy.rt.java.wsdl.parser.WSDLClient;
+import org.ect.codegen.v2.proxy.rt.java.wsdl.parser.WSDLResource;
+import org.ect.codegen.v2.proxy.rt.java.wsdl.parser.WSDLResource.WSDLResourceException;
+
+public class <party.className> extends WSDLProxy {
+
+	//
+	// CONSTRUCTORS
+	//
+	
+	/**
+	 * Constructs a proxy for the service named {@link #NAME}.
+	 *
+	 * @param automaton
+	 *             The simulation automaton ran by the proxy to construct. Not
+	 *             \<code\>null\</code\>.
+	 * @param infrastructure
+	 *             The infrastructure to the service named {@link #NAME}. Not
+	 *             \<code\>null\</code\>.
+	 * @param exceptionPort
+	 *             A port to which exception at runtime are written. Not
+	 *             \<code\>null\</code\>.
+	 * @throws NullPointerException
+	 *             If \<code\>automaton==null\</code\> or 
+	 *             \<code\>infrastructure==null\</code\> or
+	 *             \<code\>exceptionPort==null\</code\>.
+	 */
+	private <party.className>(
+			final SimulationAutomaton automaton,
+			final WSDLInfrastructure infrastructure,
+			final OutputPort exceptionPort) {
+			
+		super(automaton, infrastructure, exceptionPort);
+	}
+	
+	//
+	// STATIC - FIELDS
+	//
+	
+	/**
+	 * The name of the service proxied by this proxy.
+	 */
+	public static final String NAME = "<party.name>";
+	
+	/**
+	 * A (resource containing the) WSDL specification of the service proxied by
+	 * this proxy. 
+	 */
+	public static final WSDLResource SPECIFICATION;
+	
+	//
+	// STATIC - INITIALIZERS
+	//
+	
+	/**
+	 * Disables Log4j.
+	 */
+	static {
+		Log4j.disable();
+	}
+	
+	/**
+	 * Initializes {@link #SPECIFICATION}.
+	 */
+	static {
+		WSDLResource resource = null;
+		try {
+			resource = new WSDLResource(
+					"<party.interfacesResource.escapedResourceText>");
+		} catch (final WSDLResourceException e) {
+		}
+		SPECIFICATION = resource;
+	}
+	
+	//
+	// STATIC - METHODS
+	//
+
+	public static <party.className> newInstance(
+			final OutputPort exceptionPort,
+			<comma_separated_list(party.observableInputVertices, {InputPort <elem.variableName>})>,
+			<comma_separated_list(party.observableOutputVertices, {OutputPort <elem.variableName>})>)
+			throws Exception {
+			
+		if (SPECIFICATION == null)
+			throw new Exception(
+					"This proxy class seems corrupted. Please generate a new proxy.");
+	
+		/* Create the unobservable ports. */
+		<separated_list(
+			party.unobservableInputVertices,
+			{<\n>},
+			{final InputPort <elem.variableName> = Ports.newInputPort();}
+		)>
+		
+		<separated_list(
+			party.unobservableOutputVertices,
+			{<\n>},
+			{final OutputPort <elem.variableName> = Ports.newOutputPort();}
+		)>
+		
+		/* Create maps from their names to the unobservable ports. */
+		final Map\<String, InputPort\> namesToInputPorts = new HashMap\<String, InputPort\>();
+		<separated_list(
+			party.unobservableInputVertices,
+			{<\n>},
+			{namesToInputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+		
+		final Map\<String, OutputPort\> namesToOutputPorts = new HashMap\<String, OutputPort\>();
+		<separated_list(
+			party.unobservableOutputVertices,
+			{<\n>},
+			{namesToOutputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+		
+		/* Create buffers. */
+		<separated_list(
+			party.observableInputVertices,
+			{<\n>},
+			{final InputPort <elem.variableName>Buffered = Ports.newInputPort(); new Thread(FIFO.newActiveFIFO(<elem.variableName>, <elem.variableName>Buffered, 1)).start(); <elem.variableName> = <elem.variableName>Buffered;}
+		)>
+		<separated_list(
+			party.observableOutputVertices,
+			{<\n>},
+			{final OutputPort <elem.variableName>Buffered = Ports.newOutputPort(); new Thread(FIFO.newActiveFIFO(<elem.variableName>Buffered, <elem.variableName>, 1)).start(); <elem.variableName> = <elem.variableName>Buffered;}
+		)>
+
+		/* Create (and run) the simulation automaton. */
+		final Connector connector = <party.simAut.className>.newInstance(
+			<separated_list(
+				party.simAut.inputVertices,
+				{,<\n>},
+				{<elem.variableName>})
+			>,
+			<separated_list(
+				party.simAut.outputVertices,
+				{,<\n>},
+				{<elem.variableName>})
+			>);
+			
+		new Thread(connector).start();
+		final SimulationAutomaton automaton = new SimulationAutomaton(connector, 
+				"<party.buttonVertex.name>", namesToInputPorts, namesToOutputPorts);
+
+		/* Create the infrastructure. */
+		final WSDLService service = new WSDLServices(SPECIFICATION).getInterface(NAME);
+		final WSDLClient client = new WSDLClient(SPECIFICATION, NAME);
+		final WSDLInfrastructure infrastructure = new WSDLInfrastructure(NAME, service, client);
+	
+		/* Create the proxy. */
+		return new <party.className>(automaton, infrastructure, exceptionPort);
+	}
+	
+	//
+	// MAIN
+	//
+
+	public static void main(String[] args) {
+	
+		/* Create ports. */
+		<separated_list(
+			party.observableInputVertices,
+			{<\n>},
+			{final InputPort <elem.variableName> = Ports.newInputPort();}
+		)>
+		<separated_list(
+			party.observableOutputVertices,
+			{<\n>},
+			{final OutputPort <elem.variableName> = Ports.newOutputPort();}
+		)>
+		final OutputPort exceptionPort = Ports.newOutputPort();
+		
+		/* Create a proxy. */
+		try {
+			<party.className>.newInstance(exceptionPort, <comma_separated_list([party.observableInputVertices, party.observableOutputVertices], {<elem.variableName>})>).run();
+		} catch (Exception e) {
+			System.out.println("Something went wrong while constructing <party.className>...");
+			System.exit(1);
+		}
+		
+		/* Create maps from their names to the accessible ports. */
+		final Map\<String, InputPort\> namesToInputPorts = new HashMap\<String, InputPort\>();
+		<separated_list(
+			party.observableInputVertices,
+			{<\n>},
+			{namesToInputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+		final Map\<String, OutputPort\> namesToOutputPorts = new HashMap\<String, OutputPort\>();
+		<separated_list(
+			party.observableOutputVertices,
+			{<\n>},
+			{namesToOutputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+		
+		/* Create console. */
+		final Console console = new Console(namesToInputPorts, namesToOutputPorts);
+		console.run();
+	}
+}
+>>
+
+comma_separated_list(list, template) ::= <<
+<separated_list(list, {, }, template)>
+>>
+
+separated_list(list, separator, template) ::= <<
+<[first(list)] : { elem | <template>}><rest(list) : { elem | <separator><template>}>
+>>

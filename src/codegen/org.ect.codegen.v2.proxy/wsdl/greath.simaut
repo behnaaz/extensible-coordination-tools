@@ -1,0 +1,8 @@
+begin reservationService
+	input: opCheckAvailability.checkAvailability
+	output: opCheckAvailability.checkAvailabilityResponse
+	init: q0
+	
+	q0 opCheckAvailability.checkAvailability q1
+	q1 opCheckAvailability.checkAvailabilityResponse q0
+end

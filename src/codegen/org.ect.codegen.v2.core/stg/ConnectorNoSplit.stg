@@ -1,0 +1,263 @@
+group templates;
+
+stateClass(state) ::= <<
+private final class <state.className> extends ReactiveState {
+	
+	/**
+	 * \<em\>Inherited documentation:\</em\>
+	 *
+	 * \<p\>
+	 * {@inheritDoc}
+	 * \</p\>
+	 */
+	@Override
+	protected Transition[] getTransitions() {
+		return new Transition[] {
+			<newline_separated_list(state.transitions, {new Transition(
+				<elem.target.className>.class, 
+				new String[] {<comma_separated_list1(elem.inputVertices, {"<elem1>"})>\}, 
+				new String[] {<comma_separated_list1(elem.outputVertices, {"<elem1>"})>\}, 
+				Problem.newInstance("<elem.constraint.escapedText>")),})>
+		};
+	}
+}
+>>
+
+connectorClass(composition,connector) ::= <<
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import cwi.reo.runtime.java.core.Console;
+import cwi.reo.runtime.java.core.InputPort;
+import cwi.reo.runtime.java.core.OutputPort;
+import cwi.reo.solver.problem.Problem;
+
+/**
+ * A connector behaving according to the following automaton:
+ * 
+ * \<ul\>
+ * \<li\>States:       { {@code <connector.behavior.states; separator="}, {@code ">} \}
+ * \<li\>Transitions:  {\</br\>
+ * &nbsp;&nbsp;&nbsp;&nbsp;{@code <connector.behavior.transitions; separator="},\</br\>\n * &nbsp;&nbsp;&nbsp;&nbsp;{@code ">}\</br\>
+ *     \}
+ * \<li\>Input ports:  { {@code <connector.inputVertices; separator="}, {@code ">} \}
+ * \<li\>Output ports: { {@code <connector.outputVertices; separator="}, {@code ">} \}
+ * \</ul\>
+ */
+public class <connector.className> extends cwi.reo.runtime.java.core.ReactiveConnector {
+	
+	//
+	// CONSTRUCTORS
+	//
+	
+	/**
+	 * Invokes \<code\>super(inputPortsToNames,outputPortsToNames)\</code\>.
+	 * 
+	 * @see Connector#Connector(Map, Map)
+	 */
+	protected <connector.className>(final Map\<InputPort, String\> inputPortsToNames,
+			final Map\<OutputPort, String\> outputPortsToNames) {
+		
+		super(inputPortsToNames, outputPortsToNames);
+	}
+	
+	//
+	// METHODS - PUBLIC
+	//
+	
+	/**
+	 * \<em\>Inherited documentation:\</em\>
+	 *
+	 * \<p\>
+	 * {@inheritDoc}
+	 * \</p\>
+	 */
+	@Override
+	public void run() {
+		<newline_separated_list(composition.FIFOs, {new Thread(new FIFO(
+				super.getOutputPort("<elem.inputVertices>"), 
+				super.getInputPort("<elem.outputVertices>"))).start();})>
+	
+		super.run();
+	}
+	
+	//
+	// METHODS - PROTECTED
+	//
+	
+	/**
+	 * \<em\>Inherited documentation:\</em\>
+	 *
+	 * \<p\>
+	 * {@inheritDoc}
+	 * \</p\>
+	 */
+	@Override
+	protected Class\<? extends State\> getInitialStateClass() {
+		return <connector.behavior.initial.className>.class;
+	}
+	
+	/**
+	 * \<em\>Inherited documentation:\</em\>
+	 *
+	 * \<p\>
+	 * {@inheritDoc}
+	 * \</p\>
+	 */
+	@Override
+	protected Map\<String, Object\> getInitialStore() {
+		final Map\<String, Object\> map = new HashMap\<String, Object\>();
+		<if(connector.behavior.cellVertices)>
+		try {
+			<newline_separated_list(connector.behavior.cellVertices, {map.put("<elem.variableName>", cwi.reo.runtime.java.core.Item.convertToObject("<elem.escapedContentText>"));})>
+		} catch (final Exception e) {
+			throw new RuntimeException();
+		}
+		<endif>
+		
+		return map;
+	}
+	
+	/**
+	 * \<em\>Inherited documentation:\</em\>
+	 *
+	 * \<p\>
+	 * {@inheritDoc}
+	 * \</p\>
+	 */
+	@Override
+	protected Map\<Class\<? extends State\>, State\> getStateTable() {
+		final Map\<Class\<? extends State\>, State\> map = new HashMap\<Class\<? extends State\>, State\>();
+		<newline_separated_list(connector.behavior.states, {map.put(<elem.className>.class, new <elem.className>());})>
+		return map;
+	}
+	
+	//
+	// CLASSES
+	//
+	
+	// <comma_separated_list(composition.nonFIFOs, {<elem.name>})>
+	
+	<newline_newline_separated_list(connector.behavior.states, {<stateClass(elem)>})>
+	
+	//
+	// STATIC
+	//
+	
+	/**
+	 * Constructs a <connector.name>-connector.
+	 *
+<!	!><newline_separated_list(connector.inputVertices, {<\t> * @param <elem.variableName><\n><\t> *           Input port <elem> of the <connector.name>-connector to construct.})>
+<!	!><newline_separated_list(connector.outputVertices, {<\t> * @param <elem.variableName><\n><\t> *           Output port <elem> of the <connector.name>-connector to construct.})>
+	 * @throws NullPointerException
+	 *           If <separated_list([connector.inputVertices, connector.outputVertices], { or }, {\<code\><elem.variableName>==null\</code\>})>.
+	 */
+	public static <connector.className> newInstance(<!
+			!><comma_separated_list(connector.inputVertices, {final InputPort <elem.variableName>})><!
+			!><if(connector.inputVertices && connector.outputVertices)>, <endif><!
+			!><comma_separated_list(connector.outputVertices, {final OutputPort <elem.variableName>})>) {
+		
+		if (<separated_list([connector.inputVertices, connector.outputVertices], { <\u007C><\u007C> }, {<elem.variableName> == null})>)
+			throw new NullPointerException();
+
+		final Map\<InputPort, String\> inputPortsToNames = new HashMap\<InputPort, String\>();
+		<newline_separated_list(connector.inputVertices, {inputPortsToNames.put(<elem.variableName>, "<elem>");})>
+	
+		final Map\<OutputPort, String\> outputPortsToNames = new HashMap\<OutputPort, String\>();
+		<newline_separated_list(connector.outputVertices, {outputPortsToNames.put(<elem.variableName>, "<elem>");})>
+		
+		return new <connector.className>(inputPortsToNames, outputPortsToNames);
+	}
+	
+	/**
+	 * Constructs a <connector.name>-connector.
+	 *
+	 * @param inputVertices 
+	 *           The input ports in this iteration order: <connector.inputVertices; separator=", ">. Not \<code\>null\</code\>.
+	 * @param outputVertices 
+	 *           The output ports in this iteration order: <connector.outputVertices; separator=", ">. Not \<code\>null\</code\>.
+	 * @throws IllegalArgumentException
+	 *           If \<code\>inputVertices.size()!=<length(connector.inputVertices)>\</code\>
+	 *           or \<code\>outputVertices.size()!=<length(connector.outputVertices)>\</code\>
+	 * @throws NullPointerException
+	 *           If \<code\>inputVertices==null\</code\>
+	 *           or \<code\>outputVertices==null\</code\>.
+	 */
+	public static <connector.className> newInstance(final Collection\<InputPort\> inputVertices, final Collection\<OutputPort\> outputVertices) {
+		if (inputVertices == null || outputVertices == null)
+			throw new NullPointerException();
+		if (inputVertices.size() != <length(connector.inputVertices)> || outputVertices.size() != <length(connector.outputVertices)>)
+			throw new IllegalArgumentException();
+		
+		<if(connector.inputVertices)>
+		Iterator\<InputPort\> inputVerticesIterator = inputVertices.iterator();
+		<endif>
+		<if(connector.outputVertices)>
+		Iterator\<OutputPort\> outputVerticesIterator = outputVertices.iterator();
+		<endif>
+		return newInstance(<!
+			!><comma_separated_list(connector.inputVertices, {inputVerticesIterator.next()})><!
+			!><if(connector.inputVertices && connector.outputVertices)>, <endif><!
+			!><comma_separated_list(connector.outputVertices, {outputVerticesIterator.next()})>);
+	}
+	
+	//
+	// MAIN
+	//
+	
+	public static void main(String[] args) {
+
+		/* Create input ports. */
+		final HashMap\<String, InputPort\> inputPorts = new HashMap\<String, InputPort\>();
+		<newline_separated_list(connector.inputVertices, {InputPort <elem.variableName> = new InputPort();})>
+		<newline_separated_list(connector.inputVertices, {inputPorts.put("<elem>", <elem.variableName>);})>
+		
+		/* Create output ports. */
+		final HashMap\<String, OutputPort\> outputPorts = new HashMap\<String, OutputPort\>();
+		<newline_separated_list(connector.outputVertices, {OutputPort <elem.variableName> = new OutputPort();})>
+		<newline_separated_list(connector.outputVertices, {outputPorts.put("<elem>", <elem.variableName>);})>
+		
+		/* Create connector. */
+		final <connector.className> connector = <connector.className>.newInstance(<comma_separated_list([connector.inputVertices, connector.outputVertices], {<elem.variableName>})>);
+		new Thread(connector).start();
+		
+		/* Create console. */
+		Console console = new Console(inputPorts, outputPorts);
+		console.run();
+	}
+}
+>>
+
+comma_separated_list(list, template) ::= <<
+<separated_list(list, {, }, template)>
+>>
+
+comma_separated_list1(list, template) ::= <<
+<separated_list1(list, {, }, template)>
+>>
+
+newline_separated_list(list, template) ::= <<
+<separated_list(list, {<\n>}, template)>
+>>
+
+newline_separated_list1(list, template) ::= <<
+<separated_list1(list, {<\n>}, template)>
+>>
+
+newline_newline_separated_list(list, template) ::= <<
+<separated_list(list, {<\n><\n>}, template)>
+>>
+
+newline_newline_separated_list1(list, template) ::= <<
+<separated_list1(list, {<\n><\n>}, template)>
+>>
+
+separated_list(list, separator, template) ::= <<
+<[first(list)] : { elem | <template>}><rest(list) : { elem | <separator><template>}>
+>>
+
+separated_list1(list, separator, template) ::= <<
+<[first(list)] : { elem1 | <template>}><rest(list) : { elem1 | <separator><template>}>
+>>

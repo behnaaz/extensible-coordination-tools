@@ -1,0 +1,220 @@
+orcClass(orchestration) ::= <<
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.ect.codegen.v2.core.rt.java.Console;
+import org.ect.codegen.v2.core.rt.java.DuplexPort;
+import org.ect.codegen.v2.core.rt.java.InputPort;
+import org.ect.codegen.v2.core.rt.java.OutputPort;
+import org.ect.codegen.v2.core.rt.java.Ports;
+
+public class Orchestration {
+
+	//
+	// CONSTRUCTORS
+	//
+	
+	public Orchestration(final OutputPort exceptionPort, <comma_separated_list(orchestration.qUnlinkedInputVerticesOfConnectors, {final InputPort <elem.vertex.variableName>})>, <comma_separated_list(orchestration.qUnlinkedOutputVerticesOfConnectors, {final OutputPort <elem.vertex.variableName>})>) {
+		<separated_list(
+			orchestration.qUnlinkedInputVerticesOfConnectors,
+			{<\n>},
+			{final InputPort port<elem.vertex.name> = <elem.vertex.variableName>;}
+		)>
+		<separated_list(
+			orchestration.qUnlinkedOutputVerticesOfConnectors,
+			{<\n>},
+			{final OutputPort port<elem.vertex.name> = <elem.vertex.variableName>;}
+		)>
+  
+		/* Construct ports. */
+		<separated_list(
+			orchestration.qLinkedInputVerticesOfConnectors,
+			{<\n>},
+			{final DuplexPort port<elem.vertex.name> = Ports.newDuplexPort();}
+		)>
+	    
+		<separated_list(
+			orchestration.qLinkedOutputVerticesOfConnectors,
+			{<\n>},
+			{final DuplexPort port<elem.vertex.name> = Ports.newDuplexPort();}
+		)>
+<!		
+		/* Construct connector port aliases. */
+		<separated_list(
+			orchestration.connectors,
+			{<\n>},
+			{final <elem.className>Ports <elem.instanceName>Ports = new <elem.className>Ports();}
+		)>
+	    
+		<separated_list(
+			[orchestration.qLinkedInputVerticesOfConnectors, orchestration.qLinkedOutputVerticesOfConnectors, orchestration.qUnlinkedInputVerticesOfConnectors, orchestration.qUnlinkedOutputVerticesOfConnectors],
+			{<\n>},
+			{<elem.entity.name>Ports.<elem.vertex.variableName> = port<elem.vertex.name>;}
+		)>
+!>	    
+		/* Construct party port aliases. */
+		<separated_list(
+			orchestration.parties,
+			{<\n>},
+			{final <elem.className>Ports <elem.variableName>Ports = new <elem.className>Ports();}
+		)>
+	    
+		<separated_list(
+			orchestration.links,
+			{<\n>},
+			{<elem.qComponentVertex.entity.variableName>Ports.<elem.qComponentVertex.vertex.variableName> = port<elem.qConnectorVertex.vertex.name>;}
+		)>
+	    
+		<separated_list(
+			orchestration.qUnlinkedVerticesOfParties,
+			{<\n>},
+			{<elem.entity.variableName>Ports.<elem.vertex.variableName> = Ports.newDuplexPort();}
+		)>
+	
+	    try {
+	    	/* Construct parties. */
+	    	<separated_list0(
+	    		orchestration.parties,
+	    		{<\n>},
+	    		{new Thread(<elem0.className>.newInstance(exceptionPort, <comma_separated_list([elem0.observableInputVertices, elem0.observableOutputVertices], {<elem0.variableName>Ports.<elem.variableName>})>)).start();}
+	    	)>
+	    
+			/* Construct connector. */
+			<separated_list0(
+				orchestration.connectors,
+				{<\n>},
+				{new Thread(<elem0.className>.newInstance(<comma_separated_list([elem0.inputVertices, elem0.outputVertices], {port<elem.variableName>})>)).start();}
+			)>
+	    
+	    } catch (final Exception e) {
+	    	e.printStackTrace();
+	    }
+	}
+
+	//
+	// CLASSES
+	//
+<!		
+    <separated_list(
+    	orchestration.connectors,
+    	{<\n>},
+    	{<connectorPortsClass(elem)>}
+	)>
+!>	
+
+	<separated_list(
+		orchestration.parties,
+		{<\n>},
+		{<partyPortsClass(elem)>}
+	)>
+	
+	//
+	// MAIN
+	//
+
+	public static void main(final String[] args) {
+	
+		/* Create ports. */
+		<separated_list(
+			orchestration.qUnlinkedInputVerticesOfConnectors,
+			{<\n>},
+			{final InputPort <elem.vertex.variableName> = Ports.newInputPort();}
+		)>
+		<separated_list(
+			orchestration.qUnlinkedOutputVerticesOfConnectors,
+			{<\n>},
+			{final OutputPort <elem.vertex.variableName> = Ports.newOutputPort();}
+		)>
+		final OutputPort exceptionPort = Ports.newOutputPort();
+		
+		/* Create a proxy. */
+		try {
+			new Orchestration(exceptionPort, <comma_separated_list([orchestration.qUnlinkedInputVerticesOfConnectors, orchestration.qUnlinkedOutputVerticesOfConnectors], {<elem.vertex.variableName>})>);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
+		/* Create maps from their names to the accessible ports. */
+		final Map\<String, InputPort\> namesToInputPorts = new HashMap\<String, InputPort\>();
+		<separated_list(
+			orchestration.qUnlinkedInputVerticesOfConnectors,
+			{<\n>},
+			{namesToInputPorts.put("<elem.vertex.name>", <elem.vertex.variableName>);}
+		)>
+		final Map\<String, OutputPort\> namesToOutputPorts = new HashMap\<String, OutputPort\>();
+		<separated_list(
+			orchestration.qUnlinkedOutputVerticesOfConnectors,
+			{<\n>},
+			{namesToOutputPorts.put("<elem.vertex.name>", <elem.vertex.variableName>);}
+		)>
+		
+		/* Create console. */
+		final Console console = new Console(namesToInputPorts, namesToOutputPorts);
+		console.run();
+	}
+}
+>>
+
+connectorPortsClass(connector) ::= <<
+private class <connector.className>Ports {
+
+	/**
+	 * Input ports.
+	 */
+	<separated_list(
+		connector.inputVertices,
+		{<\n>},
+		{private InputPort <elem.variableName> = null;}
+	)>
+	
+	/**
+	 * Output ports.
+	 */
+	<separated_list(
+		connector.outputVertices,
+		{<\n>},
+		{private OutputPort <elem.variableName> = null;}
+	)>
+}
+>>
+
+partyPortsClass(party) ::= <<
+private class <party.className>Ports {
+
+	/**
+	 * Input ports.
+	 */
+	<separated_list(
+		party.observableInputVertices,
+		{<\n>},
+		{private InputPort <elem.variableName> = null;}
+	)>
+	
+	/**
+	 * Output ports.
+	 */
+	<separated_list(
+		party.observableOutputVertices,
+		{<\n>},
+		{private OutputPort <elem.variableName> = null;}
+	)>
+}
+>>
+
+comma_separated_list(list, template) ::= <<
+<separated_list(list, {, }, template)>
+>>
+
+separated_list(list, separator, template) ::= <<
+<[first(list)] : { elem | <template>}><rest(list) : { elem | <separator><template>}>
+>>
+
+separated_list0(list, separator, template) ::= <<
+<[first(list)] : { elem0 | <template>}><rest(list) : { elem0 | <separator><template>}>
+>>
+
+separated_list1(list, separator, template) ::= <<
+<[first(list)] : { elem1 | <template>}><rest(list) : { elem1 | <separator><template>}>
+>>

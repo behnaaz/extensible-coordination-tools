@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECT Code Generation Framework V2 - Core Runtime (Java)
+Bundle-SymbolicName: org.ect.codegen.v2.core.rt.java;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.ect.codegen.v2.core.rt.java,
+ org.ect.codegen.v2.core.rt.java.examples,
+ org.ect.codegen.v2.core.rt.java.solver
+Bundle-ClassPath: .,
+ lib/antlr-3.3-complete.jar,
+ lib/guava-14.0.jar
+Bundle-Vendor: Extensible Coordination Tools

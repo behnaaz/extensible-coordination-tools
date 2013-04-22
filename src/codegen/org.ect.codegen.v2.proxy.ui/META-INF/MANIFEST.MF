@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.ide;bundle-version="3.7.0",
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources;bundle-version="3.7.0",
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.4.1",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.5.0",
+ org.eclipse.jdt.core;bundle-version="3.7.0",
+ org.eclipse.jdt.launching;bundle-version="3.6.0",
+ org.ect.reo.diagram;bundle-version="4.0.0",
+ org.ect.codegen.v2.core;bundle-version="4.0.0",
+ org.ect.codegen.v2.core.ui;bundle-version="4.0.0",
+ org.ect.codegen.v2.proxy;bundle-version="4.0.0",
+ org.ect.codegen.v2.proxy.rt.java;bundle-version="4.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 4.0.0.qualifier
+Bundle-Name: ECT Code Generation Framework V2 - Proxy Code Generator UI
+Bundle-Activator: org.ect.codegen.v2.proxy.ui.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.ect.codegen.v2.proxy.ui;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Extensible Coordination Tools
+

@@ -1,0 +1,228 @@
+proxyClass(party) ::= <<
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+import cwi.reo.commons.util.Resource;
+import cwi.reo.runtime.java.core.Connector;
+import cwi.reo.runtime.java.core.io.port.InPort;
+import cwi.reo.runtime.java.core.io.port.OutPort;
+import cwi.reo.runtime.java.core.io.port.Port;
+import cwi.reo.runtime.java.core.console.Console;
+import cwi.reo.runtime.java.proxy.SimulationAutomaton;
+import cwi.reo.runtime.java.proxy.corba.CORBAComponent;
+import cwi.reo.runtime.java.proxy.corba.CORBAInfrastructure;
+import cwi.reo.runtime.java.proxy.corba.CORBAInterface;
+import cwi.reo.runtime.java.proxy.corba.CORBAInterface.CORBAObject;
+import cwi.reo.runtime.java.proxy.corba.CORBAProxy;
+
+public class <party.className> extends CORBAProxy {
+
+	//
+	// CONSTRUCTORS
+	//
+	
+	/**
+	 * Constructs a proxy for the object named {@link #NAME}.
+	 *
+	 * @param automaton
+	 *             The simulation automaton ran by the proxy to construct. Not
+	 *             \<code\>null\</code\>.
+	 * @param infrastructure
+	 *             The infrastructure to the object named {@link #NAME}. Not
+	 *             \<code\>null\</code\>.
+	 * @param exceptionPort
+	 *             A port to which exception at runtime are written. Not
+	 *             \<code\>null\</code\>.
+	 * @throws NullPointerException
+	 *             If \<code\>automaton==null\</code\> or 
+	 *             \<code\>infrastructure==null\</code\> or
+	 *             \<code\>exceptionPort==null\</code\>.
+	 */
+	private <party.className>(
+			final SimulationAutomaton automaton,
+			final CORBAInfrastructure infrastructure,
+			final OutPort exceptionPort) {
+			
+		super(automaton, infrastructure, exceptionPort);
+	}
+
+	//
+	// STATIC - FIELDS
+	//
+
+	/**
+	 * The name of the interface implemented by the object proxied by this proxy.
+	 */
+	public static final String NAME = "<party.name>";
+	
+	/**
+	 * A (resource containing the) IDL specification of the interface
+	 * implemented by the object proxied by this proxy. 
+	 */
+	public static final Resource SPECIFICATION = new Resource(
+			"<party.interfacesResource.escapedResourceText>");
+	
+	//
+	// STATIC - METHODS
+	//
+
+	public static <party.className> newInstance(
+			final String objectName, final String initialHost,
+			final int initialPort, final OutPort exceptionPort,
+			<comma_separated_list([party.observableInputVertices, party.observableOutputVertices], {final Port <elem.variableName>})>)
+			throws Exception {
+			
+		if (SPECIFICATION == null)
+			throw new Exception(
+					"This proxy class seems corrupted. Please generate a new proxy.");
+	
+		/* Create the proxy-side ports. */
+		<separated_list(
+			party.unobservableInputVertices,
+			{<\n>},
+			{final InPort <elem.variableName> = new InPort();}
+		)>
+		<separated_list(
+			party.unobservableOutputVertices,
+			{<\n>},
+			{final OutPort <elem.variableName> = new OutPort();}
+		)>
+		
+		/* Create maps from their names to the proxy-side ports. */
+		final Map\<String, InPort\> namesToInputPorts = new HashMap\<String, InPort\>();
+		<separated_list(
+			party.unobservableInputVertices,
+			{<\n>},
+			{namesToInputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+		
+		final Map\<String, OutPort\> namesToOutputPorts = new HashMap\<String, OutPort\>();
+		<separated_list(
+			party.unobservableOutputVertices,
+			{<\n>},
+			{namesToOutputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+
+		/* Create (and run) the simulation automaton. */
+		final Connector connector = new <party.simAut.className>(
+			<separated_list(
+				party.simAut.behavior.inputVertices,
+				{,<\n>},
+				{<elem.variableName>})
+			>,
+			<separated_list(
+				party.simAut.behavior.outputVertices,
+				{,<\n>},
+				{<elem.variableName>})
+			>);
+			
+		new Thread(connector).start();
+		final SimulationAutomaton automaton = new SimulationAutomaton(connector, 
+				"<party.buttonVertex.name>", namesToInputPorts, namesToOutputPorts);
+
+		/* Create the infrastructure. */
+		final CORBAComponent component = new CORBAComponent(SPECIFICATION);
+		final CORBAInterface interfaze = component.getInterface(NAME);
+		final CORBAObject object = interfaze.newObject(objectName, initialHost, initialPort);
+		final CORBAInfrastructure infrastructure = new CORBAInfrastructure(NAME, object);
+	
+		/* Create (and run) the proxy. */
+		return new <party.className>(automaton, infrastructure, exceptionPort);
+	}
+
+	//
+	// MAIN
+	//
+
+	public static void main(String[] args) {
+	
+		/* Instantiate $objectName, $initialHost, and $initialPort. */
+		String objectName = "";
+		if (args.length == 0)
+			while (objectName.isEmpty()) {
+				System.out.print("Object name: ");
+				objectName = new Scanner(System.in).nextLine();
+			}
+		else
+			objectName = args[0];
+
+		String initialHost = "localhost";
+		if (args.length \<= 1) {
+			System.out.print("Host (default=\"" + initialHost + "\"): ");
+			final String line = new Scanner(System.in).nextLine();
+			initialHost = line.isEmpty() ? initialHost : line;
+		} else
+			initialHost = args[1];
+
+		int initialPort = 900;
+		if (args.length \<= 2)
+			while (true) {
+				System.out.print("Port (default=" + initialPort + "): ");
+				final String line = new Scanner(System.in).nextLine();
+
+				if (line.isEmpty())
+					break;
+
+				try {
+					initialPort = Integer.parseInt(line);
+					break;
+				} catch (NumberFormatException e) {
+					continue;
+				}
+			}
+		else
+			try {
+				initialPort = Integer.parseInt(args[2]);
+			} catch (NumberFormatException e) {
+			}
+	
+		/* Create ports. */
+		<separated_list(
+			party.observableInputVertices,
+			{<\n>},
+			{InPort <elem.variableName> = new InPort();}
+		)>
+		<separated_list(
+			party.observableOutputVertices,
+			{<\n>},
+			{OutPort <elem.variableName> = new OutPort();}
+		)>
+		final OutPort exceptionPort = new OutPort();
+		
+		/* Create a proxy. */
+		try {
+			<party.className>.newInstance(objectName, initialHost, initialPort, exceptionPort, <comma_separated_list([party.observableInputVertices, party.observableOutputVertices], {<elem.variableName>})>).run();
+		} catch (Exception e) {
+			System.out.println("Something went wrong while constructing <party.className>...");
+			System.exit(1);
+		}
+		
+		/* Create maps from their names to the accessible ports. */
+		Map\<String, InPort\> namesToInputPorts = new HashMap\<String, InPort\>();
+		<separated_list(
+			party.observableInputVertices,
+			{<\n>},
+			{namesToInputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+		Map\<String, OutPort\> namesToOutputPorts = new HashMap\<String, OutPort\>();
+		<separated_list(
+			party.observableOutputVertices,
+			{<\n>},
+			{namesToOutputPorts.put("<elem.name>", <elem.variableName>);}
+		)>
+		
+		/* Create console. */
+		Console console = new Console(namesToInputPorts, namesToOutputPorts);
+		console.run();
+	}
+}
+>>
+
+comma_separated_list(list, template) ::= <<
+<separated_list(list, {, }, template)>
+>>
+
+separated_list(list, separator, template) ::= <<
+<[first(list)] : { elem | <template>}><rest(list) : { elem | <separator><template>}>
+>>

@@ -1,0 +1,11 @@
+module example {
+	interface Calculator {
+		long add(in long lhs, in long rhs);
+		long sub(in long lhs, in long rhs);
+	};
+	interface Binop {
+		long setLeft(in long value);
+		long setRight(in long value);
+		long getResult();
+	};
+};
