@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECT Code Generation Framework V2 - Core Code Generator CLI
+Bundle-SymbolicName: org.ect.codegen.v2.core.cli;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.ect.codegen.v2.core.cli.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.ect.codegen.v2.core;bundle-version="4.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .,
+ lib/commons-cli-1.2.jar
+Export-Package: org.apache.commons.cli,
+ org.ect.codegen.v2.core.cli
+Bundle-Vendor: Extensible Coordination Tools

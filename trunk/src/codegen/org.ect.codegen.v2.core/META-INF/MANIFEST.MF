@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+Export-Package: antlr,
+ antlr.ASdebug,
+ antlr.actions.cpp,
+ antlr.actions.csharp,
+ antlr.actions.java,
+ antlr.actions.python,
+ antlr.build,
+ antlr.collections,
+ antlr.collections.impl,
+ antlr.debug,
+ antlr.debug.misc,
+ org.ect.codegen.v2.core,
+ org.ect.codegen.v2.core.descr,
+ org.ect.codegen.v2.core.descr.java,
+ org.ect.codegen.v2.core.gen,
+ org.ect.codegen.v2.core.gen.java,
+ org.stringtemplate.v4,
+ org.stringtemplate.v4.compiler,
+ org.stringtemplate.v4.debug,
+ org.stringtemplate.v4.gui,
+ org.stringtemplate.v4.misc
+Require-Bundle: org.ect.reo.diagram;bundle-version="4.0.0",
+ org.ect.ea.diagram;bundle-version="4.0.0",
+ org.ect.codegen.v2.core.rt.java;bundle-version="4.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/antlr-3.3-complete.jar,
+ lib/ST-4.0.4.jar,
+ lib/commons-lang3-3.1.jar
+Bundle-Version: 4.0.0.qualifier
+Bundle-Name: ECT Code Generation Framework V2 - Core Code Generator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.ect.codegen.v2.core;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Extensible Coordination Tools
+

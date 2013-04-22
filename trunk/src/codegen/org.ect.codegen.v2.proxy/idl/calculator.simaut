@@ -1,0 +1,10 @@
+begin example::Calculator
+	input: add sub
+	output: addResult subResult
+	init: q0
+	
+	q0 add q1
+	q0 sub q2
+	q1 addResult q0
+	q2 subResult q0
+end
