@@ -163,4 +163,46 @@ http://www.eclipse.org/legal/epl-v10.html
          version="4.0.0.qualifier"
          unpack="false"/>
 
+   <plugin
+         id="org.ect.codegen.v2.core"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.v2.core.rt.java"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.v2.core.ui"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.v2.proxy"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.v2.proxy.rt.java"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.ect.codegen.v2.proxy.ui"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"
+         unpack="false"/>
+
 </feature>
