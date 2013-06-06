@@ -318,114 +318,7 @@ public abstract class VertexAutomaton<A extends VertexAutomaton<A, S, T, SF, TF>
 				removeThenAddTransition(t);
 			}
 
-		/* Remove silent transitions starting from the initial state. */
-		final S initialState = getInitial();
-		Stack<S> statePath = new Stack<S>();
-		Stack<Iterator<T>> iteratorPath = new Stack<Iterator<T>>();
-		Stack<T> transitionPath = new Stack<T>();
-
-		/* Initialize paths. */
-		statePath.push(initialState);
-		iteratorPath.push(initialState.getSilentTransitions().iterator());
-
-		/* Follow paths. */
-		while (!statePath.isEmpty()) {
-			final Iterator<T> iterator = iteratorPath.peek();
-
-			/* Traverse silent transitions under a depth-first regime. */
-			if (iterator.hasNext()) {
-				final T transition = iterator.next();
-				final S target = transition.getTarget();
-				if (!statePath.contains(target)) {
-					transitionPath.push(transition);
-					statePath.push(target);
-					iteratorPath.push(target.getSilentTransitions().iterator());
-				}
-
-				/* Ignore loops of silent transitions. */
-				continue;
-			}
-
-			/* Add a transitions based on $transitionPath. */
-			final S state = statePath.peek();
-			for (final T t : state.getTransitions())
-				if (!t.isSilent()) {
-					transitionPath.push(t);
-					addTransition(transitionPath);
-					transitionPath.pop();
-				}
-
-			/* Return to the previous state on the path. */
-			statePath.pop();
-			iteratorPath.pop();
-			if (!transitionPath.empty())
-				transitionPath.pop();
-		}
-
-		/* Remove silent transitions from other states. */
-		final Set<T> obsoleteTransitions = new HashSet<T>();
-		for (final S s : super.getStates()) {
-
-			/* Construct paths. */
-			statePath = new Stack<S>();
-			iteratorPath = new Stack<Iterator<T>>();
-			transitionPath = new Stack<T>();
-
-			/* Initialize paths. */
-			statePath.push(s);
-			iteratorPath.push(s.getNonSilentTransitions().iterator());
-
-			/* Follow paths. */
-			while (!statePath.isEmpty()) {
-				final Iterator<T> iterator = iteratorPath.peek();
-
-				/* Traverse silent transitions under a depth-first regime. */
-				if (iterator.hasNext()) {
-					final T transition = iterator.next();
-					transitionPath.push(transition);
-
-					final S target = transition.getTarget();
-					if (!statePath.contains(target)) {
-						statePath.push(target);
-						iteratorPath.push(target.getSilentTransitions()
-								.iterator());
-
-						/*
-						 * Do not ignore loops, because the first transition is
-						 * not silent.
-						 */
-						continue;
-					}
-				}
-
-				if (transitionPath.size() > 1
-						&& !transitionPath.lastElement().getTarget()
-								.getNonSilentTransitions().isEmpty()) {
-
-					addTransition(transitionPath);
-					obsoleteTransitions.add(transitionPath.firstElement());
-					transitionPath.pop();
-				}
-
-				/* Return to the previous state on the path. */
-				statePath.pop();
-				iteratorPath.pop();
-				if (!transitionPath.empty())
-					transitionPath.pop();
-			}
-		}
-
-		/*
-		 * Remove the silent and obsolete transitions and unreachable states.
-		 */
-		for (final T t : super.getTransitions())
-			if (t.isSilent())
-				super.removeTransition(t.getName());
-
-		for (final T t : obsoleteTransitions)
-			super.removeTransition(t.getName());
-
-		super.removeUnreachableStates();
+		removeSilentTransitions();
 	}
 
 	/**
@@ -532,6 +425,170 @@ public abstract class VertexAutomaton<A extends VertexAutomaton<A, S, T, SF, TF>
 
 		/* Rename the vertex itself only afterwards. */
 		vertexFactory.rename(oldVertexName, newVertexName);
+	}
+
+	public void removeSilentTransitions() {
+
+		// final Set<T> transitions = new HashSet<T>();
+
+		/* Remove silent transitions starting from the initial state. */
+		{
+			final S initialState = getInitial();
+			Stack<S> statePath = new Stack<S>();
+			Stack<Iterator<T>> iteratorPath = new Stack<Iterator<T>>();
+			Stack<T> transitionPath = new Stack<T>();
+
+			/* Initialize paths. */
+			statePath.push(initialState);
+			iteratorPath.push(initialState.getSilentTransitions().iterator());
+
+			/* Follow paths. */
+			while (!statePath.isEmpty()) {
+				final Iterator<T> iterator = iteratorPath.peek();
+
+				/* Traverse silent transitions under a depth-first regime. */
+				if (iterator.hasNext()) {
+					final T transition = iterator.next();
+					final S target = transition.getTarget();
+					if (!statePath.contains(target)) {
+						transitionPath.push(transition);
+						statePath.push(target);
+						iteratorPath.push(target.getSilentTransitions()
+								.iterator());
+					}
+
+					/* Ignore loops of silent transitions. */
+					continue;
+				}
+
+				/* Add a transitions based on $transitionPath. */
+				final S state = statePath.peek();
+				for (final T t : state.getTransitions())
+					if (!t.isSilent()) {
+						transitionPath.push(t);
+						addTransition(transitionPath);
+						transitionPath.pop();
+					}
+
+				/* Return to the previous state on the path. */
+				statePath.pop();
+				iteratorPath.pop();
+				if (!transitionPath.empty())
+					transitionPath.pop();
+			}
+		}
+
+		/* Remove silent transitions from other states. */
+		for (final S s : super.getStates()) {
+			final Stack<S> statePath = new Stack<S>();
+			final Stack<Iterator<T>> iteratorPath = new Stack<Iterator<T>>();
+			final Stack<T> transitionPath = new Stack<T>();
+
+			/* Initialize paths. */
+			statePath.push(s);
+			iteratorPath.push(s.getSilentTransitions().iterator());
+
+			/* Follow paths. */
+			while (!statePath.isEmpty()) {
+				final Iterator<T> iterator = iteratorPath.peek();
+
+				/* Traverse silent transitions under a depth-first regime. */
+				if (iterator.hasNext()) {
+					final T transition = iterator.next();
+					final S target = transition.getTarget();
+					if (!statePath.contains(target)) {
+						transitionPath.push(transition);
+						statePath.push(target);
+						iteratorPath.push(target.getSilentTransitions()
+								.iterator());
+					}
+
+					/* Ignore loops of silent transitions. */
+					continue;
+				}
+
+				/* Add a transitions based on $transitionPath. */
+				final S state = statePath.peek();
+				if (!transitionPath.isEmpty())
+					for (final T t : state.getTransitions())
+						if (!t.isSilent()) {
+							transitionPath.push(t);
+							addTransition(transitionPath);
+							transitionPath.pop();
+						}
+
+				/* Return to the previous state on the path. */
+				statePath.pop();
+				iteratorPath.pop();
+				if (!transitionPath.empty())
+					transitionPath.pop();
+			}
+		}
+
+		// /* Remove silent transitions from other states. */
+		// final Set<T> obsoleteTransitions = new HashSet<T>();
+		// for (final S s : super.getStates()) {
+		//
+		// /* Construct paths. */
+		// statePath = new Stack<S>();
+		// iteratorPath = new Stack<Iterator<T>>();
+		// transitionPath = new Stack<T>();
+		//
+		// /* Initialize paths. */
+		// statePath.push(s);
+		// iteratorPath.push(s.getNonSilentTransitions().iterator());
+		//
+		// /* Follow paths. */
+		// while (!statePath.isEmpty()) {
+		// final Iterator<T> iterator = iteratorPath.peek();
+		//
+		// /* Traverse silent transitions under a depth-first regime. */
+		// if (iterator.hasNext()) {
+		// final T transition = iterator.next();
+		// transitionPath.push(transition);
+		//
+		// final S target = transition.getTarget();
+		// if (!statePath.contains(target)) {
+		// statePath.push(target);
+		// iteratorPath.push(target.getSilentTransitions()
+		// .iterator());
+		//
+		// /*
+		// * Do not ignore loops, because the first transition is
+		// * not silent.
+		// */
+		// continue;
+		// }
+		// }
+		//
+		// if (transitionPath.size() > 1
+		// && !transitionPath.lastElement().getTarget()
+		// .getNonSilentTransitions().isEmpty()) {
+		//
+		// addTransition(transitionPath);
+		// obsoleteTransitions.add(transitionPath.firstElement());
+		// transitionPath.pop();
+		// }
+		//
+		// /* Return to the previous state on the path. */
+		// statePath.pop();
+		// iteratorPath.pop();
+		// if (!transitionPath.empty())
+		// transitionPath.pop();
+		// }
+		// }
+
+		/*
+		 * Remove the silent and obsolete transitions and unreachable states.
+		 */
+		for (final T t : super.getTransitions())
+			if (t.isSilent())
+				super.removeTransition(t.getName());
+
+		// for (final T t : obsoleteTransitions)
+		// super.removeTransition(t.getName());
+
+		super.removeUnreachableStates();
 	}
 
 	//

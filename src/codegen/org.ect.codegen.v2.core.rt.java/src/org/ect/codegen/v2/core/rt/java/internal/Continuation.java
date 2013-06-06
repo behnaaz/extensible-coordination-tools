@@ -10,4 +10,9 @@ public abstract class Continuation {
 	 *            continuation. Not <code>null</code>.
 	 */
 	public abstract void run(final Object item);
+	
+	public static Continuation EMPTY_CONTINUATION = new Continuation() {
+		public void run(final Object item) {
+		}
+	};
 }

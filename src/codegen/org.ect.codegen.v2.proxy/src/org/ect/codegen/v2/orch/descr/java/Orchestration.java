@@ -14,7 +14,6 @@ import org.ect.codegen.v2.core.descr.java.JavaComposition;
 import org.ect.codegen.v2.core.descr.java.JavaConnector;
 import org.ect.codegen.v2.proxy.descr.java.AbstractParty;
 
-
 public class Orchestration {
 
 	//
@@ -138,7 +137,7 @@ public class Orchestration {
 				this.qLinkedVerticesToParties.put(qPartyVertex,
 						qPartyVertex.getEntity());
 			}
-			
+
 			/* Get the unlinked vertices of connectors. */
 			for (final Composition<?, ?> c : this.connectors)
 				for (final QVertex<Composition<?, ?>> v : c.getQVertices())
@@ -160,7 +159,9 @@ public class Orchestration {
 				for (final QVertex<AbstractParty<?>> v : p
 						.getQObservableVertices())
 
-					if (!this.qLinkedVerticesToParties.containsKey(v))
+					if (!v.getVertex().isCellVertex()
+							&& !this.qLinkedVerticesToParties.containsKey(v))
+
 						this.qUnlinkedVerticesToParties.put(v, v.getEntity());
 
 		} catch (final Exception e) {

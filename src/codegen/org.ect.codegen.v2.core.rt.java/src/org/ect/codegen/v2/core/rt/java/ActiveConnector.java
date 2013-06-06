@@ -1,13 +1,9 @@
 package org.ect.codegen.v2.core.rt.java;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
-import org.ect.codegen.v2.core.rt.java.internal.AbstractSyncPoint;
 import org.ect.codegen.v2.core.rt.java.internal.SyncPoint;
-
 
 public abstract class ActiveConnector extends Connector {
 
@@ -55,6 +51,8 @@ public abstract class ActiveConnector extends Connector {
 		 */
 		@Override
 		public State getSuccessor() {
+
+			/* Fire a transition. */
 			while (true) {
 
 				/* Pick a transition. */
@@ -65,14 +63,9 @@ public abstract class ActiveConnector extends Connector {
 				 * Lock (and check the enabledness of) the ports fired by
 				 * $transition.
 				 */
-				final Set<SyncPoint> lockedPoints = new HashSet<SyncPoint>();
 				boolean isEnabled = true;
 				for (final Port p : transition.getPorts()) {
 					final SyncPoint point = Ports.castToPortImpl(p).point;
-
-					/* [LOCK] */
-					point.lock();
-					lockedPoints.add(point);
 
 					if ((transition.firesInputPort(p) && !point.hasWrite())
 							|| (transition.firesOutputPort(p) && !point
@@ -85,16 +78,10 @@ public abstract class ActiveConnector extends Connector {
 
 				/* Attempt to fire $transition. */
 				State state;
-				try {
-					if (isEnabled
-							&& !((state = transition.call()) instanceof Failure))
-						return state;
+				if (isEnabled
+						&& !((state = transition.call()) instanceof Failure))
 
-				} finally {
-
-					/* [UNLOCK] */
-					AbstractSyncPoint.unlockAll(lockedPoints);
-				}
+					return state;
 			}
 		}
 	}

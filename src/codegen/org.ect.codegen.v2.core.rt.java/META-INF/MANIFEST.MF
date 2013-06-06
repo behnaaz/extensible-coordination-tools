@@ -5,7 +5,20 @@ Bundle-SymbolicName: org.ect.codegen.v2.core.rt.java;singleton:=true
 Bundle-Version: 4.0.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.ect.codegen.v2.core.rt.java,
+Export-Package: com.google.common.annotations,
+ com.google.common.base,
+ com.google.common.base.internal,
+ com.google.common.cache,
+ com.google.common.collect,
+ com.google.common.eventbus,
+ com.google.common.hash,
+ com.google.common.io,
+ com.google.common.math,
+ com.google.common.net,
+ com.google.common.primitives,
+ com.google.common.reflect,
+ com.google.common.util.concurrent,
+ org.ect.codegen.v2.core.rt.java,
  org.ect.codegen.v2.core.rt.java.examples,
  org.ect.codegen.v2.core.rt.java.solver
 Bundle-ClassPath: .,

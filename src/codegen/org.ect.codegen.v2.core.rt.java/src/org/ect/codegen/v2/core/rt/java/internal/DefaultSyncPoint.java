@@ -109,7 +109,7 @@ public class DefaultSyncPoint extends AbstractSyncPoint {
 	public Write getWrite() {
 		while (!hasWrite())
 			;
-
+		
 		return writes.peek();
 	}
 
