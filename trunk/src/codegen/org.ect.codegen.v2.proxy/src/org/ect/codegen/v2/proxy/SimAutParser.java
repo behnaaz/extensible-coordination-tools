@@ -18,8 +18,8 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.ect.codegen.v2.core.descr.Connector;
 import org.ect.codegen.v2.core.descr.DefaultConstraintAutomaton;
+import org.ect.codegen.v2.core.gen.Printer;
 import org.ect.codegen.v2.proxy.rt.java.Constants;
-
 
 public class SimAutParser {
 
@@ -276,18 +276,20 @@ public class SimAutParser {
 					final String sourceName = tokens[0].toUpperCase();
 					final String targetName = tokens[tokens.length - 1]
 							.toUpperCase();
-					final String preTargetName = INTERMEDIATE_STATE_NAME_PREFIX
-							+ targetName;
 
 					validateAsStateName(sourceName);
 					validateAsStateName(targetName);
 
-					final String[] observableVertexNames = new String[tokens.length - 2];
-					final String[] vertexNames = new String[observableVertexNames.length * 2];
-					for (int j = 0; j < observableVertexNames.length; j++) {
+					/* Prepare vertices. */
+					final List<String> obsInputVertexNames = new ArrayList<String>();
+					final List<String> obsOutputVertexNames = new ArrayList<String>();
+					final String[] obsVertexNames = new String[tokens.length - 2];
+
+					for (int j = 0; j < obsVertexNames.length; j++) {
 						final String vertexName = StringUtils
 								.capitalize(tokens[j + 1]);
 
+						/* Check. */
 						if (!automaton.hasVertex(vertexName))
 							throw new SimAutParserException(
 									SimAutParserException.PARSE(
@@ -299,44 +301,299 @@ public class SimAutParser {
 											+ "\" is not declared as an input or output vertex (at line "
 											+ lineNumber + ")");
 
-						observableVertexNames[j] = vertexName;
-						vertexNames[2 * j] = vertexName;
-						vertexNames[2 * j + 1] = PROXY_VERTEX_NAME_PREFIX
-								+ vertexName;
+						if (inputVertexNames.contains(vertexName))
+							obsInputVertexNames.add(vertexName);
+						else
+							obsOutputVertexNames.add(vertexName);
+
+						/* Add memory. */
+						if (!automaton.hasVertex(vertexName + "Memory"))
+							automaton.addVertex(vertexName + "Memory")
+									.setContentText("0");
 					}
 
+					String sourceName0, targetName0;
+					List<String> vertexNames0;
+					String constraintText0;
+
+					/* Add Type I transition. */
+					sourceName0 = sourceName;
+					targetName0 = INTERMEDIATE_STATE_NAME_PREFIX
+							+ INTERMEDIATE_STATE_NAME_PREFIX
+							+ INTERMEDIATE_STATE_NAME_PREFIX
+							+ INTERMEDIATE_STATE_NAME_PREFIX + targetName + "{"
+							+ transition + "}";
+
+					vertexNames0 = new ArrayList<String>();
+					for (final String s : obsOutputVertexNames)
+						vertexNames0.add(PROXY_VERTEX_NAME_PREFIX + s);
+
+					constraintText0 = "true";
+					for (final String s : obsOutputVertexNames)
+						constraintText0 += " && $" + s + "Memory := $"
+								+ PROXY_VERTEX_NAME_PREFIX + s;
+
+					if (!automaton.hasState(sourceName0))
+						automaton.addState(sourceName0, false);
+					if (!automaton.hasState(targetName0))
+						automaton.addState(targetName0, false);
+					automaton.addOrGetTransition(sourceName0, targetName0,
+							vertexNames0, constraintText0);
+
+					/* Add Type 1-B transition. */
+					sourceName0 = targetName0;
+					targetName0 = INTERMEDIATE_STATE_NAME_PREFIX
+							+ INTERMEDIATE_STATE_NAME_PREFIX
+							+ INTERMEDIATE_STATE_NAME_PREFIX + targetName + "{"
+							+ transition + "}";
+
+					vertexNames0 = Arrays
+							.asList(vertexNames0.isEmpty() ? new String[0]
+									: new String[] { BUTTON_INPUT_VERTEX_NAME });
+
+					constraintText0 = "true";
+
+					if (!automaton.hasState(sourceName0))
+						automaton.addState(sourceName0, false);
+					if (!automaton.hasState(targetName0))
+						automaton.addState(targetName0, false);
+					automaton.addOrGetTransition(sourceName0, targetName0,
+							vertexNames0, constraintText0);
+
+					/* Add Type 2 transition. */
+					sourceName0 = targetName0;
+					targetName0 = INTERMEDIATE_STATE_NAME_PREFIX
+							+ INTERMEDIATE_STATE_NAME_PREFIX + targetName + "{"
+							+ transition + "}";
+
+					vertexNames0 = new ArrayList<String>();
+					vertexNames0.addAll(obsOutputVertexNames);
+					vertexNames0.addAll(obsInputVertexNames);
+
+					constraintText0 = "true";
+					for (final String s : obsOutputVertexNames)
+						constraintText0 += " && $" + s + "Memory == $" + s;
+					for (final String s : obsInputVertexNames)
+						constraintText0 += " && $" + s + "Memory := $" + s;
+
+					if (!automaton.hasState(sourceName0))
+						automaton.addState(sourceName0, false);
+					if (!automaton.hasState(targetName0))
+						automaton.addState(targetName0, false);
+					automaton.addOrGetTransition(sourceName0, targetName0,
+							vertexNames0, constraintText0);
+
+					/* Add Type 3 transition. */
+					sourceName0 = targetName0;
+					targetName0 = INTERMEDIATE_STATE_NAME_PREFIX + targetName
+							+ "{" + transition + "}";
+
+					vertexNames0 = new ArrayList<String>();
+					for (final String s : obsInputVertexNames)
+						vertexNames0.add(PROXY_VERTEX_NAME_PREFIX + s);
+
+					constraintText0 = "true";
+					for (final String s : obsInputVertexNames)
+						constraintText0 += " && $" + s + "Memory == $"
+								+ PROXY_VERTEX_NAME_PREFIX + s;
+
+					if (!automaton.hasState(sourceName0))
+						automaton.addState(sourceName0, false);
+					if (!automaton.hasState(targetName0))
+						automaton.addState(targetName0, false);
+					automaton.addOrGetTransition(sourceName0, targetName0,
+							vertexNames0, constraintText0);
+					
+					/* Add Type 3-B transition. */
+					sourceName0 = targetName0;
+					targetName0 = targetName;
+
+					vertexNames0 = Arrays
+							.asList(vertexNames0.isEmpty() ? new String[0]
+									: new String[] { BUTTON_INPUT_VERTEX_NAME });
+
+					constraintText0 = "true";
+
+					if (!automaton.hasState(sourceName0))
+						automaton.addState(sourceName0, false);
+					if (!automaton.hasState(targetName0))
+						automaton.addState(targetName0, false);
+					automaton.addOrGetTransition(sourceName0, targetName0,
+							vertexNames0, constraintText0);
+
+					/* Prepare Type I transition. */
+					// final String sourceName1 = sourceName;
+					// final String targetName1 = INTERMEDIATE_STATE_NAME_PREFIX
+					// + INTERMEDIATE_STATE_NAME_PREFIX
+					// + INTERMEDIATE_STATE_NAME_PREFIX
+					// + INTERMEDIATE_STATE_NAME_PREFIX + targetName + "{"
+					// + transition + "}";
+					//
+					// final List<String> vertexNames1 = new
+					// ArrayList<String>();
+					// for (final String s : obsOutputVertexNames)
+					// vertexNames1.add(PROXY_VERTEX_NAME_PREFIX + s);
+					//
+					// String constraintText1 = "true";
+					// for (final String s : obsOutputVertexNames)
+					// constraintText1 += " && $" + s + "Memory := $"
+					// + PROXY_VERTEX_NAME_PREFIX + s;
+
+					/* Prepare Type Ib transition. */
+					// final String sourceName1b = targetName1;
+					// final String targetName1b =
+					// INTERMEDIATE_STATE_NAME_PREFIX
+					// + INTERMEDIATE_STATE_NAME_PREFIX
+					// + INTERMEDIATE_STATE_NAME_PREFIX + targetName + "{"
+					// + transition + "}";
+					//
+					// final List<String> vertexNames1b = Arrays
+					// .asList(new String[] { BUTTON_INPUT_VERTEX_NAME });
+					//
+					// final String constraintText1b = "true";
+
+					/* Prepare Type II transition. */
+					// final String sourceName2 = targetName1b;
+					// final String targetName2 = INTERMEDIATE_STATE_NAME_PREFIX
+					// + INTERMEDIATE_STATE_NAME_PREFIX + targetName + "{"
+					// + transition + "}";
+					//
+					// final List<String> vertexNames2 = new
+					// ArrayList<String>();
+					// vertexNames2.addAll(obsOutputVertexNames);
+					// vertexNames2.addAll(obsInputVertexNames);
+					//
+					// String constraintText2 = "true";
+					// for (final String s : obsOutputVertexNames)
+					// constraintText2 += " && $" + s + "Memory == $" + s;
+					//
+					// for (final String s : obsInputVertexNames)
+					// constraintText2 += " && $" + s + "Memory := $" + s;
+
+					/* Prepare Type III transition. */
+//					final String sourceName3 = targetName2;
+//					final String targetName3 = INTERMEDIATE_STATE_NAME_PREFIX
+//							+ targetName + "{" + transition + "}";
+//
+//					final List<String> vertexNames3 = new ArrayList<String>();
+//					for (final String s : obsInputVertexNames)
+//						vertexNames3.add(PROXY_VERTEX_NAME_PREFIX + s);
+//
+//					String constraintText3 = "true";
+//					for (final String s : obsInputVertexNames)
+//						constraintText3 += " && $" + s + "Memory == $"
+//								+ PROXY_VERTEX_NAME_PREFIX + s;
+
+					/* Prepare Type IV transition. */
+//					final String sourceName4 = targetName3;
+//					final String targetName4 = targetName;
+//
+//					final List<String> vertexNames4 = Arrays
+//							.asList(new String[] { BUTTON_INPUT_VERTEX_NAME });
+//
+//					final String constraintText4 = "true";
+
 					/* Add states. */
-					if (!automaton.hasState(sourceName))
-						automaton.addState(sourceName, false);
-
-					if (!automaton.hasState(targetName))
-						automaton.addState(targetName, false);
-
-					if (!automaton.hasState(preTargetName))
-						automaton.addState(preTargetName, false);
-
-					/* Compose constraint text. */
-					final StringBuilder builder = new StringBuilder();
-					for (final String s : observableVertexNames)
-						builder.append("$").append(s).append(" == $")
-								.append(PROXY_VERTEX_NAME_PREFIX).append(s)
-								.append(" && ");
-					final String constraintText = builder.substring(0,
-							builder.length() - 4);
+//					if (!automaton.hasState(sourceName))
+//						automaton.addState(sourceName, false);
+//
+//					if (!automaton.hasState(targetName))
+//						automaton.addState(targetName, false);
+//
+//					if (!automaton.hasState(sourceName1))
+//						automaton.addState(sourceName1, false);
+//
+//					if (!automaton.hasState(targetName1))
+//						automaton.addState(targetName1, false);
+//
+//					if (!automaton.hasState(sourceName1b))
+//						automaton.addState(sourceName1b, false);
+//
+//					if (!automaton.hasState(targetName1b))
+//						automaton.addState(targetName1b, false);
+//
+//					if (!automaton.hasState(sourceName2))
+//						automaton.addState(sourceName2, false);
+//
+//					if (!automaton.hasState(targetName2))
+//						automaton.addState(targetName2, false);
+//
+//					if (!automaton.hasState(sourceName3))
+//						automaton.addState(sourceName3, false);
+//
+//					if (!automaton.hasState(targetName3))
+//						automaton.addState(targetName3, false);
+//
+//					if (!automaton.hasState(sourceName4))
+//						automaton.addState(sourceName4, false);
+//
+//					if (!automaton.hasState(targetName4))
+//						automaton.addState(targetName4, false);
 
 					/* Add transitions. */
-					automaton.addOrGetTransition(sourceName, preTargetName,
-							Arrays.asList(vertexNames), constraintText);
-					automaton
-							.addOrGetTransition(
-									preTargetName,
-									targetName,
-									Arrays.asList(new String[] { BUTTON_INPUT_VERTEX_NAME }),
-									"true");
+					// automaton.addOrGetTransition(sourceName1, targetName1,
+					// vertexNames1, constraintText1);
+					//
+					// automaton.addOrGetTransition(sourceName1b, targetName1b,
+					// vertexNames1b, constraintText1b);
+					//
+					// automaton.addOrGetTransition(sourceName2, targetName2,
+					// vertexNames2, constraintText2);
+					//
+					// automaton.addOrGetTransition(sourceName3, targetName3,
+					// vertexNames3, constraintText3);
+					//
+					// automaton.addOrGetTransition(sourceName4, targetName4,
+					// vertexNames4, constraintText4);
+
+					
+
+					/* Compose lists over vertices and constraint texts. */
+					// final List<String> vertexNames1 = new ArrayList<String>(
+					// Arrays.asList(obsVertexNames));
+					// final List<String> vertexNames2 = new ArrayList<String>(
+					// Arrays.asList(intVertexNames));
+					//
+					// final StringBuilder builder1 = new StringBuilder();
+					// final StringBuilder builder2 = new StringBuilder();
+					//
+					// for (final String s : obsVertexNames) {
+					// vertexNames1.add(s + "Memory");
+					// vertexNames2.add(s + "Memory");
+					//
+					// builder1.append("$").append(s).append("Memory")
+					// .append(" := $").append(s).append(" && ");
+					//
+					// builder2.append("$").append(s).append("Memory")
+					// .append(" == $")
+					// .append(PROXY_VERTEX_NAME_PREFIX).append(s)
+					// .append(" && ");
+					// }
+					//
+					// final String constraintText1 = builder1.substring(0,
+					// builder1.length() - 4);
+					// final String constraintText2 = builder2.substring(0,
+					// builder2.length() - 4);
+
+					/* Add transitions. */
+					// automaton.addOrGetTransition(sourceName,
+					// prePreTargetName,
+					// vertexNames1, constraintText1);
+					//
+					// automaton.addOrGetTransition(prePreTargetName,
+					// preTargetName, vertexNames2, constraintText2);
+					//
+					// automaton
+					// .addOrGetTransition(
+					// preTargetName,
+					// targetName,
+					// Arrays.asList(new String[] { BUTTON_INPUT_VERTEX_NAME }),
+					// "true");
 				}
 			}
 
-			/* Return. */			
+			/* Return. */
+			automaton.removeSilentTransitions();
 			return connector;
 
 		} catch (final Exception e) {

@@ -2,6 +2,8 @@ package org.ect.codegen.v2.core.rt.java;
 
 import java.util.Map;
 
+import org.ect.codegen.v2.core.rt.java.Connector.State;
+
 import com.google.common.collect.ImmutableMap;
 
 public class Firing {
@@ -15,6 +17,11 @@ public class Firing {
 	 */
 	private final ImmutableMap<String, Object> assignment;
 
+	/**
+	 * The target state of this firing.
+	 */
+	private final State target;
+
 	//
 	// CONSTRUCTORS
 	//
@@ -24,21 +31,25 @@ public class Firing {
 	 */
 	Firing() {
 		this.assignment = ImmutableMap.<String, Object> builder().build();
+		this.target = Failures.getStateFailure();
 	}
 
 	/**
 	 * Constructs a firing.
 	 * 
+	 * @param target
+	 *            The target state of this firing. Not <code>null</code>.
 	 * @param assignment
 	 *            A nonempty assignment describing this firing. Not
 	 *            <code>null</code>.
 	 * @throws IllegalArgumentException
 	 *             If <code>assignment.isEmpty()</code>.
 	 * @throws NullPointerException
-	 *             If <code>assignment==null</code>.
+	 *             If <code>target==null</code> or <code>assignment==null</code>
+	 *             .
 	 */
-	Firing(final Map<String, Object> assignment) {
-		if (assignment == null)
+	Firing(final State target, final Map<String, Object> assignment) {
+		if (target == null || assignment == null)
 			throw new NullPointerException();
 		if (assignment.isEmpty())
 			throw new IllegalArgumentException();
@@ -48,6 +59,7 @@ public class Firing {
 		builder.putAll(assignment);
 
 		this.assignment = builder.build();
+		this.target = target;
 	}
 
 	//
@@ -78,8 +90,17 @@ public class Firing {
 	 * 
 	 * @return A map from port names to data items. Never <code>null</code>.
 	 */
-	public ImmutableMap<String, Object> getAssignment() {
+	public Map<String, Object> getAssignment() {
 		return assignment;
+	}
+
+	/**
+	 * Gets the target of this firing.
+	 * 
+	 * @return A state. Never <code>null</code>.
+	 */
+	public State getTarget() {
+		return target;
 	}
 
 	/**

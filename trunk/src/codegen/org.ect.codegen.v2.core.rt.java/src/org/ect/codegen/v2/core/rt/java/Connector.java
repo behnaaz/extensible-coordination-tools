@@ -9,15 +9,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.Callable;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.ect.codegen.v2.core.rt.java.Connector.State.Transition;
+import org.ect.codegen.v2.core.rt.java.internal.Continuation;
+import org.ect.codegen.v2.core.rt.java.internal.SyncPoint;
 import org.ect.codegen.v2.core.rt.java.internal.Take;
 import org.ect.codegen.v2.core.rt.java.internal.Write;
 import org.ect.codegen.v2.core.rt.java.solver.Problem;
 
 import com.google.common.collect.HashBiMap;
-
 
 public abstract class Connector implements Runnable {
 
@@ -291,25 +296,52 @@ public abstract class Connector implements Runnable {
 	 */
 	protected abstract Map<Class<? extends State>, State> getStateTable();
 
+	private static final AtomicInteger nextStateSequenceNumber = new AtomicInteger();
+
 	//
 	// CLASSES
 	//
 
-	public abstract class State implements Callable<State> {
+	public abstract class State implements Callable<State>, Comparable<State> {
 
 		//
-		// FIELDS
+		// FIELDS - PROTECTED
 		//
 
-		/**
-		 * The port to write proactively to.
-		 */
-		protected final OutputPort portToWriteProactivelyTo;
+		// /**
+		// * The port to write proactively to.
+		// */
+		// protected final OutputPort portToWriteProactivelyTo;
 
 		/**
 		 * The outgoing transitions of this state.
 		 */
 		protected final Transition[] transitions;
+
+		//
+		// FIELDS - PRIVATE
+		//
+
+		/**
+		 * The outgoing transition of this state that <em>must</em> fire next.
+		 */
+		private Transition nextTransition = null;
+
+		/**
+		 * Flag indicating if this state is enabled.
+		 */
+		private boolean isEnabled = false;
+
+		/**
+		 * The lock of this state.
+		 */
+		private final ReentrantLock lock = new ReentrantLock();
+
+		/**
+		 * The sequence number of this state.
+		 */
+		private final int sequenceNumber = nextStateSequenceNumber
+				.getAndIncrement();
 
 		//
 		// CONSTRUCTORS
@@ -320,14 +352,14 @@ public abstract class Connector implements Runnable {
 		 */
 		public State() {
 			this.transitions = getTransitions();
-			if (this.transitions.length == 1
-					&& this.transitions[0].inputPorts.isEmpty()
-					&& this.transitions[0].outputPorts.size() == 1)
-
-				this.portToWriteProactivelyTo = this.transitions[0].outputPorts
-						.iterator().next();
-			else
-				this.portToWriteProactivelyTo = null;
+			// if (this.transitions.length == 1
+			// && this.transitions[0].inputPorts.isEmpty()
+			// && this.transitions[0].outputPorts.size() == 1)
+			//
+			// this.portToWriteProactivelyTo = this.transitions[0].outputPorts
+			// .iterator().next();
+			// else
+			// this.portToWriteProactivelyTo = null;
 		}
 
 		//
@@ -344,13 +376,45 @@ public abstract class Connector implements Runnable {
 		@Override
 		public final State call() {
 			State state = Failures.getStateFailure();
-			while (state instanceof Failure)
-				if (portToWriteProactivelyTo == null)
-					state = getSuccessor();
-				else
-					state = transitions[0].call();
+			while (state instanceof Failure) {
+
+				/* [LOCK] */
+				this.lock();
+				try {
+					for (final Transition t : transitions) {
+						for (final InputPort p : t.inputPorts)
+							Ports.castToPortImpl(p).setTaker(this);
+
+						for (final OutputPort p : t.outputPorts)
+							Ports.castToPortImpl(p).setWriter(this);
+					}
+
+					this.isEnabled = true;
+				} finally {
+
+					/* [UNLOCK] */
+					this.unlock();
+				}
+
+				// if (portToWriteProactivelyTo == null)
+				state = getSuccessor();
+				// else
+				// state = transitions[0].call();
+			}
 
 			return state;
+		}
+
+		/**
+		 * <em>Inherited documentation:</em>
+		 * 
+		 * <p>
+		 * {@inheritDoc}
+		 * </p>
+		 */
+		@Override
+		public int compareTo(final State state) {
+			return this.sequenceNumber - state.sequenceNumber;
 		}
 
 		//
@@ -374,6 +438,137 @@ public abstract class Connector implements Runnable {
 		 * @return An array of transitions.
 		 */
 		protected abstract Transition[] getTransitions();
+
+		//
+		// METHODS - PRIVATE
+		//
+
+		/**
+		 * Gets the maximal outgoing transition of this state with respect to
+		 * the ports <code>ports</code>.
+		 * 
+		 * @param ports
+		 *            The port. Not <code>null</code>.
+		 * @return A transition. Never <code>null</code>.
+		 * @throws IllegalArgumentException
+		 *             If <code>!hasMaximalTransition(ports)</code>.
+		 * @throws NullPointerException
+		 *             If <code>ports==null</code> or
+		 *             <code>ports.contains(null)</code>.
+		 * 
+		 * @see #hasMaximalTransition(Set)
+		 */
+		private Transition getMaximalTransition(final Set<Port> ports) {
+			if (ports == null || ports.contains(null))
+				throw new NullPointerException();
+
+			for (final Transition t : transitions)
+				if (ports.containsAll(t.inputPorts)
+						&& ports.containsAll(t.outputPorts)) {
+
+					boolean isMaximal = true;
+					for (final Transition tt : transitions)
+						if (t != tt
+								&& (!Collections.disjoint(ports, tt.inputPorts) || !Collections
+										.disjoint(ports, tt.outputPorts))) {
+
+							isMaximal = false;
+							break;
+						}
+
+					if (isMaximal)
+						return t;
+				}
+
+			throw new IllegalArgumentException();
+		}
+
+		/**
+		 * TODO
+		 * 
+		 * @param ports
+		 * @return
+		 */
+		private Map<Take, Port> getPotentialTakes(final Set<Port> ports) {
+			for (final Transition t : transitions) {
+				if (t.inputPorts.containsAll(ports)) {
+					final Map<Take, Port> takes = new HashMap<Take, Port>();
+					for (final InputPort p : t.inputPorts)
+						takes.put(Ports.castToPortImpl(p).point.newTake(), p);
+
+					return takes;
+				}
+			}
+
+			throw new IllegalStateException();
+		}
+
+		/**
+		 * TODO
+		 * 
+		 * @param ports
+		 * @return
+		 */
+		private Map<Write, Port> getPotentialWrites(final Set<Port> ports) {
+			for (final Transition t : transitions) {
+				if (t.outputPorts.containsAll(ports)) {
+					final Map<Write, Port> writes = new HashMap<Write, Port>();
+					for (final Entry<String, Object> e : t.solve().entrySet()) {
+						final String variableName = e.getKey();
+						if (outputPortsToNames.containsValue(variableName)) {
+							final Port port = outputPortsToNames.inverse().get(
+									variableName);
+
+							writes.put(Ports.castToPortImpl(port).point
+									.newWrite(e.getValue()), port);
+						}
+					}
+
+					return writes;
+				}
+			}
+
+			throw new IllegalStateException();
+		}
+
+		/**
+		 * Checks if this state has a maximal outgoing transition with respect
+		 * to the ports <code>ports</code>.
+		 * 
+		 * @param ports
+		 *            The port. Not <code>null</code>.
+		 * @return <code>true</code> if this state has a maximal transition;
+		 *         </code>false</code> otherwise.
+		 * @throws NullPointerException
+		 *             If <code>ports==null</code> or
+		 *             <code>ports.contains(null)</code>.
+		 */
+		private boolean hasMaximalTransition(final Set<Port> ports) {
+			if (ports == null || ports.contains(null))
+				throw new NullPointerException();
+
+			try {
+				getMaximalTransition(ports);
+				return true;
+			} catch (final Exception e) {
+				return false;
+			}
+		}
+
+		/**
+		 * Locks this state.
+		 */
+		private void lock() {
+			lock.lock();
+		}
+
+		/**
+		 * Unlocks this state.
+		 */
+		private void unlock() {
+			while (lock.isHeldByCurrentThread())
+				lock.unlock();
+		}
 
 		//
 		// CLASSES
@@ -502,35 +697,39 @@ public abstract class Connector implements Runnable {
 			 * </p>
 			 */
 			public final State call() {
-				final Firing firing;
-				firing = canFireProactively() ? fireProactively() : fire();
+				final Firing firing = fire();
+				// firing = canFireProactively() ? fireProactively() : fire();
 				if (firing instanceof Failure)
 					return Failures.getStateFailure();
 
-				if (target == null) {
-					if (!Connector.this.stateTable.containsKey(targetClass))
-						throw new RuntimeException();
+				Connector.this.history.extend(firing.getTarget(), firing);
+				return firing.getTarget();
+			}
 
-					target = Connector.this.stateTable.get(targetClass);
-				}
+			public String toString() {
+				String string = State.this.getClass().getCanonicalName() + " ";
 
-				Connector.this.history.extend(target, firing);
-				return target;
+				for (final Port p : inputPorts)
+					string += Connector.this.inputPortsToNames.get(p) + " ";
+				for (final Port p : outputPorts)
+					string += Connector.this.outputPortsToNames.get(p) + " ";
+
+				return string;
 			}
 
 			//
 			// METHODS - PRIVATE
 			//
 
-			/**
-			 * Checks if this transition can fire proactively.
-			 * 
-			 * @return <code>true</code> if this transition can fire
-			 *         proactively; <code>false</code> otherwise.
-			 */
-			private boolean canFireProactively() {
-				return State.this.portToWriteProactivelyTo != null;
-			}
+			// /**
+			// * Checks if this transition can fire proactively.
+			// *
+			// * @return <code>true</code> if this transition can fire
+			// * proactively; <code>false</code> otherwise.
+			// */
+			// private boolean canFireProactively() {
+			// return State.this.portToWriteProactivelyTo != null;
+			// }
 
 			/**
 			 * Fires this transition, blocking until sufficient I/O operations
@@ -546,17 +745,200 @@ public abstract class Connector implements Runnable {
 			 */
 			private Firing fire() {
 
+				/* Prepare structures for "neighboring" states. */
+				final Map<State, Set<Port>> writersToPorts = new HashMap<State, Set<Port>>();
+				final Map<State, Set<Port>> takersToPorts = new HashMap<State, Set<Port>>();
+
+				/* Prepare an unlocker. */
+				final Runnable unlocker = new Runnable() {
+					public void run() {
+						State.this.unlock();
+						for (final State s : writersToPorts.keySet())
+							s.unlock();
+						for (final State s : takersToPorts.keySet())
+							s.unlock();
+
+						for (final Port p : inputPorts)
+							Ports.castToPortImpl(p).point.unlock();
+						for (final Port p : outputPorts)
+							Ports.castToPortImpl(p).point.unlock();
+					}
+				};
+
 				/* Get writes. */
 				final Map<Write, String> writes = new HashMap<Write, String>();
-				for (final Port p : inputPorts)
-					writes.put(Ports.castToPortImpl(p).point.getWrite(),
-							Connector.this.inputPortsToNames.get(p));
+				for (final Port p : inputPorts) {
+					final PortImpl port = Ports.castToPortImpl(p);
+					final SyncPoint point = port.point;
+
+					/* [LOCK] */
+					point.lock();
+
+					/* Get a "normal" write if the sync point has one. */
+					if (point.hasWrite())
+						writes.put(point.getWrite(),
+								Connector.this.inputPortsToNames.get(p));
+
+					/*
+					 * Get a writer to later extract a "tentative" write from,
+					 * if a writer is known.
+					 */
+					else if (port.hasWriter()) {
+
+						/* [UNLOCK] */
+						point.unlock();
+
+						final State writer = port.getWriter();
+						if (!writersToPorts.containsKey(writer))
+							writersToPorts.put(writer, new HashSet<Port>());
+
+						writersToPorts.get(writer).add(p);
+					}
+
+					/* Fail. */
+					else {
+
+						/* [UNLOCK] */
+						unlocker.run();
+						return Failures.getFiringFailure();
+					}
+				}
 
 				/* Get takes. */
 				final Map<Take, String> takes = new HashMap<Take, String>();
-				for (final Port p : outputPorts)
-					takes.put(Ports.castToPortImpl(p).point.getTake(),
-							Connector.this.outputPortsToNames.get(p));
+				for (final Port p : outputPorts) {
+					final PortImpl port = Ports.castToPortImpl(p);
+					final SyncPoint point = port.point;
+
+					/* [LOCK] */
+					point.lock();
+
+					/* Get a "normal" write if the sync point has one. */
+					if (point.hasTake())
+						takes.put(point.getTake(),
+								Connector.this.outputPortsToNames.get(p));
+
+					/*
+					 * Get a taker to later extract a "tentative" take from, if
+					 * a taker is known.
+					 */
+					else if (port.hasTaker()) {
+
+						/* [UNLOCK] */
+						point.unlock();
+
+						final State taker = port.getTaker();
+						if (!takersToPorts.containsKey(taker))
+							takersToPorts.put(taker, new HashSet<Port>());
+
+						takersToPorts.get(taker).add(p);
+					}
+
+					/* Fail. */
+					else {
+
+						/* [UNLOCK] */
+						unlocker.run();
+						return Failures.getFiringFailure();
+					}
+				}
+
+				/* Lock states. */
+				final Set<State> neighbors = new HashSet<State>();
+				neighbors.addAll(writersToPorts.keySet());
+				neighbors.addAll(takersToPorts.keySet());
+
+				final TreeSet<State> neighborsAndSelf = new TreeSet<State>(
+						neighbors);
+				neighborsAndSelf.add(State.this);
+
+				for (final State s : neighborsAndSelf) {
+
+					/* [LOCK] */
+					s.lock();
+
+					/* Check if $s are still enabled. */
+					if (!s.isEnabled) {
+
+						/* [UNLOCK] */
+						unlocker.run();
+						return Failures.getFiringFailure();
+					}
+				}
+
+				/* Check preferred transition. */
+				if (State.this.nextTransition != null
+						&& State.this.nextTransition != this)
+
+					try {
+						return State.this.nextTransition.fire();
+					} finally {
+						State.this.nextTransition = null;
+
+						/* [UNLOCK] */
+						unlocker.run();
+					}
+
+				/* Get potential writes. */
+				final Map<Write, String> potentialWrites = new HashMap<Write, String>();
+				for (final Entry<State, Set<Port>> e : writersToPorts
+						.entrySet())
+					try {
+						for (final Entry<Write, Port> ee : e.getKey()
+								.getPotentialWrites(e.getValue()).entrySet())
+
+							potentialWrites.put(ee.getKey(), inputPortsToNames
+									.get(Ports.castToPortImpl(ee.getValue())));
+
+					} catch (final Exception ex) {
+					}
+
+				/* Fail if the write synchronization constraint is violated. */
+				if (writes.size() + potentialWrites.size() != inputPorts.size()) {
+
+					/* [UNLOCK] */
+					unlocker.run();
+					return Failures.getFiringFailure();
+				}
+
+				/* Get potential takes. */
+				final Map<Take, String> potentialTakes = new HashMap<Take, String>();
+				for (final Entry<State, Set<Port>> e : takersToPorts.entrySet())
+					try {
+						for (final Entry<Take, Port> ee : e.getKey()
+								.getPotentialTakes(e.getValue()).entrySet())
+
+							potentialTakes.put(ee.getKey(), outputPortsToNames
+									.get(Ports.castToPortImpl(ee.getValue())));
+
+					} catch (final Exception ex) {
+					}
+
+				/* Fail if the take synchronization constraint is violated. */
+				if (takes.size() + potentialTakes.size() != outputPorts.size()) {
+
+					/* [UNLOCK] */
+					unlocker.run();
+					return Failures.getFiringFailure();
+				}
+
+				/* Computer preferred, foreign transitions. */
+				final Set<Port> ports = new HashSet<Port>();
+				ports.addAll(inputPorts);
+				ports.addAll(outputPorts);
+
+				final Map<State, Transition> neighborsToNextTransitions = new HashMap<State, Transition>();
+
+				for (final State s : neighbors)
+					if (s.hasMaximalTransition(ports))
+						neighborsToNextTransitions.put(s,
+								s.getMaximalTransition(ports));
+					else {
+
+						/* [UNLOCK] */
+						unlocker.run();
+						return Failures.getFiringFailure();
+					}
 
 				/* Initialize assignment. */
 				Map<String, Object> assignment = new HashMap<String, Object>(
@@ -565,10 +947,17 @@ public abstract class Connector implements Runnable {
 				for (final Entry<Write, String> e : writes.entrySet())
 					assignment.put(e.getValue(), e.getKey().getItem());
 
+				for (final Entry<Write, String> e : potentialWrites.entrySet())
+					assignment.put(e.getValue(), e.getKey().getItem());
+
 				/* Solve the data constraint satisfaction problem. */
 				if (!problem.getVariableNames().isEmpty()) {
-					if (!problem.solve(assignment))
+					if (!problem.solve(assignment)) {
+
+						/* [UNLOCK] */
+						unlocker.run();
 						return Failures.getFiringFailure();
+					}
 
 					/* Update assignment. */
 					assignment = problem.getCurrentAssignment();
@@ -589,60 +978,116 @@ public abstract class Connector implements Runnable {
 					final Take take = e.getKey();
 					take.setItem(assignment.get(e.getValue()));
 					take.doResolve();
-					// take.unpublishThenNotifyAll();
 				}
 
 				/* Process writes. */
 				for (final Entry<Write, String> e : writes.entrySet()) {
 					final Write write = e.getKey();
 					write.doResolve();
-					// write.unpublishThenNotifyAll();
+				}
+
+				/* Prepare a semaphore. */
+				final Semaphore s = new Semaphore(0);
+				final Continuation continuation = new Continuation() {
+					@Override
+					public void run(Object item) {
+						s.release();
+					}
+				};
+
+				/* Process potential takes. */
+				for (final Entry<Take, String> e : potentialTakes.entrySet()) {
+					final String portName = e.getValue();
+					Ports.asyncWrite(
+							outputPortsToNames.inverse().get(portName),
+							assignment.get(portName), continuation);
+				}
+
+				/* Process potential writes. */
+				for (final Entry<Write, String> e : potentialWrites.entrySet())
+					Ports.asyncTake(
+							inputPortsToNames.inverse().get(e.getValue()),
+							continuation);
+
+				/* Set preferred transitions. */
+				for (final Entry<State, Transition> e : neighborsToNextTransitions
+						.entrySet())
+
+					e.getKey().nextTransition = e.getValue();
+
+				/* Disable this state. */
+				State.this.isEnabled = false;
+
+				/* TODO: Clear readers and writers [optimization]. */
+
+				/* [UNLOCK] */
+				unlocker.run();
+
+				/*
+				 * Use the semaphore to block until the asynchronous I/O
+				 * operations have succeeded.
+				 */
+				while (true)
+					try {
+						s.acquire(potentialTakes.size()
+								+ potentialWrites.size());
+						break;
+					} catch (final InterruptedException e) {
+					}
+
+				/* Update state. */
+				if (target == null) {
+					if (!Connector.this.stateTable.containsKey(targetClass))
+						throw new RuntimeException();
+
+					target = Connector.this.stateTable.get(targetClass);
 				}
 
 				/* Return. */
-				return new Firing(assignment);
+				return new Firing(target, assignment);
 			}
 
-			/**
-			 * Fires this transition proactively, performing a write operation
-			 * on the output port <code>port</code> (from the perspective of the
-			 * environment) and blocking until this operation resolves.
-			 * 
-			 * <p>
-			 * This method <em>neither</em> locks <em>nor</em> unlocks
-			 * synchronization point of ports fired by this connector; the
-			 * calling method is responsible for synchronizing access.
-			 * </p>
-			 * 
-			 * @return A firing if firing succeeded; a failure otherwise.
-			 * @throws IllegalStateException
-			 *             If <code>!canFireProactively()</code>.
-			 */
-			private Firing fireProactively() {
-				if (!canFireProactively())
-					throw new IllegalStateException();
-
-				/* Initialize assignment. */
-				Map<String, Object> assignment = new HashMap<String, Object>(
-						Connector.this.store);
-
-				/* Solve the data constraint satisfaction problem. */
-				if (!problem.getVariableNames().isEmpty()) {
-					if (!problem.solve(assignment))
-						return Failures.getFiringFailure();
-
-					/* Update assignment. */
-					assignment = problem.getCurrentAssignment();
-				}
-
-				/* Write. */
-				final Port port = State.this.portToWriteProactivelyTo;
-				Ports.forceWrite(port, assignment
-						.get(Connector.this.outputPortsToNames.get(port)));
-
-				/* Return. */
-				return new Firing(assignment);
-			}
+			// /**
+			// * Fires this transition proactively, performing a write operation
+			// * on the output port <code>port</code> (from the perspective of
+			// the
+			// * environment) and blocking until this operation resolves.
+			// *
+			// * <p>
+			// * This method <em>neither</em> locks <em>nor</em> unlocks
+			// * synchronization point of ports fired by this connector; the
+			// * calling method is responsible for synchronizing access.
+			// * </p>
+			// *
+			// * @return A firing if firing succeeded; a failure otherwise.
+			// * @throws IllegalStateException
+			// * If <code>!canFireProactively()</code>.
+			// */
+			// private Firing fireProactively() {
+			// if (!canFireProactively())
+			// throw new IllegalStateException();
+			//
+			// /* Initialize assignment. */
+			// Map<String, Object> assignment = new HashMap<String, Object>(
+			// Connector.this.store);
+			//
+			// /* Solve the data constraint satisfaction problem. */
+			// if (!problem.getVariableNames().isEmpty()) {
+			// if (!problem.solve(assignment))
+			// return Failures.getFiringFailure();
+			//
+			// /* Update assignment. */
+			// assignment = problem.getCurrentAssignment();
+			// }
+			//
+			// /* Write. */
+			// final Port port = State.this.portToWriteProactivelyTo;
+			// Ports.forceWrite(port, assignment
+			// .get(Connector.this.outputPortsToNames.get(port)));
+			//
+			// /* Return. */
+			// return new Firing(null, assignment);
+			// }
 
 			//
 			// METHODS - DEFAULT
@@ -700,6 +1145,20 @@ public abstract class Connector implements Runnable {
 				list.addAll(outputPorts);
 				Collections.sort(list);
 				return list;
+			}
+
+			Map<String, Object> solve() {
+
+				/* Initialize assignment. */
+				Map<String, Object> assignment = new HashMap<String, Object>(
+						Connector.this.store);
+
+				/* Solve the data constraint satisfaction problem. */
+				if (!problem.getVariableNames().isEmpty())
+					if (problem.solve(assignment))
+						assignment = problem.getCurrentAssignment();
+
+				return assignment;
 			}
 		}
 	}

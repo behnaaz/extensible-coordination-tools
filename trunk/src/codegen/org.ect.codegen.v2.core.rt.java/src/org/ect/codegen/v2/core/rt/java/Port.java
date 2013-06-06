@@ -1,12 +1,13 @@
 package org.ect.codegen.v2.core.rt.java;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.ect.codegen.v2.core.rt.java.Connector.State;
 import org.ect.codegen.v2.core.rt.java.internal.DefaultSyncPoint;
 import org.ect.codegen.v2.core.rt.java.internal.SyncPoint;
 import org.ect.codegen.v2.core.rt.java.internal.Take;
 import org.ect.codegen.v2.core.rt.java.internal.Write;
-
 
 public interface Port extends Comparable<Port> {
 
@@ -316,5 +317,91 @@ class PortImpl implements Port {
 			return isOwnedByCurrentThread();
 		else
 			return lock.tryLock();
+	}
+
+	//
+	// DEFAULT
+	//
+
+	private volatile State writer;
+
+	private volatile State taker;
+
+	private final Semaphore newWriterFlag = new Semaphore(0);
+
+	private final Semaphore newTakerFlag = new Semaphore(0);
+
+	State getWriter() {
+		if (!hasWriter())
+			throw new IllegalStateException();
+		
+		return writer;
+	}
+	
+	State getTaker() {
+		if (!hasTaker())
+			throw new IllegalStateException();
+		
+		return taker;
+	}
+	
+	// State getLockedWriter() {
+	// if (!hasWriter())
+	// throw new IllegalStateException();
+	//
+	// writer.lock();
+	// while (!writer.isActive()) {
+	// writer.unlock();
+	// while (true)
+	// try {
+	// newWriterFlag.acquire();
+	// break;
+	// } catch (InterruptedException e) {
+	// }
+	//
+	// writer.lock();
+	// }
+	//
+	// return writer;
+	// }
+	
+	// State getLockedTaker() {
+	// if (!hasTaker())
+	// throw new IllegalStateException();
+	//
+	// taker.lock();
+	// while (!taker.isActive()) {
+	// taker.unlock();
+	// while (true)
+	// try {
+	// newTakerFlag.acquire();
+	// break;
+	// } catch (InterruptedException e) {
+	// }
+	//
+	// taker.lock();
+	// }
+	//
+	// return taker;
+	// }
+
+	boolean hasTaker() {
+		return taker != null;
+	}
+
+	boolean hasWriter() {
+		return writer != null;
+	}
+
+	void setTaker(final State taker) {
+		this.taker = taker;
+		this.newTakerFlag.release();
+		this.point.softRaiseAlarms();
+	}
+
+	void setWriter(final State writer) {
+		this.writer = writer;
+		this.newWriterFlag.release();
+		this.point.softRaiseAlarms();
 	}
 }

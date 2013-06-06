@@ -15,7 +15,14 @@ public class Orchestration {
 	// CONSTRUCTORS
 	//
 	
-	public Orchestration(final OutputPort exceptionPort, <comma_separated_list(orchestration.qUnlinkedInputVerticesOfConnectors, {final InputPort <elem.vertex.variableName>})>, <comma_separated_list(orchestration.qUnlinkedOutputVerticesOfConnectors, {final OutputPort <elem.vertex.variableName>})>) {
+	public Orchestration(final OutputPort exceptionPort
+		<if(orchestration.qUnlinkedInputVerticesOfConnectors)>
+			, <comma_separated_list(orchestration.qUnlinkedInputVerticesOfConnectors, {final InputPort <elem.vertex.variableName>})>
+		<endif>
+		<if(orchestration.qUnlinkedOutputVerticesOfConnectors)>
+			, <comma_separated_list(orchestration.qUnlinkedOutputVerticesOfConnectors, {final OutputPort <elem.vertex.variableName>})>
+		<endif>
+		) {
 		<separated_list(
 			orchestration.qUnlinkedInputVerticesOfConnectors,
 			{<\n>},
@@ -66,6 +73,8 @@ public class Orchestration {
 			{<elem.qComponentVertex.entity.variableName>Ports.<elem.qComponentVertex.vertex.variableName> = port<elem.qConnectorVertex.vertex.name>;}
 		)>
 	    
+	    <! orchestration.qUnlinkedVerticesOfParties ??? !>
+	    <! [orchestration.qUnlinkedInputVerticesOfParties, orchestration.qUnlinkedOutputVerticesOfParties] ??? !>
 		<separated_list(
 			orchestration.qUnlinkedVerticesOfParties,
 			{<\n>},

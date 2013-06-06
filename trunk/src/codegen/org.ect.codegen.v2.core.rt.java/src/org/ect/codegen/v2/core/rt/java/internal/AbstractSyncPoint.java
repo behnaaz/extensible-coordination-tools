@@ -155,10 +155,18 @@ public abstract class AbstractSyncPoint implements SyncPoint {
 	@Override
 	public final void raiseAlarms() {
 		synchronized (alarms) {
-			for (final Alarm a : alarms) {
+			for (final Alarm a : alarms)
 				if (a.isSet())
 					a.raise();
-			}
+		}
+	}
+
+	@Override
+	public final void softRaiseAlarms() {
+		synchronized (alarms) {
+			for (final Alarm a : alarms)
+				if (a.isSet())
+					a.softRaise();
 		}
 	}
 
@@ -292,10 +300,17 @@ class Alarm {
 		if (!isSet())
 			throw new IllegalStateException();
 
-		if (!flags[flagsIndex]) {
+		if (!flags[flagsIndex])
 			flags[flagsIndex] = true;
-			beepBeepBeep.release();
-		}
+
+		beepBeepBeep.release();
+	}
+
+	public void softRaise() {
+		if (!isSet())
+			throw new IllegalStateException();
+
+		beepBeepBeep.release();
 	}
 }
 

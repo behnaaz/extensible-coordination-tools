@@ -61,6 +61,21 @@ public class Composition<C extends Connector<B>, B extends Behavior<B>>
 
 		connectors.add(connector);
 	}
+	
+	/**
+	 * Gets the cell vertices of this composition, sorted by their names.
+	 * 
+	 * @return A list of vertices. Never <code>null</code>.
+	 */
+	public List<Vertex> getCellVertices() {
+		final Set<Vertex> set = new HashSet<Vertex>();
+		for (final Connector<B> c : connectors)
+			set.addAll(c.getBehavior().getCellVertices());
+
+		final List<Vertex> list = new ArrayList<Vertex>(set);
+		Collections.sort(list);
+		return list;
+	}
 
 	/**
 	 * Gets the input vertices of this composition, sorted by their names.
@@ -164,11 +179,8 @@ public class Composition<C extends Connector<B>, B extends Behavior<B>>
 		final List<Connector<B>> list = new ArrayList<Connector<B>>();
 
 		for (final Connector<B> c : connectors)
-			if (c.getName().equals("FIFO")) {
+			if (c.getName().equals("FIFO"))
 				list.add(c);
-				System.err.println(c.getBehavior().getCellVertices().iterator()
-						.next().getContentText());
-			}
 
 		return list;
 	}

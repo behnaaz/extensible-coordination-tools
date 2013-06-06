@@ -153,9 +153,9 @@ public class <composition.className> extends ReactiveConnector {
 	@Override
 	protected Map\<String, Object\> getInitialStore() {
 		final Map\<String, Object\> map = new HashMap\<String, Object\>();
-		<if(connector.behavior.cellVertices)>
+		<if(composition.cellVertices)>
 		try {
-			<newline_separated_list(connector.behavior.cellVertices, {map.put("<elem.variableName>", Item.convertToObject("<elem.escapedContentText>"));})>
+			<newline_separated_list(composition.cellVertices, {map.put("<elem.name>", Item.convertToObject("<elem.escapedContentText>"));})>
 		} catch (final Exception e) {
 			throw new RuntimeException();
 		}

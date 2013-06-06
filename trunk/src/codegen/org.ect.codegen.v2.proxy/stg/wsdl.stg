@@ -93,10 +93,14 @@ public class <party.className> extends WSDLProxy {
 	//
 
 	public static <party.className> newInstance(
-			final OutputPort exceptionPort,
-			<comma_separated_list(party.observableInputVertices, {InputPort <elem.variableName>})>,
-			<comma_separated_list(party.observableOutputVertices, {OutputPort <elem.variableName>})>)
-			throws Exception {
+			final OutputPort exceptionPort
+			<if(party.observableInputVertices)>
+				, <comma_separated_list(party.observableInputVertices, {InputPort <elem.variableName>})>
+			<endif>
+			<if(party.observableOutputVertices)>
+				, <comma_separated_list(party.observableOutputVertices, {OutputPort <elem.variableName>})>
+			<endif>
+			) throws Exception {
 			
 		if (SPECIFICATION == null)
 			throw new Exception(
@@ -128,18 +132,6 @@ public class <party.className> extends WSDLProxy {
 			party.unobservableOutputVertices,
 			{<\n>},
 			{namesToOutputPorts.put("<elem.name>", <elem.variableName>);}
-		)>
-		
-		/* Create buffers. */
-		<separated_list(
-			party.observableInputVertices,
-			{<\n>},
-			{final InputPort <elem.variableName>Buffered = Ports.newInputPort(); new Thread(FIFO.newActiveFIFO(<elem.variableName>, <elem.variableName>Buffered, 1)).start(); <elem.variableName> = <elem.variableName>Buffered;}
-		)>
-		<separated_list(
-			party.observableOutputVertices,
-			{<\n>},
-			{final OutputPort <elem.variableName>Buffered = Ports.newOutputPort(); new Thread(FIFO.newActiveFIFO(<elem.variableName>Buffered, <elem.variableName>, 1)).start(); <elem.variableName> = <elem.variableName>Buffered;}
 		)>
 
 		/* Create (and run) the simulation automaton. */

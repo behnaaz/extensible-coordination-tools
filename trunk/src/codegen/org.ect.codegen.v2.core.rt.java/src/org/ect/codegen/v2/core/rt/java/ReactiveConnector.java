@@ -11,7 +11,6 @@ import java.util.concurrent.Semaphore;
 import org.ect.codegen.v2.core.rt.java.internal.AbstractSyncPoint;
 import org.ect.codegen.v2.core.rt.java.internal.SyncPoint;
 
-
 public abstract class ReactiveConnector extends Connector {
 
 	//
@@ -130,11 +129,9 @@ public abstract class ReactiveConnector extends Connector {
 		@Override
 		public State getSuccessor() {
 
-			/* Reset $beepBeepBeep. */
+			/* Initialize alarms. */
 			beepBeepBeep.drainPermits();
-
 			boolean[] enabledPortFlags = new boolean[sortedPorts.length];
-
 			for (int i = 0; i < sortedPorts.length; i++)
 				((AbstractSyncPoint) Ports.castToPortImpl(sortedPorts[i]).point)
 						.setAlarm(beepBeepBeep, enabledPortFlags, i);
@@ -143,7 +140,7 @@ public abstract class ReactiveConnector extends Connector {
 			while (true) {
 
 				/* Initialize an array for keeping track of locked ports. */
-				boolean[] lockedPortFlags = new boolean[sortedPorts.length];
+				// boolean[] lockedPortFlags = new boolean[sortedPorts.length];
 
 				/* Initialize a list of candidate transitions. */
 				final List<Transition> candidateTransitions = new ArrayList<Transition>(
@@ -154,15 +151,16 @@ public abstract class ReactiveConnector extends Connector {
 				 * on disabled ports.
 				 */
 				for (int i = 0; i < sortedPorts.length; i++) {
-					final Port port = sortedPorts[i];
+					final PortImpl port = Ports.castToPortImpl(sortedPorts[i]);
 					final SyncPoint point = Ports.castToPortImpl(port).point;
 
-					/* Check enabledness of $port. */
-					if ((inputPorts.contains(port) && point.hasWrite())
+					/* Check enabledness of $port (overapproximation). */
+					if (port.hasWriter() || port.hasTaker()
+							|| (inputPorts.contains(port) && point.hasWrite())
 							|| (outputPorts.contains(port) && point.hasTake())) {
 
 						enabledPortFlags[i] = true;
-						lockedPortFlags[i] = true;
+						// lockedPortFlags[i] = true;
 					} else
 
 						/*
@@ -179,60 +177,66 @@ public abstract class ReactiveConnector extends Connector {
 				/* Attempt to fire a transition. */
 				State state;
 				Collections.shuffle(candidateTransitions);
-				try {
-					for (final Transition t : candidateTransitions) {
-						boolean isEnabled = true;
+				// try {
+				for (final Transition t : candidateTransitions)
+					// boolean isEnabled = true;
+					//
+					// /* Check enabledness of $t */
+					// for (int i = 0; i < sortedPorts.length; i++) {
+					// final Port port = sortedPorts[i];
+					// final SyncPoint point =
+					// Ports.castToPortImpl(port).point;
+					//
+					// boolean firesInputPort = false;
+					// boolean firesOutputPort = false;
+					// if (!(firesInputPort = t.firesInputPort(port))
+					// && !(firesOutputPort = t
+					// .firesOutputPort(port)))
+					// continue;
+					//
+					// /* [LOCK] */
+					// point.lock();
+					// lockedPortFlags[i] = true;
+					//
+					// /* Check enabledness of $port. */
+					// if ((firesInputPort && !point.hasWrite())
+					// || (firesOutputPort && !point.hasTake())) {
+					//
+					// isEnabled = false;
+					// enabledPortFlags[i] = false;
+					// break;
+					// }
+					// }
+					//
+					// if (!isEnabled)
+					// continue;
 
-						/* Check enabledness of $t */
-						for (int i = 0; i < sortedPorts.length; i++) {
-							final Port port = sortedPorts[i];
-							final SyncPoint point = Ports.castToPortImpl(port).point;
+					/* Fire transition, then return. */
+					if (!((state = t.call()) instanceof Failure))
+						return state;
+				// }
 
-							boolean firesInputPort = false;
-							boolean firesOutputPort = false;
-							if (!(firesInputPort = t.firesInputPort(port))
-									&& !(firesOutputPort = t
-											.firesOutputPort(port)))
-								continue;
+				// finally {
+				// /* Unlock ports. */
+				// for (int i = 0; i < enabledPortFlags.length; i++)
+				// if (lockedPortFlags[i])
+				//
+				// /* [UNLOCK] */
+				// Ports.castToPortImpl(sortedPorts[i]).point.unlock();
 
-							/* [LOCK] */
-							point.lock();
-							lockedPortFlags[i] = true;
-
-							/* Check enabledness of $port. */
-							if ((firesInputPort && !point.hasWrite())
-									|| (firesOutputPort && !point.hasTake())) {
-
-								isEnabled = false;
-								enabledPortFlags[i] = false;
-								break;
-							}
-						}
-
-						if (!isEnabled)
-							continue;
-
-						/* Fire transition, then return. */
-						if (!((state = t.call()) instanceof Failure))
-							return state;
-					}
-
-				} finally {
-
-					/* Unlock ports. */
-					for (int i = 0; i < enabledPortFlags.length; i++)
-						if (lockedPortFlags[i])
-
-							/* [UNLOCK] */
-							Ports.castToPortImpl(sortedPorts[i]).point.unlock();
-				}
+				// /* [UNLOCK SELF] */
+				// super.unlock();
+				// }
 
 				/* Sleep. */
-				while (!shouldGetUp(enabledPortFlags)) {
+				boolean sleepy = true;
+				while (sleepy || !shouldGetUp(enabledPortFlags)) {
 
 					/* Wait until an alarm goes off. */
 					beepBeepBeep.acquireUninterruptibly();
 					beepBeepBeep.drainPermits();
+
+					sleepy = false;
 				}
 			}
 		}

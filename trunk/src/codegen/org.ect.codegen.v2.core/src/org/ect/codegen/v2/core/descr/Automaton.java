@@ -463,8 +463,8 @@ public abstract class Automaton<A extends Automaton<A, S, T, SF, TF>, S extends 
 			String string = getStates().toString();
 			string = "States: " + string.substring(1, string.length() - 1);
 			if (hasInitial())
-				string = string.replaceAll(getInitial().toString(),
-						getInitial().toString() + "*");
+				string = string.replaceAll(" " + getInitial().toString(),
+						" " + getInitial().toString() + "*");
 
 			/* Add $string to $list. */
 			list.add(string);

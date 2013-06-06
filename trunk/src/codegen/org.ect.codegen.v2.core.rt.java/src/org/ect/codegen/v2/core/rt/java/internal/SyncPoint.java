@@ -176,6 +176,7 @@ public interface SyncPoint extends Comparable<SyncPoint> {
 	 * </p>
 	 */
 	public void raiseAlarms();
+	public void softRaiseAlarms();
 
 	/**
 	 * Sets the alarm of the current thread.

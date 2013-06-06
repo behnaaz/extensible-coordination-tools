@@ -14,7 +14,6 @@ import org.ect.codegen.v2.proxy.rt.java.PartySide.PartySideException;
 import org.ect.codegen.v2.proxy.rt.java.RequestFactory.Request;
 import org.ect.codegen.v2.proxy.rt.java.RequestFactory.Take;
 
-
 public class ConnectorSide<P extends AbstractParcel, I extends AbstractInfrastructure<P>>
 		implements Runnable {
 
@@ -38,7 +37,7 @@ public class ConnectorSide<P extends AbstractParcel, I extends AbstractInfrastru
 	 * many milliseconds before it starts inspecting the set {@link requests}
 	 * for resolved requests.
 	 */
-	private final long timeout = 1000;
+	private final long timeout = 100;
 
 	/**
 	 * A counter, incremented by the requests in the set {@link requests} once
@@ -126,7 +125,21 @@ public class ConnectorSide<P extends AbstractParcel, I extends AbstractInfrastru
 			 * requests that have reported themselves resolved,
 			 * $resolvedCounter.get(), equals the number of firing ports.
 			 */
-			while (step.getFiring().size() != counter.get() * 2)
+			final Set<String> aux = new HashSet<String>(step.getFiring()
+					.getAssignment().keySet());
+
+			final Set<String> all = new HashSet<String>();
+			all.addAll(automaton.getInputPortNames());
+			all.addAll(automaton.getOutputPortNames());
+			aux.retainAll(all);
+
+			if (aux.isEmpty()) {
+				sequenceNumber = step.getSequenceNumber();
+				continue;
+			}
+
+			while (aux.size() != counter.get())
+				// while (step.getFiring().size() != counter.get() * 2)
 				synchronized (counter) {
 					try {
 						counter.wait(timeout);
