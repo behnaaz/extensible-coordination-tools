@@ -1,0 +1,1 @@
+This project gathers the Eclipse-based tools around the Reo coordination language.
