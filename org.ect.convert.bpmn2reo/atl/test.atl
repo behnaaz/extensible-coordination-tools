@@ -1,0 +1,123 @@
+-- @nsURI MM1=http://www.my.site/path/to/my/MM1
+-- @path BPMN20=/BPMN20reo/BPMN200.ecore
+-- @path reo=/BPMN20reo/reo.ecore
+
+module test;
+create OUT: reo from IN: BPMN20;
+
+helper context BPMN20!Definitions def : SafeName : String =
+if not self.name.oclIsUndefined() then         self.name    else      'mainssss'   endif;   
+
+helper context BPMN20!Process def : GETTasks : Sequence(BPMN20!Task) =
+    self.flowElements->select(e | e.oclIsTypeOf(BPMN20!Task))
+;
+
+helper context BPMN20!Process def : GETSequenceFlows : Sequence(BPMN20!SequenceFlow) =
+    self.flowElements->select(e | e.oclIsTypeOf(BPMN20!SequenceFlow))
+;
+
+helper context BPMN20!Definitions def : NonSimpleVertices : Sequence(BPMN20!RootElement) =
+	self.rootElements->select(e | e.oclIsTypeOf(BPMN20!Process))
+ ;
+
+helper context BPMN20!Definitions def : SimpleVertices : Sequence(BPMN20!RootElement) =
+	self.rootElements->select(e | e.oclIsTypeOf(BPMN20!Task) or e.oclIsTypeOf(BPMN20!Message) or 
+	e.oclIsTypeOf(BPMN20!StartEvent) or e.oclIsTypeOf(BPMN20!Gateway))
+;
+
+helper context BPMN20!Process def : SimpleVertices : Sequence(BPMN20!RootElement) =
+    self.flowElements->select(e | e.oclIsTypeOf(BPMN20!Task) or e.oclIsTypeOf(BPMN20!Message) or
+    e.oclIsTypeOf(BPMN20!StartEvent) or e.oclIsKindOf(BPMN20!Gateway))
+;
+
+rule task2Node {
+	from
+		b: BPMN20!Task--sa(b.incoming->size()=0 and b.outgoing->size()=0)
+	to
+		m: reo!Node (
+			name <- 'dtask'
+		),
+		f : reo!FIFO(sourceEnds <- c, sinkEnds <- k),-- tagbpmn <- 'f'),
+        c : reo!SourceEnd(node <- m),
+        k : reo!SinkEnd(node <- m)--q.target)       
+	do {
+	  	b.debug('		task2Node'); 
+	}
+}
+
+
+rule msg2node {
+	from
+		b: BPMN20!Message
+	to
+		m: reo!Node(name <- 'message')
+	do {
+		b.debug('	msg2node'); 
+	}
+}
+ 
+rule processprocess {
+	from
+		b: BPMN20!Process
+	to
+		m: reo!Connector(name <- 'process', nodes<-b.SimpleVertices, primitives <-b.GETSequenceFlows)
+	do {
+		b.debug('	processprocess'); 
+	}
+}
+ 
+rule flow{
+    from
+    	q : BPMN20!SequenceFlow
+    to 
+    	s : reo!Sync(sourceEnds <- c, sinkEnds <- k),
+        c : reo!SourceEnd(node <- q.sourceRef),
+        k : reo!SinkEnd(node <- q.targetRef)
+    do {
+        q.debug('flooooow');
+    }
+}
+
+rule simplestartevent {
+    from 
+    	e : BPMN20!StartEvent
+    to	
+    	n : reo!Node(name <- 'eve')
+}
+
+rule gateway {
+    from
+    	g : BPMN20!Gateway
+    to
+    	n : reo!Node(name <- 'gw')
+}
+
+rule definition2module {
+	from
+		b: BPMN20!Definitions
+	to
+		m: reo!Connector(name<-b.SafeName,
+		   subConnectors<-b.NonSimpleVertices,
+	       nodes <- b.SimpleVertices
+	----       ,primitives <- b.GETSequenceFlows
+	     --  primitives <- thisModule.resolveTemp(b.SimpleVertices, 'f')
+	       ),--p.sequenceEdges)--, primitives <- p.OutGoingMessages)
+		l : reo!Module(connectors<-Set{m})
+	do {
+	    --m.subConnectors.add(thisModule.resolveTemp(b, m)));
+	  m.debug('definition2module+++++++++++++++++++++++'); 
+	  --m.debug(BPMN20!Process.allInstances()->size().toString());
+	 -- m.debug('fifo   '+reo!Channel.allInstances()->size().toString());
+	  for (c in reo!Channel.allInstances()){
+	      --	if (c.tagbpmn = 'f') {
+	      	    for (n in reo!Connector.allInstances()) {
+	      	        if (n.nodes->includes(c.sourceEnds->get(0).node)){
+	      	          --  n.debug('ghhhhh------------------hh');
+	      	            n.primitives.add(c);
+	      	    	}
+	      	    }	        
+	      --c.debug('ffff '+c.toString()+'+++++++++++++++++');
+	  --    	}
+	  }
+	}
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.ect.convert.bpmn2reo.contribution1">
+         <menu
+               label="BPMN to Reo"
+               path="additions"
+               id="org.ect.convert.bpmn2reo.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Convert ..."
+               class="org.ect.convert.bpmn2reo.popup.actions.BPMN2ReoAction"
+               menubarPath="org.ect.convert.bpmn2reo.menu1/group1"
+               enablesFor="1"
+               id="org.ect.convert.bpmn2reo.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
